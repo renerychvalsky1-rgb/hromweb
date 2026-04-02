@@ -928,13 +928,23 @@
 
   /* TESTIMONIALS */
   #testimonials { background:var(--bg); }
-  .testimonials-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem; margin-top:3rem; }
+  .testi-carousel-wrap { position:relative; margin-top:3rem; max-width:800px; margin-left:auto; margin-right:auto; }
+  .testi-carousel-outer { overflow:hidden; }
+  .testi-carousel-track { display:flex; transition:transform .45s ease; }
+  .testi-slide { min-width:100%; box-sizing:border-box; }
+  .testi-carousel-nav { display:flex; justify-content:center; gap:.5rem; margin-top:1.25rem; }
+  .testi-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,.2); cursor:pointer; border:none; padding:0; transition:background .2s,transform .2s; }
+  .testi-dot.active { background:var(--accent); transform:scale(1.3); }
+  .testi-arrow { position:absolute; top:45%; transform:translateY(-50%); background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.1); color:#fff; width:38px; height:38px; border-radius:50%; font-size:1.5rem; cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2; transition:background .2s; }
+  .testi-arrow:hover { background:rgba(0,227,202,.3); }
+  .testi-prev-btn { left:-.75rem; }
+  .testi-next-btn { right:-.75rem; }
   .testi-card { background:var(--bg2); border:1px solid var(--border); border-radius:1.25rem; padding:2rem; transition:border-color .3s; }
   .testi-card:hover { border-color:rgba(0,227,202,.25); }
   .testi-stars { color:var(--accent); font-size:.85rem; margin-bottom:1rem; }
   .testi-text { font-size:.95rem; color:#bbb; line-height:1.75; margin-bottom:1.5rem; font-style:italic; }
   .testi-author { display:flex; align-items:center; gap:.75rem; }
-  .testi-avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-weight:700; font-size:.85rem; color:#000; }
+  .testi-avatar { width:40px; height:40px; border-radius:50%; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-weight:700; font-size:.85rem; color:#000; flex-shrink:0; }
   .testi-name { font-family:var(--font-head); font-weight:700; font-size:.9rem; }
   .testi-role { font-size:.78rem; color:var(--muted); }
 
@@ -1124,7 +1134,7 @@
     <div class="about-grid">
       <div class="about-text reveal">
         <div class="section-label">PRÍBEH HROMU</div>
-        <h1 class="section-title">Riešime problémy v<br class="mobile-br"> celom marketingu</h1>
+        <h1 class="section-title">Riešime problémy<br>v marketingu</h1>
         <p style="font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:0.75rem">Nerobíme iba videjká na socky.</p>
         <p><strong>HROM Marketing</strong> vznikol z jednoduchej myšlienky — väčšina firiem nepotrebuje ďalšiu agentúru, ktorá im predá balík. Potrebujú niekoho, kto pochopí ich biznis a urobí marketing, čo reálne funguje.</p>
         <p>Staré weby. Zlé stratégie. Zastaraná komunikácia. To sú problémy, ktoré dennodenne riešime — pre klientov zo zdravotníctva, kultúry, zábavy, remesla ale aj rastúcich brandov.</p>
@@ -1248,22 +1258,50 @@
       <div class="section-label">Referencie</div>
       <h2 class="section-title">Čo hovoria klienti</h2>
     </div>
-    <div class="testimonials-grid">
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"HROM nám pomohol dostať marketing na úplne iný level. Nie len vizuálne — reálne výsledky v kampaniach a nárastoch dopytov."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">ML</div>
-          <div><div class="testi-name">Marlus Group</div><div class="testi-role">Zdravotníctvo</div></div>
+    <div class="testi-carousel-wrap reveal">
+      <button class="testi-arrow testi-prev-btn" onclick="testiStep(-1)">&#8249;</button>
+      <button class="testi-arrow testi-next-btn" onclick="testiStep(1)">&#8250;</button>
+      <div class="testi-carousel-outer">
+        <div class="testi-carousel-track">
+          <!-- Slide 1: Túlavé kino -->
+          <div class="testi-slide">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">„Vymyslieť a udržať funkčnú stratégiu pre B2B marketing je mimoriadne náročné. S Reném však spolupracujeme už 5 rokov a vďaka jeho vedeniu a skúsenostiam spoločne vytvárame môj vysnívaný projekt. Túlavé kino – kino, ktoré si ťa nájde. Som vďačný, že mám po boku experta, ktorý nášmu konceptu rozumie a posúva ho neustále vpred."</p>
+              <div class="testi-author">
+                <div class="testi-avatar">TK</div>
+                <div><div class="testi-name">Maroš</div><div class="testi-role">Projekt Túlavé kino</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 2: Marlus Group -->
+          <div class="testi-slide">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">„René je jeden z mála ľudí, ktorý sa na marketing pozrie tak, ako my podnikatelia — cez prizmu biznisu. Nielenže zvláda komunikáciu, vie navrhnúť a realizovať stratégiu, ktorá reálne zvyšuje tržby. Pre nás to bol zásadný posun vpred."</p>
+              <div class="testi-author">
+                <div class="testi-avatar">ML</div>
+                <div><div class="testi-name">Marlus Group</div><div class="testi-role">Zdravotníctvo</div></div>
+              </div>
+            </div>
+          </div>
+          <!-- Slide 3: Sterio Kino -->
+          <div class="testi-slide">
+            <div class="testi-card">
+              <div class="testi-stars">★★★★★</div>
+              <p class="testi-text">„Spolupráca s Reném bola pre nás prelomová. Považujem ho za skutočného marketingového mága. Nielenže nám od základu nastavil fungujúcu stratégiu, ale priniesol do našich procesov plynulosť a dlhodobú konzistenciu, ktorá nám chýbala. Z mojej skúsenosti môžem úprimne povedať, že je to jeden z najlepších mozgov na biznis marketing, s akým som mal možnosť spolupracovať."</p>
+              <div class="testi-author">
+                <div class="testi-avatar">SK</div>
+                <div><div class="testi-name">p. Sollar, CEO</div><div class="testi-role">STERIO Kino</div></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="testi-card reveal">
-        <div class="testi-stars">★★★★★</div>
-        <p class="testi-text">"Konečne agentúra, ktorá nám neposielala generické reporty. René a tím rozumejú biznisu, nielen marketingovým nástrojom."</p>
-        <div class="testi-author">
-          <div class="testi-avatar">LK</div>
-          <div><div class="testi-name">Liptov Klasik</div><div class="testi-role">Kultúrny festival</div></div>
-        </div>
+      <div class="testi-carousel-nav">
+        <button class="testi-dot active" onclick="testiSlide(0)"></button>
+        <button class="testi-dot" onclick="testiSlide(1)"></button>
+        <button class="testi-dot" onclick="testiSlide(2)"></button>
       </div>
     </div>
   </div>
@@ -1297,7 +1335,7 @@
       </div>
       <div class="rene-text reveal">
         <div class="section-label">Za HROMOM stojí</div>
-        <h1 class="section-title">Marketing opravujem<br><span style="color:var(--accent)">a prednášam o ňom.</span></h1>
+        <h1 class="section-title">Opravujem a prednášam<br><span style="color:var(--accent)">o marketingu.</span></h1>
         <p style="color:var(--muted);font-size:1.05rem;line-height:1.8;margin-bottom:1.8rem">Som René — CMO v Sterio Kino a zakladateľ HROM Marketing. Pracujem s firmami, ktoré majú problém nie s komunikáciou, ale s celým marketingom. Zlá stratégia, nejasné ciele, weby čo neprinášajú výsledky.</p>
         <div class="rene-pills">
           <div class="rene-pill">🎤 Prednášam o marketingu</div>
@@ -1413,6 +1451,19 @@
     dots.forEach((d, i) => d.classList.toggle('active', i === reneIndex));
   }
   function reneStep(dir) { reneSlide(reneIndex + dir); }
+
+  // Testimonials carousel
+  let testiIdx = 0;
+  function testiSlide(n) {
+    const track = document.querySelector('.testi-carousel-track');
+    const dots = document.querySelectorAll('.testi-dot');
+    if (!track) return;
+    testiIdx = ((n % 3) + 3) % 3;
+    track.style.transform = `translateX(-${testiIdx * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === testiIdx));
+  }
+  function testiStep(dir) { testiSlide(testiIdx + dir); }
+  setInterval(() => testiStep(1), 6000);
 
   // Hamburger
   const hamburger = document.getElementById('hamburger');
