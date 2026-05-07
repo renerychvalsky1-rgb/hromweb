@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NÁHĽAD — NAŠA PRÁCA</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111;
+    --bg3: #161616;
+    --accent: #00e3ca;
+    --border: rgba(255,255,255,.08);
+    --text: #f0f0f0;
+    --muted: #888;
+    --font: 'Montserrat', sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); }
+
+  /* NAV */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: rgba(10,10,10,.95);
+    backdrop-filter: blur(12px); z-index: 100;
+  }
+  .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-nasa-praca {
+    color: var(--accent) !important;
+    border: 1.5px solid var(--accent);
+    border-radius: 2rem;
+    padding: .35rem 1rem;
+    font-weight: 700 !important;
+    font-size: .85rem !important;
+    letter-spacing: .03em;
+    transition: background .2s !important;
+  }
+  .nav-nasa-praca:hover { background: rgba(0,227,202,.1) !important; color: var(--accent) !important; }
+  .nav-cta {
+    background: var(--accent); color: #000; font-weight: 700;
+    padding: .5rem 1.4rem; border-radius: 2rem; text-decoration: none;
+    font-size: .85rem; letter-spacing: .03em;
+  }
+
+  /* HERO */
+  .portfolio-hero {
+    padding: 5rem 4rem 3rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .label {
+    font-size: .72rem; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: .75rem; margin-bottom: 1.2rem;
+  }
+  .label::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+  h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1rem; }
+  h1 span { color: var(--accent); }
+  .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 540px; line-height: 1.7; }
+
+  /* FILTER */
+  .filter-wrap {
+    padding: 2.5rem 4rem 0;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .filter-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: .65rem; }
+  .filter-btn {
+    background: var(--bg2); border: 1px solid var(--border);
+    color: var(--muted); font-family: var(--font); font-size: .78rem;
+    font-weight: 600; letter-spacing: .04em; padding: .45rem 1.1rem;
+    border-radius: 2rem; cursor: pointer; transition: all .2s;
+    text-transform: uppercase;
+  }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active {
+    background: var(--accent); color: #000;
+    border-color: var(--accent); font-weight: 700;
+  }
+
+  /* GRID */
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    padding: 2.5rem 4rem 5rem;
+    max-width: 1200px; margin: 0 auto;
+  }
+  .p-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 1.25rem; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+  }
+  .p-card:hover { transform: translateY(-5px); border-color: rgba(0,227,202,.3); }
+  .p-thumb {
+    aspect-ratio: 16/9; background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem; border-bottom: 1px solid var(--border);
+    position: relative; overflow: hidden;
+  }
+  .p-thumb-img {
+    width: 100%; height: 100%; object-fit: cover;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem; color: rgba(255,255,255,.08);
+    font-weight: 800; letter-spacing: -.05em;
+  }
+  .p-tag {
+    position: absolute; top: .75rem; left: .75rem;
+    background: rgba(0,227,202,.15); border: 1px solid rgba(0,227,202,.3);
+    color: var(--accent); font-size: .65rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    padding: .25rem .65rem; border-radius: 2rem;
+  }
+  .p-body { padding: 1.5rem; }
+  .p-category { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+  .p-title { font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
+  .p-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+  .p-result {
+    margin-top: 1rem; display: inline-block;
+    background: rgba(0,227,202,.08); border: 1px solid rgba(0,227,202,.2);
+    color: var(--accent); font-size: .72rem; font-weight: 700;
+    padding: .3rem .8rem; border-radius: 2rem;
+  }
+
+  /* EMPTY STATE */
+  .empty { grid-column: 1/-1; text-align: center; padding: 4rem 0; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">HROM<span>.</span></div>
+  <div class="nav-links">
+    <a href="#">O nás</a>
+    <a href="#">Služby</a>
+    <a href="#">Referencie</a>
+    <a href="#" class="nav-nasa-praca">NAŠA PRÁCA</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <a href="#" class="nav-cta">Konzultácia →</a>
+</nav>
+
+<div class="portfolio-hero">
+  <div class="label">Portfólio</div>
+  <h1>Naša <span>práca</span></h1>
+  <p class="hero-sub">Vyber si odvetvie alebo typ služby a pozri, čo sme dosiahli pre našich klientov.</p>
+</div>
+
+<div class="filter-wrap">
+  <div class="filter-label">Filtrovať podľa služby</div>
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all', this)">Všetko</button>
+    <button class="filter-btn" onclick="filter('strategia', this)">Marketingová stratégia</button>
+    <button class="filter-btn" onclick="filter('ppc', this)">PPC kampane</button>
+    <button class="filter-btn" onclick="filter('branding', this)">Branding &amp; Identita</button>
+    <button class="filter-btn" onclick="filter('web', this)">Weby &amp; Landing pages</button>
+    <button class="filter-btn" onclick="filter('ai', this)">Audit AI LLM</button>
+    <button class="filter-btn" onclick="filter('dev', this)">Programovanie na mieru</button>
+  </div>
+</div>
+
+<div class="portfolio-grid" id="grid">
+
+  <div class="p-card" data-tags="ppc strategia">
+    <div class="p-thumb">
+      <div class="p-thumb-img">MG</div>
+      <span class="p-tag">PPC · Stratégia</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">Priemysel &amp; Remeselníctvo</div>
+      <div class="p-title">Marlus Group</div>
+      <div class="p-desc">Zníženie ceny za lead z 50 € na 5–6 € pomocou video kampaní na Meta &amp; Google.</div>
+      <div class="p-result">CPL: 50 € → 5–6 €</div>
+    </div>
+  </div>
+
+  <div class="p-card" data-tags="web ppc strategia">
+    <div class="p-thumb">
+      <div class="p-thumb-img">UZ</div>
+      <span class="p-tag">Web · PPC</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">Zdravotníctvo</div>
+      <div class="p-title">Ultrazvukové pracovisko</div>
+      <div class="p-desc">Redizajn webu, custom objednávací formulár a automatizácia recepcie.</div>
+      <div class="p-result">Online > telefonáty po 2 mes.</div>
+    </div>
+  </div>
+
+  <div class="p-card" data-tags="ppc strategia">
+    <div class="p-thumb">
+      <div class="p-thumb-img">LK</div>
+      <span class="p-tag">PPC · Event</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">Eventy, Kultúra, Zábava</div>
+      <div class="p-title">Liptov Klasik</div>
+      <div class="p-desc">Komunikačná a predajná stratégia pre jeden z najväčších eventov na Liptove.</div>
+    </div>
+  </div>
+
+  <div class="p-card" data-tags="web ppc strategia">
+    <div class="p-thumb">
+      <div class="p-thumb-img">MK</div>
+      <span class="p-tag">Web · PPC</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">Zdravotníctvo</div>
+      <div class="p-title">Mám kŕčové žily</div>
+      <div class="p-desc">Custom rezervačný systém, automatizácia recepcie a lead gen kampane.</div>
+    </div>
+  </div>
+
+  <div class="p-card" data-tags="branding">
+    <div class="p-thumb">
+      <div class="p-thumb-img">ST</div>
+      <span class="p-tag">Branding</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">IT firma</div>
+      <div class="p-title">Strauberi</div>
+      <div class="p-desc">Zapamätateľná identita pre IT firmu, ktorá sa odlíši v segmente kde všetci vyzerajú rovnako.</div>
+    </div>
+  </div>
+
+  <div class="p-card" data-tags="ppc web branding strategia">
+    <div class="p-thumb">
+      <div class="p-thumb-img">+</div>
+      <span class="p-tag">Viac projektov</span>
+    </div>
+    <div class="p-body">
+      <div class="p-category">Rôzne odvetvia</div>
+      <div class="p-title">Ďalšie projekty</div>
+      <div class="p-desc">Raňajkový klub Harmónia, Bonitax, OdlozTo.sk, Túlavé Kino, Zobuďme Slovensko a ďalšie.</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function filter(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const cards = document.querySelectorAll('.p-card');
+    cards.forEach(card => {
+      const tags = card.dataset.tags;
+      card.style.display = (tag === 'all' || tags.includes(tag)) ? 'block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
