@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NÁHĽAD — Hromové produkty & Služby</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0a0a0a; --bg2: #111; --bg3: #161616;
+    --accent: #00e3ca; --accent2: #00b4ff;
+    --border: rgba(255,255,255,.08);
+    --text: #f0f0f0; --muted: #888;
+    --font: 'Montserrat', sans-serif;
+  }
+  body { background: var(--bg); color: var(--text); font-family: var(--font); }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem; border-bottom: 1px solid var(--border);
+    background: rgba(10,10,10,.97); backdrop-filter: blur(12px);
+  }
+  .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 600; }
+  .nav-cta { background: var(--accent); color: #000; font-weight: 700; padding: .5rem 1.4rem; border-radius: 2rem; text-decoration: none; font-size: .85rem; }
+
+  section { padding: 5rem 4rem; max-width: 1200px; margin: 0 auto; }
+
+  .section-label {
+    font-size: .7rem; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent);
+    display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
+  }
+  .section-label::before { content: ''; width: 2rem; height: 1px; background: var(--accent); }
+  .section-title { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 3rem; }
+  .section-title span { color: var(--accent); }
+
+  /* PRODUKTY GRID */
+  .produkty-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;
+  }
+  .produkt-card {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 1.5rem; padding: 2rem 2rem 1.75rem;
+    position: relative; overflow: hidden;
+    transition: transform .3s, border-color .3s;
+    cursor: pointer;
+  }
+  .produkt-card:hover { transform: translateY(-4px); border-color: rgba(0,227,202,.35); }
+  .produkt-card::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(0,227,202,.04), transparent 60%);
+    pointer-events: none;
+  }
+  .produkt-num {
+    font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 1.25rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .produkt-num::after { content: ''; flex: 1; height: 1px; background: rgba(0,227,202,.2); }
+  .produkt-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(0,227,202,.1); border: 1px solid rgba(0,227,202,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 1.25rem;
+  }
+  .produkt-name {
+    font-size: 1.2rem; font-weight: 700; margin-bottom: .65rem; line-height: 1.25;
+  }
+  .produkt-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+  .produkt-badge {
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: rgba(0,227,202,.08); border: 1px solid rgba(0,227,202,.2);
+    color: var(--accent); font-size: .7rem; font-weight: 700;
+    letter-spacing: .06em; text-transform: uppercase;
+    padding: .3rem .8rem; border-radius: 2rem;
+  }
+  .produkt-arrow {
+    position: absolute; bottom: 1.75rem; right: 2rem;
+    color: var(--accent); font-size: 1.2rem; opacity: .5;
+    transition: opacity .2s, transform .2s;
+  }
+  .produkt-card:hover .produkt-arrow { opacity: 1; transform: translateX(4px); }
+
+  /* DIVIDER */
+  .divider {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 4rem;
+    border-top: 1px solid var(--border);
+  }
+
+  /* SLUZBY LIST */
+  .sluzby-wrap { max-width: 1200px; margin: 0 auto; padding: 0 4rem 5rem; }
+  .sluzby-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
+  .sluzby-header-cta { color: var(--accent); text-decoration: none; font-size: .85rem; font-weight: 700; }
+  .service-item {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.4rem 0; border-bottom: 1px solid var(--border);
+    cursor: pointer; transition: padding .2s;
+  }
+  .service-item:hover { padding-left: .5rem; }
+  .service-num { font-size: .72rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; min-width: 2rem; }
+  .service-name { font-size: clamp(1rem, 2vw, 1.5rem); font-weight: 700; flex: 1; }
+  .service-item:hover .service-name { color: var(--accent); }
+  .service-arrow { color: var(--muted); font-size: 1.2rem; transition: transform .2s; }
+  .service-item:hover .service-arrow { transform: translateX(4px); color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">HROM<span>.</span></div>
+  <div class="nav-links">
+    <a href="#">O nás</a>
+    <a href="#">Služby</a>
+    <a href="#">Referencie</a>
+    <a href="#">Kontakt</a>
+  </div>
+  <a href="#" class="nav-cta">Konzultácia →</a>
+</nav>
+
+<!-- HROMOVÉ PRODUKTY -->
+<section>
+  <div class="section-label">Produkty</div>
+  <h2 class="section-title">Hromové <span>produkty</span></h2>
+
+  <div class="produkty-grid">
+
+    <div class="produkt-card">
+      <div class="produkt-num">01</div>
+      <div class="produkt-icon">🤖</div>
+      <div class="produkt-name">Audit a optimalizácia pre LLM</div>
+      <div class="produkt-desc">Zistíme, ako vás nachádzajú AI nástroje ako ChatGPT, Claude či Gemini. Optimalizujeme obsah tak, aby ste boli odporúčaní tam, kde zákazníci čoraz častejšie hľadajú.</div>
+      <div class="produkt-badge">⚡ Nový produkt</div>
+      <div class="produkt-arrow">→</div>
+    </div>
+
+    <div class="produkt-card">
+      <div class="produkt-num">02</div>
+      <div class="produkt-icon">🏥</div>
+      <div class="produkt-name">Connector ambulancie a webstránky</div>
+      <div class="produkt-desc">Prepojenie webu s ambulančným softvérom — online objednávky, automatická komunikácia s pacientmi a digitálna recepcia. Menej telefonátov, viac spokojných pacientov.</div>
+      <div class="produkt-badge">🔧 Na mieru</div>
+      <div class="produkt-arrow">→</div>
+    </div>
+
+    <div class="produkt-card">
+      <div class="produkt-num">03</div>
+      <div class="produkt-icon">📈</div>
+      <div class="produkt-name">Performance marketing pre služby</div>
+      <div class="produkt-desc">Meta & Google kampane šité presne pre firmy poskytujúce služby. Merateľné leady, optimalizácia CPL a dlhodobá stratégia rastu — nie len pekné reporty.</div>
+      <div class="produkt-badge">📊 Merateľné výsledky</div>
+      <div class="produkt-arrow">→</div>
+    </div>
+
+    <div class="produkt-card">
+      <div class="produkt-num">04</div>
+      <div class="produkt-icon">🎬</div>
+      <div class="produkt-name">Video reklama a AI Video reklama</div>
+      <div class="produkt-desc">Od konceptu po hotovú video reklamu — klasickú aj generovanú cez AI. Krátky formát pre sociálne siete, výkonnostné video pre kampane, výrazný vizuálny štýl.</div>
+      <div class="produkt-badge">🎥 Video & AI</div>
+      <div class="produkt-arrow">→</div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SLUŽBY -->
+<div class="sluzby-wrap">
+  <section style="padding: 3rem 0 2rem;">
+    <div class="section-label">Služby</div>
+    <h2 class="section-title" style="margin-bottom:0">Naše <span>služby</span></h2>
+  </section>
+
+  <div class="service-item"><span class="service-num">01</span><span class="service-name">Marketingová stratégia</span><span class="service-arrow">→</span></div>
+  <div class="service-item"><span class="service-num">02</span><span class="service-name">PPC kampane</span><span class="service-arrow">→</span></div>
+  <div class="service-item"><span class="service-num">03</span><span class="service-name">Branding &amp; Identita</span><span class="service-arrow">→</span></div>
+  <div class="service-item"><span class="service-num">04</span><span class="service-name">Weby &amp; Landing pages</span><span class="service-arrow">→</span></div>
+  <div class="service-item"><span class="service-num">05</span><span class="service-name">Audit a optimalizácia vyhľadávania v AI LLM</span><span class="service-arrow">→</span></div>
+  <div class="service-item"><span class="service-num">06</span><span class="service-name">Programovanie na mieru</span><span class="service-arrow">→</span></div>
+</div>
+
+</body>
+</html>
