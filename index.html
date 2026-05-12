@@ -121,8 +121,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .nav-cta:hover { background: #fff; transform: translateY(-1px); }
   .nav-nasa-praca {
-    border: 1.5px solid rgba(0,227,202,.4);
-    color: var(--accent);
+    border: 1.5px solid rgba(0,227,202,.22);
+    color: rgba(0,227,202,.55) !important;
     font-family: var(--font-head);
     font-weight: 700;
     font-size: .78rem;
@@ -131,10 +131,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     padding: .45rem 1.1rem;
     border-radius: 2rem;
     text-decoration: none;
-    opacity: 0.55;
-    transition: background .2s, border-color .2s, opacity .2s;
+    transition: background .2s, border-color .2s, color .2s;
   }
-  .nav-nasa-praca:hover { background: rgba(0,227,202,.08); border-color: var(--accent); opacity: 1; }
+  .nav-nasa-praca:hover { background: rgba(0,227,202,.08); border-color: rgba(0,227,202,.45); color: var(--accent) !important; }
 
   /* ─── HERO ──────────────────────────────── */
   #hero {
