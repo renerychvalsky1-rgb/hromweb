@@ -68,11 +68,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .section-pad { padding: 7rem 0; }
   .section-label { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem; }
   .section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent); }
-  .section-title { font-family: var(--font-head); font-size: clamp(1.8rem,4vw,3.2rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1.5rem; }
+  .section-title { font-family: var(--font-head); font-size: clamp(1.25rem,2.4vw,2rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 1.25rem; }
 
   /* HERO */
   .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(0,227,202,.08); border: 1px solid rgba(0,227,202,.2); color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 2rem; margin-bottom: 2rem; width: fit-content; }
   .hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(0,227,202,0.08) 0%, transparent 70%); top: 0; right: -100px; pointer-events: none; z-index: 0; }
+
+
+  /* BENEFITS ROW */
+  .benefits-row { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
+  .benefit-chip { font-size: .82rem; font-weight: 600; color: var(--text); background: var(--bg3); border: 1px solid var(--border); padding: .4rem 1rem; border-radius: 2rem; white-space: nowrap; }
 
   /* STATS BAR */
   #stats { background: var(--bg2); border-bottom: 1px solid var(--border); }
@@ -140,7 +145,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* CTA */
   #cta { background: var(--bg2); text-align: center; }
   .cta-inner { max-width: 680px; margin: 0 auto; }
-  .cta-title { font-family: var(--font-head); font-size: clamp(2rem,5vw,3.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -.03em; margin-bottom: 1rem; }
+  .cta-title { font-family: var(--font-head); font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem; }
   .cta-title span { color: var(--accent); }
   .cta-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
   .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
@@ -225,14 +230,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section-inner" style="padding-top:9rem;padding-bottom:6rem;position:relative;z-index:1;width:100%;">
     <div class="reveal">
       <div class="hero-badge">🔌 Custom integrácia pre ambulancie a kliniky</div>
-      <h1 style="font-family:var(--font-head);font-size:clamp(2.4rem,5.5vw,5rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:1.5rem;max-width:800px;">
+      <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;max-width:640px;">
         Pacient sa objedná online.<br><span style="color:var(--accent)">Priamo do vášho softvéru.</span>
       </h1>
-      <p style="color:var(--muted);font-size:1.15rem;max-width:560px;line-height:1.8;margin-bottom:1rem;">
-        Nie plugin. Nie hotové booking tool. <strong style="color:var(--text)">Custom programovaný systém</strong>, ktorý prepojí váš web s interným softvérom ambulancie — bez ručného prepisovania, bez chýb v diári.
-      </p>
-      <p style="color:var(--muted);font-size:1rem;max-width:560px;line-height:1.75;margin-bottom:2.5rem;">
-        Váš web prestane byť iba vizitkou. Stane sa <strong style="color:var(--text)">24/7 obchodníkom</strong>, ktorý berie rezervácie aj o polnoci.
+      <p style="color:var(--muted);font-size:.95rem;max-width:500px;line-height:1.75;margin-bottom:2rem;">
+        <strong style="color:var(--text)">Custom programovaný systém</strong> prepojí váš web s interným softvérom ambulancie — rezervácia z webu ide do diára automaticky, bez ručného prepisovania.
       </p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="#cta" class="btn-primary">Chcem Connector pre svoju ambulanciu →</a>
@@ -242,31 +244,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
-<!-- STATS BAR -->
-<section id="stats">
-  <div class="section-inner">
-    <div class="stats-grid">
-      <div class="stat-block reveal">
-        <div class="stat-big">60%</div>
-        <div class="stat-desc">
-          <strong>Online rezervácií po 1 mesiaci</strong>
-          USG pracovisko v Prešove. Pred spustením: 100% telefonáty.
-        </div>
-      </div>
-      <div class="stat-block reveal">
-        <div class="stat-big">8 000€+</div>
-        <div class="stat-desc">
-          <strong>V 1. deň spustenia</strong>
-          mamkrcovezily.sk — 3 rezervácie na procedúry pri kŕčových žilách hneď prvý deň.
-        </div>
-      </div>
-      <div class="stat-block reveal">
-        <div class="stat-big">0×</div>
-        <div class="stat-desc">
-          <strong>Manuálne prepisovanie</strong>
-          Rezervácia z webu ide automaticky do diára. Recepcia to ani nevidí — je to tam.
-        </div>
-      </div>
+<!-- BENEFITS STRIP -->
+<section id="stats" style="border-bottom:1px solid var(--border);">
+  <div class="section-inner" style="padding:2rem 0;">
+    <div class="benefits-row reveal">
+      <div class="benefit-chip">✓ 60% pacientov online po 1 mesiaci</div>
+      <div class="benefit-chip">✓ 8 000€+ v prvý deň prevádzky</div>
+      <div class="benefit-chip">✓ Rezervácia priamo do diára</div>
+      <div class="benefit-chip">✓ Bez manuálneho prepisovania</div>
+      <div class="benefit-chip">✓ Funguje 24/7</div>
+      <div class="benefit-chip">✓ Formulár vyzerá ako váš web</div>
     </div>
   </div>
 </section>
@@ -382,7 +369,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="demo-card reveal">
         <div>
           <div class="demo-tag">🩺 Flebológia · Kŕčové žily</div>
-          <div class="demo-name" style="margin-top:.85rem;">Mám kŕčové žily</div>
+          <div class="demo-name" style="margin-top:.85rem;">Cievna chirurgia AdNa s. r. o.</div>
           <div class="demo-sub" style="margin-top:.5rem;">Súkromná flebologická klinika. Online objednávanie na konzultácie a procedúry pri kŕčových žilách — napojené priamo na interný systém kliniky.</div>
         </div>
         <div class="demo-stats">
@@ -392,7 +379,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="demo-stat">
             <div class="demo-stat-icon">📅</div>
-            <div>3 rezervácie na procedúry hneď pri spustení — bez akejkoľvek reklamy</div>
+            <div>3 rezervácie na procedúry hneď pri spustení</div>
           </div>
         </div>
         <a href="https://mamkrcovezily.sk/online-objednavka/" target="_blank" rel="noopener" class="demo-link">
@@ -402,8 +389,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="demo-card reveal">
         <div>
           <div class="demo-tag">🔬 Ultrasonografia · Košice</div>
-          <div class="demo-name" style="margin-top:.85rem;">Ultrazvukové vyšetrenie</div>
-          <div class="demo-sub" style="margin-top:.5rem;">Ultrazvukové pracovisko v Košiciach. Online rezervácia USG vyšetrení prepojená priamo so softvérom ambulancie — pacient si vyberie typ vyšetrenia a čas.</div>
+          <div class="demo-name" style="margin-top:.85rem;">Sonografické vyšetrenie — Košice · Prešov</div>
+          <div class="demo-sub" style="margin-top:.5rem;">Sonografické pracovisko. Online rezervácia USG vyšetrení prepojená priamo so softvérom ambulancie — pacient si vyberie typ vyšetrenia a čas.</div>
         </div>
         <div class="demo-stats">
           <div class="demo-stat">
