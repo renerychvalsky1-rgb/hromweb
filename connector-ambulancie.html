@@ -168,6 +168,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  /* HERO INNER */
+  .hero-inner { padding-top: 9rem; padding-bottom: 6rem; position: relative; z-index: 1; width: 100%; }
+
   /* RESPONSIVE */
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
@@ -175,22 +178,37 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .nav-cta { display: none; }
     .hamburger { display: flex; }
     .section-inner { padding: 0 1.5rem; }
-    .section-pad { padding: 4rem 0; }
-    .stats-grid { grid-template-columns: 1fr; }
-    .stat-block { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
-    .stat-block:last-child { border-bottom: none; }
-    .problem-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .what-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .steps { grid-template-columns: 1fr; }
+    .section-pad { padding: 3.5rem 0; }
+    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .what-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .steps { grid-template-columns: 1fr; gap: 1rem; }
     .demos-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
-    .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; }
+    .demo-card { padding: 1.5rem; gap: 1.25rem; }
+    .cta-btns { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { justify-content: center; text-align: center; }
+    .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; gap: 1rem; }
+    .cta-inner { text-align: left; }
+    .cta-btns { align-items: flex-start; }
   }
   @media (max-width: 600px) {
     nav { padding: 0.9rem 1.2rem; }
     .section-inner { padding: 0 1.2rem; }
-    .section-pad { padding: 3.5rem 0; }
+    .section-pad { padding: 3rem 0; }
+    .hero-inner { padding-top: 6.5rem; padding-bottom: 3.5rem; }
+    .hero-badge { font-size: .7rem; }
+    .benefits-row { gap: .5rem; }
+    .benefit-chip { font-size: .78rem; padding: .35rem .85rem; }
+    .problem-item { padding: 1rem 1rem; }
+    .step { padding: 1.5rem 1.25rem; }
+    .step-num { font-size: 2.2rem; }
+    .feature-item { padding: 1.1rem 1rem; }
+    .demo-card { padding: 1.25rem; }
+    .demo-name { font-size: 1.1rem !important; }
+    .cta-btns { align-items: stretch; }
+    .btn-primary, .btn-ghost { font-size: .875rem; padding: .8rem 1.5rem; }
     footer { padding: 2rem 0; }
+    .footer-inner { gap: .75rem; }
   }
 </style>
 </head>
@@ -227,7 +245,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- HERO -->
 <section style="background:var(--bg);min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;">
   <div class="hero-glow"></div>
-  <div class="section-inner" style="padding-top:9rem;padding-bottom:6rem;position:relative;z-index:1;width:100%;">
+  <div class="section-inner hero-inner">
     <div class="reveal">
       <div class="hero-badge">🔌 Custom integrácia pre ambulancie a kliniky</div>
       <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;max-width:640px;">
@@ -501,6 +519,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   reveals.forEach(el => observer.observe(el));
 
   window.addEventListener('scroll', () => {
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) return;
     document.querySelector('nav').style.padding = window.scrollY > 50 ? '0.8rem 4rem' : '1.25rem 4rem';
   });
 
