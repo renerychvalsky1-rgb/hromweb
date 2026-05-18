@@ -2,13 +2,11 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TNF2QGGD');</script>
-<!-- End Google Tag Manager -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XYHHYMWL0V"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -19,7 +17,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Audit AI LLM viditeľnosti — Zistite, či vás ChatGPT odporúča | HROM</title>
 <meta name="description" content="Keď niekto spýta ChatGPT alebo Perplexity na váš obor vo vašom meste — objavíte sa? Zistime kde vás AI nevidí a opravíme to. Audit AI LLM viditeľnosti od HROM Marketing.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#9889;</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -77,43 +75,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   #stats { background: var(--bg2); border-bottom: 1px solid var(--border); }
 
-  #problem { background: var(--bg); }
-  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-  .problem-list { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
-  .problem-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem 1.4rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; }
-  .problem-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .1rem; }
-  .problem-text { font-size: .95rem; color: #bbb; line-height: 1.6; }
-  .problem-text strong { color: var(--text); }
-
-  .screenshot-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.5rem; padding: 2rem; position: relative; overflow: hidden; }
-  .screenshot-label { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
-  .screenshot-label::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; display: inline-block; }
-  .ai-chat-bubble { background: #1a1a1a; border: 1px solid rgba(255,255,255,.06); border-radius: 1rem; padding: 1.25rem 1.5rem; margin-bottom: .75rem; font-size: .875rem; line-height: 1.7; color: #ccc; }
-  .ai-chat-bubble.user { background: rgba(0,227,202,.06); border-color: rgba(0,227,202,.12); color: var(--text); font-weight: 600; font-size: .82rem; }
-  .ai-competitor { color: #ccc; font-size: .82rem; line-height: 1.8; }
-  .ai-competitor strong { color: #ddd; }
-  .ai-competitor .missing { color: rgba(255,80,80,.7); font-style: italic; font-size: .78rem; margin-top: .75rem; display: block; padding: .6rem .8rem; background: rgba(255,80,80,.04); border: 1px solid rgba(255,80,80,.1); border-radius: .6rem; }
-
-  #what { background: var(--bg2); }
-  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
-  .what-side h3 { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 1.25rem; }
-  .what-items { display: flex; flex-direction: column; gap: .85rem; }
-  .what-item { display: flex; align-items: center; gap: .85rem; padding: 1rem 1.25rem; border-radius: .875rem; font-size: .9rem; }
-  .what-item.bad { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); color: #ccc; }
-  .what-item.good { background: rgba(0,227,202,.05); border: 1px solid rgba(0,227,202,.15); color: var(--text); }
-  .what-item.bad .wi-icon { color: rgba(255,80,80,.7); }
-  .what-item.good .wi-icon { color: var(--accent); }
-
-  #how { background: var(--bg); }
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
-  .step { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.25rem; padding: 2rem; transition: border-color .3s; }
-  .step:hover { border-color: rgba(0,227,202,.3); }
-  .step-num { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: rgba(0,227,202,.15); line-height: 1; margin-bottom: .75rem; }
-  .step-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
-  .step-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
-
-  #casestudy { background: var(--bg2); }
-  .case-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 1.5rem; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 3rem; }
+  /* CASE STUDY */
+  #casestudy { background: var(--bg); }
+  .case-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.5rem; padding: 2.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-top: 3rem; }
   .case-tag { display: inline-flex; align-items: center; gap: .4rem; background: rgba(0,227,202,.08); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 2rem; width: fit-content; margin-bottom: 1rem; }
   .case-name { font-family: var(--font-head); font-size: 1.35rem; font-weight: 800; margin-bottom: .75rem; }
   .case-desc { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
@@ -129,16 +93,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .ba-box.bad { background: rgba(255,80,80,.04); border: 1px solid rgba(255,80,80,.1); color: #ccc; }
   .ba-box.good { background: rgba(0,227,202,.05); border: 1px solid rgba(0,227,202,.15); color: var(--text); }
 
-  #features { background: var(--bg); }
+  /* WHAT IS IT */
+  #what { background: var(--bg2); }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .what-side h3 { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 1.25rem; }
+  .what-items { display: flex; flex-direction: column; gap: .85rem; }
+  .what-item { display: flex; align-items: center; gap: .85rem; padding: 1rem 1.25rem; border-radius: .875rem; font-size: .9rem; }
+  .what-item.bad { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); color: #ccc; }
+  .what-item.good { background: rgba(0,227,202,.05); border: 1px solid rgba(0,227,202,.15); color: var(--text); }
+  .what-item.bad .wi-icon { color: rgba(255,80,80,.7); }
+  .what-item.good .wi-icon { color: var(--accent); }
+
+  /* HOW IT WORKS */
+  #how { background: var(--bg); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+  .step { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.25rem; padding: 2rem; transition: border-color .3s; }
+  .step:hover { border-color: rgba(0,227,202,.3); }
+  .step-num { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: rgba(0,227,202,.15); line-height: 1; margin-bottom: .75rem; }
+  .step-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+  .step-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+
+  /* FEATURES */
+  #features { background: var(--bg2); }
   .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
-  .feature-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; transition: border-color .3s; }
+  .feature-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem; background: var(--bg); border: 1px solid var(--border); border-radius: 1rem; transition: border-color .3s; }
   .feature-item:hover { border-color: rgba(0,227,202,.25); }
   .feature-check { width: 28px; height: 28px; border-radius: 50%; background: rgba(0,227,202,.1); border: 1px solid rgba(0,227,202,.25); display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; margin-top: .1rem; }
   .feature-text { font-size: .925rem; line-height: 1.6; }
   .feature-text strong { display: block; font-weight: 700; margin-bottom: .2rem; }
   .feature-text span { color: var(--muted); font-size: .85rem; }
 
-  #cta { background: var(--bg2); text-align: center; }
+  /* CTA */
+  #cta { background: var(--bg); text-align: center; }
   .cta-inner { max-width: 680px; margin: 0 auto; }
   .cta-title { font-family: var(--font-head); font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem; }
   .cta-title span { color: var(--accent); }
@@ -168,14 +154,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hamburger { display: flex; }
     .section-inner { padding: 0 1.5rem; }
     .section-pad { padding: 3.5rem 0; }
-    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
     .what-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .steps { grid-template-columns: 1fr; gap: 1rem; }
     .features-grid { grid-template-columns: 1fr; }
     .case-card { grid-template-columns: 1fr; gap: 2rem; padding: 1.5rem; }
     .case-before-after { flex-direction: column; }
-    .screenshot-card { max-width: 100%; overflow: hidden; }
-    .ai-chat-bubble { max-width: 95%; font-size: .85rem; }
     .cta-btns { flex-direction: column; align-items: stretch; }
     .btn-primary, .btn-ghost { justify-content: center; }
     .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; gap: 1rem; }
@@ -193,14 +176,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .step { padding: 1.25rem 1rem; }
     .step-num { font-size: 2rem; }
     .feature-item { padding: 1rem; gap: .75rem; }
-    .feature-text { font-size: .875rem; }
-    .problem-item { padding: 1rem; gap: .75rem; }
     .case-card { padding: 1.25rem; }
     .case-name { font-size: 1.1rem; }
     .case-desc { font-size: .85rem; }
-    .screenshot-card { padding: 1rem; border-radius: 1rem; }
-    .ai-chat-bubble { font-size: .82rem; padding: .6rem .85rem; max-width: 98%; }
-    .ai-competitor { font-size: .8rem; }
     .what-item { font-size: .85rem; padding: .85rem 1rem; }
     .cta-title { font-size: clamp(1.25rem,6vw,1.8rem); }
     .cta-sub { font-size: .9rem; }
@@ -218,7 +196,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="data:image/png;base64,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" alt="HROM Marketing" style="height:56px;width:auto;display:block;">
+    <img src="data:image/png;base64,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" alt="HROM Marketing" style="height:56px;width:auto;display:block;">
   </a>
   <ul class="nav-links">
     <li><a href="index.html#about">O n&#225;s</a></li>
@@ -241,6 +219,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <a href="#cta" onclick="closeMenu()">Kontakt &#9889;</a>
 </div>
 
+<!-- HERO -->
 <section style="background:var(--bg);position:relative;overflow:hidden;">
   <div class="hero-glow"></div>
   <div class="section-inner hero-inner">
@@ -250,16 +229,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         ChatGPT odpor&#250;&#269;a<br><span style="color:var(--accent)">konkurenciu. Nie v&#225;s.</span>
       </h1>
       <p style="color:var(--muted);font-size:.95rem;max-width:500px;line-height:1.75;margin-bottom:2rem;">
-        Ke&#271; v&#225;&#353; potenci&#225;lny z&#225;kazn&#237;k sp&#253;ta AI na v&#225;&#353; obor v meste &#8212; kto sa objav&#237;? <strong style="color:var(--text)">Zistime kde v&#225;s AI nevid&#237; a oprav&#237;me to</strong> sk&#244;r, ne&#382; to sprav&#237;te za konkurrentov.
+        Ke&#271; v&#225;&#353; potenci&#225;lny z&#225;kazn&#237;k sp&#253;ta AI na v&#225;&#353; obor v meste &#8212; kto sa objav&#237;? <strong style="color:var(--text)">Zistime kde v&#225;s AI nevid&#237; a oprav&#237;me to</strong> sk&#244;r, ne&#382; to sprav&#237; konkurencia.
       </p>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="#cta" class="btn-primary">Chcem audit AI vidite&#318;nosti</a>
-        <a href="#problem" class="btn-ghost">Pozrie&#357; pr&#237;klad</a>
+        <a href="#casestudy" class="btn-ghost">Pozrie&#357; v&#253;sledky</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- BENEFITS STRIP -->
 <section id="stats" style="border-bottom:1px solid var(--border);">
   <div class="section-inner" style="padding:1.25rem 0;">
     <div class="benefits-row reveal">
@@ -273,59 +253,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
-<section id="problem">
+<!-- CASE STUDY -->
+<section id="casestudy">
   <div class="section-inner section-pad">
-    <div class="problem-grid">
-      <div class="reveal">
-        <div class="section-label">Probl&#233;m</div>
-        <h2 class="section-title">AI men&#237; to, ako &#318;udia h&#318;adaj&#250;.<br>V&#228;&#269;&#353;ina firiem to e&#353;te nevie.</h2>
-        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1rem;">
-          Z&#225;kazn&#237;ci &#269;oraz viac h&#318;adaj&#250; cez ChatGPT, Perplexity a Gemini. Nep&#237;&#353;u do Google &#8212; p&#253;taj&#250; sa AI: &#8222;Kto rob&#237; X v mojom meste?&#8220;
-        </p>
-        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:2rem;">
-          A AI odpor&#250;&#269;a konkr&#233;tne firmy. Ak vy medzi nimi nie ste &#8212; o z&#225;kazn&#237;ka prich&#225;dzate e&#353;te pred t&#253;m, ne&#382; v&#225;s v&#244;bec h&#318;adal.
-        </p>
-        <a href="#cta" class="btn-primary">Zisti&#357;, &#269;i ma AI odpor&#250;&#269;a</a>
-      </div>
-      <div class="reveal">
-        <div class="screenshot-card">
-          <div class="screenshot-label">Skuto&#269;n&#225; odpove&#271; ChatGPT</div>
-          <div class="ai-chat-bubble user">A v Martine?</div>
-          <div class="ai-chat-bubble">
-            <div class="ai-competitor">
-              <strong>V Martine m&#225;&#353; dobr&#233; mo&#382;nosti:</strong><br><br>
-              1. <strong>Fokus optika</strong> &#8211; Ul. 29. augusta 18<br>
-              2. <strong>Fokus optika</strong> &#8211; Tesco Extra, Turiec 1<br>
-              3. <strong>Progres o&#269;n&#225; optika</strong> &#8211; Koll&#225;rova 4283/32<br>
-              4. <strong>Optika Verde</strong> &#8211; M. R. &#352;tef&#225;nika 58<br>
-              5. <strong>Lexum Martin</strong> &#8211; optika / o&#269;n&#225; klinika<br>
-              <span class="missing">&#9888; Optika Oremus &#8212; napriek prev&#225;dzke v Martine &#8212; v odpovedi AI ch&#253;ba</span>
-            </div>
+    <div class="reveal">
+      <div class="section-label">Pr&#237;padov&#225; &#353;t&#250;dia</div>
+      <h2 class="section-title">Cievna ambulancia v Ko&#353;iciach:<br><span style="color:var(--accent)">6,2 &#8594; 9,0&thinsp;/&thinsp;10</span> AI vidite&#318;nosti.</h2>
+    </div>
+    <div class="case-card reveal">
+      <div>
+        <div class="case-tag">&#129658; Cievna chir&#250;rgia &middot; Ko&#353;ice</div>
+        <div class="case-name">mamkrcovezily.sk &#8212; Cievna chir&#250;rgia AdNa s.r.o.</div>
+        <div class="case-desc">&#352;pecializovan&#225; cievna ambulancia v Ko&#353;iciach (Kriv&#225; 17). Pred auditom web neobsahoval &#382;iadne &#353;trukt&#250;rovan&#233; d&#225;ta ani obsah pre AI &#8212; sk&#243;re AI vidite&#318;nosti bolo <strong>6,2&thinsp;/&thinsp;10</strong>. Po jednod&#328;ovej optimaliz&#225;cii vzr&#225;stlo na <strong>9,0&thinsp;/&thinsp;10</strong>.</div>
+        <div class="case-results">
+          <div class="case-result">
+            <div class="case-result-icon">&#128203;</div>
+            <div>Vytvoren&#253; <strong>llms.txt</strong> + 10 typov JSON-LD sch&#233;m (MedicalProcedure, FAQPage, MedicalClinic, Physician, LocalBusiness&#8230;)</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-icon">&#127919;</div>
+            <div><strong>4 AI odpove&#271;ov&#233; str&#225;nky</strong>, profily v&#353;etk&#253;ch 6 lek&#225;rov ako samostatn&#233; URL, FAQ bloky na ka&#382;dom z&#225;kroku</div>
+          </div>
+          <div class="case-result">
+            <div class="case-result-icon">&#128200;</div>
+            <div>Web sa stal <strong>odborn&#253;m zdrojom pre AI</strong> k t&#233;mam kr&#269;ov&#253;ch &#382;&#237;l, metli&#269;iek a hemoroidov v Ko&#353;iciach</div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="problem-list reveal" style="margin-top:3rem;">
-      <div class="problem-item">
-        <div class="problem-icon">&#128201;</div>
-        <div class="problem-text"><strong>AI odpor&#250;&#269;a 5 konkurentov, nie v&#225;s</strong> &#8212; z&#225;kazn&#237;k dostane v&#253;ber, v&#225;s tam niet. Klikne na niekoho in&#233;ho.</div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-icon">&#128269;</div>
-        <div class="problem-text"><strong>Google SEO nesta&#269;&#237;</strong> &#8212; AI neindexuje rovnako ako vyh&#318;ad&#225;va&#269;. By&#357; na prvom mieste Google nezaru&#269;uje, &#382;e v&#225;s AI spomen&#237;.</div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-icon">&#9200;</div>
-        <div class="problem-text"><strong>Ka&#382;d&#253; de&#328; me&#353;kania = strat&#233;n&#237; z&#225;kazn&#237;ci</strong> &#8212; &#269;&#237;m sk&#244;r sa v AI uk&#225;&#382;ete, t&#253;m v&#228;&#269;&#353;&#237; n&#225;skok pred konkurentmi, ktor&#237; na to e&#353;te nereaguj&#250;.</div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-icon">&#129335;</div>
-        <div class="problem-text"><strong>V&#228;&#269;&#353;ina firiem to ani nevie sledova&#357;</strong> &#8212; AI odpovede s&#250; dynamick&#233;, menia sa. Bez auditu netu&#353;&#237;te, kde ste a kde nie.</div>
+      <div class="case-before-after">
+        <div>
+          <div class="ba-label red">Pred auditom &#8212; stav 4.5.2026 &middot; sk&#243;re 6,2/10</div>
+          <div class="ba-box bad">
+            Ch&#253;bal llms.txt (404), &#382;iadne JSON-LD sch&#233;my, tenk&#233; arch&#237;vy bez obsahu, &#382;iadne meta descriptions, profily lek&#225;rov neexistovali. AI ambulanciu nevedela odpor&#250;&#269;i&#357;.<br>
+            <em style="color:rgba(255,80,80,.6);font-size:.8rem;">&#8212; AI sk&#243;re: 6,2&thinsp;/&thinsp;10</em>
+          </div>
+        </div>
+        <div>
+          <div class="ba-label green">Po optimaliz&#225;cii &#8212; 5.5.2026 &middot; sk&#243;re 9,0/10</div>
+          <div class="ba-box good">
+            Web p&#244;sob&#237; ako odborn&#253; a &#353;trukt&#250;rovan&#253; zdroj k t&#233;me kr&#269;ov&#253;ch &#382;&#237;l, metli&#269;kov&#253;ch &#382;iliek, cievneho vy&#353;etrenia a hemoroidov v Ko&#353;iciach. AI ho odpor&#250;&#269;a ako autoritaT&#237;vny zdroj.<br>
+            <em style="color:var(--accent);font-size:.8rem;">&#8212; AI sk&#243;re: 9,0&thinsp;/&thinsp;10</em>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- WHAT IS AUDIT -->
 <section id="what">
   <div class="section-inner section-pad">
     <div class="reveal">
@@ -358,6 +333,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
+<!-- HOW IT WORKS -->
 <section id="how">
   <div class="section-inner section-pad">
     <div class="reveal">
@@ -368,7 +344,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="step reveal">
         <div class="step-num">01</div>
         <div class="step-title">Zmapujeme v&#225;&#353; obor a dotazy</div>
-        <div class="step-desc">Zostad&#237;me zoznam dotazov, ktor&#233; va&#353;i z&#225;kazn&#237;ci re&#225;lne p&#237;&#353;u do AI &#8212; pod&#318;a odboru, lokality a typick&#253;ch f&#225;z rozhodovania. Nie generick&#233;, ale presne to, &#269;o v&#225;&#353; z&#225;kazn&#237;k h&#318;ad&#225;.</div>
+        <div class="step-desc">Zosta v&#237;me zoznam dotazov, ktor&#233; va&#353;i z&#225;kazn&#237;ci re&#225;lne p&#237;&#353;u do AI &#8212; pod&#318;a odboru, lokality a typick&#253;ch f&#225;z rozhodovania. Nie generick&#233;, ale presne to, &#269;o v&#225;&#353; z&#225;kazn&#237;k h&#318;ad&#225;.</div>
       </div>
       <div class="step reveal">
         <div class="step-num">02</div>
@@ -384,53 +360,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
-<!-- CASE STUDY -->
-<section id="casestudy">
-  <div class="section-inner section-pad">
-    <div class="reveal">
-      <div class="section-label">Pr&#237;padov&#225; &#353;t&#250;dia</div>
-      <h2 class="section-title">Cievna ambulancia v Ko&#353;iciach:<br><span style="color:var(--accent)">6,2 &#8594; 9,0&thinsp;/&thinsp;10</span> AI vidite&#318;nosti.</h2>
-    </div>
-    <div class="case-card reveal">
-      <div>
-        <div class="case-tag">&#129658; Cievna chir&#250;rgia &middot; Ko&#353;ice</div>
-        <div class="case-name">mamkrcovezily.sk &#8212; Cievna chir&#250;rgia AdNa s.r.o.</div>
-        <div class="case-desc">&#352;pecializovan&#225; cievna ambulancia v Ko&#353;iciach (Kriv&#225; 17). Pred auditom web neobsahoval &#382;iadne &#353;trukt&#250;rovan&#233; d&#225;ta ani obsah pre AI &#8212; sk&#243;re AI vidite&#318;nosti bolo <strong>6,2&thinsp;/&thinsp;10</strong>. Po jednodňovej optimaliz&#225;cii vzr&#225;stlo na <strong>9,0&thinsp;/&thinsp;10</strong>.</div>
-        <div class="case-results">
-          <div class="case-result">
-            <div class="case-result-icon">&#128203;</div>
-            <div>Vytvoren&#253; <strong>llms.txt</strong> + 10 typov JSON-LD sch&#233;m (MedicalProcedure, FAQPage, MedicalClinic, Physician, LocalBusiness&#8230;)</div>
-          </div>
-          <div class="case-result">
-            <div class="case-result-icon">&#127919;</div>
-            <div><strong>4 AI odpoveďov&#233; str&#225;nky</strong>, profily v&#353;etk&#253;ch 6 lek&#225;rov ako samostatn&#233; URL, FAQ bloky na ka&#382;dom z&#225;kroku</div>
-          </div>
-          <div class="case-result">
-            <div class="case-result-icon">&#128200;</div>
-            <div>Web sa stal <strong>odborn&#253;m zdrojom pre AI</strong> k t&#233;mam kr&#269;ov&#253;ch &#382;&#237;l, metli&#269;iek a hemoroidov v Ko&#353;iciach</div>
-          </div>
-        </div>
-      </div>
-      <div class="case-before-after">
-        <div>
-          <div class="ba-label red">Pred auditom &#8212; stav 4.5.2026 &middot; sk&#243;re 6,2/10</div>
-          <div class="ba-box bad">
-            Ch&#253;bal llms.txt (404), &#382;iadne JSON-LD sch&#233;my, tenk&#233; arch&#237;vy bez obsahu, &#382;iadne meta descriptions, profily lek&#225;rov neexistovali. AI ambulanciu nevedela odpor&#250;&#269;i&#357;.<br>
-            <em style="color:rgba(255,80,80,.6);font-size:.8rem;">&#8212; AI sk&#243;re: 6,2&thinsp;/&thinsp;10</em>
-          </div>
-        </div>
-        <div>
-          <div class="ba-label green">Po optimaliz&#225;cii &#8212; 5.5.2026 &middot; sk&#243;re 9,0/10</div>
-          <div class="ba-box good">
-            Web p&#244;sob&#237; ako odborn&#253; a &#353;trukt&#250;rovan&#253; zdroj k t&#233;me kr&#269;ov&#253;ch &#382;&#237;l, metli&#269;kov&#253;ch &#382;iliek, cievneho vy&#353;etrenia a hemoroidov v Ko&#353;iciach. AI ho odpor&#250;&#269;a ako autoritaT&#237;vny zdroj.<br>
-            <em style="color:var(--accent);font-size:.8rem;">&#8212; AI sk&#243;re: 9,0&thinsp;/&thinsp;10</em>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+<!-- FEATURES -->
 <section id="features">
   <div class="section-inner section-pad">
     <div class="reveal">
@@ -463,7 +393,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="feature-check">&#10003;</div>
         <div class="feature-text">
           <strong>Preh&#318;adn&#253; report s n&#225;lezmi</strong>
-          <span>Dostanete dokument s konkr&#233;tnymi pr&#237;kladmi odpovedí AI, anal&#253;zou a hodnoten&#237;m va&#353;ej vidite&#318;nosti.</span>
+          <span>Dostanete dokument s konkr&#233;tnymi pr&#237;kladmi odpoved&#237; AI, anal&#253;zou a hodnoten&#237;m va&#353;ej vidite&#318;nosti.</span>
         </div>
       </div>
       <div class="feature-item reveal">
@@ -484,6 +414,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
+<!-- CTA -->
 <section id="cta" style="background:var(--bg2);">
   <div class="section-inner section-pad">
     <div class="cta-inner reveal">
