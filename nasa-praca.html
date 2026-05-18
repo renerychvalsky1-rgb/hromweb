@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNF2QGGD');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XYHHYMWL0V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XYHHYMWL0V');
+</script>
+<!-- End Google tag -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naša práca — HROM Marketing</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #111111;
+    --bg3: #161616;
+    --accent: #00E3CA;
+    --accent2: #00C4AE;
+    --text: #f0f0f0;
+    --muted: #888;
+    --border: rgba(255,255,255,0.07);
+    --font-head: 'Montserrat', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35; pointer-events: none; z-index: 0;
+  }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.25rem 4rem; background: rgba(10,10,10,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+  .nav-logo { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; align-items: center; }
+  .nav-links a { color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-nasa-praca { border: 1.5px solid rgba(0,227,202,.22); color: rgba(0,227,202,.55) !important; font-family: var(--font-head); font-weight: 700 !important; font-size: .78rem !important; letter-spacing: .06em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 2rem; text-decoration: none; background: rgba(0,227,202,.04); transition: background .2s, border-color .2s, color .2s; }
+  .nav-nasa-praca:hover { background: rgba(0,227,202,.1) !important; border-color: rgba(0,227,202,.45) !important; color: var(--accent) !important; }
+  .nav-cta { background: var(--accent); color: #000; font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.4rem; border-radius: 2rem; transition: background 0.2s, transform 0.2s; }
+  .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem; z-index: 99; flex-direction: column; gap: 0; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { padding: 1rem 0; border-bottom: 1px solid var(--border); font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--accent); }
+
+  /* SECTION BASE */
+  section { position: relative; z-index: 1; }
+  .section-inner { max-width: 1240px; margin: 0 auto; padding: 0 4rem; }
+  .section-pad { padding: 7rem 0; }
+  .section-label { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent); }
+  .section-title { font-family: var(--font-head); font-size: clamp(1.8rem,4vw,3.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -.025em; margin-bottom: 1.5rem; }
+
+  /* PAGE HERO */
+  .page-hero { padding: 10rem 4rem 5rem; max-width: 1240px; margin: 0 auto; position: relative; z-index: 1; }
+  .page-hero h1 { font-family: var(--font-head); font-size: clamp(2.5rem,6vw,5.5rem); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; margin-bottom: 1rem; }
+  .page-hero h1 span { color: var(--accent); }
+  .page-hero p { color: var(--muted); font-size: 1.1rem; max-width: 540px; line-height: 1.7; }
+
+  /* PRODUCTS */
+  #produkty { background: var(--bg2); }
+  .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .product-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 1.25rem; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1.2rem; transition: transform 0.3s, border-color 0.3s; }
+  .product-card:hover { transform: translateY(-4px); border-color: rgba(0,227,202,0.3); }
+  .product-icon { font-size: 2rem; width: 52px; height: 52px; background: rgba(0,227,202,0.08); border: 1px solid rgba(0,227,202,0.2); border-radius: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .product-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+  .product-name { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; line-height: 1.3; }
+  .product-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; flex: 1; }
+  .product-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .8rem; font-weight: 700; color: var(--accent); border: 1px solid rgba(0,227,202,.3); border-radius: 2rem; padding: .35rem .9rem; transition: background .2s, border-color .2s; width: fit-content; margin-top: .5rem; }
+  .product-link:hover { background: rgba(0,227,202,.1); border-color: var(--accent); }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--bg); }
+  .filter-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+  .filters { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 2.5rem; }
+  .filter-btn { background: var(--bg2); border: 1px solid var(--border); color: var(--muted); font-family: var(--font-body); font-size: .78rem; font-weight: 600; letter-spacing: .04em; padding: .45rem 1.1rem; border-radius: 2rem; cursor: pointer; transition: all .2s; text-transform: uppercase; }
+  .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .filter-btn.active { background: var(--accent); color: #000; border-color: var(--accent); font-weight: 700; }
+  .p-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .p-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; transition: transform 0.3s, border-color 0.3s; }
+  .p-card:hover { transform: translateY(-5px); border-color: rgba(0,227,202,.3); }
+  .p-thumb { aspect-ratio: 16/9; background: var(--bg3); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+  .p-thumb-label { font-family: var(--font-head); font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,.07); letter-spacing: -.05em; }
+  .p-tag-badge { position: absolute; top: .75rem; left: .75rem; background: rgba(0,227,202,.15); border: 1px solid rgba(0,227,202,.3); color: var(--accent); font-size: .65rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .25rem .65rem; border-radius: 2rem; }
+  .p-body { padding: 1.5rem; }
+  .p-category { font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin-bottom: .5rem; }
+  .p-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
+  .p-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+  .p-result { margin-top: 1rem; display: inline-block; background: rgba(0,227,202,.08); border: 1px solid rgba(0,227,202,.2); color: var(--accent); font-size: .72rem; font-weight: 700; padding: .3rem .8rem; border-radius: 2rem; }
+  /* "Viac" expand card */
+  .p-card-more { background: var(--bg2); border: 1.5px dashed rgba(0,227,202,.25); border-radius: 1.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2.5rem; cursor: pointer; transition: border-color .3s, background .3s; min-height: 200px; }
+  .p-card-more:hover { border-color: var(--accent); background: rgba(0,227,202,.04); }
+  .p-card-more .bolt-big { font-size: 3rem; filter: drop-shadow(0 0 12px rgba(0,227,202,.6)); }
+  .p-card-more .more-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; color: var(--accent); text-align: center; }
+  .p-card-more .more-sub { font-size: .8rem; color: var(--muted); text-align: center; }
+  /* extra projects hidden by default */
+  .p-extra { display: none; }
+  .p-extra.visible { display: contents; }
+  .p-tba { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.25rem; overflow: hidden; }
+  .p-tba .p-thumb { background: var(--bg3); }
+  .p-tba .p-body { padding: 1.5rem; }
+  .p-tba .p-title { color: var(--muted); font-style: italic; }
+
+  /* CTA */
+  #cta { background: var(--bg2); }
+  .cta-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .cta-title { font-family: var(--font-head); font-size: clamp(2rem,5vw,4.5rem); font-weight: 800; line-height: 1; letter-spacing: -.03em; margin-bottom: 1.5rem; }
+  .cta-title span { color: var(--accent); }
+  .cta-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #000; font-family: var(--font-head); font-weight: 700; padding: 0.9rem 2.2rem; border-radius: 3rem; font-size: 0.95rem; letter-spacing: 0.02em; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,227,202,0.3); }
+  .btn-ghost { color: var(--text); font-family: var(--font-head); font-weight: 600; padding: 0.9rem 2.2rem; border-radius: 3rem; font-size: 0.95rem; border: 1px solid var(--border); transition: border-color 0.2s, background 0.2s; }
+  .btn-ghost:hover { border-color: var(--accent); background: rgba(0,227,202,0.05); }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: .82rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; font-size: .82rem; }
+  .footer-links a { color: var(--muted); transition: color .2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .page-hero { padding: 7rem 1.5rem 3.5rem; }
+    .section-inner { padding: 0 1.5rem; }
+    .section-pad { padding: 4rem 0; }
+    .products-grid { grid-template-columns: 1fr 1fr; }
+    .p-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0.9rem 1.2rem; }
+    .page-hero { padding: 6rem 1.2rem 3rem; }
+    .section-inner { padding: 0 1.2rem; }
+    .section-pad { padding: 3.5rem 0; }
+    .section-title { font-size: clamp(1.3rem,5vw,1.9rem); }
+    .products-grid { grid-template-columns: 1fr; }
+    .p-grid { grid-template-columns: 1fr; }
+    footer { padding: 2rem 0; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNF2QGGD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="data:image/png;base64,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" alt="HROM Marketing" style="height:56px;width:auto;display:block;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O nás</a></li>
+    <li><a href="index.html#services">Služby</a></li>
+    <li><a href="index.html#projects">Projekty</a></li>
+    <li><a href="index.html#testimonials">Referencie</a></li>
+    <li><a href="nasa-praca.html" class="nav-nasa-praca">NAŠA PRÁCA</a></li>
+  </ul>
+  <a href="index.html#cta" class="nav-cta">Kontakt</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" onclick="closeMenu()">O nás</a>
+  <a href="index.html#services" onclick="closeMenu()">Služby</a>
+  <a href="index.html#projects" onclick="closeMenu()">Projekty</a>
+  <a href="index.html#testimonials" onclick="closeMenu()">Referencie</a>
+  <a href="nasa-praca.html" onclick="closeMenu()">Naša práca</a>
+  <a href="index.html#cta" onclick="closeMenu()">Kontakt ⚡</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero reveal">
+  <div class="section-label">Portfólio</div>
+  <h1>Naša <span>práca</span></h1>
+  <p>Produkty, projekty a výsledky, ktoré hovorí za nás. Reálne čísla, reálne dopady.</p>
+</div>
+
+<!-- HROMOVÉ PRODUKTY -->
+<section id="produkty">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Hromové produkty</div>
+      <h2 class="section-title">Produkty z hromu pre vás</h2>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card reveal">
+        <div class="product-icon">🤖</div>
+        <div class="product-tag">AI · LLM</div>
+        <div class="product-name">Audit a optimalizácia pre LLM vyhľadávanie</div>
+        <div class="product-desc">Keď niekto spýta ChatGPT „kto robí X v mojom meste" — objavíš sa? Ak nie, prichádzaš o zákazníkov. Zistíme kde ťa AI nevidí a opravíme to.</div>
+        <a href="audit-ai-llm.html" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🏥</div>
+        <div class="product-tag">WEB · Automatizácia</div>
+        <div class="product-name">Connector ambulancie</div>
+        <div class="product-desc">Recepcia zdvíha telefón celý deň a pacienti čakajú na voľnú linku? Nastavíme online objednávanie priamo do vášho softvéru. Bez hovorov, bez chýb, plný diár.</div>
+        <a href="connector-ambulancie.html" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🤖</div>
+        <div class="product-tag">AI · Chatbot · Automatizácia</div>
+        <div class="product-name">AI Chatbot pre váš web</div>
+        <div class="product-desc">Zákazník píše o 22:00 s otázkou — kto odpovie? Personalizovaný AI chatbot, ktorý pozná váš biznis, rezervuje termíny a zachytáva kontakty 24/7.</div>
+        <a href="ai-chatbot.html" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">📈</div>
+        <div class="product-tag">PPC · Meta · Google</div>
+        <div class="product-name">Performance marketing</div>
+        <div class="product-desc">Reklama bez výsledkov je len drahý experiment. Nastavíme kampane na Meta a Google, ktoré privádzajú reálnych zákazníkov — nie len kliky a dosah.</div>
+        <a href="index.html#cta" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🎬</div>
+        <div class="product-tag">Video · Reklama</div>
+        <div class="product-name">Video reklama</div>
+        <div class="product-desc">Pekné video bez stratégie je len drahý obsah. Nakrútime, nastrihame a nasadíme priamo do kampane — a sledujeme, či to predáva.</div>
+        <a href="index.html#cta" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🎨</div>
+        <div class="product-tag">Branding · Identita</div>
+        <div class="product-name">Branding</div>
+        <div class="product-desc">Firma, ktorú si zákazník nezapamätá, neexistuje. Spravíme ti identitu, pri ktorej si ľudia povedia — toto sú tí správni.</div>
+        <a href="index.html#cta" class="product-link">Viac tu →</a>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="product-icon">🗺️</div>
+        <div class="product-tag">Stratégia · Marketing</div>
+        <div class="product-name">Komunikačno-marketingová stratégia</div>
+        <div class="product-desc">Nevieš kde začať alebo prečo marketing nefunguje? Pozrieme sa na celok — a povieme ti čo zmeniť, kde inzerovať a ako komunikovať.</div>
+        <a href="index.html#cta" class="product-link">Viac tu →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Projekty</div>
+      <h2 class="section-title">Vybrané projekty</h2>
+    </div>
+    <div class="filter-label" style="margin-top:2rem">Filtrovať podľa služby</div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterCards('all',this)">Všetko</button>
+      <button class="filter-btn" onclick="filterCards('strategia',this)">Marketingová stratégia</button>
+      <button class="filter-btn" onclick="filterCards('ppc',this)">PPC kampane</button>
+      <button class="filter-btn" onclick="filterCards('branding',this)">Branding &amp; Identita</button>
+      <button class="filter-btn" onclick="filterCards('web',this)">Weby &amp; Landing pages</button>
+      <button class="filter-btn" onclick="filterCards('ai',this)">Audit AI LLM</button>
+    </div>
+    <div class="p-grid" id="pgrid">
+
+      <div class="p-card reveal" data-tags="ppc strategia">
+        <div class="p-thumb">
+          <div class="p-thumb-label">MG</div>
+          <span class="p-tag-badge">PPC · Stratégia</span>
+        </div>
+        <div class="p-body">
+          <div class="p-category">Priemysel &amp; Remeselníctvo</div>
+          <div class="p-title">Marlus Group</div>
+          <div class="p-desc">Zníženie ceny za lead z 50 € na 5–6 € pomocou video kampaní na Meta &amp; Google. Trojciferný počet leadov mesačne.</div>
+          <div class="p-result">CPL: 50 € → 5–6 €</div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" data-tags="web ppc strategia">
+        <div class="p-thumb">
+          <div class="p-thumb-label">UZ</div>
+          <span class="p-tag-badge">Web · PPC</span>
+        </div>
+        <div class="p-body">
+          <div class="p-category">Zdravotníctvo</div>
+          <div class="p-title">Ultrazvukové pracovisko</div>
+          <div class="p-desc">Redizajn webu, custom objednávací formulár prepojený so softvérom ambulancie a automatizácia recepcie.</div>
+          <div class="p-result">Online &gt; telefonáty po 2 mes.</div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" data-tags="ppc strategia">
+        <div class="p-thumb">
+          <div class="p-thumb-label">LK</div>
+          <span class="p-tag-badge">PPC · Event</span>
+        </div>
+        <div class="p-body">
+          <div class="p-category">Eventy, Kultúra, Zábava</div>
+          <div class="p-title">Liptov Klasik</div>
+          <div class="p-desc">Komunikačná a predajná stratégia pre jeden z najväčších eventov na Liptove.</div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" data-tags="web ppc strategia">
+        <div class="p-thumb">
+          <div class="p-thumb-label">MK</div>
+          <span class="p-tag-badge">Web · PPC</span>
+        </div>
+        <div class="p-body">
+          <div class="p-category">Zdravotníctvo</div>
+          <div class="p-title">Mám kŕčové žily</div>
+          <div class="p-desc">Custom rezervačný systém, automatizácia recepcie a lead gen kampane.</div>
+        </div>
+      </div>
+
+      <div class="p-card reveal" data-tags="branding">
+        <div class="p-thumb">
+          <div class="p-thumb-label">ST</div>
+          <span class="p-tag-badge">Branding</span>
+        </div>
+        <div class="p-body">
+          <div class="p-category">IT firma</div>
+          <div class="p-title">Strauberi</div>
+          <div class="p-desc">Zapamätateľná identita pre IT firmu implementujúcu Odoo. Svieža, ľudská a funkčná značka.</div>
+        </div>
+      </div>
+
+      <!-- "Viac ohromných projektov" expand card -->
+      <div class="p-card-more reveal" id="showMoreBtn" onclick="expandProjects()" data-tags="ppc web branding strategia ai">
+        <div class="bolt-big">⚡</div>
+        <div class="more-title">Viac ohromných projektov</div>
+        <div class="more-sub">Klikni a zobraz ďalšie</div>
+      </div>
+
+      <!-- Extra 6 projects (hidden by default) -->
+      <div class="p-extra" id="extraProjects">
+
+        <div class="p-tba p-card reveal" data-tags="ppc web strategia">
+          <div class="p-thumb">
+            <div class="p-thumb-label">BN</div>
+            <span class="p-tag-badge">PPC · Web</span>
+          </div>
+          <div class="p-body">
+            <div class="p-category">Financie &amp; Poradenstvo · Minulý klient</div>
+            <div class="p-title">Bonitax</div>
+            <div class="p-desc">Web a kampane pre finančné poradenstvo.</div>
+          </div>
+        </div>
+
+        <div class="p-tba p-card reveal" data-tags="web ppc strategia">
+          <div class="p-thumb">
+            <div class="p-thumb-label">OT</div>
+            <span class="p-tag-badge">Web · PPC</span>
+          </div>
+          <div class="p-body">
+            <div class="p-category">Self storage boxy</div>
+            <div class="p-title">OdlozTo.sk</div>
+            <div class="p-desc">Web a marketingová komunikácia pre platformu self storage boxov.</div>
+          </div>
+        </div>
+
+        <div class="p-tba p-card reveal" data-tags="strategia ppc branding">
+          <div class="p-thumb">
+            <div class="p-thumb-label">TK</div>
+            <span class="p-tag-badge">Stratégia · Branding</span>
+          </div>
+          <div class="p-body">
+            <div class="p-category">Kultúra &amp; Eventy</div>
+            <div class="p-title">Túlavé Kino</div>
+            <div class="p-desc">5-ročná spolupráca. Stratégia, branding a kampane pre kino, ktoré si ťa nájde.</div>
+          </div>
+        </div>
+
+        <div class="p-tba p-card reveal" data-tags="web strategia">
+          <div class="p-thumb">
+            <div class="p-thumb-label">ZS</div>
+            <span class="p-tag-badge">Stratégia · Web</span>
+          </div>
+          <div class="p-body">
+            <div class="p-category">Spoločenský projekt</div>
+            <div class="p-title">Zobuďme Slovensko</div>
+            <div class="p-desc">Komunikačná stratégia a online kampaň pre spoločenský projekt.</div>
+          </div>
+        </div>
+
+        <div class="p-tba p-card reveal" data-tags="ppc web branding strategia ai">
+          <div class="p-thumb" style="background: linear-gradient(135deg, rgba(0,227,202,.05), transparent);">
+            <div class="p-thumb-label" style="color:rgba(0,227,202,.2);font-size:3rem;">⚡</div>
+            <span class="p-tag-badge">Pripravujeme</span>
+          </div>
+          <div class="p-body">
+            <div class="p-category">Viac čoskoro</div>
+            <div class="p-title" style="color:var(--muted);font-style:italic;">TBA</div>
+            <div class="p-desc">Ďalšie projekty pribudnú čoskoro.</div>
+          </div>
+        </div>
+
+      </div><!-- /extraProjects -->
+
+    </div><!-- /p-grid -->
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner section-pad">
+    <div class="cta-inner reveal">
+      <div class="section-label">Kontakt</div>
+      <h2 class="cta-title">Pripravení <span>zahrmieť?</span></h2>
+      <p class="cta-sub">Napíšte nám. Dohodneme konzultáciu a zistíme, kde vám marketing uniká výkon.</p>
+      <div class="cta-btns">
+        <a href="mailto:renerychvalsky1@gmail.com" class="btn-primary">Napísať email →</a>
+        <a href="tel:+421915563299" class="btn-ghost">+421 915 563 299</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">HROM<span>.</span></div>
+    <p class="footer-copy">© 2026 HROM Marketing s. r. o. Marketingový výkon ako hrom ⚡</p>
+    <p class="footer-copy" style="margin-top:.5rem;font-size:.8rem;">Product by <a href="https://rychvalsky.sk" target="_blank" style="color:var(--accent);text-decoration:none;">René Rychvalský</a></p>
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:renerychvalsky1@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav compact on scroll
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 50 ? '0.8rem 4rem' : '1.25rem 4rem';
+  });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // Filter
+  function filterCards(tag, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.p-card, .p-card-more').forEach(card => {
+      const tags = card.dataset.tags || '';
+      card.style.display = (tag === 'all' || tags.includes(tag)) ? '' : 'none';
+    });
+  }
+
+  // Expand extra projects
+  function expandProjects() {
+    const extra = document.getElementById('extraProjects');
+    const btn = document.getElementById('showMoreBtn');
+    extra.classList.add('visible');
+    btn.style.display = 'none';
+    // trigger reveal for newly visible cards
+    extra.querySelectorAll('.reveal:not(.visible)').forEach((el, i) => {
+      setTimeout(() => el.classList.add('visible'), i * 80);
+    });
+  }
+</script>
+</body>
+</html>
