@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TNF2QGGD');</script>
+<!-- End Google Tag Manager -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XYHHYMWL0V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XYHHYMWL0V');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Performance Marketing — PPC · Meta · Google Ads | HROM</title>
+<meta name="description" content="Nastavíme kampane na Meta a Google, ktoré privádzajú reálnych zákazníkov — nie len kliky a dosah. Od 50 € na 5–6 € za lead. Merateľné výsledky každý mesiac.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a; --bg2: #111111; --bg3: #161616;
+    --accent: #00E3CA; --accent2: #00C4AE;
+    --text: #f0f0f0; --muted: #888;
+    --border: rgba(255,255,255,0.07);
+    --font-head: 'Montserrat', sans-serif;
+    --font-body: 'Montserrat', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; word-break: break-word; }
+  a { color: inherit; text-decoration: none; }
+
+  body::before {
+    content: ''; position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.35; pointer-events: none; z-index: 0;
+  }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 4rem; background: rgba(10,10,10,0.85); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: padding 0.3s; }
+  .nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; font-size: 0.875rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; align-items: center; }
+  .nav-links a { color: var(--muted); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-nasa-praca { border: 1.5px solid rgba(0,227,202,.22); color: rgba(0,227,202,.55) !important; font-family: var(--font-head); font-weight: 700 !important; font-size: .78rem !important; letter-spacing: .06em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 2rem; background: rgba(0,227,202,.04); transition: background .2s, border-color .2s, color .2s; }
+  .nav-nasa-praca:hover { background: rgba(0,227,202,.1) !important; border-color: rgba(0,227,202,.45) !important; color: var(--accent) !important; }
+  .nav-cta { background: var(--accent); color: #000; font-family: var(--font-head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.6rem 1.4rem; border-radius: 2rem; transition: background 0.2s, transform 0.2s; }
+  .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.98); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 1.5rem; z-index: 99; flex-direction: column; gap: 0; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { padding: 1rem 0; border-bottom: 1px solid var(--border); font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; color: var(--text); }
+  .mobile-menu a:last-child { border-bottom: none; color: var(--accent); }
+
+  /* SECTION BASE */
+  section { position: relative; z-index: 1; }
+  .section-inner { max-width: 1240px; margin: 0 auto; padding: 0 4rem; }
+  .section-pad { padding: 7rem 0; }
+  .section-label { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent); font-size: .75rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 1.2rem; }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 2px; background: var(--accent); }
+  .section-title { font-family: var(--font-head); font-size: clamp(1.25rem,2.4vw,2rem); font-weight: 800; line-height: 1.15; letter-spacing: -.02em; margin-bottom: 1.25rem; }
+
+  /* HERO */
+  .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(0,227,202,.08); border: 1px solid rgba(0,227,202,.2); color: var(--accent); font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .4rem 1rem; border-radius: 2rem; margin-bottom: 2rem; width: fit-content; }
+  .hero-glow { position: absolute; width: 700px; height: 700px; border-radius: 50%; background: radial-gradient(circle, rgba(0,227,202,0.08) 0%, transparent 70%); top: 0; right: -100px; pointer-events: none; z-index: 0; }
+
+  /* BENEFITS ROW */
+  .benefits-row { display: flex; flex-wrap: wrap; gap: .65rem; align-items: center; }
+  .benefit-chip { font-size: .82rem; font-weight: 600; color: var(--text); background: var(--bg3); border: 1px solid var(--border); padding: .4rem 1rem; border-radius: 2rem; white-space: nowrap; }
+
+  /* STATS BAR */
+  #stats { background: var(--bg2); border-bottom: 1px solid var(--border); }
+  .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+  .stat-block { padding: 3rem 2.5rem; border-right: 1px solid var(--border); }
+  .stat-block:last-child { border-right: none; }
+  .stat-big { font-family: var(--font-head); font-size: clamp(2.8rem,5vw,4.5rem); font-weight: 800; color: var(--accent); line-height: 1; letter-spacing: -.03em; margin-bottom: .5rem; }
+  .stat-desc { font-size: .9rem; color: var(--muted); line-height: 1.5; }
+  .stat-desc strong { color: var(--text); display: block; font-size: .95rem; margin-bottom: .2rem; }
+
+  /* PROBLEM */
+  #problem { background: var(--bg); }
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .problem-list { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 2rem; }
+  .problem-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.2rem 1.4rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; }
+  .problem-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .1rem; }
+  .problem-text { font-size: .95rem; color: #bbb; line-height: 1.6; }
+  .problem-text strong { color: var(--text); }
+
+  /* WHAT IS IT */
+  #what { background: var(--bg2); }
+  .what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .what-side h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-size: .78rem; }
+  .what-items { display: flex; flex-direction: column; gap: .85rem; }
+  .what-item { display: flex; align-items: center; gap: .85rem; padding: 1rem 1.25rem; border-radius: .875rem; font-size: .9rem; }
+  .what-item.bad { background: rgba(255,80,80,.05); border: 1px solid rgba(255,80,80,.12); color: #ccc; }
+  .what-item.good { background: rgba(0,227,202,.05); border: 1px solid rgba(0,227,202,.15); color: var(--text); }
+  .what-item.bad .wi-icon { color: rgba(255,80,80,.7); font-size: 1rem; }
+  .what-item.good .wi-icon { color: var(--accent); font-size: 1rem; }
+
+  /* HOW IT WORKS */
+  #how { background: var(--bg); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem; }
+  .step { background: var(--bg2); border: 1px solid var(--border); border-radius: 1.25rem; padding: 2rem; position: relative; transition: border-color .3s; }
+  .step:hover { border-color: rgba(0,227,202,.3); }
+  .step-num { font-family: var(--font-head); font-size: 3rem; font-weight: 800; color: rgba(0,227,202,.15); line-height: 1; margin-bottom: .75rem; }
+  .step-title { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: .5rem; }
+  .step-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+
+  /* LIVE DEMOS */
+  #demos { background: var(--bg2); }
+  .demos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .demo-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 1.5rem; padding: 2.5rem; transition: border-color .3s, transform .3s; display: flex; flex-direction: column; gap: 1.5rem; }
+  .demo-card:hover { border-color: rgba(0,227,202,.3); transform: translateY(-3px); }
+  .demo-tag { display: inline-flex; align-items: center; gap: .4rem; background: rgba(0,227,202,.08); color: var(--accent); font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: .3rem .8rem; border-radius: 2rem; width: fit-content; }
+  .demo-subtags { font-size: .7rem; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; font-weight: 600; margin-top: .5rem; line-height: 1.6; }
+  .demo-name { font-family: var(--font-head); font-size: 1.35rem; font-weight: 800; line-height: 1.2; margin-top: .5rem; }
+  .demo-sub { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+  .demo-stats { display: flex; flex-direction: column; gap: .6rem; }
+  .demo-stat { display: flex; align-items: center; gap: .75rem; font-size: .875rem; }
+  .demo-stat-icon { width: 28px; height: 28px; border-radius: 50%; background: rgba(0,227,202,.1); border: 1px solid rgba(0,227,202,.2); display: flex; align-items: center; justify-content: center; font-size: .75rem; flex-shrink: 0; }
+  .demo-stat strong { color: var(--accent); }
+  .demo-links { display: flex; flex-direction: column; gap: .35rem; margin-top: .25rem; }
+  .demo-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--accent); font-size: .85rem; font-weight: 700; }
+  .demo-link:hover { text-decoration: underline; }
+
+  /* FEATURES */
+  #features { background: var(--bg); }
+  .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  .feature-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.5rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; transition: border-color .3s; }
+  .feature-item:hover { border-color: rgba(0,227,202,.25); }
+  .feature-check { width: 28px; height: 28px; border-radius: 50%; background: rgba(0,227,202,.1); border: 1px solid rgba(0,227,202,.25); display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; margin-top: .1rem; }
+  .feature-text { font-size: .925rem; line-height: 1.6; }
+  .feature-text strong { display: block; font-weight: 700; margin-bottom: .2rem; }
+  .feature-text span { color: var(--muted); font-size: .85rem; }
+
+  /* CTA */
+  #cta { background: var(--bg2); text-align: center; }
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+  .cta-title { font-family: var(--font-head); font-size: clamp(1.4rem,3vw,2.4rem); font-weight: 800; line-height: 1.1; letter-spacing: -.025em; margin-bottom: 1rem; }
+  .cta-title span { color: var(--accent); }
+  .cta-sub { color: var(--muted); font-size: 1.05rem; margin-bottom: 2.5rem; }
+  .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: var(--accent); color: #000; font-family: var(--font-head); font-weight: 700; padding: 0.9rem 2.2rem; border-radius: 3rem; font-size: 0.95rem; letter-spacing: 0.02em; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,227,202,0.3); }
+  .btn-ghost { color: var(--text); font-family: var(--font-head); font-weight: 600; padding: 0.9rem 2.2rem; border-radius: 3rem; font-size: 0.95rem; border: 1px solid var(--border); transition: border-color 0.2s, background 0.2s; display: inline-flex; align-items: center; gap: .5rem; }
+  .btn-ghost:hover { border-color: var(--accent); background: rgba(0,227,202,0.05); }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 3rem 0; }
+  .footer-inner { max-width: 1240px; margin: 0 auto; padding: 0 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+  .footer-logo { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: .82rem; color: var(--muted); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; font-size: .82rem; }
+  .footer-links a { color: var(--muted); transition: color .2s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s, transform .7s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* HERO INNER */
+  .hero-inner { padding-top: 5rem; padding-bottom: 1rem; position: relative; z-index: 1; width: 100%; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 0.65rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .section-inner { padding: 0 1.5rem; }
+    .section-pad { padding: 3.5rem 0; }
+    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .what-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .steps { grid-template-columns: 1fr; gap: 1rem; }
+    .demos-grid { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .demo-card { padding: 1.5rem; gap: 1.25rem; }
+    .cta-btns { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-ghost { justify-content: center; text-align: center; }
+    .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; gap: 1rem; }
+    .cta-inner { text-align: left; }
+    .cta-btns { align-items: flex-start; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-block { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-block:last-child { border-bottom: none; }
+  }
+  @media (max-width: 600px) {
+    nav { padding: 0.75rem 1.2rem; }
+    .section-inner { padding: 0 1.2rem; }
+    .section-pad { padding: 3rem 0; }
+    .hero-inner { padding-top: 4.25rem; padding-bottom: 0.75rem; }
+    .hero-badge { font-size: .7rem; }
+    .hero-glow { display: none; }
+    .benefits-row { gap: .5rem; }
+    .benefit-chip { font-size: .78rem; padding: .35rem .85rem; }
+    .problem-item { padding: 1rem 1rem; }
+    .step { padding: 1.5rem 1.25rem; }
+    .step-num { font-size: 2.2rem; }
+    .feature-item { padding: 1.1rem 1rem; }
+    .demo-card { padding: 1.25rem; }
+    .demo-name { font-size: 1.1rem !important; }
+    .cta-btns { align-items: stretch; }
+    .btn-primary, .btn-ghost { font-size: .875rem; padding: .8rem 1.5rem; }
+    footer { padding: 2rem 0; }
+    .footer-inner { gap: .75rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TNF2QGGD" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAABECAYAAAAoXx8rAAAhaklEQVR42u19e3xU1bn28669Z0/mkttAIAmSEMJVLpabWqoSbD/vVaiGXvBgLedoq1DtZy96tCahPfVC66nisYV6sNpC/RIRrEi1XJLYghBJ5dYIBEhIApEkEHKZZDKz93q/P2ZvmAwzYQLx+8Qz7++3f5PMvqy9137W+z7vZa0B4hKXuMQlLp9NoT735ucreOAB85gyoAwSRUUy3m1xufSEWUT8vrhYiXdOXC4tDc1MIOKh9959lX/OV6bquZk+sW2vqm3+25bm/7PusLU/3n1xuRQ0M+UDSuKrv3rRceDvrLRWsThdxWrzXnZWbelOfvrxp/vU4HGJy2dGTDqRuvyntyY342HOhxgpJi4i9xmIAz2OEHMOiGHYe+mKC+uVtj3m9e0zKISDaXbSBVJgqUSuFVDItJTPjlAHnUOdLvHf3w1CGrKSwJmqf1Kj1agVSHcPBHPFpMQl1JSTj5I95BrD5MOiRmM3MjTFfSS5e8nMANAAIGzJMBCGCJMlJHJAMkQG0kBDMBAmNIKCghJCiCkCRIpNAk0AIk0CSEIIYGRPJJMgGkYAoN1IhN1GqjJJF1IBiMgbkAYc0SZAiIhGJCJACAwkI4yBrA1AiJAgBgBJQJBEQJJFDqkAYkEZEMpIiPSZA0kYgjDBZRBRRkSCilJGqCEjJJASAUkIUBRJISRKJJRFlJJCACSAKJBEhEYCSRARBJIQIBCBCJACEikAQCIFkEhJIjIIAEkABpFSIQJJFCESJJIiJAkJKIJIKCgCCBIaJJBEJCRJJAlIiJFJCCBJFJFCpNJQSSIgJJCBEiIgJIIiCCABIFJBJCAJJJIhIiIhJJIgAJAAAgJICCgBRJIQRQiRgBhSQJIgJAlJiRCRJZJJJJISAJIAAJAKICSIJAKICJAIISAASJJJICJJCSKIJJJIAJJJAJJJAAJJJIJISJIJACCIAIJAIAJJISCICASAJIJJJAIJACSJSJIJJAAJCAASJAICJAJJJIJCAAJAAAJCASJACJJAJAJSAAJJAAJAAJCIJAASJJAAJCJJAIAJIJAAIAAAAAIAJAAAAJJAAAAAAAIAJAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" alt="HROM Marketing" style="height:56px;width:auto;display:block;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">O nás</a></li>
+    <li><a href="index.html#services">Služby</a></li>
+    <li><a href="index.html#projects">Projekty</a></li>
+    <li><a href="index.html#testimonials">Referencie</a></li>
+    <li><a href="nasa-praca.html" class="nav-nasa-praca">NAŠA PRÁCA</a></li>
+  </ul>
+  <a href="#cta" class="nav-cta">Kontakt</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html#about" onclick="closeMenu()">O nás</a>
+  <a href="index.html#services" onclick="closeMenu()">Služby</a>
+  <a href="index.html#projects" onclick="closeMenu()">Projekty</a>
+  <a href="index.html#testimonials" onclick="closeMenu()">Referencie</a>
+  <a href="nasa-praca.html" onclick="closeMenu()">Naša práca</a>
+  <a href="#cta" onclick="closeMenu()">Kontakt 📈</a>
+</div>
+
+<!-- HERO -->
+<section style="background:var(--bg);position:relative;overflow:hidden;">
+  <div class="hero-glow"></div>
+  <div class="section-inner hero-inner">
+    <div class="reveal">
+      <div class="hero-badge">📈 PPC · Meta · Google Ads</div>
+      <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;max-width:640px;">
+        Reklama bez výsledkov<br><span style="color:var(--accent)">je len drahý experiment.</span>
+      </h1>
+      <p style="color:var(--muted);font-size:.95rem;max-width:520px;line-height:1.75;margin-bottom:2rem;">
+        Nastavíme kampane na Meta a Google, ktoré privádzajú reálnych zákazníkov — nie len kliky a dosah.
+      </p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+        <a href="#cta" class="btn-primary">Chcem výkonné kampane →</a>
+        <a href="#demos" class="btn-ghost">Pozrieť výsledky ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS STRIP -->
+<section style="background:var(--bg3);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="section-inner" style="padding-top:1.25rem;padding-bottom:1.25rem;">
+    <div class="benefits-row reveal">
+      <div class="benefit-chip">✓ Meta Ads · Google Ads · YouTube</div>
+      <div class="benefit-chip">✓ Reálni zákazníci, nie len kliky a dosah</div>
+      <div class="benefit-chip">✓ Video kampane ktoré konvertujú</div>
+      <div class="benefit-chip">✓ Od 50 € na 5–6 € za lead</div>
+      <div class="benefit-chip">✓ Merateľné výsledky každý mesiac</div>
+      <div class="benefit-chip">✓ Stratégia + exekúcia + optimalizácia</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section id="stats">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-block reveal">
+        <div class="stat-big">5–6 €</div>
+        <div class="stat-desc">
+          <strong>cena za obchodovateľný lead (pôvodne 50 €)</strong>
+          Marlus Group
+        </div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-big">60%</div>
+        <div class="stat-desc">
+          <strong>klientov online bez telefonátu</strong>
+          Ultrazvukové pracovisko
+        </div>
+      </div>
+      <div class="stat-block reveal">
+        <div class="stat-big">10 000 €+</div>
+        <div class="stat-desc">
+          <strong>v leadoch za prvé 3 dni</strong>
+          Zdravotníctvo
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-inner section-pad">
+    <div class="problem-grid">
+      <div class="reveal">
+        <div class="section-label">Problém</div>
+        <h2 class="section-title">Váš rozpočet ide von. Výsledky neprichádzajú.</h2>
+        <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:2rem;">
+          Väčšina firiem minie tisíce eur na reklamu bez jasnej stratégie. Kliky sú, dosah je — ale zákazníci neprichádzajú. Problém nie je v rozpočte. Je v nastavení.
+        </p>
+        <a href="#cta" class="btn-primary">Chcem audit kampane →</a>
+      </div>
+      <div class="reveal">
+        <div class="problem-list">
+          <div class="problem-item">
+            <div class="problem-icon">📉</div>
+            <div class="problem-text"><strong>Platíte za kliky, nie zákazníkov</strong> — vysoké náklady, nízka konverzia. Reklama beží, peniaze odchádzajú.</div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">🎯</div>
+            <div class="problem-text"><strong>Nesprávne cielenie</strong> — reklama ide ľuďom, ktorí nekúpia. Správni zákazníci vás nevidia.</div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">🎬</div>
+            <div class="problem-text"><strong>Kreatíva, ktorá nezaujme</strong> — v scrolle máte 1–2 sekundy. Zlá kreatíva = premárnený rozpočet.</div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">📊</div>
+            <div class="problem-text"><strong>Žiadne dáta, žiadna optimalizácia</strong> — bez analýzy kampane rastú náklady a výsledky klesajú.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS IT -->
+<section id="what">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Porovnanie</div>
+      <h2 class="section-title">Nie každá agentúra prináša výsledky.</h2>
+    </div>
+    <div class="what-grid">
+      <div class="what-side reveal">
+        <h3>Bežná reklamná agentúra</h3>
+        <div class="what-items">
+          <div class="what-item bad"><span class="wi-icon">✕</span> Nastaví kampane a čaká, čo príde</div>
+          <div class="what-item bad"><span class="wi-icon">✕</span> Generické kreatívy bez znalosti vášho odboru</div>
+          <div class="what-item bad"><span class="wi-icon">✕</span> Mesačný report plný čísel, žiadny kontext</div>
+          <div class="what-item bad"><span class="wi-icon">✕</span> Platíte za správu, nie za výsledky</div>
+        </div>
+      </div>
+      <div class="what-side reveal">
+        <h3>Performance marketing od HROM</h3>
+        <div class="what-items">
+          <div class="what-item good"><span class="wi-icon">✓</span> Stratégia postavená na reálnych dátach vášho trhu</div>
+          <div class="what-item good"><span class="wi-icon">✓</span> Video kreatívy s majiteľom — autentické, konvertujúce</div>
+          <div class="what-item good"><span class="wi-icon">✓</span> Kontinuálna optimalizácia — každý deň meníme to, čo nefunguje</div>
+          <div class="what-item good"><span class="wi-icon">✓</span> Merateľný výsledok: cena za lead, cena za zákazníka</div>
+          <div class="what-item good"><span class="wi-icon">✓</span> Budujeme nové formy marketingu — prví v segmente</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Postup</div>
+      <h2 class="section-title">Ako to funguje</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Audit a stratégia</div>
+        <div class="step-desc">Zanalyzujeme váš trh, konkurenciu a cieľovú skupinu. Navrhneme stratégiu pre Meta a Google, ktorá privádzá zákazníkov z daného segmentu.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">02</div>
+        <div class="step-title">Tvorba kampaní a kreatív</div>
+        <div class="step-desc">Nastavíme kampane, vytvoríme video kreatívy a texty. Dlhodobo tvoríme konverzné videá s majiteľom firmy pre najvyššie povedomie.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">03</div>
+        <div class="step-title">Optimalizácia a škálovanie</div>
+        <div class="step-desc">Každý deň sledujeme výsledky a optimalizujeme. Škálujeme to, čo funguje, vypíname to, čo neprivádzá zákazníkov.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="demos">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Výsledky</div>
+      <h2 class="section-title">Reálne výsledky. Reálni klienti.</h2>
+    </div>
+    <div class="demos-grid">
+
+      <!-- Card 1: Marlus Group -->
+      <div class="demo-card reveal">
+        <div>
+          <div class="demo-tag">⚙️ Priemysel &amp; Remeselníctvo</div>
+          <div class="demo-subtags">PPC kampane · Stratégia · Meta &amp; Google Ads · AI LLM Audit</div>
+          <div class="demo-name">Marlus Group</div>
+          <div class="demo-sub" style="margin-top:.5rem;">Klient platil ~50 € za lead. Vytvorili sme video kampane — cenu sme znížili na 5–6 €. Dnes dlhodobo získava trojciferný počet obchodovateľných leadov mesačne.</div>
+        </div>
+        <div class="demo-stats">
+          <div class="demo-stat">
+            <div class="demo-stat-icon">⚡</div>
+            <div><strong>50 € → 5–6 €</strong> cena za obchodovateľný lead</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">📈</div>
+            <div>trojciferný počet leadov každý mesiac</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">🎬</div>
+            <div>dlhodobá video produkcia s majiteľom</div>
+          </div>
+        </div>
+        <div class="demo-links">
+          <a href="audit-ai-llm.html" class="demo-link">→ AI LLM Audit pre organický dosah</a>
+        </div>
+      </div>
+
+      <!-- Card 2: Ultrazvukové pracovisko -->
+      <div class="demo-card reveal">
+        <div>
+          <div class="demo-tag">🏥 Zdravotníctvo</div>
+          <div class="demo-subtags">PPC kampane · Web &amp; Automatizácia · Connector · AI LLM Audit</div>
+          <div class="demo-name">Ultrazvukové pracovisko</div>
+          <div class="demo-sub" style="margin-top:.5rem;">Kompletný redizajn webu, custom objednávací formulár prepojený so softvérom ambulancie a automatizácia recepcie. Po 2 mesiacoch prišlo viac online objednávok než telefonátov.</div>
+        </div>
+        <div class="demo-stats">
+          <div class="demo-stat">
+            <div class="demo-stat-icon">📅</div>
+            <div><strong>60%</strong> klientov online bez telefonátov</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">⚡</div>
+            <div>trojciferný počet klientov každý mesiac</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">🤖</div>
+            <div>odbremenená infolinka, relevantnejšie leady</div>
+          </div>
+        </div>
+        <div class="demo-links">
+          <a href="connector-ambulancie.html" class="demo-link">→ Connector ambulancie a webu</a>
+          <a href="audit-ai-llm.html" class="demo-link">→ AI LLM Audit</a>
+        </div>
+      </div>
+
+      <!-- Card 3: Liptov Klasik -->
+      <div class="demo-card reveal">
+        <div>
+          <div class="demo-tag">🎵 Eventy · Kultúra · Zábava</div>
+          <div class="demo-subtags">PPC kampane · Stratégia · Meta &amp; Google Ads</div>
+          <div class="demo-name">Liptov Klasik</div>
+          <div class="demo-sub" style="margin-top:.5rem;">Jeden z najväčších eventov na Liptove. Komunikačná a predajná stratégia — Meta &amp; Google kampane, branding eventu prepojený s výkonnostným marketingom. Komunikácia lokality Ružomberok pre bonitných klientov na celom Slovensku.</div>
+        </div>
+        <div class="demo-stats">
+          <div class="demo-stat">
+            <div class="demo-stat-icon">🎤</div>
+            <div>obrovský open air koncert</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">📍</div>
+            <div>celoslovenský dosah, bonitné publikum</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">🎯</div>
+            <div>branding + performance v jednej stratégii</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Mám kŕčové žily -->
+      <div class="demo-card reveal">
+        <div>
+          <div class="demo-tag">🩺 Zdravotníctvo · Cievna chirurgia</div>
+          <div class="demo-subtags">PPC kampane · Web &amp; Automatizácia · Connector · AI Chatbot · AI LLM Audit</div>
+          <div class="demo-name">Mám kŕčové žily</div>
+          <div class="demo-sub" style="margin-top:.5rem;">Kompletný redizajn webu, custom objednávací formulár prepojený so softvérom ambulancie. Po 3 dňoch prišlo 10 leadov v sume viac ako 10 000 €. Spracovávame kompletnú video produkciu aby sme budovali povedomie najlepšej ambulancie na Slovensku.</div>
+        </div>
+        <div class="demo-stats">
+          <div class="demo-stat">
+            <div class="demo-stat-icon">⚡</div>
+            <div><strong>10 000 €+</strong> v leadoch za prvé 3 dni</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">📅</div>
+            <div>10 objednávok za 3 dni</div>
+          </div>
+          <div class="demo-stat">
+            <div class="demo-stat-icon">🎬</div>
+            <div>kompletná video produkcia</div>
+          </div>
+        </div>
+        <div class="demo-links">
+          <a href="connector-ambulancie.html" class="demo-link">→ Connector ambulancie</a>
+          <a href="ai-chatbot.html" class="demo-link">→ AI Chatbot</a>
+          <a href="audit-ai-llm.html" class="demo-link">→ AI LLM Audit</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Čo dostanete</div>
+      <h2 class="section-title">Všetko, čo výkonný marketing potrebuje</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Meta &amp; Google Ads kampane</strong>
+          <span>nastavenie, správa a optimalizácia kampaní na najvýkonnejších platformách.</span>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Video kreatívy s majiteľom</strong>
+          <span>dlhodobo tvoríme autentické konverzné videá, ktoré budujú dôveru a predávajú.</span>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Stratégia cielená na váš segment</strong>
+          <span>žiadne generické kampane. Poznáme váš trh a vieme, kde sú vaši zákazníci.</span>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Merateľné výsledky každý mesiac</strong>
+          <span>jasné KPIs: cena za lead, cena za zákazníka, ROAS. Nie len kliky.</span>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Nové formy marketingu</strong>
+          <span>budujeme prítomnosť tam, kde konkurencia ešte nie je. AI kanály, organický dosah.</span>
+        </div>
+      </div>
+      <div class="feature-item reveal">
+        <div class="feature-check">✓</div>
+        <div class="feature-text">
+          <strong>Dlhodobá spolupráca</strong>
+          <span>nie jednorazové kampane. Rastieme spolu s vami — mesiac po mesiaci.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="section-inner section-pad">
+    <div class="cta-inner reveal">
+      <div class="section-label">Kontakt</div>
+      <h2 class="cta-title">Chcete kampane,<br><span>ktoré predávajú?</span></h2>
+      <p class="cta-sub">Napíšte nám — dohodneme si audit vašich kampaní alebo konzultáciu zadarmo.</p>
+      <div class="cta-btns">
+        <a href="mailto:renerychvalsky1@gmail.com" class="btn-primary">Napísať email →</a>
+        <a href="tel:+421915563299" class="btn-ghost">☎ +421 915 563 299</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">HROM<span>.</span></div>
+    <p class="footer-copy">© 2026 HROM Marketing s. r. o. Marketingový výkon ako hrom ⚡</p>
+    <ul class="footer-links">
+      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="mailto:renerychvalsky1@gmail.com">Email</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60);
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  window.addEventListener('scroll', () => {
+    const isMobile = window.innerWidth <= 900;
+    if (isMobile) return;
+    document.querySelector('nav').style.padding = window.scrollY > 50 ? '0.5rem 4rem' : '0.6rem 4rem';
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMenu() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+</script>
+</body>
+</html>
