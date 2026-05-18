@@ -33,7 +33,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; overflow-x: hidden; word-break: break-word; }
   a { color: inherit; text-decoration: none; }
 
   body::before {
@@ -184,7 +184,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .demos-grid { grid-template-columns: 1fr; }
     .features-grid { grid-template-columns: 1fr; }
     .demo-card { padding: 1.5rem; gap: 1.25rem; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .stat-block { border-right: none; border-bottom: 1px solid var(--border); padding: 2rem 1.5rem; }
+    .stat-block:last-child { border-bottom: none; }
     .cta-btns { flex-direction: column; align-items: stretch; }
+    .cta-inner { text-align: left; }
     .btn-primary, .btn-ghost { justify-content: center; text-align: center; }
     .footer-inner { flex-direction: column; align-items: flex-start; padding: 0 1.5rem; gap: 1rem; }
     .cta-inner { text-align: left; }
@@ -193,21 +197,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 600px) {
     nav { padding: 0.75rem 1.2rem; }
     .section-inner { padding: 0 1.2rem; }
-    .section-pad { padding: 3rem 0; }
-    .hero-inner { padding-top: 5.25rem; padding-bottom: 0.75rem; }
-    .hero-badge { font-size: .7rem; }
-    .benefits-row { gap: .5rem; }
-    .benefit-chip { font-size: .78rem; padding: .35rem .85rem; }
-    .problem-item { padding: 1rem 1rem; }
-    .step { padding: 1.5rem 1.25rem; }
-    .step-num { font-size: 2.2rem; }
-    .feature-item { padding: 1.1rem 1rem; }
-    .demo-card { padding: 1.25rem; }
-    .demo-name { font-size: 1.1rem !important; }
+    .section-pad { padding: 2.5rem 0; }
+    .hero-inner { padding-top: 4.75rem; padding-bottom: 0.75rem; }
+    .hero-badge { font-size: .68rem; padding: .35rem .85rem; }
+    .benefits-row { gap: .4rem; overflow-x: auto; flex-wrap: wrap; }
+    .benefit-chip { font-size: .75rem; padding: .3rem .75rem; white-space: nowrap; }
+    .problem-item { padding: 1rem; gap: .75rem; }
+    .problem-icon { font-size: 1.1rem; }
+    .step { padding: 1.25rem 1rem; }
+    .step-num { font-size: 2rem; }
+    .step-title { font-size: .95rem; }
+    .step-desc { font-size: .82rem; }
+    .feature-item { padding: 1rem; gap: .75rem; }
+    .feature-text { font-size: .875rem; }
+    .demo-card { padding: 1.25rem; gap: 1rem; }
+    .demo-name { font-size: 1rem !important; }
+    .demo-sub { font-size: .85rem; }
+    .demo-stat { font-size: .82rem; }
+    .stat-big { font-size: clamp(2.2rem,8vw,3.5rem); }
+    .what-item { font-size: .85rem; padding: .85rem 1rem; }
+    .cta-title { font-size: clamp(1.25rem,6vw,1.8rem); }
+    .cta-sub { font-size: .9rem; }
     .cta-btns { align-items: stretch; }
-    .btn-primary, .btn-ghost { font-size: .875rem; padding: .8rem 1.5rem; }
+    .btn-primary, .btn-ghost { font-size: .875rem; padding: .8rem 1.5rem; width: 100%; justify-content: center; }
     footer { padding: 2rem 0; }
     .footer-inner { gap: .75rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+    .hero-glow { display: none; }
   }
 </style>
 </head>
