@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /nahlad-portfolio.html
+Disallow: /nahlad-produkty.html
+
+Sitemap: https://hrom.marketing/sitemap.xml
