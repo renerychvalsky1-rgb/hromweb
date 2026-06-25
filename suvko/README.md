@@ -34,10 +34,19 @@ bezplatnými z Google Fonts:
 Pre finálny web treba doplniť **licencované woff2** súbory a prepísať
 `--font` / `--display` v `styl.css`.
 
-## Logo
-Symbol avokáda je v podklade **dočasná SVG rekonštrukcia** (tyrkysovo-zelené
-oblúky + žltá kvapka) podľa manuálu. Vo finále nahradiť **oficiálnym logo assetom**
-(manuál: logo sa nesmie prekresľovať).
+## Logo a obrázky
+Použité je **oficiálne logo SUVKO** (z dodaného súboru), rozdelené na časti
+s priehľadným pozadím, aby fungovalo aj na tmavých sekciách:
+
+- `logo-mark.png` — samotný symbol avokáda (navigácia, pätička, dlaždica)
+- `logo-wordmark.png` — slovná značka SUVKO
+- `logo-suvko.png` — kompletné logo (symbol + značka)
+- `favicon.png` — ikona záložky
+
+`tim-suvko.jpg` — tímová fotka na domovskej stránke (optimalizovaná pre web).
+
+> Logá majú priehľadné pozadie (biela odstránená). Ak budeš mať dodané
+> oficiálne `.svg` logo, viem ho jednoducho vymeniť za tieto PNG.
 
 ## Spustenie
 Statické HTML — stačí otvoriť `index.html` v prehliadači. Bez buildu, bez závislostí.

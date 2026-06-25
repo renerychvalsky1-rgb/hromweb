@@ -30,12 +30,10 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
-    // failsafe: ak by observer nezareagoval, po načítaní všetko odkryjeme
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        reveals.forEach(function (el) { el.classList.add('in'); });
-      }, 1500);
-    });
+    // failsafe nezávislý od load/fontov: po 1,5 s odkryjeme všetko, čo ešte nie je
+    setTimeout(function () {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+    }, 1500);
   } else {
     reveals.forEach(function (el) { el.classList.add('in'); });
   }

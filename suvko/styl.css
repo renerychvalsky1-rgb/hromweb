@@ -142,12 +142,11 @@ h1,h2,h3,h4{line-height:1.08;font-weight:800;letter-spacing:-.01em;color:inherit
 .ic--g{background:rgba(122,208,147,.2);color:#3a8d57}
 
 /* ---------- logo ---------- */
-.logo{display:inline-flex;align-items:center;gap:.62rem}
-.logo svg{width:38px;height:44px;flex:none}
-.logo .wm{font-family:var(--display);font-weight:600;font-size:1.42rem;letter-spacing:.02em;line-height:1;color:var(--yellow)}
-.logo .wm.ink{color:var(--navy)}
-.logo small{display:block;font-family:var(--font);font-weight:700;font-size:.52rem;letter-spacing:.42em;
-  color:var(--turq);text-transform:uppercase;margin-top:.18rem}
+.logo{display:inline-flex;align-items:center;gap:.55rem}
+.logo .logo-mark{height:40px;width:auto;display:block;flex:none}
+.logo .logo-wm{height:21px;width:auto;display:block;flex:none}
+.foot .logo .logo-mark{height:42px}
+.foot .logo .logo-wm{height:23px}
 
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:60;background:rgba(13,24,51,.86);backdrop-filter:blur(14px);
@@ -236,6 +235,9 @@ details.hplj ol{margin:.7rem 0 0;padding-left:1.1rem;font-size:.88rem;color:var(
 .logos span{font-weight:800;font-size:1.2rem;letter-spacing:.04em;color:var(--ink);opacity:.55}
 
 /* team */
+.team-figure{max-width:880px;margin-inline:auto}
+.team-photo{width:100%;height:auto;border-radius:var(--radius);box-shadow:var(--shadow);display:block}
+.team-figure figcaption{text-align:center;font-size:.88rem;color:var(--ink-soft);margin-top:.9rem}
 .member{text-align:center}
 .member .ph{aspect-ratio:1;border-radius:18px;background:linear-gradient(160deg,var(--turq),var(--blue));
   display:grid;place-items:center;color:#fff;font-family:var(--display);font-weight:600;font-size:2rem;margin-bottom:.8rem}
