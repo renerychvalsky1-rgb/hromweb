@@ -18,7 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vaše riešenie — formulár napojený na systém + AI chatbot | HROM</title>
-<meta name="description" content="Ďakujeme za odpoveď. Tu je všetko k riešeniu pre vašu kliniku — rezervačný formulár napojený na váš interný systém a AI chatbot, ktorý odpovedá aj mimo ordinačných hodín. Ako funguje napojenie, čo chatbot zvládne, časová náročnosť aj orientačná cena.">
+<meta name="description" content="Ďakujeme za odpoveď. Tu je všetko k riešeniu pre vašu kliniku — rezervačný formulár napojený na váš interný systém a AI chatbot, ktorý odpovedá aj mimo ordinačných hodín. Ako funguje napojenie na systém a čo všetko chatbot zvládne.">
 <meta name="author" content="René Rychvalský">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://hrom.marketing/ponuka.html">
@@ -27,12 +27,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="HROM Marketing">
 <meta property="og:url" content="https://hrom.marketing/ponuka.html">
 <meta property="og:title" content="Vaše riešenie — formulár napojený na systém + AI chatbot | HROM">
-<meta property="og:description" content="Ďakujeme za odpoveď. Tu je všetko k riešeniu pre vašu kliniku — online objednávanie napojené na váš systém a AI chatbot 24/7. Ako to funguje, čas aj orientačná cena.">
+<meta property="og:description" content="Ďakujeme za odpoveď. Tu je všetko k riešeniu pre vašu kliniku — online objednávanie napojené na váš systém a AI chatbot 24/7. Ako funguje napojenie a čo chatbot zvládne.">
 <meta property="og:image" content="https://hrom.marketing/lecture1.jgp.png">
 <meta property="og:image:alt" content="René Rychvalský — HROM Marketing">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Vaše riešenie — formulár napojený na systém + AI chatbot | HROM">
-<meta name="twitter:description" content="Ďakujeme za odpoveď. Online objednávanie napojené na váš systém a AI chatbot 24/7 — ako to funguje, čas aj orientačná cena.">
+<meta name="twitter:description" content="Ďakujeme za odpoveď. Online objednávanie napojené na váš systém a AI chatbot 24/7 — ako funguje napojenie a čo chatbot zvládne.">
 <meta name="twitter:image" content="https://hrom.marketing/lecture1.jgp.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -96,19 +96,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hero-sub strong { color: var(--text); }
   .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
 
-  /* VIDEO SLOT — sem príde video */
+  /* HERO MEDIA (fotka v ráme 16:9) */
   .video-wrap { position: relative; z-index: 1; width: 100%; }
   .video-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 1.25rem; overflow: hidden; border: 1px solid rgba(0,227,202,.22); background: linear-gradient(135deg, #0e1413 0%, #0a0a0a 60%); box-shadow: 0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.02) inset; }
-  .video-frame video, .video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
-  /* Placeholder zobrazený, kým nie je vložené video */
-  .video-placeholder { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.1rem; text-align: center; padding: 1.5rem; }
-  .video-placeholder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 42%, rgba(0,227,202,.12), transparent 60%); pointer-events: none; }
-  .play-btn { width: 78px; height: 78px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 0 rgba(0,227,202,.45); animation: pulse 2.4s infinite; position: relative; z-index: 1; }
-  .play-btn svg { width: 30px; height: 30px; margin-left: 4px; }
-  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,227,202,.4); } 70% { box-shadow: 0 0 0 22px rgba(0,227,202,0); } 100% { box-shadow: 0 0 0 0 rgba(0,227,202,0); } }
-  .video-placeholder p { position: relative; z-index: 1; font-size: .9rem; color: var(--muted); max-width: 320px; line-height: 1.6; }
-  .video-placeholder strong { display: block; font-family: var(--font-head); font-weight: 700; color: var(--text); font-size: 1.05rem; margin-bottom: .15rem; }
-  .video-tag { position: absolute; top: 1rem; left: 1rem; z-index: 2; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); background: rgba(10,10,10,.6); border: 1px solid rgba(0,227,202,.25); padding: .3rem .7rem; border-radius: 2rem; backdrop-filter: blur(6px); }
+  .video-frame video, .video-frame iframe, .video-frame img { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; object-fit: cover; }
+  .video-tag { position: absolute; bottom: 1rem; left: 1rem; z-index: 2; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); background: rgba(10,10,10,.6); border: 1px solid rgba(0,227,202,.25); padding: .3rem .7rem; border-radius: 2rem; backdrop-filter: blur(6px); }
 
   /* BUTTONS */
   .btn-primary { background: var(--accent); color: #000; font-family: var(--font-head); font-weight: 700; padding: 0.9rem 2.2rem; border-radius: 3rem; font-size: 0.95rem; letter-spacing: 0.02em; transition: transform 0.2s, box-shadow 0.2s; display: inline-flex; align-items: center; gap: 0.5rem; }
@@ -173,7 +165,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   #solution { background: var(--bg); }
   #integration { background: var(--bg2); }
   #chatbot { background: var(--bg); }
-  #pricing { background: var(--bg2); }
 
   /* DUO GRID (2 cards) */
   .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 3rem; }
@@ -182,7 +173,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .note-line { max-width: 780px; margin: 2.5rem auto 0; text-align: center; font-size: .92rem; color: var(--muted); line-height: 1.65; background: var(--bg3); border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem 1.5rem; }
 
   /* CTA */
-  #cta { background: var(--bg); text-align: center; }
+  #cta { background: var(--bg2); text-align: center; }
   .cta-inner { max-width: 680px; margin: 0 auto; }
   .cta-person { display: inline-flex; align-items: center; gap: .9rem; margin-bottom: 1.6rem; text-align: left; }
   .cta-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 2px solid rgba(0,227,202,.4); flex-shrink: 0; }
@@ -258,7 +249,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="nav-links">
     <li><a href="#solution">Riešenie</a></li>
     <li><a href="#integration">Napojenie</a></li>
-    <li><a href="#pricing">Čas a cena</a></li>
+    <li><a href="#chatbot">Chatbot</a></li>
   </ul>
   <a href="#cta" class="nav-cta">Rezervovať konzultáciu</a>
   <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -269,7 +260,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <a href="#solution" onclick="closeMenu()">Riešenie</a>
   <a href="#integration" onclick="closeMenu()">Napojenie na systém</a>
   <a href="#chatbot" onclick="closeMenu()">Chatbot</a>
-  <a href="#pricing" onclick="closeMenu()">Čas a cena</a>
   <a href="#cta" onclick="closeMenu()">Rezervovať konzultáciu ⚡</a>
 </div>
 
@@ -283,31 +273,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="hero-badge">⚡ Ďakujeme za vašu odpoveď</div>
         <h1 class="hero-title">Tu je všetko k riešeniu, <span>na ktoré ste sa pýtali.</span></h1>
         <p class="hero-sub">
-          Na jednom mieste sme vám zhrnuli, ako by to u vás fungovalo: <strong>online objednávanie napojené priamo na váš interný systém</strong> a <strong>AI chatbot, ktorý pacientom odpovie aj mimo ordinačných hodín</strong>. Nižšie nájdete napojenie na systém, možnosti chatbota, časovú náročnosť aj orientačnú cenu.
+          Na jednom mieste sme vám zhrnuli, ako by to u vás fungovalo: <strong>online objednávanie napojené priamo na váš interný systém</strong> a <strong>AI chatbot, ktorý pacientom odpovie aj mimo ordinačných hodín</strong>. Nižšie nájdete, ako funguje napojenie na systém aj čo všetko chatbot zvládne.
         </p>
         <div class="hero-actions">
           <a href="#cta" class="btn-primary">Rezervovať si konzultáciu ⚡</a>
-          <a href="#solution" class="btn-ghost">Pozrieť riešenie</a>
+          <a href="#solution" class="btn-ghost" style="border-color:rgba(255,255,255,.28);">Pozrieť riešenie</a>
         </div>
       </div>
 
-      <!-- ▼▼▼ VIDEO SLOT — sem vložte video ▼▼▼
-           Nahraďte celý blok .video-placeholder buď:
-           1) <video src="vase-video.mp4" controls poster="poster.jpg"></video>
-           2) alebo <iframe src="https://www.youtube.com/embed/ID" allowfullscreen></iframe>
-           Pomer strán 16:9 sa zachová automaticky. -->
       <div class="video-wrap reveal">
         <div class="video-frame">
-          <span class="video-tag">▶ Video · 90 s</span>
-          <div class="video-placeholder">
-            <div class="play-btn" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="#000"><path d="M8 5v14l11-7z"/></svg>
-            </div>
-            <p><strong>Sem príde vaše video</strong>René vám v krátkosti prejde riešenie a ukáže chatbota naživo.</p>
-          </div>
+          <span class="video-tag">René Rychvalský · HROM</span>
+          <img src="lecture1.jgp.png" alt="René Rychvalský — prednáška, HROM">
         </div>
       </div>
-      <!-- ▲▲▲ KONIEC VIDEO SLOT ▲▲▲ -->
     </div>
   </div>
 </section>
@@ -423,32 +402,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="section-pad">
-  <div class="section-inner">
-    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto;">
-      <div class="section-label" style="justify-content:center;">Časová náročnosť a orientačná cena</div>
-      <h2 class="section-title">Aby ste vedeli, do čoho idete.</h2>
-    </div>
-    <div class="duo">
-      <div class="product-card reveal">
-        <div class="product-icon">⏱️</div>
-        <div class="product-name">Časová náročnosť</div>
-        <div class="product-desc"><strong>Chatbot:</strong> spustenie spravidla do 7 dní od dodania podkladov.<br><br><strong>Formulár + napojenie na systém:</strong> termín spresníme po zmapovaní vášho softvéru — odvíja sa od toho, aké prepojenie umožňuje.</div>
-        <div class="product-stat">Presný harmonogram dostanete na konzultácii.</div>
-      </div>
-      <div class="product-card reveal">
-        <div class="product-icon">💶</div>
-        <div class="product-name">Orientačná investícia</div>
-        <!-- TODO René: doplň reálne sumy pred odoslaním klientovi (XXX / XX) -->
-        <div class="product-desc"><strong>Jednorazové nasadenie:</strong> od <span style="color:var(--accent)">XXX €</span> podľa rozsahu napojenia.<br><br><strong>Mesačný paušál:</strong> od <span style="color:var(--accent)">XX €/mes.</span> za prevádzku, údržbu a vylepšenia.</div>
-        <div class="product-stat">Konkrétnu cenovú ponuku pošleme po konzultácii, keď poznáme váš systém a rozsah.</div>
-      </div>
-    </div>
-    <p class="note-line reveal">* Sumy sú orientačné. Presná ponuka závisí od toho, na aký systém sa napájame a v akom rozsahu — preto je prvý krok krátka konzultácia, nie faktúra.</p>
   </div>
 </section>
 
