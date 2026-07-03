@@ -210,6 +210,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-inner { gap: .75rem; }
     .footer-links { flex-wrap: wrap; gap: 1rem; }
   }
+  /* REFERENCES */
+  .ref-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+  .ref-card { display: flex; flex-direction: column; gap: .45rem; background: var(--bg3); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem 1.6rem; transition: border-color .3s, transform .3s; }
+  .ref-card:hover { border-color: rgba(0,227,202,.35); transform: translateY(-3px); }
+  .ref-tag { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  .ref-name { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; line-height: 1.2; }
+  .ref-arrow { margin-top: .3rem; font-size: .82rem; color: var(--muted); }
+  .ref-card:hover .ref-arrow { color: var(--accent); }
+  @media (max-width: 900px) { .ref-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .ref-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -466,6 +476,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="forwhom-title">Pred rebrandingom alebo pivotom</div>
         <div class="forwhom-desc">Mení sa firma, produkt alebo positioning. Správny moment zastaviť sa a premyslieť komunikáciu od základu.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section id="referencie" style="background:var(--bg2);border-top:1px solid var(--border);">
+  <div class="section-inner section-pad">
+    <div class="reveal">
+      <div class="section-label">Referencie</div>
+      <h2 class="section-title">Stratégie, ktoré už bežia v praxi</h2>
+      <p style="color:var(--muted);font-size:1.05rem;max-width:600px;line-height:1.8;margin-bottom:0;">Výber značiek, pre ktoré som pripravoval marketingovú stratégiu — od zdravotníctva cez lokálne značky až po projekt v USA.</p>
+    </div>
+    <div class="ref-grid">
+      <a href="https://mamkrcovezily.sk" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">🩺 Zdravotníctvo · SK</div>
+        <div class="ref-name">mamkrcovezily.sk</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
+      <a href="https://ultrazvukovepracovisko.sk" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">🔬 Zdravotníctvo · SK</div>
+        <div class="ref-name">ultrazvukovepracovisko.sk</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
+      <a href="https://marlus.sk" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">💼 Značka · SK</div>
+        <div class="ref-name">marlus.sk</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
+      <a href="https://liptovklasik.sk" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">💼 Značka · SK</div>
+        <div class="ref-name">liptovklasik.sk</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
+      <a href="https://matsumi.ai" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">🇺🇸 USA · AI</div>
+        <div class="ref-name">matsumi.ai</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
+      <a href="https://sterio.sk" target="_blank" rel="noopener" class="ref-card reveal">
+        <div class="ref-tag">🎬 Kino · SK</div>
+        <div class="ref-name">sterio.sk</div>
+        <div class="ref-arrow">Otvoriť web →</div>
+      </a>
     </div>
   </div>
 </section>
