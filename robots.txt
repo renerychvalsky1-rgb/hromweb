@@ -2,5 +2,33 @@ User-agent: *
 Allow: /
 Disallow: /nahlad-portfolio.html
 Disallow: /nahlad-produkty.html
+Disallow: /pecivo.html
+Disallow: /zubnaklinika.html
+
+# AI crawlery — explicitne povolené
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
 
 Sitemap: https://hrom.marketing/sitemap.xml
+# LLM prehľad: https://hrom.marketing/llms.txt
