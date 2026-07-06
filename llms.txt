@@ -1,18 +1,18 @@
 # HROM Marketing
 
-> HROM Marketing je slovenská marketingová a AI agentúra z Košíc. Firmám, klinikám a e-shopom pomáhame získať viac zákazníkov cez výkonnostný marketing, AI chatboty, online objednávanie (Connector), stratégiu, branding a videoprodukciu. Pôsobíme na Slovensku, projektovo aj v USA.
+> HROM Marketing je slovenská marketingová a AI agentúra z Košíc. Pomáhame firmám v remeselníctve a službách, zdravotníckym klinikám, inováciám a zábavnému priemyslu získať viac zákazníkov cez výkonnostný marketing, AI chatboty, online objednávanie (Connector), stratégiu, branding a videoprodukciu. Projektovo pôsobíme na Slovensku aj v USA.
 
 Zakladateľ: René Rychvalský. Kontakt: renerychvalsky1@gmail.com, +421 915 563 299.
 Adresa: Sokolovská 178/10, 040 11 Košice - mestská časť Západ, Slovensko.
 
 ## Služby
-- [AI Chatbot](https://hrom.marketing/ai-chatbot.html): Personalizovaný AI asistent naučený na váš biznis — odpovedá zákazníkom 24/7, rezervuje termíny a zachytáva dopyty. Nasadenie do 7 dní.
+- [AI Chatbot](https://hrom.marketing/ai-chatbot.html): Personalizovaný AI asistent naučený na váš biznis — odpovedá zákazníkom 24/7, rezervuje termíny a zachytáva dopyty. Nasadenie do 10 pracovných dní.
 - [Connector – online objednávanie](https://hrom.marketing/connector-ambulancie.html): Online objednávanie napojené priamo do interného softvéru ambulancie či firmy. Zákazník sa objedná sám a termín padne rovno k vám.
 - [Marketingová stratégia](https://hrom.marketing/strategia.html): Jasný plán rastu — pozicioning, kanály a konkrétne kroky k viac zákazníkom.
 - [Performance marketing (PPC)](https://hrom.marketing/performance-marketing.html): Platené kampane na Google a Meta s merateľnými výsledkami.
 - [Branding](https://hrom.marketing/branding.html): Logo, vizuálna identita a tón komunikácie značky.
 - [Videoprodukcia](https://hrom.marketing/videoprodukcia.html): Reklamné, sociálne a firemné videá, ktoré predávajú.
-- [AI/LLM audit (GEO)](https://hrom.marketing/audit-ai-llm.html): Zistíme, či vás ChatGPT, Perplexity a Gemini odporúčajú, a opravíme, kde vás AI nevidí.
+- [AI/LLM audit (GEO)](https://hrom.marketing/audit-ai-llm.html): Zistíme, či vás ChatGPT, Claude, Perplexity a Gemini odporúčajú, a opravíme, kde vás AI nevidí.
 - [AI školenia](https://hrom.marketing/skolenia-ai.html): Naučíme váš tím prakticky používať AI nástroje na reálnu prácu.
 - [Živé demo chatbota](https://hrom.marketing/chatbot-demo.html): Vyskúšajte si AI chatbota naživo.
 
