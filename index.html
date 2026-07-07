@@ -1125,7 +1125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "logo": "https://hrom.marketing/logo.png",
       "image": "https://hrom.marketing/logo.png",
       "description": "HROM Marketing je slovenská marketingová a AI agentúra z Košíc — výkonnostný marketing, AI chatboty, online objednávanie (Connector), stratégia, branding a videoprodukcia.",
-      "email": "renerychvalsky1@gmail.com",
+      "email": "rene.rychvalsky@hrom.marketing",
       "telephone": "+421915563299",
       "founder": {
         "@type": "Person",
@@ -1286,7 +1286,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="section-title" style="font-size:clamp(1.2rem,2.2vw,1.85rem)">Sme AI &amp; marketingoví developeri,<br><span style="color:var(--accent)">nie obyčajná agentúra.</span></h2>
         <p><strong>HROM</strong> vznikol z jednoduchej myšlienky — každá kampaň, web, produkt, appka alebo stratégia musí mať <strong>reálny dopad na marketing a obchod firmy</strong>. Nie len lajky a dosah.</p>
         <p>Staré weby. Zlé stratégie. Zastaraná komunikácia. To sú problémy, ktoré dennodenne riešime — pre klientov zo zdravotníctva, kultúry, zábavy, remesla ale aj rastúcich brandov.</p>
-        <a href="mailto:renerychvalsky1@gmail.com" class="btn-primary" style="margin-top:1rem;display:inline-flex">Chcem zahrmieť s vami</a>
+        <a href="mailto:rene.rychvalsky@hrom.marketing" class="btn-primary" style="margin-top:1rem;display:inline-flex">Chcem zahrmieť s vami</a>
       </div>
       <div class="about-stats reveal">
         <div class="stat-card"><div class="stat-num">8+</div><div class="stat-label">Rokov skúseností</div></div>
@@ -1536,8 +1536,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="cta-title">Pripravení zahrmieť?</h2>
         <p class="cta-sub">Napíšte nám. Dohodneme konzultáciu.</p>
         <div class="contact-info">
-          <a href="mailto:renerychvalsky1@gmail.com" class="contact-line">
-            <span class="contact-icon">✉</span>renerychvalsky1@gmail.com
+          <a href="mailto:rene.rychvalsky@hrom.marketing" class="contact-line">
+            <span class="contact-icon">✉</span>rene.rychvalsky@hrom.marketing
           </a>
           <a href="tel:+421915563299" class="contact-line">
             <span class="contact-icon">☎</span>+421 915 563 299
@@ -1571,7 +1571,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="footer-copy" style="margin-top:.5rem;font-size:.8rem;">Product by <a href="https://rychvalsky.sk" target="_blank" rel="noopener noreferrer" style="color:var(--accent);text-decoration:none;">René Rychvalský</a></p>
     <ul class="footer-links">
       <li><a href="https://www.linkedin.com/in/ren%C3%A9-rychvalsk%C3%BD-310437188/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
-      <li><a href="mailto:renerychvalsky1@gmail.com">Email</a></li>
+      <li><a href="mailto:rene.rychvalsky@hrom.marketing">Email</a></li>
     </ul>
   </div>
 </footer>
@@ -1586,9 +1586,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.textContent = 'Odosiela sa...';
     try {
       const formData = new FormData(form);
+      // POZOR: formulár doručuje na e-mail viazaný na tento web3forms access_key.
+      // Aby chodil na rene.rychvalsky@hrom.marketing, vygeneruj nový kľúč pre túto
+      // adresu na https://web3forms.com (zadaj e-mail → kľúč príde do schránky) a
+      // nahraď ním hodnotu nižšie. Súčasný kľúč doručuje na pôvodnú (gmail) schránku.
       formData.append('access_key', 'bf8cf82c-fa8b-4fa1-aab4-ddc33bb67396');
-      formData.append('subject', 'Nový lead z webu hromweb.sk');
-      formData.append('from_name', 'Hromweb kontaktný formulár');
+      formData.append('subject', 'Nový lead z webu hrom.marketing');
+      formData.append('from_name', 'HROM kontaktný formulár');
+      formData.append('replyto', formData.get('email') || '');
       const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData,
@@ -1599,10 +1604,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         form.reset();
       } else {
         const data = await res.json();
-        alert((data && data.errors ? data.errors.map(x=>x.message).join(', ') : '') || 'Chyba pri odosielaní. Napíšte priamo na renerychvalsky1@gmail.com');
+        alert((data && data.errors ? data.errors.map(x=>x.message).join(', ') : '') || 'Chyba pri odosielaní. Napíšte priamo na rene.rychvalsky@hrom.marketing');
       }
     } catch(err) {
-      alert('Chyba pri odosielaní. Napíšte priamo na renerychvalsky1@gmail.com');
+      alert('Chyba pri odosielaní. Napíšte priamo na rene.rychvalsky@hrom.marketing');
     }
     btn.disabled = false;
     btn.textContent = origText;
