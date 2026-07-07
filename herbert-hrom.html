@@ -237,6 +237,53 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
 
   .geo-lead { max-width: 640px; margin: 0 0 1.5rem; font-size: 1.02rem; line-height: 1.7; color: #d6d6d6; font-weight: 500; }
+
+  /* HERO 2-COL + DASHBOARD MOCKUP */
+  .hero-2col { display: grid; grid-template-columns: 1fr 1.08fr; gap: 3.5rem; align-items: center; }
+  .hero-text { max-width: 560px; }
+  .hero-mock { position: relative; width: 100%; }
+  .mock-window { background: #fff; border-radius: 16px; box-shadow: 0 30px 70px rgba(0,0,0,.5), 0 2px 8px rgba(0,0,0,.25); overflow: hidden; }
+  .mock-bar { display: flex; align-items: center; gap: .5rem; padding: .7rem 1rem; background: #f4f4f7; border-bottom: 1px solid #ececf1; }
+  .mock-dot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+  .mock-dot.r { background: #ff5f57; } .mock-dot.y { background: #febc2e; } .mock-dot.g { background: #28c840; }
+  .mock-url { flex: 1; margin: 0 .4rem; background: #fff; border: 1px solid #e6e6ee; border-radius: 20px; padding: .35rem .9rem; font-size: .72rem; color: #6b6b7b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .mock-live { font-size: .6rem; font-weight: 700; color: #16a34a; letter-spacing: .04em; white-space: nowrap; }
+  .mock-body { padding: 1.4rem 1.5rem 1.6rem; }
+  .mock-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .mock-label { font-size: .62rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: #6d28d9; margin-bottom: .4rem; }
+  .mock-bignum { font-family: var(--font-head); font-size: 2.6rem; font-weight: 800; color: #14141c; line-height: 1; display: flex; align-items: center; gap: .6rem; letter-spacing: -.02em; }
+  .mock-badge-up { font-size: .72rem; font-weight: 700; color: #16a34a; background: #e7f9ee; padding: .2rem .55rem; border-radius: 20px; letter-spacing: 0; }
+  .mock-sub { font-size: .72rem; color: #9a9aab; margin-top: .5rem; }
+  .mock-autopilot { text-align: right; flex-shrink: 0; }
+  .mock-ap-pill { display: inline-flex; align-items: center; gap: .3rem; font-size: .64rem; font-weight: 800; letter-spacing: .04em; color: #6d28d9; background: #efe9fe; padding: .35rem .7rem; border-radius: 20px; white-space: nowrap; }
+  .mock-ap-note { font-size: .64rem; color: #b3b3c0; margin-top: .45rem; }
+  .mock-chart { width: 100%; height: auto; display: block; margin: 1.1rem 0 .35rem; }
+  .mock-axis { display: flex; justify-content: space-between; font-size: .6rem; color: #b8b8c4; padding: 0 .1rem; }
+  .mock-cards { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: 1.2rem; }
+  .mock-card { border: 1px solid #ececf1; border-radius: 12px; padding: .9rem 1rem; }
+  .mock-card-h { display: flex; align-items: center; gap: .35rem; font-size: .66rem; font-weight: 600; color: #6b6b7b; margin-bottom: .5rem; }
+  .mock-card-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; color: #14141c; margin-bottom: .6rem; line-height: 1; }
+  .mock-progress { height: 6px; border-radius: 6px; background: #f0f0f5; overflow: hidden; }
+  .mock-progress span { display: block; height: 100%; border-radius: 6px; }
+  .mock-float { position: absolute; background: #fff; border-radius: 12px; box-shadow: 0 14px 34px rgba(0,0,0,.2); padding: .6rem .85rem; font-size: .72rem; font-weight: 700; color: #14141c; display: flex; align-items: center; gap: .5rem; z-index: 3; }
+  .mock-float small { display: block; font-weight: 500; color: #9a9aab; font-size: .64rem; margin-top: 1px; }
+  .mock-float .dotlive { width: 8px; height: 8px; border-radius: 50%; background: #28c840; flex-shrink: 0; }
+  .mock-float .fico { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .72rem; flex-shrink: 0; background: #e7f9ee; color: #16a34a; }
+  .mock-float-top { top: -16px; right: 16px; }
+  .mock-float-bottom { bottom: -20px; left: -12px; }
+  @media (max-width: 900px) {
+    .hero-2col { grid-template-columns: 1fr; gap: 2.75rem; }
+    .hero-mock { max-width: 540px; margin: 0 auto; }
+    .hero-text { max-width: 100%; }
+  }
+  @media (max-width: 600px) {
+    .mock-bignum { font-size: 2.1rem; }
+    .mock-body { padding: 1.1rem 1.1rem 1.3rem; }
+    .mock-cards { grid-template-columns: 1fr; }
+    .mock-float { font-size: .66rem; padding: .5rem .7rem; }
+    .mock-float-bottom { left: 0; bottom: -14px; }
+    .mock-float-top { right: 6px; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -367,21 +414,75 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 <!-- HERO -->
-<section style="background:var(--bg);position:relative;overflow:hidden;">
+<section style="background:var(--bg);position:relative;overflow:visible;">
   <div class="hero-glow"></div>
-  <div class="section-inner hero-inner">
-    <div class="reveal">
-      <div class="hero-badge">✍️ AI bloger pre váš web</div>
-      <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;max-width:640px;">
-        Váš blog sa píše sám.<br><span style="color:var(--accent)">Herbert Hrom sa oň postará.</span>
-      </h1>
+  <div class="section-inner hero-inner" style="padding-bottom:4.5rem;">
+    <div class="hero-2col">
+      <div class="hero-text reveal">
+        <div class="hero-badge">✍️ AI bloger pre váš web</div>
+        <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;">
+          Váš blog sa píše sám.<br><span style="color:var(--accent)">Herbert Hrom sa oň postará.</span>
+        </h1>
         <p class="geo-lead">Herbert Hrom je AI bloger od HROM. Nájde témy a kľúčové slová vo vašom obore, napíše SEO články naučené na váš biznis a pravidelne ich publikuje na váš web — aby vás našli zákazníci aj AI vyhľadávače ako ChatGPT, Claude či Perplexity.</p>
-      <p style="color:var(--muted);font-size:.95rem;max-width:500px;line-height:1.75;margin-bottom:2rem;">
-        Zoznámte sa s Herbertom — <strong style="color:var(--text)">AI blogerom, ktorý za vás píše a publikuje</strong> optimalizované články. Vy sa venujete biznisu, on privádza organický traffic. Deň čo deň, bez písania.
-      </p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-        <a href="#cta" class="btn-primary">Chcem Herberta pre môj web</a>
-        <a href="#how" class="btn-ghost">Ako to funguje</a>
+        <p style="color:var(--muted);font-size:.95rem;max-width:500px;line-height:1.75;margin-bottom:2rem;">
+          Zoznámte sa s Herbertom — <strong style="color:var(--text)">AI blogerom, ktorý za vás píše a publikuje</strong> optimalizované články. Vy sa venujete biznisu, on privádza organický traffic. Deň čo deň, bez písania.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#cta" class="btn-primary">Chcem Herberta pre môj web</a>
+          <a href="#how" class="btn-ghost">Ako to funguje</a>
+        </div>
+      </div>
+
+      <!-- DASHBOARD MOCKUP -->
+      <div class="hero-mock reveal">
+        <div class="mock-float mock-float-top"><span class="dotlive"></span> Nový článok práve zverejnený</div>
+        <div class="mock-window">
+          <div class="mock-bar">
+            <span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span>
+            <div class="mock-url">yoursite.com/blog · live traffic</div>
+            <div class="mock-live">● LIVE</div>
+          </div>
+          <div class="mock-body">
+            <div class="mock-row">
+              <div>
+                <div class="mock-label">👥 Noví návštevníci tento mesiac</div>
+                <div class="mock-bignum">2 847 <span class="mock-badge-up">↗ +312%</span></div>
+                <div class="mock-sub">Posledných 30 dní · 100% organické, 0 reklám</div>
+              </div>
+              <div class="mock-autopilot">
+                <div class="mock-ap-pill">⚡ AUTOPILOT</div>
+                <div class="mock-ap-note">Nenapísal si nič.</div>
+              </div>
+            </div>
+            <svg class="mock-chart" viewBox="0 0 600 168" role="img" aria-label="Graf rastu organickej návštevnosti za 30 dní">
+              <defs>
+                <linearGradient id="hgLine" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#00c9b7"/>
+                </linearGradient>
+                <linearGradient id="hgArea" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#7c5cff" stop-opacity="0.20"/><stop offset="1" stop-color="#00c9b7" stop-opacity="0.02"/>
+                </linearGradient>
+              </defs>
+              <path d="M0,130 L60,126 L120,118 L180,114 L240,102 L300,98 L360,86 L420,66 L480,52 L540,36 L596,20 L596,168 L0,168 Z" fill="url(#hgArea)"/>
+              <path d="M0,130 L60,126 L120,118 L180,114 L240,102 L300,98 L360,86 L420,66 L480,52 L540,36 L596,20" fill="none" stroke="url(#hgLine)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+              <circle cx="596" cy="20" r="5" fill="#00c9b7"/>
+            </svg>
+            <div class="mock-axis"><span>-30d</span><span>-21d</span><span>-14d</span><span>Dnes</span></div>
+            <div class="mock-cards">
+              <div class="mock-card">
+                <div class="mock-card-h">🔍 Z Vyhľadávania Google</div>
+                <div class="mock-card-num">2 134</div>
+                <div class="mock-progress"><span style="width:78%;background:linear-gradient(90deg,#34d399,#10b981);"></span></div>
+              </div>
+              <div class="mock-card">
+                <div class="mock-card-h">✨ Z ChatGPT a AI</div>
+                <div class="mock-card-num">713</div>
+                <div class="mock-progress"><span style="width:33%;background:linear-gradient(90deg,#6366f1,#22d3ee);"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mock-float mock-float-bottom"><span class="fico">↗</span> <span>+247 nových návštevníkov dnes<small>prišlo, keď si spal</small></span></div>
       </div>
     </div>
   </div>
