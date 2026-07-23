@@ -24,7 +24,7 @@ Adresa: Sokolovská 178/10, 040 11 Košice - mestská časť Západ, Slovensko.
 - [optikavokel.sk](https://optikavokel.sk): Optika — chatbot + Connector + Reservio.
 - [marlus.sk](https://www.marlus.sk/): Priemysel & remeselníctvo — AI chatbot na webe.
 - [matsumi.ai](https://www.matsumi.ai/): Projekt v USA — marketingová stratégia.
-- [sterio.sk](https://sterio.sk): Kino STERIO — AI chatbot (v príprave).
+- [sterio.sk](https://sterio.sk): Sieť kín STERIO — AI chatbot naživo v 5 mestách (Košice, Prešov, Spišská Nová Ves, Žilina, Prievidza).
 
 ## Ďalšie
 - [Domov](https://hrom.marketing/)
