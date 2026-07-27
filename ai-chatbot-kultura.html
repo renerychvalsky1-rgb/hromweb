@@ -242,17 +242,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .partner-bar { display:flex; align-items:center; justify-content:center; gap:1.25rem; flex-wrap:wrap; padding:1.5rem 0; }
   .partner-label { font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); }
   .partner-note { font-size:.85rem; color:var(--muted); }
-  /* Oficiálne logo Entradio — biela karta, aby sedeli firemné farby na tmavom pozadí.
-     VÝMENA ZA ORIGINÁL: nahraď obsah .entradio-logo za <img src="entradio-logo.svg" alt="Entradio" style="height:34px;display:block;"> */
-  .entradio-logo { display:inline-flex; align-items:center; gap:.7rem; background:#fff; padding:.75rem 1.35rem; border-radius:.9rem; box-shadow:0 8px 26px rgba(0,0,0,.35); }
-  .entradio-logo svg { display:block; height:34px; width:auto; }
-  .entradio-logo .ent-word { font-family:var(--font-head); font-weight:800; font-size:1.6rem; letter-spacing:-.035em; color:#1E0A4B; line-height:1; }
-  .entradio-logo .ent-word .o { color:#7C2FBF; }
+  /* Oficiálne logo Entradio (entradio-logo.png) na bielej karte,
+     aby firemné farby sedeli na tmavom pozadí webu. */
+  .entradio-logo { display:inline-flex; align-items:center; background:#fff; padding:.85rem 1.4rem; border-radius:.9rem; box-shadow:0 8px 26px rgba(0,0,0,.35); transition:transform .2s; }
+  .entradio-logo:hover { transform:translateY(-2px); }
+  .entradio-logo img { display:block; height:34px; width:auto; }
   .city-links { display:flex; flex-wrap:wrap; gap:.5rem; }
   .city-pill { display:inline-flex; align-items:center; gap:.35rem; border:1px solid rgba(0,227,202,.3); background:rgba(0,227,202,.06); color:var(--accent); font-weight:700; font-size:.85rem; padding:.5rem 1rem; border-radius:2rem; transition:background .2s, transform .2s; }
   .city-pill:hover { background:rgba(0,227,202,.16); transform:translateY(-2px); }
   .case-hero { background:linear-gradient(135deg,var(--bg3),var(--bg2)); border:1px solid rgba(0,227,202,.22); border-radius:1.5rem; padding:2.5rem; }
-  @media (max-width:600px){ .case-hero{ padding:1.5rem; } .entradio-logo{ padding:.6rem 1rem; } .entradio-logo .ent-word{ font-size:1.35rem; } .entradio-logo svg{ height:28px; } }
+  @media (max-width:600px){ .case-hero{ padding:1.5rem; } .entradio-logo{ padding:.65rem 1.1rem; } .entradio-logo img{ height:28px; } }
 </style>
 <script type="application/ld+json">
 {
@@ -409,15 +408,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="partner-bar reveal">
       <span class="partner-label">Realizované v spolupráci s</span>
       <a href="https://www.entradio.sk/sk" target="_blank" rel="noopener" class="entradio-logo" aria-label="Entradio — vstupenkový systém">
-          <svg viewBox="0 0 56 56" role="img" aria-label="Entradio">
-            <g fill="#7C2FBF">
-              <path d="M0 0 H26 A13 13 0 0 1 0 0 Z"/>
-              <circle cx="43" cy="13" r="13"/>
-              <circle cx="13" cy="43" r="13"/>
-              <path d="M30 56 H56 A13 13 0 0 0 30 56 Z"/>
-            </g>
-          </svg>
-        <span class="ent-word">Entrad<span class="o">io</span></span>
+        <img src="entradio-logo.png" alt="Entradio" width="356" height="82">
       </a>
       <span class="partner-note">vstupenkový systém pre kiná, divadlá a kultúrne podujatia</span>
     </div>
