@@ -155,28 +155,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    padding: 8.5rem 4rem 4rem;
+    justify-content: center;
+    padding: 8rem 4rem 4rem;
     position: relative;
     overflow: hidden;
   }
 
+  /* HERO: 2 stĺpce — text vľavo, carousel vpravo */
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 3.5rem; align-items: center; width: 100%; position: relative; z-index: 2; }
+  .hero-left { min-width: 0; }
+  .hero-right { min-width: 0; }
+  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
   /* HERO: PROBLÉM → RIEŠENIE (vertikálny carousel) */
-  .psc { margin-top: 2.5rem; width: 100%; max-width: 1180px; position: relative; z-index: 2; }
+  .psc { margin-top: 0; width: 100%; position: relative; z-index: 2; }
   .psc-head { display: flex; align-items: center; gap: .7rem; margin-bottom: 1rem; font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; flex-wrap: wrap; }
   .psc-head .h-prob { color: #ff7b7b; }
   .psc-head .h-arrow { color: rgba(0,227,202,.5); }
   .psc-head .h-sol { color: var(--accent); }
   .psc-viewport { overflow: hidden; }
   .psc-track { display: flex; flex-direction: column; gap: .9rem; position: relative; transition: transform .6s cubic-bezier(.4,0,.2,1); will-change: transform; }
-  .psc-card { flex: 0 0 auto; display: grid; grid-template-columns: 1fr 48px 1fr; align-items: center;
-              background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; padding: 1.15rem 1.35rem;
+  .psc-card { flex: 0 0 auto; display: flex; flex-direction: column; gap: .7rem;
+              background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; padding: 1.15rem 1.3rem;
               text-decoration: none; transition: border-color .25s, background .25s; }
   .psc-card:hover { border-color: rgba(0,227,202,.35); background: var(--bg3); }
-  .psc-prob { display: flex; gap: .6rem; font-size: .92rem; line-height: 1.5; color: #9c9c9c; }
+  .psc-prob { display: flex; gap: .6rem; font-size: .9rem; line-height: 1.5; color: #9c9c9c; }
   .psc-prob .x { color: rgba(255,107,107,.8); font-weight: 700; flex-shrink: 0; }
-  .psc-arrow { text-align: center; color: rgba(0,227,202,.45); font-size: 1.05rem; font-weight: 700; }
-  .psc-sol { display: flex; gap: .6rem; font-size: .92rem; line-height: 1.5; color: #cfcfcf; border-left: 1px solid var(--border); padding-left: 1.2rem; }
+  .psc-arrow { display: none; }
+  .psc-sol { display: flex; gap: .6rem; font-size: .9rem; line-height: 1.5; color: #cfcfcf; border-top: 1px solid var(--border); padding-top: .7rem; }
   .psc-sol .v { color: var(--accent); flex-shrink: 0; font-weight: 800; }
   .psc-sol strong { color: var(--accent); font-weight: 700; }
   .psc-card:hover .psc-sol strong { text-decoration: underline; }
@@ -185,10 +191,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .psc-dot.active { background: var(--accent); width: 42px; }
   @media (max-width: 820px) {
     .psc { margin-top: 2.25rem; }
-    .psc-card { grid-template-columns: 1fr; padding: 1.05rem 1.15rem; }
-    .psc-arrow { display: none; }
+    .psc-card { padding: 1.05rem 1.15rem; }
     .psc-prob { font-size: .875rem; }
-    .psc-sol { font-size: .875rem; border-left: 0; border-top: 1px solid var(--border); padding-left: 0; padding-top: .7rem; margin-top: .7rem; }
+    .psc-sol { font-size: .875rem; }
   }
   @media (prefers-reduced-motion: reduce) { .psc-track { transition: none; } }
 
@@ -230,7 +235,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .hero-title {
     font-family: var(--font-head);
-    font-size: clamp(2.2rem, 6vw, 7rem);
+    font-size: clamp(2.1rem, 4.6vw, 5.2rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.03em;
@@ -1269,6 +1274,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <span class="bolt">⚡</span>
   </div>
 
+  <div class="hero-grid">
+    <div class="hero-left">
   <div class="hero-tag">⚡ Sme AI & Marketing developeri</div>
 
   <h1 class="hero-title">
@@ -1281,8 +1288,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <a href="#projects" class="btn-primary">HROMOVÁ PRÁCA →</a>
     <a href="#about" class="btn-ghost" style="border-color:var(--accent);color:var(--accent);">PRÍBEH HROMU</a>
   </div>
-
-
+    </div>
+    <div class="hero-right">
   <div class="psc reveal" id="psc">
     <div class="psc-head"><span class="h-prob">✕ Poznáte to?</span><span class="h-arrow">→</span><span class="h-sol">✓ Presne toto riešime</span></div>
     <div class="psc-viewport">
@@ -1320,6 +1327,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="psc-dots" id="pscDots" role="tablist" aria-label="Skupiny problém → riešenie"></div>
+  </div>
+    </div>
   </div>
 
 </section>
