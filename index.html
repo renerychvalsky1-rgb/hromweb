@@ -155,11 +155,29 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 10rem 4rem 6rem;
+    justify-content: flex-start;
+    padding: 8.5rem 4rem 4rem;
     position: relative;
     overflow: hidden;
   }
+
+  /* HERO: PROBLÉM → RIEŠENIE */
+  .ps-wrap { margin-top: 2.5rem; width: 100%; max-width: 1180px; position: relative; z-index: 2; }
+  .ps-label { font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.1rem; display: flex; align-items: center; gap: .6rem; }
+  .ps-label::before { content: ''; width: 24px; height: 2px; background: var(--accent); display: inline-block; }
+  .ps-label b { color: var(--accent); font-weight: 700; }
+  .ps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem; }
+  .ps-card { display: flex; flex-direction: column; gap: .65rem; background: var(--bg2); border: 1px solid var(--border); border-radius: 1rem; padding: 1.1rem 1.2rem; text-decoration: none; transition: border-color .25s, transform .25s, background .25s; }
+  .ps-card:hover { border-color: rgba(0,227,202,.35); background: var(--bg3); transform: translateY(-3px); }
+  .ps-prob { display: flex; gap: .55rem; font-size: .875rem; line-height: 1.5; color: #9c9c9c; }
+  .ps-prob .ico { flex-shrink: 0; }
+  .ps-sol { display: flex; gap: .55rem; font-size: .875rem; line-height: 1.5; color: #cfcfcf; border-top: 1px solid var(--border); padding-top: .7rem; }
+  .ps-sol .ico { color: var(--accent); flex-shrink: 0; font-weight: 800; }
+  .ps-sol strong { color: var(--accent); font-weight: 700; }
+  .ps-card:hover .ps-sol strong { text-decoration: underline; }
+  @media (max-width: 1050px) { .ps-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 700px)  { .ps-grid { grid-template-columns: 1fr; } .ps-wrap { margin-top: 2.25rem; } .ps-card { padding: 1rem 1.1rem; } }
+
 
   .hero-glow {
     position: absolute;
@@ -1245,19 +1263,42 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </h1>
         <p class="geo-lead">HROM Marketing je slovenská marketingová a AI agentúra z Košíc. Pomáhame firmám v remeselníctve a službách, zdravotníckym klinikám, inováciám a zábavnému priemyslu získať viac zákazníkov cez výkonnostný marketing, AI chatboty, online objednávanie a stratégiu. Projektovo pôsobíme na Slovensku aj v USA.</p>
 
-  <p class="hero-sub">
-    Využívame AI + stratégiu s reálnym dopadom na marketing a obchod vašej firmy — performance, branding, weby, komunikácia.
-  </p>
-
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">HROMOVÁ PRÁCA →</a>
     <a href="#about" class="btn-ghost" style="border-color:var(--accent);color:var(--accent);">PRÍBEH HROMU</a>
   </div>
 
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
+
+  <div class="ps-wrap reveal">
+    <div class="ps-label">Poznáte to? <b>Presne toto riešime.</b></div>
+    <div class="ps-grid">
+      <a href="ai-chatbot.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">🌙</span><span>Zákazník píše o 22:00 — a nikto neodpovie.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>AI zamestnanec</strong> — odpovie, poradí a predá 24/7.</span></div>
+      </a>
+      <a href="connector-ambulancie.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">📞</span><span>Recepcia dvíha telefón namiesto práce.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>Connector</strong> — online objednávanie priamo do vášho systému.</span></div>
+      </a>
+      <a href="audit-ai-llm.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">🔎</span><span>ChatGPT odporúča konkurenciu, nie vás.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>AI/LLM audit</strong> — opravíme miesta, kde vás AI nevidí.</span></div>
+      </a>
+      <a href="herbert-hrom.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">✍️</span><span>Blog stojí, organický traffic nerastie.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>Herbert Hrom</strong> — AI bloger, ktorý píše a publikuje za vás.</span></div>
+      </a>
+      <a href="performance-marketing.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">📉</span><span>Reklama míňa rozpočet bez výsledku.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>Performance marketing</strong> — kampane, ktoré privádzajú zákazníkov.</span></div>
+      </a>
+      <a href="strategia.html" class="ps-card">
+        <div class="ps-prob"><span class="ico">🧭</span><span>Neviete, kde začať a čo nefunguje.</span></div>
+        <div class="ps-sol"><span class="ico">⚡</span><span><strong>Stratégia</strong> — jasný plán rastu na mieru.</span></div>
+      </a>
+    </div>
   </div>
+
 </section>
 <!-- MARQUEE -->
 <div class="marquee-wrap">
