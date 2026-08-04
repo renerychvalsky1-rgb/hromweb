@@ -156,6 +156,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     display: flex;
     flex-direction: column;
     justify-content: center;
+    justify-content: safe center;   /* nikdy neoreže vrch, keď je obsah vyšší než obrazovka */
     padding: 8rem 4rem 4rem;
     position: relative;
     overflow: hidden;
@@ -165,7 +166,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 3.5rem; align-items: center; width: 100%; position: relative; z-index: 2; }
   .hero-left { min-width: 0; }
   .hero-right { min-width: 0; }
-  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+  @media (max-width: 1100px) { .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+                               #hero { justify-content: flex-start; } }
 
   /* HERO: PROBLÉM → RIEŠENIE (vertikálny carousel) */
   .psc { margin-top: 0; width: 100%; position: relative; z-index: 2; }
@@ -890,7 +892,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .nav-cta { display: none; }
     .hamburger { display: flex; }
 
-    #hero { padding: 7rem 1.5rem 4rem; }
+    #hero { padding: 8rem 1.5rem 4rem; }
     .hero-scroll { display: none; }
     .hero-title { font-size: clamp(2rem, 7vw, 4.5rem); }
 
@@ -921,7 +923,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .products-grid { grid-template-columns:1fr !important; }
     nav { padding: 0.9rem 1.2rem; }
 
-    #hero { padding: 6rem 1.2rem 3rem; }
+    #hero { padding: 7.5rem 1.2rem 3rem; }
     .hero-tag { font-size: 0.7rem; }
     .hero-title { font-size: clamp(1.8rem, 7vw, 2.8rem); }
     .hero-sub { font-size: 0.95rem; }
@@ -1084,7 +1086,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .nav-links { display:none; }
     .nav-cta { display:none; }
     .hamburger { display:flex; }
-    #hero { padding:7rem 1.5rem 4rem; }
+    #hero { padding:8rem 1.5rem 4rem; }
     .hero-scroll { display:none; }
     .hero-title { font-size:clamp(2rem,7vw,4.5rem); }
     .section-inner { padding:0 1.5rem; }
@@ -1110,7 +1112,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   @media (max-width:600px) {
     nav { padding:0.9rem 1.2rem; }
-    #hero { padding:6rem 1.2rem 3rem; }
+    #hero { padding:7.5rem 1.2rem 3rem; }
     .hero-tag { font-size:0.7rem; }
     .hero-title { font-size:clamp(1.8rem,7vw,2.8rem); }
     .hero-sub { font-size:0.95rem; }
@@ -1687,7 +1689,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
 
-  // HERO problém → riešenie carousel (vertikálny: PC 2 pod sebou, mobil 1; auto 3 s)
+  // HERO problém → riešenie carousel (vertikálny: PC 2 pod sebou, mobil 1; auto 5 s)
   (function(){
     var root=document.getElementById('psc'), track=document.getElementById('pscTrack'), dots=document.getElementById('pscDots');
     if(!root||!track||!dots) return;
@@ -1721,7 +1723,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     }
     function next(){ page=(page+1)%pages(); update(); }
-    function start(){ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; stop(); timer=setInterval(next,3000); }
+    function start(){ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; stop(); timer=setInterval(next,5000); }
     function stop(){ if(timer){ clearInterval(timer); timer=null; } }
     function restart(){ stop(); start(); }
     function init(){ layout(); buildDots(); update(); }
