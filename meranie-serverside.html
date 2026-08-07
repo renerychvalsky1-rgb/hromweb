@@ -17,23 +17,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   gtag('config', 'G-XYHHYMWL0V');
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Booking Ads — reklama priamo na Booking.com | HROM</title>
-<meta name="description" content="Booking Ads zobrazia vaše ubytovanie na popredných pozíciách vo výsledkoch vyhľadávania na Booking.com, Agode aj Priceline. Platíte iba za kliknutia a reklama využíva váš existujúci profil. ROAS kampane klienta 4,65×.">
+<title>Server-side meranie — presnejšie dáta pre vašu reklamu | HROM</title>
+<meta name="description" content="Facebook, Instagram aj Google sa pri optimalizácii reklamy učia z toho, čo namerajú na vašom webe. Skontrolujeme celé meranie, opravíme chyby a doplníme ho tak, aby reklamné systémy dostávali čo najkvalitnejšie dáta — vrátane server-side merania.">
 <meta name="author" content="René Rychvalský">
-<link rel="canonical" href="https://hrom.marketing/reklamy-booking.html">
+<link rel="canonical" href="https://hrom.marketing/meranie-serverside.html">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sk_SK">
 <meta property="og:site_name" content="HROM Marketing">
-<meta property="og:url" content="https://hrom.marketing/reklamy-booking.html">
-<meta property="og:title" content="Booking Ads — reklama priamo na Booking.com | HROM">
-<meta property="og:description" content="Zobrazte svoje ubytovanie na popredných pozíciách vo vyhľadávaní na Booking.com, Agode aj Priceline. Platíte iba za kliknutia. ROAS kampane klienta 4,65×.">
+<meta property="og:url" content="https://hrom.marketing/meranie-serverside.html">
+<meta property="og:title" content="Server-side meranie — presnejšie dáta pre vašu reklamu | HROM">
+<meta property="og:description" content="Viete, podľa akých dát sa rozhoduje vaša reklama? Skontrolujeme meranie, opravíme chyby a doplníme ho o server-side vrstvu.">
 <meta property="og:image" content="https://hrom.marketing/lecture1.jgp.png">
-<meta property="og:image:alt" content="Booking Ads — HROM Marketing">
+<meta property="og:image:alt" content="Server-side meranie — HROM Marketing">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Booking Ads — reklama priamo na Booking.com | HROM">
-<meta name="twitter:description" content="Vaše ubytovanie na popredných pozíciách vo vyhľadávaní na Booking.com. Platíte iba za kliknutia. ROAS 4,65×.">
+<meta name="twitter:title" content="Server-side meranie — presnejšie dáta pre vašu reklamu | HROM">
+<meta name="twitter:description" content="Reklama sa učí z toho, čo namerá váš web. Postaráme sa, aby merala správne.">
 <meta name="twitter:image" content="https://hrom.marketing/lecture1.jgp.png">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏨</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -296,6 +296,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bk-shot figcaption strong { color:var(--text); }
   .bk-adtag { position:absolute; top:-.7rem; left:-.7rem; z-index:2; background:var(--accent); color:#000; font-family:var(--font-head); font-weight:800; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:.4rem .85rem; border-radius:2rem; box-shadow:0 8px 20px rgba(0,0,0,.4); }
   @media (max-width:1000px){ .bk-hero-grid{ grid-template-columns:1fr; gap:2.5rem; } }
+
+  /* SERVER-SIDE MERANIE */
+  .ms-flow { background:var(--bg2); border:1px solid var(--border); border-radius:1.25rem; padding:1.75rem; }
+  .ms-flow-title { font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:1.25rem; }
+  .ms-node { background:var(--bg3); border:1px solid var(--border); border-radius:.9rem; padding:1rem 1.2rem; }
+  .ms-node b { display:block; font-family:var(--font-head); font-size:.95rem; font-weight:700; }
+  .ms-node span { font-size:.8rem; color:var(--muted); }
+  .ms-node.acc { border-color:rgba(0,227,202,.35); background:linear-gradient(135deg,rgba(0,227,202,.07),var(--bg3)); }
+  .ms-node.acc b { color:var(--accent); }
+  .ms-arrow { text-align:center; color:var(--accent); font-size:1.1rem; line-height:1; margin:.6rem 0; opacity:.7; }
+  .ms-plats { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.9rem; }
+  .ms-plat { background:rgba(0,227,202,.07); border:1px solid rgba(0,227,202,.22); border-radius:.7rem; padding:.5rem .9rem; font-size:.84rem; font-weight:600; }
+  .ms-badline { display:flex; gap:.6rem; align-items:flex-start; font-size:.88rem; line-height:1.6; color:#c9c9c9; margin-top:.7rem; }
+  .ms-badline .x { color:rgba(255,107,107,.8); font-weight:700; flex-shrink:0; }
+  .ms-two { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem; }
+  @media (max-width:820px){ .ms-two{ grid-template-columns:1fr; } }
 </style>
 <script type="application/ld+json">
 {
@@ -349,10 +365,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
       "@type": "WebPage",
-      "@id": "https://hrom.marketing/reklamy-booking.html#webpage",
-      "url": "https://hrom.marketing/reklamy-booking.html",
-      "name": "Booking Ads — reklama priamo na Booking.com | HROM",
-      "description": "Booking Ads zobrazia vaše ubytovanie na popredných pozíciách vo výsledkoch vyhľadávania na Booking.com, Agode aj Priceline. Platíte iba za kliknutia a reklama využíva váš existujúci profil.",
+      "@id": "https://hrom.marketing/meranie-serverside.html#webpage",
+      "url": "https://hrom.marketing/meranie-serverside.html",
+      "name": "Server-side meranie — presnejšie dáta pre vašu reklamu | HROM",
+      "description": "Facebook, Instagram aj Google sa pri optimalizácii reklamy učia z toho, čo namerajú na vašom webe. Skontrolujeme celé meranie, opravíme chyby a doplníme ho tak, aby reklamné systémy dostávali čo najkvalitnejšie dáta — vrátane server-side merania.",
       "inLanguage": "sk",
       "isPartOf": {
         "@id": "https://hrom.marketing/#website"
@@ -361,11 +377,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "@id": "https://hrom.marketing/#org"
       },
       "primaryImageOfPage": "https://hrom.marketing/lecture1.jgp.png",
-      "dateModified": "2026-07-06"
+      "dateModified": "2026-08-07"
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://hrom.marketing/reklamy-booking.html#breadcrumb",
+      "@id": "https://hrom.marketing/meranie-serverside.html#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -376,15 +392,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Booking Ads",
-          "item": "https://hrom.marketing/reklamy-booking.html"
+          "name": "Server-side meranie",
+          "item": "https://hrom.marketing/meranie-serverside.html"
         }
       ]
     },
     {
       "@type": "Service",
-      "name": "Správa Booking Ads",
-      "serviceType": "Booking.com advertising management",
+      "name": "Server-side meranie a audit merania",
+      "serviceType": "Web analytics and server-side tracking implementation",
       "provider": {
         "@id": "https://hrom.marketing/#org"
       },
@@ -392,11 +408,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "@type": "Country",
         "name": "Slovensko"
       },
-      "description": "Nastavenie a správa kampaní Booking Ads pre ubytovacie zariadenia — zobrazenie na popredných pozíciách vo výsledkoch vyhľadávania, platba za kliknutia, cielenie na termíny, ktoré potrebujete obsadiť.",
-      "url": "https://hrom.marketing/reklamy-booking.html",
+      "description": "Audit a nastavenie merania konverzií — kontrola existujúceho merania, oprava chýb a doplnenie server-side vrstvy (Meta Conversions API, GA4 Measurement Protocol, Google Ads Enhanced Conversions), aby reklamné systémy optimalizovali na presné dáta.",
+      "url": "https://hrom.marketing/meranie-serverside.html",
       "audience": {
         "@type": "Audience",
-        "audienceType": "Ubytovacie zariadenia — hotely, penzióny, apartmány"
+        "audienceType": "Firmy, ktoré inzerujú na Meta a Google"
       }
     }
   ]
@@ -435,34 +451,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section-inner hero-inner">
     <div class="bk-hero-grid">
       <div class="reveal">
-        <div class="hero-badge">🏨 Booking Ads pre ubytovacie zariadenia</div>
+        <div class="hero-badge">📊 Presnejšie dáta pre reklamu</div>
         <h1 style="font-family:var(--font-head);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:800;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.2rem;">
-          Máte voľné termíny?<br><span style="color:var(--accent)">Na Bookingu môžete byť nad konkurenciou.</span>
+          Viete, podľa akých dát<br><span style="color:var(--accent)">sa rozhoduje vaša reklama?</span>
         </h1>
-          <p class="geo-lead" style="max-width:560px;">Booking Ads umožňujú zobrazovať vaše ubytovanie na <strong>popredných pozíciách</strong> vo výsledkoch vyhľadávania. Platíte iba za kliknutia a reklama využíva váš existujúci profil.</p>
-        <p style="color:var(--muted);font-size:.88rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:.9rem;">
-          Jedna reklama sa zobrazuje na troch platformách
-        </p>
-        <div class="bk-platforms" style="margin-top:0;">
-          <span class="bk-plat">Booking.com</span><span class="bk-plus">+</span>
-          <span class="bk-plat">Agoda</span><span class="bk-plus">+</span>
-          <span class="bk-plat">Priceline</span>
-        </div>
+        <p class="geo-lead" style="max-width:560px;">Facebook, Instagram aj Google sa pri optimalizácii reklamy učia z toho, čo namerajú na vašom webe. Ak je meranie neúplné alebo nastavené zle, pracujú s <strong>nepresným obrazom</strong> o tom, čo vám prináša zákazníkov.</p>
+        <p class="geo-lead" style="max-width:560px;color:var(--text);"><strong>Skontrolujeme celé meranie, opravíme chyby a doplníme ho tak, aby reklamné systémy dostávali čo najkvalitnejšie dáta.</strong></p>
         <div class="bk-hero-chips">
-          <div class="bk-hero-chip"><b>Vaše ubytovanie medzi prvými výsledkami</b><span>Viditeľnejšie vo chvíli, keď hosť hľadá</span></div>
-          <div class="bk-hero-chip"><b>97 rezervácií z reklamy</b><span>Výsledok reálnej kampane klienta</span></div>
+          <div class="bk-hero-chip"><b>Audit existujúceho merania</b><span>Zistíme, čo sa meria zle alebo vôbec</span></div>
+          <div class="bk-hero-chip"><b>Server-side vrstva</b><span>Dáta odchádzajú aj zo servera, nielen z prehliadača</span></div>
         </div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-          <a href="#cta" class="btn-primary">Chcem zistiť potenciál môjho ubytovania</a>
+          <a href="#cta" class="btn-primary">Chcem skontrolovať svoje meranie</a>
           <a href="#ako-funguje" class="btn-ghost">Ako to funguje</a>
         </div>
       </div>
 
-      <figure class="bk-shot reveal">
-        <span class="bk-adtag">Takto reklama vyzerá</span>
-        <img src="booking-ukazka.webp" alt="Ukážka reklamy Booking Ads vo výsledkoch vyhľadávania na Booking.com — na počítači aj v mobile, s označením Ad" width="1000" height="974" loading="eager">
-        <figcaption>Vaše ubytovanie sa zobrazí <strong>medzi prvými výsledkami</strong> vyhľadávania na počítači aj mobile. Jediným rozdielom je malé označenie <strong>„Ad"</strong>.</figcaption>
-      </figure>
+      <div class="ms-flow reveal">
+        <div class="ms-flow-title">Cesta jednej konverzie</div>
+        <div class="ms-node"><b>Návštevník na vašom webe</b><span>Klikne na reklamu, prezerá, odošle formulár alebo objedná</span></div>
+        <div class="ms-arrow">↓</div>
+        <div class="ms-node acc"><b>Server-side vrstva</b><span>Udalosť sa spracuje na serveri — s click ID, first-party cookie a dedupikáciou</span></div>
+        <div class="ms-arrow">↓</div>
+        <div class="ms-node"><b>Reklamné systémy</b><span>Dostanú kompletnejšie a stabilnejšie dáta na optimalizáciu</span>
+          <div class="ms-plats">
+            <span class="ms-plat">Meta (Facebook + Instagram)</span>
+            <span class="ms-plat">Google Ads</span>
+            <span class="ms-plat">GA4</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -471,11 +489,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <section id="stats" style="border-bottom:1px solid var(--border);border-top:1px solid var(--border);">
   <div class="section-inner" style="padding:1.25rem 0;">
     <div class="benefits-row reveal">
-      <div class="benefit-chip">✓ Platíte iba za kliknutia</div>
-      <div class="benefit-chip">✓ Využíva váš existujúci profil</div>
-      <div class="benefit-chip">✓ Booking.com + Agoda + Priceline</div>
-      <div class="benefit-chip">✓ Podporíte konkrétne termíny</div>
-      <div class="benefit-chip">✓ Výsledky vidíte v rezerváciách a tržbách</div>
+      <div class="benefit-chip">✓ Audit celého merania</div>
+      <div class="benefit-chip">✓ Oprava chýb v konverziách</div>
+      <div class="benefit-chip">✓ Server-side meranie</div>
+      <div class="benefit-chip">✓ Meta CAPI + Google Ads + GA4</div>
+      <div class="benefit-chip">✓ Bez duplicitných konverzií</div>
     </div>
   </div>
 </section>
@@ -486,32 +504,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="problem-grid">
       <div class="reveal">
         <div class="section-label">Problém</div>
-        <h2 class="section-title">Máte voľné termíny,<br>ale hostia najskôr vidia konkurenciu.</h2>
+        <h2 class="section-title">Reklama sa učí z vašich dát.<br>Aj z tých nesprávnych.</h2>
         <p style="color:var(--muted);font-size:1rem;line-height:1.8;margin-bottom:1rem;">
-          Na Booking.com rozhoduje viditeľnosť. Aj kvalitné ubytovanie s dobrým hodnotením môže zostať nižšie vo výsledkoch vyhľadávania a prísť tak o potenciálne rezervácie.
+          Algoritmy Meta a Google hľadajú ľudí podobných tým, ktorí u vás konvertovali. Vedia to však len z toho, čo im váš web pošle. Ak sa časť konverzií nezmeria, meria sa dvakrát alebo sa meria niečo iné, ako ste chceli, systém sa učí z pokriveného obrazu.
         </p>
         <p style="color:var(--text);font-size:1rem;line-height:1.8;margin-bottom:2rem;">
-          <strong>Booking Ads vám umožňujú podporiť viditeľnosť práve vtedy, keď potrebujete zvýšiť obsadenosť.</strong>
+          <strong>Výsledok? Rozpočet ide na zlé publikum a vy nemáte istotu, ktorá kampaň naozaj zarába.</strong>
         </p>
-        <a href="#vysledky" class="btn-primary">Pozrieť výsledky kampane</a>
+        <a href="#ako-funguje" class="btn-primary">Ako to opravíme</a>
       </div>
       <div class="reveal">
         <div class="problem-list">
           <div class="problem-item">
-            <div class="problem-icon">📉</div>
-            <div class="problem-text"><strong>Nižšia pozícia znamená nižšiu viditeľnosť</strong> — hostia prirodzene venujú najväčšiu pozornosť ubytovaniam, ktoré vidia medzi prvými výsledkami.</div>
+            <div class="problem-icon">🕳️</div>
+            <div class="problem-text"><strong>Chýbajúce konverzie</strong> — blokovače reklám, obmedzenia prehliadačov a iOS spôsobujú, že časť udalostí sa k Meta a Google vôbec nedostane.</div>
           </div>
           <div class="problem-item">
-            <div class="problem-icon">🗓️</div>
-            <div class="problem-text"><strong>Slabšie termíny sa obsadzujú ťažšie</strong> — pracovné dni, medzisezóna alebo last minute termíny často potrebujú dodatočnú podporu.</div>
+            <div class="problem-icon">👯</div>
+            <div class="problem-text"><strong>Duplicitné konverzie</strong> — tá istá udalosť sa započíta viackrát a výsledky vyzerajú lepšie, ako v skutočnosti sú.</div>
           </div>
           <div class="problem-item">
-            <div class="problem-icon">🏷️</div>
-            <div class="problem-text"><strong>Zľava nie je jediné riešenie</strong> — vyššiu obsadenosť nemusíte podporovať iba znižovaním ceny.</div>
+            <div class="problem-icon">🎯</div>
+            <div class="problem-text"><strong>Meria sa nesprávna vec</strong> — napríklad kliknutie na tlačidlo namiesto skutočne odoslaného dopytu alebo dokončenej objednávky.</div>
           </div>
           <div class="problem-item">
-            <div class="problem-icon">🔄</div>
-            <div class="problem-text"><strong>Konkurencia sa mení</strong> — nové ubytovania, ceny aj dostupnosť ovplyvňujú vašu pozíciu vo výsledkoch.</div>
+            <div class="problem-icon">🧭</div>
+            <div class="problem-text"><strong>Stratený zdroj návštevy</strong> — pri presmerovaní alebo prechode na externý systém sa stratí informácia o tom, z ktorej kampane zákazník prišiel.</div>
           </div>
         </div>
       </div>
@@ -524,107 +542,77 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section-inner section-pad">
     <div class="reveal">
       <div class="section-label">Ako to funguje</div>
-      <h2 class="section-title">Zobrazte sa vyššie práve vtedy,<br>keď to potrebujete.</h2>
-      <p style="color:var(--muted);font-size:1.05rem;max-width:660px;line-height:1.8;margin-bottom:0;">
-        Booking Ads umožňujú podporiť viditeľnosť vášho ubytovania vo výsledkoch vyhľadávania bez toho, aby ste museli meniť svoj profil alebo pripravovať nový obsah.
+      <h2 class="section-title">Meranie z prehliadača doplníme<br>o meranie zo servera.</h2>
+      <p style="color:var(--muted);font-size:1.05rem;max-width:680px;line-height:1.8;margin-bottom:0;">
+        Klasické meranie beží celé v prehliadači návštevníka — a práve tam sa dá najľahšie prerušiť. Server-side meranie posiela udalosti aj z vášho servera, takže dáta sú kompletnejšie a stabilnejšie.
       </p>
     </div>
 
-    <div class="bk-compare">
-      <div class="bk-col off reveal">
-        <h3>Bez reklamy</h3>
+    <div class="bk-compare reveal">
+      <div class="bk-col off">
+        <h3>Bez server-side merania</h3>
         <ul>
-          <li><span class="i">✕</span><span>Vaša pozícia závisí od bežných výsledkov Booking.com.</span></li>
-          <li><span class="i">✕</span><span>Máte obmedzenú kontrolu nad tým, kedy potrebujete zvýšiť viditeľnosť.</span></li>
-          <li><span class="i">✕</span><span>Slabšie termíny často riešite cenou alebo zľavou.</span></li>
-          <li><span class="i">✕</span><span>Neviete cielene podporiť konkrétne obdobie.</span></li>
+          <li><span class="i">✕</span> Všetko závisí od prehliadača návštevníka</li>
+          <li><span class="i">✕</span> Blokovače a nastavenia súkromia časť dát odrežú</li>
+          <li><span class="i">✕</span> Krátka životnosť cookies — zdroj návštevy sa stráca</li>
+          <li><span class="i">✕</span> Konverzie sa môžu počítať dvakrát</li>
+          <li><span class="i">✕</span> Algoritmus optimalizuje na neúplný obraz</li>
         </ul>
       </div>
-      <div class="bk-col on reveal">
-        <h3>S Booking Ads</h3>
+      <div class="bk-col on">
+        <h3>So server-side meraním</h3>
         <ul>
-          <li><span class="i">✓</span><span>Vaše ubytovanie sa môže zobrazovať na popredných pozíciách.</span></li>
-          <li><span class="i">✓</span><span>Vidíte kliknutia, rezervácie, prenocovania aj hodnotu rezervácií.</span></li>
-          <li><span class="i">✓</span><span>Reklamu môžete smerovať na termíny, ktoré potrebujete podporiť.</span></li>
-          <li><span class="i">✓</span><span>Platíte iba za kliknutia.</span></li>
+          <li><span class="i">✓</span> Udalosti odchádzajú aj z vášho servera</li>
+          <li><span class="i">✓</span> First-party cookies s dlhšou platnosťou</li>
+          <li><span class="i">✓</span> Click ID (gclid, fbclid) sa udrží naprieč celým webom</li>
+          <li><span class="i">✓</span> Dedupikácia cez <code>event_id</code> — žiadne dvojité počítanie</li>
+          <li><span class="i">✓</span> Meta CAPI, Google Ads aj GA4 dostanú tie isté čisté dáta</li>
         </ul>
       </div>
     </div>
 
-    <div class="features-grid" style="margin-top:2rem;">
-      <div class="feature-item reveal">
-        <div class="feature-check">✓</div>
-        <div class="feature-text">
-          <strong>Využíva váš existujúci profil</strong>
-          <span>Reklama pracuje s fotografiami, cenami a hodnoteniami, ktoré už máte na Booking.com. Nie je potrebné pripravovať bannery ani nové texty.</span>
-        </div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-check">✓</div>
-        <div class="feature-text">
-          <strong>Podporíte konkrétne termíny</strong>
-          <span>Kampaň môžeme nastaviť podľa dní príjazdu, dĺžky pobytu, slabších dní, last minute termínov, krajiny hosťa alebo zariadenia.</span>
-        </div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-check">✓</div>
-        <div class="feature-text">
-          <strong>Jedna kampaň, tri platformy</strong>
-          <span>Kampaň sa môže zobrazovať na Booking.com, Agoda aj Priceline.</span>
-        </div>
-      </div>
-      <div class="feature-item reveal">
-        <div class="feature-check">✓</div>
-        <div class="feature-text">
-          <strong>Platíte iba za kliknutia</strong>
-          <span>Náklady vznikajú až vtedy, keď používateľ klikne na vaše ubytovanie. Ak sa už zobrazujete medzi prvými výsledkami, reklama sa nemusí spustiť.</span>
-        </div>
-      </div>
+    <div class="features-grid" style="margin-top:2.5rem;">
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Meta Conversions API</strong><span>Konverzie posielame priamo zo servera do Meta — nezávisle od prehliadača.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Google Ads Enhanced Conversions</strong><span>Presnejšie priradenie konverzií ku kampaniam a kľúčovým slovám.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>GA4 Measurement Protocol</strong><span>Serverové udalosti v GA4, aby reporty sedeli s realitou.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Zachovanie zdroja návštevy</strong><span>Click ID a UTM parametre držíme naprieč celým webom až po konverziu.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Dedupikácia udalostí</strong><span>Každá udalosť má vlastné ID, takže sa nezapočíta dvakrát.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Súlad so súhlasom</strong><span>Meranie prepojíme s cookie lištou — bez súhlasu sa nič neposiela.</span></div></div>
     </div>
-
-    <div class="bk-chips">
-      <span class="bk-chip">📅 Konkrétne dni príjazdu</span>
-      <span class="bk-chip">🛏️ Dlhšie pobyty</span>
-      <span class="bk-chip">📉 Slabšie dni v týždni</span>
-      <span class="bk-chip">⏱️ Last minute termíny</span>
-      <span class="bk-chip">🌍 Vybrané krajiny</span>
-      <span class="bk-chip">📱 Mobil alebo počítač</span>
-    </div>
-    <p style="color:var(--muted);font-size:.95rem;max-width:680px;line-height:1.8;margin-top:1.25rem;">
-      Reklamný rozpočet tak môžete smerovať prednostne do termínov a segmentov, kde chcete podporiť obsadenosť.
-    </p>
   </div>
 </section>
 
-<!-- VÝSLEDKY Z PRAXE -->
-<section id="vysledky">
+<!-- ČO MERIAME -->
+<section id="co-meriame">
   <div class="section-inner section-pad">
     <div class="reveal">
-      <div class="section-label">Výsledky z praxe</div>
-      <h2 class="section-title">Reálna kampaň mestského hotela<br>v Bratislave s hodnotením 8</h2>
-      <p style="color:var(--muted);font-size:1.05rem;max-width:680px;line-height:1.8;margin-bottom:0;">
-        Počas sledovaného obdobia 2 rokov klient investoval do reklamy 2 700 €. Reklama priniesla 97 rezervácií, spolu 177 prenocovaní, v celkovej hodnote 12 565 €.
+      <div class="section-label">Čo meriame</div>
+      <h2 class="section-title">Meriame to, čo vám naozaj<br>prináša zákazníkov</h2>
+      <p style="color:var(--muted);font-size:1rem;max-width:680px;line-height:1.8;">
+        Nie kliknutia a dosah. Konkrétne kroky, ktoré u vás znamenajú obchod — a nastavíme ich tak, aby im rozumeli aj reklamné systémy.
       </p>
     </div>
-    <div class="bk-kpis">
-      <div class="bk-kpi reveal"><div class="k">ROAS kampane</div><div class="v">4,65×</div><div class="n">z 1 € investovaného do reklamy</div></div>
-      <div class="bk-kpi reveal"><div class="k">Investícia do reklamy</div><div class="v">2 700 €</div><div class="n">za 2 roky, sezónne</div></div>
-      <div class="bk-kpi reveal"><div class="k">Hodnota rezervácií</div><div class="v">12 565 €</div><div class="n">podľa Booking.com</div></div>
+    <div class="bk-chips reveal">
+      <span class="bk-chip">Odoslaný formulár / dopyt</span>
+      <span class="bk-chip">Telefonát z webu</span>
+      <span class="bk-chip">Klik na e-mail</span>
+      <span class="bk-chip">Rezervácia termínu</span>
+      <span class="bk-chip">Nákup / objednávka</span>
+      <span class="bk-chip">Konverzácia s chatbotom</span>
+      <span class="bk-chip">Prechod na externý rezervačný systém</span>
+      <span class="bk-chip">Hĺbka prečítania stránky</span>
     </div>
-    <div class="bk-grid6">
-      <div class="bk-cell reveal"><div class="k">Zobrazenia reklamy</div><div class="v">493 115</div></div>
-      <div class="bk-cell reveal"><div class="k">Kliknutia na ubytovanie</div><div class="v">5 870</div></div>
-      <div class="bk-cell reveal"><div class="k">Rezervácie</div><div class="v acc">97</div></div>
-      <div class="bk-cell reveal"><div class="k">Prenocovania</div><div class="v acc">177</div></div>
-      <div class="bk-cell reveal"><div class="k">Priem. cena za kliknutie</div><div class="v">0,46 €</div></div>
-      <div class="bk-cell reveal"><div class="k">Priem. cena za rezerváciu</div><div class="v">27,84 €</div></div>
-      <div class="bk-cell reveal"><div class="k">Priem. hodnota rezervácie</div><div class="v acc">129,54 €</div></div>
-      <div class="bk-cell reveal"><div class="k">Hodnotenie ubytovania</div><div class="v">8,0</div></div>
+
+    <div class="ms-two">
+      <div class="bk-guarantee reveal" style="margin-top:0;max-width:none;">
+        <h3>⚡ Čo ak je konverzia mimo vášho webu?</h3>
+        <p>Ak rezervácie alebo objednávky dokončuje externý systém (napríklad rezervačný alebo vstupenkový portál), samotný web ich nevidí. V takom prípade nastavíme prenos údajov cez webhook alebo pravidelný import — inak by šlo len o odhad a to vám nepovieme inak.</p>
+      </div>
+      <div class="bk-guarantee reveal" style="margin-top:0;max-width:none;background:var(--bg2);border-color:var(--border);">
+        <h3>🔒 GDPR a súhlas</h3>
+        <p>Server-side meranie nie je spôsob, ako obísť súhlas návštevníka. Meranie napojíme na cookie lištu tak, aby sa marketingové udalosti odosielali iba vtedy, keď na to má návštevník udelený súhlas.</p>
+      </div>
     </div>
-    <p style="color:var(--text);font-size:1.05rem;max-width:720px;line-height:1.8;margin-top:2rem;" class="reveal">
-      Jedna získaná rezervácia stála v priemere <strong>27,84 €</strong> a priniesla rezerváciu v priemernej hodnote <strong style="color:var(--accent)">129,54 €</strong>.
-    </p>
-    <p class="bk-src reveal">Čísla pochádzajú priamo z reklamného systému Booking.com. Výsledky konkrétnych kampaní sa líšia podľa lokality, sezóny, cien, dostupnosti a hodnotenia ubytovania.</p>
   </div>
 </section>
 
@@ -632,81 +620,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <section id="postup">
   <div class="section-inner section-pad">
     <div class="reveal">
-      <div class="section-label">Postup</div>
-      <h2 class="section-title">Spustenie kampane je jednoduché</h2>
-    </div>
-    <div class="steps">
-      <div class="step reveal">
-        <div class="step-num">01</div>
-        <div class="step-title">Prepojíme vaše ubytovanie s reklamným systémom</div>
-        <div class="step-desc">Vytvoríme reklamný účet a napojíme ho na vaše ubytovanie na Booking.com. Z vašej strany je potrebné iba poskytnúť potrebný prístup.</div>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">02</div>
-        <div class="step-title">Spustíme pilotnú kampaň</div>
-        <div class="step-desc">Nastavíme cielenie, rozpočet a termíny, ktoré chcete podporiť. Počas prvého mesiaca zbierame reálne dáta o výkonnosti kampane — za našu prácu neplatíte, hradíte iba reklamný rozpočet.</div>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">03</div>
-        <div class="step-title">Vyhodnotíme výsledky</div>
-        <div class="step-desc">Spoločne prejdeme kliknutia, rezervácie, tržby a návratnosť kampane na vašich vlastných dátach. Na základe toho sa rozhodnete, či chcete pokračovať.</div>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">04</div>
-        <div class="step-title">Kampaň priebežne optimalizujeme</div>
-        <div class="step-desc">Sledujeme, ktoré termíny, segmenty a nastavenia prinášajú najlepšie výsledky, a podľa toho kampaň upravujeme. Raz mesačne dostanete stručný prehľad.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ČO DOSTANETE -->
-<section id="dostanete">
-  <div class="section-inner section-pad">
-    <div class="reveal">
-      <div class="section-label">Čo dostanete</div>
-      <h2 class="section-title">Postaráme sa o reklamy<br>od nastavenia až po optimalizáciu</h2>
+      <div class="section-label">Ako to prebieha</div>
+      <h2 class="section-title">Od auditu po funkčné meranie</h2>
     </div>
     <div class="features-grid">
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Založenie a napojenie</strong><span>Vytvoríme reklamný účet a zabezpečíme prepojenie s vaším ubytovaním.</span></div></div>
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Kompletné nastavenie kampane</strong><span>Nastavíme rozpočet, termíny, cielenie a parametre kampane.</span></div></div>
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Priebežná optimalizácia</strong><span>Sledujeme výsledky a upravujeme kampaň podľa reálnych dát.</span></div></div>
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Mesačný reporting</strong><span>Dostanete stručný prehľad investície, rezervácií, návratnosti a ďalších krokov.</span></div></div>
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Konzultácie</strong><span>Výsledky a odporúčania s vami podľa potreby prejdeme telefonicky alebo online.</span></div></div>
-      <div class="feature-item reveal"><div class="feature-check">✓</div><div class="feature-text"><strong>Kompletná správa</strong><span>Vy sa venujete svojmu ubytovaniu. My sa staráme o reklamnú kampaň.</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CENA A PODMIENKY -->
-<section id="cennik">
-  <div class="section-inner section-pad">
-    <div class="reveal">
-      <div class="section-label">Cena a podmienky</div>
-      <h2 class="section-title">Najskôr si overíte výsledok<br>na vlastných dátach</h2>
-    </div>
-    <div class="bk-price reveal">
-      <div class="bk-row free"><div class="lbl">Založenie a napojenie<span class="sub">Vytvorenie reklamného účtu a napojenie na vaše ubytovanie.</span></div><div class="amt">0 €</div></div>
-      <div class="bk-row free"><div class="lbl">Prvý mesiac správy<span class="sub">Platíte iba samotný reklamný rozpočet. Za našu prácu neplatíte nič.</span></div><div class="amt">0 €</div></div>
-      <div class="bk-row"><div class="lbl">Od druhého mesiaca<span class="sub">Správa kampane, priebežná optimalizácia a mesačný reporting.</span></div><div class="amt">199 € / mesiac</div></div>
-      <div class="bk-row"><div class="lbl">Výkonnostná odmena<span class="sub">Neúčtujeme ju v mesiaci, keď sa z 1 € nevrátia aspoň 2 € v rezerváciách.</span></div><div class="amt">5 % z rozpočtu</div></div>
-      <div class="bk-row"><div class="lbl">Odporúčaný minimálny reklamný rozpočet<span class="sub">Tento rozpočet ide priamo do reklamného systému Booking.com, nie nám.</span></div><div class="amt">300 € / mesiac</div></div>
-    </div>
-    <p class="bk-note reveal">Ceny sú uvedené bez DPH. Reklamný rozpočet sa hradí samostatne.</p>
-
-    <div class="bk-guarantee reveal">
-      <h3>⚡ Naša odmena je naviazaná na výsledok</h3>
-      <p>Časť našej odmeny závisí od výkonnosti kampane. Ak reklama nedosiahne minimálne <strong style="color:var(--accent)">dvojnásobnú návratnosť</strong>, výkonnostnú odmenu za daný mesiac neúčtujeme.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SÚVISIACA SLUŽBA -->
-<section id="meranie-link" style="border-top:1px solid var(--border);">
-  <div class="section-inner" style="padding:2.25rem 0;">
-    <div class="bk-guarantee reveal" style="margin-top:0;">
-      <h3>📊 Meriate, čo vám reklama naozaj prináša?</h3>
-      <p>Rezervácie z Booking.com sa dokončujú mimo vášho webu, takže bežné meranie ich nevidí. Ak inzerujete aj na Meta či Google, oplatí sa najprv skontrolovať, či meranie posiela správne dáta — <a href="meranie-serverside.html" style="color:var(--accent);font-weight:700;">pozrite si server-side meranie&nbsp;→</a></p>
+      <div class="feature-item reveal"><div class="feature-check">1</div><div class="feature-text"><strong>Audit merania</strong><span>Prejdeme, čo sa na webe meria, čo sa meria zle a čo úplne chýba. Dostanete zoznam nálezov.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">2</div><div class="feature-text"><strong>Návrh merania</strong><span>Určíme, ktoré akcie sú pre váš biznis konverzie a ako sa majú posielať do Meta, Google Ads a GA4.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">3</div><div class="feature-text"><strong>Nasadenie</strong><span>Nasadíme meranie na web vrátane server-side vrstvy a napojenia na cookie lištu.</span></div></div>
+      <div class="feature-item reveal"><div class="feature-check">4</div><div class="feature-text"><strong>Overenie a odovzdanie</strong><span>Otestujeme každú udalosť, skontrolujeme dedupikáciu a odovzdáme dokumentáciu, čo sa kde meria.</span></div></div>
     </div>
   </div>
 </section>
@@ -716,10 +637,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section-inner section-pad">
     <div class="cta-inner reveal">
       <div class="section-label">Nezáväzná konzultácia</div>
-      <h2 class="cta-title">Zistite, aký potenciál majú<br>kampane pre <span>vaše ubytovanie</span></h2>
-      <p class="cta-sub">Pozrieme sa na vaše ubytovanie, konkurenciu a možnosti kampane a povieme vám, čo môžete realisticky očakávať. Úvodná konzultácia je bezplatná a nezáväzná.</p>
+      <h2 class="cta-title">Pozrieme sa na vaše meranie<br>a povieme vám, <span>čo sa meria zle</span></h2>
+      <p class="cta-sub">Stačí nám prístup do vášho reklamného účtu a webu. Prejdeme meranie, spíšeme nálezy a navrhneme, čo opraviť. Úvodná konzultácia je bezplatná a nezáväzná.</p>
       <div class="cta-btns">
-        <a href="mailto:rene.rychvalsky@hrom.marketing?subject=Booking%20Ads%20%E2%80%94%20pos%C3%BAdenie%20ubytovania" class="btn-primary">Chcem posúdiť moje ubytovanie</a>
+        <a href="mailto:rene.rychvalsky@hrom.marketing?subject=Server-side%20meranie%20%E2%80%94%20audit%20merania" class="btn-primary">Chcem audit merania</a>
         <a href="tel:+421915563299" class="btn-ghost">☎ +421 915 563 299</a>
       </div>
       <p style="color:var(--muted);font-size:.85rem;margin-top:1.5rem;">René Rychvalský — HROM Marketing s. r. o.</p>
