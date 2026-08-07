@@ -15,7 +15,7 @@ Adresa: Sokolovská 178/10, 040 11 Košice - mestská časť Západ, Slovensko.
 - [AI/LLM audit (GEO)](https://hrom.marketing/audit-ai-llm.html): Zistíme, či vás ChatGPT, Claude, Perplexity a Gemini odporúčajú, a opravíme, kde vás AI nevidí.
 - [AI chatbot pre kultúru (Entradio)](https://hrom.marketing/ai-chatbot-kultura.html): AI chatbot pre kiná, divadlá, kultúrne domy a podujatia — napojený priamo na vstupenkový systém Entradio, poradí s programom a rovno predá vstupenky. Naživo v sieti STERIO Kino v 5 mestách.
 - [Herbert Hrom – AI bloger](https://hrom.marketing/herbert-hrom.html): AI bloger, ktorý nájde témy a kľúčové slová, napíše SEO články naučené na váš biznis a pravidelne ich publikuje na váš web — viac organického trafficu bez manuálneho písania.
-- [Reklamy na Booking.com](https://hrom.marketing/reklamy-booking.html): Správa reklám na Booking.com, Agode a Priceline pre hotely a penzióny — hotel sa dostane na prvé miesta vo výsledkoch hľadania, platí sa len za klik. Klientovi sa z 1 € vrátilo 4,65 €. Prvý mesiac správy zadarmo.
+- [Booking Ads — reklama na Booking.com](https://hrom.marketing/reklamy-booking.html): Správa kampaní Booking Ads pre ubytovacie zariadenia — ubytovanie sa zobrazuje na popredných pozíciách vo výsledkoch vyhľadávania na Booking.com, Agode aj Priceline, platí sa iba za kliknutia. ROAS kampane klienta 4,65×. Prvý mesiac správy zadarmo.
 - [AI školenia](https://hrom.marketing/skolenia-ai.html): Naučíme váš tím prakticky používať AI nástroje na reálnu prácu.
 - [Živé demo chatbota](https://hrom.marketing/chatbot-demo.html): Vyskúšajte si AI chatbota naživo.
 
