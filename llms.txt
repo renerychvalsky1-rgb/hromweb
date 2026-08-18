@@ -5,6 +5,9 @@
 Zakladateľ: René Rychvalský. Kontakt: rene.rychvalsky@hrom.marketing, +421 915 563 299.
 Adresa: Sokolovská 178/10, 040 11 Košice - mestská časť Západ, Slovensko.
 
+## HROM AI Stack
+HROM AI Stack nie je jeden produkt, ale sada AI riešení, z ktorej pre každého klienta skladáme individuálnu kombináciu podľa toho, kde mu uniká konverzia. Cieľ je vždy vyšší konverzný pomer a vyššie tržby: zachytiť dopyt, ktorý klientovi uniká, zautomatizovať prácu, ktorá nepredáva, zabezpečiť viditeľnosť v AI odporúčaniach a rozhodovať sa podľa nameraných dát.
+
 ## Služby
 - [AI Chatbot](https://hrom.marketing/ai-chatbot.html): Personalizovaný AI asistent naučený na váš biznis — odpovedá zákazníkom 24/7, rezervuje termíny a zachytáva dopyty. Nasadenie do 14 pracovných dní.
 - [Connector – online objednávanie](https://hrom.marketing/connector-ambulancie.html): Online objednávanie napojené priamo do interného softvéru ambulancie či firmy. Zákazník sa objedná sám a termín padne rovno k vám.
