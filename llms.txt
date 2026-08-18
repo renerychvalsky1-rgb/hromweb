@@ -23,6 +23,10 @@ HROM AI Stack nie je jeden produkt, ale sada AI riešení, z ktorej pre každéh
 - [AI školenia](https://hrom.marketing/skolenia-ai.html): Naučíme váš tím prakticky používať AI nástroje na reálnu prácu.
 - [Živé demo chatbota](https://hrom.marketing/chatbot-demo.html): Vyskúšajte si AI chatbota naživo.
 
+## Tím
+- René Rychvalský — zakladateľ HROM Marketing, stratégia a vedenie projektov.
+- Boris Borovička — zodpovedá za server-side meranie a kampane Booking Ads. Viac ako 7 rokov v digitálnom marketingu; vo firemnom prostredí Digital Channel Manager pre Mercedes-Benz Vans v regióne CEE (Česko, Slovensko, Maďarsko, Rumunsko), predtým Mercedes-Benz Slovakia a H&M (Loyalty Manager & Marketing Coordinator). Od roku 2017 aj freelance digitálny marketing pre zdravotníctvo, retail, hotelierstvo a B2B.
+
 ## Referencie
 - [mamkrcovezily.sk](https://mamkrcovezily.sk): Cievna chirurgia — chatbot + online objednávanie, telefonáty klesli o ~50 %.
 - [ultrazvukovepracovisko.sk](https://ultrazvukovepracovisko.sk): Ultrazvukové vyšetrenia — online objednávanie napojené na systém.
