@@ -25,7 +25,7 @@ HROM AI Stack nie je jeden produkt, ale sada AI riešení, z ktorej pre každéh
 
 ## Tím
 - René Rychvalský — zakladateľ HROM Marketing, stratégia a vedenie projektov.
-- Boris Borovička (Diginav s. r. o.) — partner HROM Marketing pre produkty Booking Ads a server-side meranie; tieto dva produkty robíme v spolupráci s Diginav s. r. o. Viac ako 7 rokov v digitálnom marketingu; vo firemnom prostredí Digital Channel Manager pre Mercedes-Benz Vans v regióne CEE (Česko, Slovensko, Maďarsko, Rumunsko), predtým Mercedes-Benz Slovakia a H&M. Od roku 2017 pracuje aj s menšími firmami — klienta v segmente zubných kliník doviedol od nuly k 5 miliónom eur v tržbách.
+- Boris Borovička (Diginav s. r. o.) — produkty Booking Ads a server-side meranie robíme v spolupráci s Diginav s. r. o.
 
 ## Referencie
 - [mamkrcovezily.sk](https://mamkrcovezily.sk): Cievna chirurgia — chatbot + online objednávanie, telefonáty klesli o ~50 %.

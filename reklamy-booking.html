@@ -297,25 +297,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bk-adtag { position:absolute; top:-.7rem; left:-.7rem; z-index:2; background:var(--accent); color:#000; font-family:var(--font-head); font-weight:800; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; padding:.4rem .85rem; border-radius:2rem; box-shadow:0 8px 20px rgba(0,0,0,.4); }
   @media (max-width:1000px){ .bk-hero-grid{ grid-template-columns:1fr; gap:2.5rem; } }
 
-  /* EXPERT — Boris */
-  .exp-card { display:grid; grid-template-columns:300px 1fr; gap:2.5rem; background:var(--bg3); border:1px solid var(--border); border-radius:1.5rem; padding:2.5rem; margin-top:2.5rem; }
-  .exp-side { border-right:1px solid var(--border); padding-right:2.5rem; }
-  .exp-avatar { width:88px; height:88px; border-radius:50%; background:var(--accent); color:#000; display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-weight:800; font-size:1.7rem; letter-spacing:.02em; margin-bottom:1.25rem; }
-  .exp-meta b { display:block; font-family:var(--font-head); font-size:1.15rem; font-weight:800; letter-spacing:-.01em; margin-bottom:.35rem; }
-  .exp-meta span { display:block; font-size:.82rem; color:var(--accent); font-weight:600; line-height:1.6; }
-  .exp-facts { list-style:none; margin-top:1.75rem; display:flex; flex-direction:column; gap:.9rem; }
-  .exp-facts li { font-size:.85rem; color:var(--muted); line-height:1.5; }
-  .exp-facts li span { display:block; font-family:var(--font-head); font-size:1.35rem; font-weight:800; color:var(--text); line-height:1; margin-bottom:.2rem; }
-  .exp-text p { font-size:.95rem; line-height:1.85; color:#c9c9c9; margin-bottom:1.1rem; }
-  .exp-text p strong { color:var(--text); }
-  .exp-text p:last-child { margin-bottom:0; }
-  .exp-foot { font-size:.85rem !important; color:var(--muted) !important; padding-top:1.1rem; border-top:1px solid var(--border); }
 
-  .exp-hl { margin-top:1.75rem; background:linear-gradient(135deg,rgba(0,227,202,.1),transparent); border:1px solid rgba(0,227,202,.3); border-radius:1rem; padding:1.2rem 1.3rem; }
-  .exp-hl-label { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
-  .exp-hl-num { font-family:var(--font-head); font-size:1.7rem; font-weight:800; line-height:1; letter-spacing:-.02em; margin-bottom:.5rem; }
-  .exp-hl-note { font-size:.8rem; color:var(--muted); line-height:1.6; }
-  @media (max-width:900px){ .exp-card{ grid-template-columns:1fr; gap:1.75rem; padding:1.75rem; } .exp-side{ border-right:none; border-bottom:1px solid var(--border); padding-right:0; padding-bottom:1.75rem; } }
+  /* PODPIS — meno + foto */
+  .sig { display:flex; align-items:center; justify-content:center; gap:.9rem; margin-top:2rem; }
+  .sig-photo { position:relative; width:52px; height:52px; border-radius:50%; overflow:hidden; background:var(--accent); color:#000; display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-weight:800; font-size:1rem; flex-shrink:0; }
+  .sig-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .sig-name { font-family:var(--font-head); font-size:.98rem; font-weight:700; letter-spacing:.01em; }
 </style>
 <script type="application/ld+json">
 {
@@ -381,10 +368,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         "@id": "https://hrom.marketing/#org"
       },
       "primaryImageOfPage": "https://hrom.marketing/lecture1.jgp.png",
-      "dateModified": "2026-07-06",
-      "mentions": {
-        "@id": "https://hrom.marketing/#boris-borovicka"
-      }
+      "dateModified": "2026-07-06"
     },
     {
       "@type": "BreadcrumbList",
@@ -420,34 +404,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "audience": {
         "@type": "Audience",
         "audienceType": "Ubytovacie zariadenia — hotely, penzióny, apartmány"
-      }
-    },
-    {
-      "@type": "Person",
-      "@id": "https://hrom.marketing/#boris-borovicka",
-      "name": "Boris Borovička",
-      "jobTitle": "Partner pre Booking Ads a server-side meranie",
-      "description": "Boris Borovička z Diginav s. r. o. je partner HROM Marketing pre Booking Ads a server-side meranie. Viac ako sedem rokov v digitálnom marketingu; vo firemnom prostredí Digital Channel Manager pre Mercedes-Benz Vans v regióne CEE (Česko, Slovensko, Maďarsko, Rumunsko), predtým Mercedes-Benz Slovakia a H&M. Od roku 2017 pracuje aj s menšími firmami — klienta v segmente zubných kliník doviedol od nuly k 5 miliónom eur v tržbách.",
-      "worksFor": [
-        {
-          "@type": "Organization",
-          "name": "Diginav s. r. o."
-        },
-        {
-          "@id": "https://hrom.marketing/#org"
-        }
-      ],
-      "knowsAbout": [
-        "Server-side meranie",
-        "Meta Conversions API",
-        "Google Ads",
-        "GA4",
-        "Booking Ads",
-        "Výkonnostný marketing"
-      ],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "I-Shou University"
       }
     }
   ]
@@ -762,41 +718,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
-<!-- EXPERT -->
-<section id="expert" style="background:var(--bg2);">
-  <div class="section-inner section-pad">
-    <div class="reveal">
-      <div class="section-label">Kto to má na starosti</div>
-      <h2 class="section-title">Boris Borovička, Diginav s. r. o.<br>— partner na meranie a Booking Ads</h2>
-    </div>
-
-    <div class="exp-card reveal">
-      <div class="exp-side">
-        <div class="exp-avatar">BB</div>
-        <div class="exp-meta">
-          <b>Boris Borovička</b>
-          <span>Diginav s. r. o. · partner HROM Marketing</span>
-        </div>
-        <div class="exp-hl">
-          <div class="exp-hl-label">Výsledok klienta</div>
-          <div class="exp-hl-num">0 → 5 mil. €</div>
-          <div class="exp-hl-note">Tržby klienta v segmente zubných kliník, ktorého viedol od nuly.</div>
-        </div>
-        <ul class="exp-facts">
-          <li><span>7+</span> rokov v digitálnom marketingu</li>
-          <li><span>4</span> trhy v regióne CEE</li>
-        </ul>
-      </div>
-      <div class="exp-text">
-        <p><strong>Booking Ads a server-side meranie</strong> robíme v HROM v spolupráci s <strong>Diginav s. r. o.</strong> Za oboma produktmi stojí Boris Borovička.</p>
-        <p>V digitálnom marketingu je viac ako sedem rokov — na oboch stranách stola. Vo firemnom svete pôsobí ako Digital Channel Manager pre Mercedes-Benz Vans v regióne strednej a východnej Európy: Česko, Slovensko, Maďarsko, Rumunsko. Predtým bol päť rokov marketingovým špecialistom v Mercedes-Benz Slovakia a v H&amp;M pracoval na vernostnom programe.</p>
-        <p>Popri tom robí od roku 2017 digitál pre menšie firmy — zdravotníctvo, retail, hotelierstvo aj B2B. Klienta zo segmentu zubných kliník doviedol od nuly k <strong>5 miliónom € v tržbách</strong>.</p>
-        <p>Práve preto mu tieto dva produkty sadli. Vie, ako fungujú veľké značky s prepracovanými procesmi, aj čo je reálne uskutočniteľné vo firme, ktorá nemá desaťčlenný tím. Nezaujímajú ho reporty, ktoré nikto nečíta — zaujíma ho, čo sa dá odmerať a čo z toho vyplýva pre tržby. Vyštudoval I-Shou University na Taiwane, hovorí po slovensky, česky aj anglicky.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CTA -->
 <section id="cta" style="background:var(--bg2);">
   <div class="section-inner section-pad">
@@ -808,7 +729,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="mailto:rene.rychvalsky@hrom.marketing?subject=Booking%20Ads%20%E2%80%94%20pos%C3%BAdenie%20ubytovania" class="btn-primary">Chcem posúdiť moje ubytovanie</a>
         <a href="tel:+421915563299" class="btn-ghost">☎ +421 915 563 299</a>
       </div>
-      <p style="color:var(--muted);font-size:.85rem;margin-top:1.5rem;">René Rychvalský — HROM Marketing s. r. o.</p>
+      <div class="sig">
+        <span class="sig-photo">BB<img src="boris.jpg" alt="Boris Borovička" onerror="this.remove()"></span>
+        <span class="sig-name">Boris Borovička</span>
+      </div>
     </div>
   </div>
 </section>
