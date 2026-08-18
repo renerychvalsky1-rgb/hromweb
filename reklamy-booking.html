@@ -310,6 +310,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .exp-text p strong { color:var(--text); }
   .exp-text p:last-child { margin-bottom:0; }
   .exp-foot { font-size:.85rem !important; color:var(--muted) !important; padding-top:1.1rem; border-top:1px solid var(--border); }
+
+  .exp-hl { margin-top:1.75rem; background:linear-gradient(135deg,rgba(0,227,202,.1),transparent); border:1px solid rgba(0,227,202,.3); border-radius:1rem; padding:1.2rem 1.3rem; }
+  .exp-hl-label { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+  .exp-hl-num { font-family:var(--font-head); font-size:1.7rem; font-weight:800; line-height:1; letter-spacing:-.02em; margin-bottom:.5rem; }
+  .exp-hl-note { font-size:.8rem; color:var(--muted); line-height:1.6; }
   @media (max-width:900px){ .exp-card{ grid-template-columns:1fr; gap:1.75rem; padding:1.75rem; } .exp-side{ border-right:none; border-bottom:1px solid var(--border); padding-right:0; padding-bottom:1.75rem; } }
 </style>
 <script type="application/ld+json">
@@ -421,11 +426,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@type": "Person",
       "@id": "https://hrom.marketing/#boris-borovicka",
       "name": "Boris Borovička",
-      "jobTitle": "Špecialista na meranie a Booking Ads",
-      "description": "Boris Borovička má viac ako sedem rokov skúseností v digitálnom marketingu. Vo firemnom prostredí pôsobí ako Digital Channel Manager pre Mercedes-Benz Vans v regióne CEE (Česko, Slovensko, Maďarsko, Rumunsko), predtým bol marketingovým špecialistom v Mercedes-Benz Slovakia a Loyalty Manager & Marketing Coordinator v H&M. Od roku 2017 robí digitálny marketing aj na voľnej nohe. V HROM Marketing zodpovedá za server-side meranie a kampane Booking Ads.",
-      "worksFor": {
-        "@id": "https://hrom.marketing/#org"
-      },
+      "jobTitle": "Partner pre Booking Ads a server-side meranie",
+      "description": "Boris Borovička z Diginav s. r. o. je partner HROM Marketing pre Booking Ads a server-side meranie. Viac ako sedem rokov v digitálnom marketingu; vo firemnom prostredí Digital Channel Manager pre Mercedes-Benz Vans v regióne CEE (Česko, Slovensko, Maďarsko, Rumunsko), predtým Mercedes-Benz Slovakia a H&M. Od roku 2017 pracuje aj s menšími firmami — klienta v segmente zubných kliník doviedol od nuly k 5 miliónom eur v tržbách.",
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "Diginav s. r. o."
+        },
+        {
+          "@id": "https://hrom.marketing/#org"
+        }
+      ],
       "knowsAbout": [
         "Server-side meranie",
         "Meta Conversions API",
@@ -756,7 +767,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="section-inner section-pad">
     <div class="reveal">
       <div class="section-label">Kto to má na starosti</div>
-      <h2 class="section-title">Boris Borovička<br>— človek za dátami v HROM</h2>
+      <h2 class="section-title">Boris Borovička, Diginav s. r. o.<br>— partner na meranie a Booking Ads</h2>
     </div>
 
     <div class="exp-card reveal">
@@ -764,22 +775,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="exp-avatar">BB</div>
         <div class="exp-meta">
           <b>Boris Borovička</b>
-          <span>Server-side meranie &amp; Booking Ads · HROM Marketing</span>
+          <span>Diginav s. r. o. · partner HROM Marketing</span>
+        </div>
+        <div class="exp-hl">
+          <div class="exp-hl-label">Výsledok klienta</div>
+          <div class="exp-hl-num">0 → 5 mil. €</div>
+          <div class="exp-hl-note">Tržby klienta v segmente zubných kliník, ktorého viedol od nuly.</div>
         </div>
         <ul class="exp-facts">
           <li><span>7+</span> rokov v digitálnom marketingu</li>
           <li><span>4</span> trhy v regióne CEE</li>
-          <li><span>2017</span> — od kedy robí digitál na voľnej nohe</li>
         </ul>
       </div>
       <div class="exp-text">
-        <p>Boris má za sebou viac ako sedem rokov v digitálnom marketingu — a to na oboch stranách stola. Vo firemnom svete aj ako nezávislý konzultant.</p>
-        <p>Dnes pôsobí ako <strong>Digital Channel Manager pre Mercedes-Benz Vans</strong> v regióne strednej a východnej Európy, kde má na starosti Česko, Slovensko, Maďarsko a Rumunsko. Je členom manažmentu Vans CEE a reportuje priamo CEO klastra. Predtým bol päť rokov marketingovým špecialistom v Mercedes-Benz Slovakia, kde viedol marketing pre osobné aj úžitkové vozidlá a podieľal sa na projektoch naprieč celým regiónom.</p>
-        <p>Ešte skôr pracoval v <strong>H&amp;M</strong> ako Loyalty Manager &amp; Marketing Coordinator, kde stál pri spustení vernostného programu „Hello Member". Kariéru začínal v Marriott International.</p>
-        <p>Popri korporátnej práci robí <strong>od roku 2017 digitálny marketing na voľnej nohe</strong> — pre firmy v zdravotníctve, retaile, hotelierstve aj B2B. Práve táto kombinácia je dôvod, prečo je v HROM. Vie, ako fungujú veľké značky s prepracovanými procesmi, aj čo je reálne uskutočniteľné v menšej firme, kde na to nie je desaťčlenný tím.</p>
-        <p>V HROM zodpovedá za dva produkty, ktoré majú spoločného menovateľa — dáta. Pri <strong>server-side meraní</strong> ide o to, aby reklamné systémy dostávali presné čísla a optimalizovali na skutočné konverzie, nie na skreslený obraz. Pri <strong>Booking Ads</strong> vedie kampane pre ubytovacie zariadenia od nastavenia až po vyhodnotenie návratnosti.</p>
-        <p>Jeho prístup je pragmatický. Nepredáva nástroje ani reporty, ktoré nikto nečíta. Zaujíma ho, čo sa dá odmerať a čo z toho vyplýva pre biznis — od prvého kontaktu zákazníka až po konverziu.</p>
-        <p class="exp-foot">Vyštudoval I-Shou University na Taiwane (Bachelor of Science). Hovorí po slovensky, česky, anglicky a základmi čínštiny.</p>
+        <p><strong>Booking Ads a server-side meranie</strong> robíme v HROM v spolupráci s <strong>Diginav s. r. o.</strong> Za oboma produktmi stojí Boris Borovička.</p>
+        <p>V digitálnom marketingu je viac ako sedem rokov — na oboch stranách stola. Vo firemnom svete pôsobí ako Digital Channel Manager pre Mercedes-Benz Vans v regióne strednej a východnej Európy: Česko, Slovensko, Maďarsko, Rumunsko. Predtým bol päť rokov marketingovým špecialistom v Mercedes-Benz Slovakia a v H&amp;M pracoval na vernostnom programe.</p>
+        <p>Popri tom robí od roku 2017 digitál pre menšie firmy — zdravotníctvo, retail, hotelierstvo aj B2B. Klienta zo segmentu zubných kliník doviedol od nuly k <strong>5 miliónom € v tržbách</strong>.</p>
+        <p>Práve preto mu tieto dva produkty sadli. Vie, ako fungujú veľké značky s prepracovanými procesmi, aj čo je reálne uskutočniteľné vo firme, ktorá nemá desaťčlenný tím. Nezaujímajú ho reporty, ktoré nikto nečíta — zaujíma ho, čo sa dá odmerať a čo z toho vyplýva pre tržby. Vyštudoval I-Shou University na Taiwane, hovorí po slovensky, česky aj anglicky.</p>
       </div>
     </div>
   </div>
