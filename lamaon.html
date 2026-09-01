@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>lamaon — Zapni si lamu.</title>
+<meta name="description" content="Jedna platforma, ktorá robí prácu namiesto teba. Jeden účet, jedna peňaženka, kredity. Zapni si lamu na lamaon.com.">
+<meta property="og:title" content="lamaon — Zapni si lamu.">
+<meta property="og:description" content="Jedna platforma, ktorá robí prácu namiesto teba. Jeden účet, jedna peňaženka, kredity.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lamaon.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Favicon: plná #ED3706, znak bez prepínača (podľa brand booku) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 280'%3E%3Cg fill='%23ED3706'%3E%3Crect x='34' y='108' width='20' height='34' rx='9'/%3E%3Crect x='40' y='118' width='150' height='92' rx='38'/%3E%3Crect x='146' y='44' width='40' height='100' rx='18'/%3E%3Crect x='146' y='26' width='60' height='36' rx='17'/%3E%3Cpolygon points='156,30 162,2 170,26'/%3E%3Cpolygon points='174,28 183,2 190,30'/%3E%3Crect x='52' y='200' width='18' height='62' rx='7'/%3E%3Crect x='80' y='200' width='18' height='62' rx='7'/%3E%3Crect x='142' y='200' width='18' height='62' rx='7'/%3E%3Crect x='170' y='200' width='18' height='62' rx='7'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   lamaon.com — jedno písmo (Poppins), žiadne sivé:
+   jemné tóny = čierna/biela so zníženým krytím.
+   Gradient patrí výhradne masteru: hero + cenník.
+   ============================================================ */
+:root{
+  --g1:#ED1E24; --g2:#F7911E; --solid:#ED3706;
+  --grad:linear-gradient(90deg,var(--g1),var(--g2));
+  --ink:#000; --paper:#fff;
+  --off:rgba(0,0,0,.16);          /* stav OFF */
+  --dim:rgba(0,0,0,.55);          /* sekundárny text */
+  --click:180ms cubic-bezier(.2,.9,.3,1);  /* cvaknutie, nie rozplývanie */
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Poppins',system-ui,-apple-system,sans-serif;
+  font-weight:400;line-height:1.6;color:var(--ink);background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;line-height:1.1}
+b,strong{font-weight:700}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+.label{font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ---------- i18n: SK / EN ---------- */
+body:not(.lang-en) .en{display:none!important}
+body.lang-en .sk{display:none!important}
+
+/* ---------- Sekcie sa „zapínajú" pri scrolle ---------- */
+.sw{opacity:.16;transform:translateY(8px);transition:opacity var(--click),transform var(--click)}
+.sw.lit{opacity:1;transform:none}
+
+/* ============ PRELOADER — bežiaca lama ============ */
+#loader{
+  position:fixed;inset:0;z-index:1000;background:var(--paper);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .35s ease,visibility .35s ease;
+}
+#loader.gone{opacity:0;visibility:hidden}
+#loader .runner{width:120px;color:var(--off);animation:bob .42s ease-in-out infinite}
+#loader.flip .runner{color:transparent;animation:none}
+#loader.flip .runner .fillable{fill:url(#gradLoader)}
+#loader .leg{transform-box:fill-box;transform-origin:top center}
+#loader:not(.flip) .lA{animation:legA .42s ease-in-out infinite}
+#loader:not(.flip) .lB{animation:legB .42s ease-in-out infinite}
+#loader .knob{transition:cx .18s cubic-bezier(.2,.9,.3,1)}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes legA{0%,100%{transform:rotate(14deg)}50%{transform:rotate(-14deg)}}
+@keyframes legB{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}
+
+/* ============ HLAVIČKA ============ */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.nav{display:flex;align-items:center;gap:28px;height:64px}
+.lockup{display:flex;align-items:center;gap:10px;margin-right:auto}
+.lockup svg{height:32px;width:auto;color:var(--solid)}
+.wm{font-size:1.35rem;line-height:1}
+.wm b{font-weight:700}
+.wm i{font-weight:300;font-style:normal}
+.nav a.nl{font-size:.9rem;color:var(--dim);transition:color var(--click)}
+.nav a.nl:hover{color:var(--ink)}
+@media(max-width:820px){.nav a.nl{display:none}}
+
+/* prepínač jazyka */
+#langBtn{
+  display:flex;align-items:center;gap:6px;border:1.5px solid rgba(0,0,0,.15);
+  background:none;border-radius:999px;padding:5px 10px;cursor:pointer;
+  font-family:inherit;font-size:.75rem;font-weight:600;letter-spacing:.08em;
+}
+#langBtn span{opacity:.35;transition:opacity var(--click)}
+#langBtn span.act{opacity:1}
+
+/* ---------- CTA v tvare vypínača ---------- */
+.toggle-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--off);color:var(--ink);
+  border:none;border-radius:999px;padding:10px 26px 10px 10px;cursor:pointer;
+  font-family:inherit;font-weight:600;font-size:1rem;letter-spacing:-.01em;white-space:nowrap;
+  transition:background var(--click),color var(--click),transform var(--click);
+  position:relative;
+}
+.toggle-cta .pip{
+  width:30px;height:30px;border-radius:50%;background:var(--paper);flex:0 0 auto;
+  transition:transform var(--click);
+}
+.toggle-cta:hover{background:var(--grad);color:#fff;transform:translateY(-1px)}
+.toggle-cta:hover .pip{transform:translateX(6px)}
+.toggle-cta.sm{padding:6px 18px 6px 6px;font-size:.85rem}
+.toggle-cta.sm .pip{width:24px;height:24px}
+.toggle-cta.inverse{background:rgba(255,255,255,.25);color:#fff}
+.toggle-cta.inverse .pip{background:#fff}
+.toggle-cta.inverse:hover{background:#fff;color:var(--solid)}
+.toggle-cta.inverse:hover .pip{background:var(--grad)}
+
+/* ============ HERO ============ */
+#hero{
+  min-height:100svh;background:var(--grad);color:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:110px 24px 60px;position:relative;overflow:hidden;
+}
+#heroLama{width:min(190px,38vw);color:rgba(255,255,255,.3);transition:color .25s ease;
+  transform:translateX(-60vw);opacity:0}
+#hero.lit #heroLama{animation:runIn .9s cubic-bezier(.25,.8,.3,1) forwards}
+#hero.on #heroLama{color:#fff}
+#heroLama .knob{transition:cx .2s cubic-bezier(.2,.9,.3,1)}
+@keyframes runIn{
+  0%{transform:translateX(-60vw) translateY(0);opacity:0}
+  55%{transform:translateX(-8vw) translateY(0);opacity:1}
+  75%{transform:translateX(-2vw) translateY(-26px)}
+  100%{transform:translateX(0) translateY(0);opacity:1}
+}
+#hero .wm{font-size:2rem;margin-top:14px;opacity:0;transition:opacity .3s ease .15s}
+#hero.on .wm{opacity:1}
+#hero h1{
+  font-size:clamp(2.6rem,7.5vw,5rem);margin-top:34px;
+  opacity:0;transform:translateY(10px);transition:opacity var(--click),transform var(--click)
+}
+#hero.on h1{opacity:1;transform:none}
+#hero h1 b{font-weight:700}#hero h1 i{font-weight:300;font-style:normal}
+.claim-cap{font-size:.95rem;font-weight:300;opacity:.85;margin-top:6px}
+#hero p.sub{font-size:clamp(1.05rem,2.2vw,1.3rem);font-weight:300;max-width:620px;margin:18px auto 0;
+  opacity:0;transition:opacity .3s ease .25s}
+#hero.on p.sub{opacity:1}
+#hero .cta-row{margin-top:36px;opacity:0;transition:opacity .3s ease .4s}
+#hero.on .cta-row{opacity:1}
+#hero .micro{font-size:.8rem;opacity:.8;margin-top:16px;font-weight:300}
+.scroll-cue{
+  position:absolute;bottom:26px;left:50%;transform:translateX(-50%);
+  width:46px;height:26px;border-radius:999px;border:2px solid rgba(255,255,255,.7);
+  background:none;cursor:pointer;padding:2px;
+}
+.scroll-cue::after{
+  content:"";display:block;width:18px;height:18px;border-radius:50%;background:#fff;
+  animation:cue 2.2s ease-in-out infinite;
+}
+@keyframes cue{0%,35%,100%{transform:translateX(0)}55%,80%{transform:translateX(20px)}}
+
+/* ============ SEKCIE ============ */
+section{padding:96px 0}
+.sec-head{max-width:680px;margin-bottom:56px}
+.sec-head .label{color:var(--solid);display:block;margin-bottom:14px}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,2.9rem)}
+.sec-head p{margin-top:14px;color:var(--dim);font-size:1.08rem}
+
+/* ---------- Ako to funguje ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+.step{
+  border:1.5px solid rgba(0,0,0,.1);border-radius:22px;padding:30px 26px 28px;position:relative;
+}
+.step .num{font-size:2.6rem;font-weight:600;letter-spacing:.04em;color:var(--off);transition:color .25s ease}
+.step.lit .num{color:var(--ink)}
+.step h3{font-size:1.2rem;margin:10px 0 8px}
+.step p{color:var(--dim);font-size:.95rem}
+.mini-toggle{
+  position:absolute;top:22px;right:22px;width:38px;height:22px;border-radius:999px;
+  background:var(--off);transition:background .25s ease;
+}
+.mini-toggle::after{
+  content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;
+  background:#fff;transition:transform var(--click);
+}
+.lit>.mini-toggle,.card.on .mini-toggle{background:var(--grad)}
+.lit>.mini-toggle::after,.card.on .mini-toggle::after{transform:translateX(16px)}
+.after-cta{margin-top:44px}
+
+/* ---------- Produktová mriežka ---------- */
+#produkty{background:var(--paper)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{
+  --brand:var(--ink);
+  display:block;border:1.5px solid rgba(0,0,0,.1);border-radius:22px;padding:24px 22px 22px;
+  position:relative;color:var(--off);cursor:pointer;
+  transition:color .2s ease,border-color .2s ease,transform var(--click),box-shadow .2s ease;
+}
+.card svg.mark{width:64px;height:auto;margin-bottom:16px;color:inherit;transition:color .2s ease}
+.card .name{font-size:1.25rem;line-height:1;color:inherit;transition:color .2s ease}
+.card .name b{font-weight:700}.card .name i{font-weight:300;font-style:normal}
+.card p{font-size:.9rem;margin-top:8px;color:inherit;transition:color .2s ease}
+.card .mini-toggle{background:var(--off)}
+.card.on,.card:hover{color:var(--brand);border-color:var(--brand);transform:translateY(-3px)}
+.card.on p,.card:hover p,.card.on .name,.card:hover .name{color:var(--ink)}
+.card.on .mini-toggle,.card:hover .mini-toggle{background:var(--brand)}
+.card.on .mini-toggle::after,.card:hover .mini-toggle::after{transform:translateX(16px)}
+.grid-note{margin-top:26px;font-size:.85rem;color:var(--dim)}
+
+/* ---------- Príbeh „lama" ---------- */
+#pribeh{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+#pribeh .wrap{max-width:760px}
+#pribeh .label{color:rgba(255,255,255,.55)}
+#pribeh blockquote{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:300;line-height:1.3;margin:22px 0 26px;letter-spacing:-.01em}
+#pribeh p{color:rgba(255,255,255,.75);font-size:1.08rem;max-width:600px}
+#pribeh .closer{margin-top:26px;font-weight:700;color:#fff;font-size:1.25rem}
+#pribeh .corner{position:absolute;right:-20px;bottom:-30px;width:180px;color:rgba(255,255,255,.1)}
+#pribeh .sw{opacity:.2}
+#pribeh .sw.lit{opacity:1}
+
+/* ---------- Princípy ---------- */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
+@media(max-width:820px){.principles{grid-template-columns:1fr}}
+.pr{border-top:2px solid var(--ink);padding-top:20px}
+.pr h3{font-size:1.15rem;margin-bottom:8px}
+.pr p{color:var(--dim);font-size:.95rem}
+.strap{margin-top:60px;text-align:center;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+
+/* ---------- Cenník teaser ---------- */
+#cennik{background:var(--grad);color:#fff}
+#cennik .label{color:rgba(255,255,255,.75)}
+#cennik h2{font-size:clamp(2.2rem,6vw,4rem);margin-top:14px}
+#cennik h2 .price{font-weight:600;letter-spacing:.01em}
+#cennik .sub{font-weight:300;font-size:1.15rem;max-width:640px;margin-top:16px}
+.bullets{list-style:none;margin:34px 0 40px;display:grid;gap:14px;max-width:640px}
+.bullets li{display:flex;align-items:flex-start;gap:14px;font-size:1rem}
+.bullets .bt{
+  flex:0 0 auto;width:34px;height:20px;border-radius:999px;background:rgba(255,255,255,.3);
+  position:relative;margin-top:4px;
+}
+.bullets .bt::after{
+  content:"";position:absolute;top:3px;right:3px;width:14px;height:14px;border-radius:50%;background:#fff;
+}
+#cennik .micro{font-size:.8rem;opacity:.8;margin-top:16px;font-weight:300}
+
+/* ---------- Pätička ---------- */
+footer{background:var(--ink);color:#fff;padding:70px 0 36px}
+.f-lockup{display:flex;align-items:center;gap:10px;margin-bottom:44px}
+.f-lockup svg{height:30px;width:auto;color:#fff}
+.f-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:52px}
+@media(max-width:700px){.f-cols{grid-template-columns:1fr}}
+.f-cols .label{color:rgba(255,255,255,.45);display:block;margin-bottom:14px}
+.f-cols a,.f-cols span{display:block;color:rgba(255,255,255,.75);font-size:.92rem;margin-bottom:8px;transition:color var(--click)}
+.f-cols a:hover{color:#fff}
+.f-bottom{
+  border-top:1px solid rgba(255,255,255,.15);padding-top:24px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:space-between;
+  font-size:.8rem;color:rgba(255,255,255,.5);font-weight:300;
+}
+#egg{
+  width:38px;height:22px;border-radius:999px;background:rgba(255,255,255,.2);
+  border:none;cursor:pointer;position:relative;flex:0 0 auto;
+}
+#egg::after{
+  content:"";position:absolute;top:3px;right:3px;width:16px;height:16px;border-radius:50%;background:#fff;
+  transition:transform var(--click);
+}
+body.all-off #egg::after{transform:translateX(-16px)}
+body.all-off main,body.all-off header{filter:grayscale(1) opacity(.25);transition:filter .15s ease}
+main,header{transition:filter .25s ease}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .sw{opacity:1;transform:none}
+  #heroLama{transform:none;opacity:1}
+  #hero h1,#hero p.sub,#hero .cta-row,#hero .wm{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================================================================
+     GLOBÁLNE SVG DEFINÍCIE — znak lamy (silueta podľa brand booku),
+     masky pre prepínač (master) a odznak (produktové lamy), gradienty.
+     ================================================================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gradLoader" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ED1E24"/><stop offset="1" stop-color="#F7911E"/>
+    </linearGradient>
+    <!-- Telo lamy: skladané tvary jednej farby = jedna silueta -->
+    <g id="lamaShape">
+      <rect x="34" y="108" width="20" height="34" rx="9"/>
+      <rect x="40" y="118" width="150" height="92" rx="38"/>
+      <rect x="146" y="44" width="40" height="100" rx="18"/>
+      <rect x="146" y="26" width="60" height="36" rx="17"/>
+      <polygon points="156,30 162,2 170,26"/>
+      <polygon points="174,28 183,2 190,30"/>
+      <rect x="52" y="200" width="18" height="62" rx="7"/>
+      <rect x="80" y="200" width="18" height="62" rx="7"/>
+      <rect x="142" y="200" width="18" height="62" rx="7"/>
+      <rect x="170" y="200" width="18" height="62" rx="7"/>
+    </g>
+    <mask id="holePill" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="280">
+      <rect width="240" height="280" fill="#fff"/>
+      <rect x="66" y="140" width="104" height="46" rx="23" fill="#000"/>
+    </mask>
+    <mask id="holeDot" maskUnits="userSpaceOnUse" x="0" y="0" width="240" height="280">
+      <rect width="240" height="280" fill="#fff"/>
+      <circle cx="118" cy="163" r="27" fill="#000"/>
+    </mask>
+  </defs>
+</svg>
+
+<!-- ============ PRELOADER ============ -->
+<div id="loader" aria-hidden="true">
+  <svg class="runner" viewBox="0 0 240 280" fill="currentColor">
+    <g class="fillable" fill="currentColor" mask="url(#holePill)">
+      <rect x="34" y="108" width="20" height="34" rx="9"/>
+      <rect x="40" y="118" width="150" height="92" rx="38"/>
+      <rect x="146" y="44" width="40" height="100" rx="18"/>
+      <rect x="146" y="26" width="60" height="36" rx="17"/>
+      <polygon points="156,30 162,2 170,26"/>
+      <polygon points="174,28 183,2 190,30"/>
+      <rect class="leg lA" x="52" y="200" width="18" height="62" rx="7"/>
+      <rect class="leg lB" x="80" y="200" width="18" height="62" rx="7"/>
+      <rect class="leg lB" x="142" y="200" width="18" height="62" rx="7"/>
+      <rect class="leg lA" x="170" y="200" width="18" height="62" rx="7"/>
+    </g>
+    <circle class="knob fillable" cx="146" cy="163" r="15" fill="currentColor"/>
+  </svg>
+</div>
+
+<!-- ============ HLAVIČKA ============ -->
+<header>
+  <div class="wrap nav">
+    <a class="lockup" href="#hero" aria-label="lamaon">
+      <svg viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+        <use href="#lamaShape" mask="url(#holePill)"/>
+        <circle cx="90" cy="163" r="15"/>
+      </svg>
+      <span class="wm"><b>lama</b><i>on</i></span>
+    </a>
+    <a class="nl" href="#ako"><span class="sk">Ako to funguje</span><span class="en">How it works</span></a>
+    <a class="nl" href="#produkty"><span class="sk">Produkty</span><span class="en">Products</span></a>
+    <a class="nl" href="#pribeh"><span class="sk">Príbeh</span><span class="en">Story</span></a>
+    <a class="nl" href="#cennik"><span class="sk">Cenník</span><span class="en">Pricing</span></a>
+    <button id="langBtn" aria-label="Jazyk / Language"><span data-l="sk" class="act">SK</span><span data-l="en">EN</span></button>
+    <a class="toggle-cta sm" href="#cennik"><span class="pip"></span><span class="sk">Zapnúť</span><span class="en">Switch on</span></a>
+  </div>
+</header>
+
+<main>
+<!-- ============ 1 · HERO ============ -->
+<section id="hero">
+  <svg id="heroLama" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+    <use href="#lamaShape" mask="url(#holePill)"/>
+    <circle class="knob" cx="146" cy="163" r="15"/>
+  </svg>
+  <div class="wm"><b>lama</b><i>on</i></div>
+
+  <h1><b>Zapni</b> <i>si lamu.</i></h1>
+  <div class="claim-cap en">Turn on your llama.</div>
+
+  <p class="sub">
+    <span class="sk">Jedna platforma, ktorá robí prácu namiesto teba. Účtovníctvo, web, automatizácie — zapneš a beží.</span>
+    <span class="en">One platform that does the work instead of you. Accounting, web, automations — switch it on and it runs.</span>
+  </p>
+
+  <div class="cta-row">
+    <!-- TODO: nahradiť registračnou URL, keď bude signup živý -->
+    <a class="toggle-cta inverse" href="#cennik"><span class="pip"></span><span class="sk">Zapnúť</span><span class="en">Switch on</span></a>
+    <p class="micro">
+      <span class="sk">Jeden účet. Jedna peňaženka. Kredity míňaš len na to, čo je zapnuté.</span>
+      <span class="en">One account. One wallet. Credits are spent only on what's switched on.</span>
+    </p>
+  </div>
+
+  <button class="scroll-cue" aria-label="Scroll" onclick="document.getElementById('ako').scrollIntoView({behavior:'smooth'})"></button>
+</section>
+
+<!-- ============ 2 · AKO TO FUNGUJE ============ -->
+<section id="ako">
+  <div class="wrap">
+    <div class="sec-head sw">
+      <span class="label"><span class="sk">Ako to funguje</span><span class="en">How it works</span></span>
+      <h2><span class="sk">Jeden účet. Všetky lamy.</span><span class="en">One account. All the llamas.</span></h2>
+      <p>
+        <span class="sk">lamaon nie je balík nástrojov. Je to vypínač — každý produkt je ďalšia lama, ktorú zapneš.</span>
+        <span class="en">lamaon isn't a bundle of tools. It's a switch — every product is another llama you turn on.</span>
+      </p>
+    </div>
+
+    <div class="steps">
+      <div class="step sw">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <div class="num">01</div>
+        <h3><span class="sk">Zapni si účet.</span><span class="en">Switch on your account.</span></h3>
+        <p>
+          <span class="sk">Jedna adresa, jedno prihlásenie: lamaon.com. Žiadne ďalšie heslá, žiadne ďalšie faktúry.</span>
+          <span class="en">One address, one login: lamaon.com. No extra passwords, no extra invoices.</span>
+        </p>
+      </div>
+      <div class="step sw">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <div class="num">02</div>
+        <h3><span class="sk">Nabi peňaženku.</span><span class="en">Top up the wallet.</span></h3>
+        <p>
+          <span class="sk">Jedna peňaženka, kredity. Míňajú sa len vtedy, keď lama pracuje. Vidíš každý pohyb.</span>
+          <span class="en">One wallet, credits. Spent only while a llama is working. You see every move.</span>
+        </p>
+      </div>
+      <div class="step sw">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <div class="num">03</div>
+        <h3><span class="sk">Prepínaj lamy.</span><span class="en">Flip the llamas.</span></h3>
+        <p>
+          <span class="sk">Účtovníctvo, web, automatizácie. Zapneš, čo potrebuješ. Vypneš, čo nepotrebuješ. Bez viazanosti.</span>
+          <span class="en">Accounting, web, automations. Turn on what you need. Turn off what you don't. No lock-in.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="after-cta sw">
+      <a class="toggle-cta" href="#cennik"><span class="pip"></span><span class="sk">Zapnúť účet</span><span class="en">Switch on your account</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3 · PRODUKTOVÁ MRIEŽKA ============ -->
+<section id="produkty">
+  <div class="wrap">
+    <div class="sec-head sw">
+      <span class="label"><span class="sk">Rodina lám</span><span class="en">The llama family</span></span>
+      <h2><span class="sk">Každá lama vie jednu vec. Poriadne.</span><span class="en">Every llama does one thing. Properly.</span></h2>
+      <p>
+        <span class="sk">Všetky žijú na jednej adrese a na jednej peňaženke. Kupuješ platformu, nie nástroje.</span>
+        <span class="en">They all live at one address, on one wallet. You buy the platform, not the tools.</span>
+      </p>
+    </div>
+
+    <div class="grid">
+      <!-- lamatax — vlajková loď, zapnutá od načítania -->
+      <a class="card on" style="--brand:#1B3B6F" href="https://tax.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <circle cx="108" cy="153" r="6"/><circle cx="128" cy="173" r="6"/>
+          <line x1="130" y1="149" x2="106" y2="177" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div class="name"><b>lama</b><i>tax</i></div>
+        <p><span class="sk">Pošli doklady. Podané.</span><span class="en">Send the documents. Filed.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#48A0FF" href="https://page.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <rect x="102" y="148" width="32" height="21" rx="8"/>
+          <polygon points="109,166 119,166 106,179"/>
+        </svg>
+        <div class="name"><b>lama</b><i>page</i></div>
+        <p><span class="sk">Povedz, čo predávaš. Stránka stojí.</span><span class="en">Say what you sell. The page is up.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#4D309C" href="https://track.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <rect x="103" y="163" width="7" height="15" rx="2"/>
+          <rect x="114" y="155" width="7" height="23" rx="2"/>
+          <rect x="125" y="147" width="7" height="31" rx="2"/>
+        </svg>
+        <div class="name"><b>lama</b><i>track</i></div>
+        <p><span class="sk">Vidíš, čo funguje. Bez tabuliek.</span><span class="en">See what works. No spreadsheets.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#23B35B" href="https://zap.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <polygon points="122,145 104,167 115,167 111,181 130,158 119,158"/>
+        </svg>
+        <div class="name"><b>lama</b><i>zap</i></div>
+        <p><span class="sk">Čo robíš dvakrát, už nerobíš.</span><span class="en">Whatever you do twice, you stop doing.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#009B72" href="https://care.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <rect x="113" y="147" width="10" height="32" rx="3"/>
+          <rect x="102" y="158" width="32" height="10" rx="3"/>
+        </svg>
+        <div class="name"><b>lama</b><i>care</i></div>
+        <p><span class="sk">Ambulancia, ktorá dvíha, aj keď nikto nedvíha.</span><span class="en">The clinic that picks up when nobody picks up.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#E5007D" href="https://desk.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <path d="M104 168 a14 14 0 0 1 28 0" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+          <rect x="101" y="164" width="8" height="13" rx="3"/>
+          <rect x="127" y="164" width="8" height="13" rx="3"/>
+        </svg>
+        <div class="name"><b>lama</b><i>desk</i></div>
+        <p><span class="sk">Asistentka, ktorá nespí.</span><span class="en">The assistant that doesn't sleep.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#8E1F3E" href="https://scope.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <circle cx="114" cy="158" r="9" fill="none" stroke="currentColor" stroke-width="5"/>
+          <line x1="121" y1="166" x2="131" y2="177" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div class="name"><b>lama</b><i>scope</i></div>
+        <p><span class="sk">Zadanie prečíta skôr, než ho draho pochopíš.</span><span class="en">Reads the brief before you pay to understand it.</span></p>
+      </a>
+
+      <a class="card" style="--brand:#00B4D8" href="https://demo.lamaon.com">
+        <div class="mini-toggle" aria-hidden="true"></div>
+        <svg class="mark" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+          <use href="#lamaShape" mask="url(#holeDot)"/>
+          <polygon points="110,148 110,178 134,163"/>
+        </svg>
+        <div class="name"><b>lama</b><i>demo</i></div>
+        <p><span class="sk">Vyskúšaj si zákazku nanečisto.</span><span class="en">Test-run the job before it's real.</span></p>
+      </a>
+    </div>
+
+    <p class="grid-note sw">
+      <span class="sk">Nové lamy pribúdajú. Subdoména sa zapína až s produktom.</span>
+      <span class="en">New llamas keep coming. A subdomain switches on only with its product.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 4 · PRÍBEH SLOVA „LAMA" ============ -->
+<section id="pribeh">
+  <div class="wrap">
+    <span class="label sw"><span class="sk">Prečo lama</span><span class="en">Why a llama</span></span>
+    <blockquote class="sw">
+      <span class="sk">„Lama" sa kedysi hovorilo tomu, kto hru nevedel hrať.</span>
+      <span class="en">"Lama" is what gamers used to call the player who couldn't play.</span>
+    </blockquote>
+    <p class="sw">
+      <span class="sk">My to slovo otáčame. V účtovníctve si lama? Presne preto ho nemáš robiť ty. Zapneš lamu, ktorá to hrá za teba — a hrá to dobre. Byť v niečom lama prestalo byť problém. Stalo sa to dôvodom.</span>
+      <span class="en">We flip the word. Clueless about accounting? That's exactly why you shouldn't be doing it. You switch on a llama that plays it for you — and plays it well. Being a "lama" at something stopped being a problem. It became the reason.</span>
+    </p>
+    <p class="closer sw">
+      <span class="sk">Prácu spraví ona.</span>
+      <span class="en">The llama does the work.</span>
+    </p>
+  </div>
+  <svg class="corner" viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+    <use href="#lamaShape" mask="url(#holePill)"/>
+    <circle cx="90" cy="163" r="15"/>
+  </svg>
+</section>
+
+<!-- ============ 5 · PRINCÍPY ============ -->
+<section id="principy">
+  <div class="wrap">
+    <div class="sec-head sw">
+      <span class="label"><span class="sk">Ako pracujeme</span><span class="en">How we work</span></span>
+      <h2>
+        <span class="sk">Nemáme AI vo firme. Naša firma je AI.</span>
+        <span class="en">We don't have AI in the company. The company is AI.</span>
+      </h2>
+    </div>
+    <div class="principles">
+      <div class="pr sw">
+        <h3><span class="sk">AI Only, nie AI First.</span><span class="en">AI Only, not AI First.</span></h3>
+        <p>
+          <span class="sk">lamaon od prvého dňa stavajú a prevádzkujú AI agenti. Nie je to vrstva na starej firme — je to celá firma. Používame AI a netajíme to.</span>
+          <span class="en">lamaon has been built and run by AI agents since day one. Not a layer on an old firm — the whole firm. We use AI and we don't hide it.</span>
+        </p>
+      </div>
+      <div class="pr sw">
+        <h3><span class="sk">Zákon 7 dní.</span><span class="en">The 7-day law.</span></h3>
+        <p>
+          <span class="sk">Každý nový produkt má funkčné MVP do siedmich dní. Buď to beží, alebo to nerobíme. Problém je pomalosť, nie chyba — chybu priznáme vetou a vyriešime ďalšou.</span>
+          <span class="en">Every new product ships a working MVP within seven days. Either it runs, or we don't do it. Slowness is the problem, not mistakes — a mistake gets admitted in one sentence and fixed in the next.</span>
+        </p>
+      </div>
+      <div class="pr sw">
+        <h3><span class="sk">Staviame pre EÚ.</span><span class="en">Built for the EU.</span></h3>
+        <p>
+          <span class="sk">Európske firmy, európske pravidlá, európske termíny. Faktúry, podania a dáta tak, ako ich vyžaduje tvoj štát, nie Silicon Valley.</span>
+          <span class="en">European businesses, European rules, European deadlines. Invoices, filings and data the way your country requires — not Silicon Valley.</span>
+        </p>
+      </div>
+    </div>
+    <p class="strap sw">
+      <span class="sk">Nesľubujeme, že pomáha. Nahrádza.</span>
+      <span class="en">We don't promise it helps. It replaces.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ============ 6 · CENNÍK TEASER ============ -->
+<section id="cennik">
+  <div class="wrap">
+    <span class="label sw"><span class="sk">Cenník</span><span class="en">Pricing</span></span>
+    <h2 class="sw">
+      <span class="sk">Účtovník za <span class="price">60&nbsp;€</span> na rok.</span>
+      <span class="en">An accountant for <span class="price">€60</span> a year.</span>
+    </h2>
+    <p class="sub sw">
+      <span class="sk">Toľko stojí lamatax pre platiteľa DPH. Zvyšok platformy funguje na kreditoch — jedna peňaženka, míňaš len to, čo je zapnuté.</span>
+      <span class="en">That's lamatax for a VAT payer. The rest of the platform runs on credits — one wallet, you spend only on what's switched on.</span>
+    </p>
+    <ul class="bullets sw">
+      <li><span class="bt" aria-hidden="true"></span><span><span class="sk">Účet aj peňaženka zadarmo. Platíš, až keď lama pracuje.</span><span class="en">Account and wallet are free — you pay only when a llama works.</span></span></li>
+      <li><span class="bt" aria-hidden="true"></span><span><span class="sk">Kredity platia naprieč všetkými lamami. Žiadne balíčky pre každý nástroj zvlášť.</span><span class="en">Credits work across every llama — no per-tool bundles.</span></span></li>
+      <li><span class="bt" aria-hidden="true"></span><span><span class="sk">Vypneš kedykoľvek. Kredity nezhoria, viazanosť neexistuje.</span><span class="en">Switch off anytime. Credits don't expire, there's no lock-in.</span></span></li>
+    </ul>
+    <div class="sw">
+      <!-- TODO: nahradiť registračnou URL, keď bude signup živý -->
+      <a class="toggle-cta inverse" href="mailto:office@lamaon.com?subject=Zapni%20mi%20lamu"><span class="pip"></span><span class="sk">Zapnúť lamu</span><span class="en">Switch on your llama</span></a>
+      <p class="micro">
+        <span class="sk">Ceny s DPH. Podrobný cenník nájdeš po prihlásení v peňaženke.</span>
+        <span class="en">Prices include VAT. The full price list lives in your wallet after login.</span>
+      </p>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ 7 · PÄTIČKA ============ -->
+<footer>
+  <div class="wrap">
+    <div class="f-lockup">
+      <svg viewBox="0 0 240 280" fill="currentColor" aria-hidden="true">
+        <use href="#lamaShape" mask="url(#holePill)"/>
+        <circle cx="90" cy="163" r="15"/>
+      </svg>
+      <span class="wm"><b>lama</b><i>on</i></span>
+    </div>
+    <div class="f-cols">
+      <div>
+        <span class="label"><span class="sk">Platforma</span><span class="en">Platform</span></span>
+        <a href="#ako"><span class="sk">Ako to funguje</span><span class="en">How it works</span></a>
+        <a href="#produkty"><span class="sk">Rodina lám</span><span class="en">The llama family</span></a>
+        <a href="#cennik"><span class="sk">Cenník</span><span class="en">Pricing</span></a>
+        <a href="#"><span class="sk">Prihlásenie</span><span class="en">Log in</span></a>
+      </div>
+      <div>
+        <span class="label"><span class="sk">Firma</span><span class="en">Company</span></span>
+        <a href="#pribeh"><span class="sk">Príbeh</span><span class="en">Story</span></a>
+        <a href="mailto:office@lamaon.com">office@lamaon.com</a>
+      </div>
+      <div>
+        <span class="label"><span class="sk">Právne</span><span class="en">Legal</span></span>
+        <a href="#"><span class="sk">Obchodné podmienky</span><span class="en">Terms</span></a>
+        <a href="#"><span class="sk">Ochrana osobných údajov</span><span class="en">Privacy</span></a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+    <div class="f-bottom">
+      <span>
+        © <span id="year"></span> LAMAON.COM s.r.o. ·
+        <span class="sk">lamaon.com je jediná adresa, ktorú si musíš pamätať.</span>
+        <span class="en">lamaon.com is the only address you need to remember.</span>
+      </span>
+      <button id="egg" aria-label="OFF"></button>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- Jazyk SK/EN ---------- */
+  var langBtn = document.getElementById("langBtn");
+  function setLang(l){
+    document.body.classList.toggle("lang-en", l === "en");
+    document.documentElement.lang = l;
+    langBtn.querySelectorAll("span").forEach(function(s){
+      s.classList.toggle("act", s.dataset.l === l);
+    });
+    try{ localStorage.setItem("lamaon-lang", l); }catch(e){}
+  }
+  langBtn.addEventListener("click", function(){
+    setLang(document.body.classList.contains("lang-en") ? "sk" : "en");
+  });
+  try{
+    var saved = localStorage.getItem("lamaon-lang");
+    if(saved === "en") setLang("en");
+  }catch(e){}
+
+  /* ---------- Preloader: beh -> cvak -> gradient -> preč ---------- */
+  var loader = document.getElementById("loader");
+  var hero = document.getElementById("hero");
+  function heroOn(){
+    hero.classList.add("lit");                      // lama pribehne
+    var delay = reduced ? 0 : 950;
+    setTimeout(function(){
+      hero.classList.add("on");                     // biela sa zaleje
+      var knob = document.querySelector("#heroLama .knob");
+      if(knob) knob.setAttribute("cx","90");        // prepínač cvakne do ON
+    }, delay);
+  }
+  function finishLoad(){
+    if(reduced){
+      loader.classList.add("gone"); heroOn(); return;
+    }
+    loader.classList.add("flip");                   // gradient + cvak
+    var knob = loader.querySelector(".knob");
+    if(knob) knob.setAttribute("cx","90");
+    setTimeout(function(){ loader.classList.add("gone"); heroOn(); }, 500);
+  }
+  var minShow = reduced ? 0 : 800;
+  var t0 = Date.now();
+  function armFinish(){ setTimeout(finishLoad, Math.max(0, minShow - (Date.now() - t0))); }
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", armFinish);
+  }else{ armFinish(); }
+  setTimeout(function(){                             // poistka
+    if(!loader.classList.contains("gone")) finishLoad();
+  }, 2500);
+
+  /* ---------- Sekcie sa zapínajú pri scrolle ---------- */
+  var swEls = document.querySelectorAll(".sw");
+  if("IntersectionObserver" in window && !reduced){
+    var seen = 0;
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          var el = en.target;
+          var siblings = el.parentElement ? el.parentElement.querySelectorAll(":scope > .sw") : [];
+          var idx = Array.prototype.indexOf.call(siblings, el);
+          setTimeout(function(){ el.classList.add("lit"); }, Math.max(0, idx) * 100);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.15});
+    swEls.forEach(function(el){ io.observe(el); });
+  }else{
+    swEls.forEach(function(el){ el.classList.add("lit"); });
+  }
+
+  /* ---------- Produktové karty: prvý klik zapne, druhý otvorí ---------- */
+  document.querySelectorAll(".card").forEach(function(card){
+    card.addEventListener("click", function(ev){
+      if(!card.classList.contains("on")){
+        ev.preventDefault();
+        card.classList.add("on");
+      }
+      /* subdomény zatiaľ nebežia — kým sa nezapnú, karta vedie na cenník */
+      if(card.getAttribute("href").indexOf("lamaon.com") !== -1){
+        ev.preventDefault();
+        if(card.classList.contains("on")){
+          document.getElementById("cennik").scrollIntoView({behavior: reduced ? "auto" : "smooth"});
+        }
+      }
+    });
+  });
+
+  /* ---------- Easter egg: vypni web ---------- */
+  var egg = document.getElementById("egg");
+  var eggUsed = false;
+  egg.addEventListener("click", function(){
+    if(eggUsed) return;
+    eggUsed = true;
+    document.body.classList.add("all-off");
+    setTimeout(function(){ document.body.classList.remove("all-off"); }, 900);
+  });
+})();
+</script>
+</body>
+</html>
