@@ -18,6 +18,7 @@
 /* ============================================================
    lamaon.com — Poppins only, žiadne sivé (čierna so zníženým
    krytím), gradient patrí masteru. Layout podľa lamaonweb.html.
+   Texty: EN v markupe (SEO), ostatné jazyky cez JS slovník.
    ============================================================ */
 :root{
   --ink:#000; --ink-60:rgba(0,0,0,.62); --ink-40:rgba(0,0,0,.42);
@@ -35,14 +36,7 @@ body{margin:0;background:#fff;color:var(--ink);font-family:var(--f);font-weight:
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 a{color:inherit;text-decoration:none}
 img,svg{display:block;max-width:100%}
-
-/* ---------- i18n: en (default) · sk · cs · de · fr ---------- */
-.en,.sk,.cs,.de,.fr{display:none!important}
-body.l-en .en{display:revert!important}
-body.l-sk .sk{display:revert!important}
-body.l-cs .cs{display:revert!important}
-body.l-de .de{display:revert!important}
-body.l-fr .fr{display:revert!important}
+[hidden]{display:none!important}
 
 /* ---------- jemné zapnutie sekcií pri scrolle ---------- */
 .sw{opacity:.14;transform:translateY(6px);transition:opacity var(--click),transform var(--click)}
@@ -77,11 +71,24 @@ nav .in{display:flex;align-items:center;justify-content:space-between;height:74p
 .btn.p{background:var(--grad);color:#fff}
 .btn.g{border:1px solid var(--ink)}
 .btn.sm{height:38px;padding:0 18px}
-#lang{appearance:none;-webkit-appearance:none;border:1px solid var(--line);background:#fff;
-  border-radius:999px;height:38px;padding:0 30px 0 14px;font-family:var(--f);font-weight:600;
-  font-size:12px;letter-spacing:.08em;cursor:pointer;color:var(--ink);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='black'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center}
+
+/* prepínač jazyka s vlajkami */
+.langdd{position:relative}
+#langBtn{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:#fff;
+  border-radius:999px;height:38px;padding:0 12px;font-family:var(--f);font-weight:600;
+  font-size:12px;letter-spacing:.08em;cursor:pointer;color:var(--ink)}
+#langBtn .caret{width:8px;height:5px;flex:0 0 auto}
+.flag{display:inline-flex;width:20px;height:14px;border-radius:2.5px;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(0,0,0,.08);flex:0 0 auto}
+.flag svg{width:100%;height:100%}
+#langMenu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--line);
+  border-radius:14px;box-shadow:0 12px 32px rgba(0,0,0,.12);list-style:none;margin:0;padding:6px;
+  min-width:176px;z-index:60;max-height:62vh;overflow:auto}
+#langMenu li{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;
+  cursor:pointer;font-size:13px;white-space:nowrap}
+#langMenu li:hover{background:rgba(0,0,0,.05)}
+#langMenu li.act{font-weight:600}
+
 .lbl-s{display:none}
 @media (max-width:720px){
   .navlinks a.nl{display:none}
@@ -184,7 +191,7 @@ h2{font-weight:600;font-size:clamp(28px,4vw,42px);letter-spacing:-.035em;line-he
 footer{border-top:1px solid var(--line);padding:34px 0 56px}
 footer .in{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
   font-size:12px;color:var(--ink-40)}
-footer .brand svg{height:26px}
+footer .brand svg{height:26px;width:19px}
 footer .wm{font-size:17px}
 footer a:hover{color:var(--ink)}
 
@@ -196,7 +203,7 @@ footer a:hover{color:var(--ink)}
 }
 </style>
 </head>
-<body class="l-en">
+<body>
 
 <!-- Znak lamy: presná silueta z brand booku (vektorizovaný master),
      pilulka 51,211 166×93 · gombík ON cx 100.5 / OFF cx 167.5 -->
@@ -231,40 +238,34 @@ footer a:hover{color:var(--ink)}
     <span class="wm"><b>lama</b><i>on</i></span>
   </a>
   <div class="navlinks">
-    <a class="nl" href="#produkty"><span class="en">Products</span><span class="sk">Produkty</span><span class="cs">Produkty</span><span class="de">Produkte</span><span class="fr">Produits</span></a>
-    <a class="nl" href="#ako"><span class="en">How it works</span><span class="sk">Ako to funguje</span><span class="cs">Jak to funguje</span><span class="de">So funktioniert's</span><span class="fr">Comment ça marche</span></a>
-    <a class="nl" href="#preco"><span class="en">Why</span><span class="sk">Prečo</span><span class="cs">Proč</span><span class="de">Warum</span><span class="fr">Pourquoi</span></a>
-    <select id="lang" aria-label="Language">
-      <option value="en">EN</option>
-      <option value="sk">SK</option>
-      <option value="cs">CS</option>
-      <option value="de">DE</option>
-      <option value="fr">FR</option>
-    </select>
+    <a class="nl" href="#produkty" data-i18n="navProducts">Products</a>
+    <a class="nl" href="#ako" data-i18n="navHow">How it works</a>
+    <a class="nl" href="#preco" data-i18n="navWhy">Why</a>
+    <div class="langdd">
+      <button id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+        <span class="flag" id="curFlag"></span><span id="curCode">EN</span>
+        <svg class="caret" viewBox="0 0 8 5" aria-hidden="true"><path d="M0 0l4 5 4-5z" fill="currentColor"/></svg>
+      </button>
+      <ul id="langMenu" role="listbox" hidden></ul>
+    </div>
     <!-- TODO: nahradiť registračnou URL, keď bude signup živý -->
-    <a class="btn p sm" href="#produkty"><span class="lbl-l"><span class="en">Turn your llama on</span><span class="sk">Zapnúť lamu</span><span class="cs">Zapnout lamu</span><span class="de">Lama einschalten</span><span class="fr">Allumer le lama</span></span><span class="lbl-s"><span class="en">Turn it on</span><span class="sk">Zapnúť</span><span class="cs">Zapnout</span><span class="de">Einschalten</span><span class="fr">Allumer</span></span></a>
+    <a class="btn p sm" href="#produkty"><span class="lbl-l" data-i18n="navCta">Turn your llama on</span><span class="lbl-s" data-i18n="navCtaS">Turn it on</span></a>
   </div>
 </div></nav>
 
 <!-- ============ HERO ============ -->
 <header class="hero" id="top"><div class="wrap in">
   <div class="txt">
-    <h1><span class="en">Turn your llama on.</span><span class="sk">Zapni si lamu.</span><span class="cs">Zapni si lamu.</span><span class="de">Schalt dein Lama ein.</span><span class="fr">Allume ton lama.</span><span class="l"><span class="en">The llama does the work.</span><span class="sk">Prácu spraví ona.</span><span class="cs">Práci udělá ona.</span><span class="de">Die Arbeit macht das Lama.</span><span class="fr">Le lama fait le travail.</span></span></h1>
-    <p class="sub">
-      <span class="en">One account, one wallet, credits. Pick a llama for whatever slows you down — and from that moment it runs without you.</span>
-      <span class="sk">Jeden účet, jedna peňaženka, kredity. Vyberieš si lamu podľa toho, čo ťa zdržuje — a od toho momentu to beží bez teba.</span>
-      <span class="cs">Jeden účet, jedna peněženka, kredity. Vybereš si lamu podle toho, co tě zdržuje — a od té chvíle to běží bez tebe.</span>
-      <span class="de">Ein Konto, eine Geldbörse, Credits. Wähl ein Lama für das, was dich aufhält — ab dem Moment läuft es ohne dich.</span>
-      <span class="fr">Un compte, un portefeuille, des crédits. Choisis un lama pour ce qui te ralentit — et à partir de là, ça tourne sans toi.</span>
-    </p>
+    <h1><span data-i18n="claim">Turn your llama on.</span><span class="l" data-i18n="claim2">The llama does the work.</span></h1>
+    <p class="sub" data-i18n="heroSub">One account, one wallet, credits. Pick a llama for whatever slows you down — and from that moment it runs without you.</p>
     <div class="cta">
-      <a class="btn p" href="#produkty"><span class="en">Pick your llama</span><span class="sk">Vybrať lamu</span><span class="cs">Vybrat lamu</span><span class="de">Lama auswählen</span><span class="fr">Choisir son lama</span></a>
-      <a class="btn g" href="#ako"><span class="en">How it works</span><span class="sk">Ako to funguje</span><span class="cs">Jak to funguje</span><span class="de">So funktioniert's</span><span class="fr">Comment ça marche</span></a>
+      <a class="btn p" href="#produkty" data-i18n="pick">Pick your llama</a>
+      <a class="btn g" href="#ako" data-i18n="navHow">How it works</a>
     </div>
     <div class="meta">
-      <span><span class="en">One account for everything</span><span class="sk">Jeden účet na všetko</span><span class="cs">Jeden účet na všechno</span><span class="de">Ein Konto für alles</span><span class="fr">Un compte pour tout</span></span>
-      <span><span class="en">You pay credits, not subscriptions for nothing</span><span class="sk">Platíš kredity, nie predplatné za nič</span><span class="cs">Platíš kredity, ne předplatné za nic</span><span class="de">Du zahlst Credits, keine Abos für nichts</span><span class="fr">Des crédits, pas des abonnements pour rien</span></span>
-      <span><span class="en">Up and running in 24 hours</span><span class="sk">Spustenie do 24 hodín</span><span class="cs">Spuštění do 24 hodin</span><span class="de">Startklar in 24 Stunden</span><span class="fr">Opérationnel en 24 heures</span></span>
+      <span data-i18n="meta1">One account for everything</span>
+      <span data-i18n="meta2">You pay credits, not subscriptions for nothing</span>
+      <span data-i18n="meta3">Up and running in 24 hours</span>
     </div>
   </div>
   <div class="mark">
@@ -277,15 +278,9 @@ footer a:hover{color:var(--ink)}
 
 <!-- ============ PRODUKTY ============ -->
 <section id="produkty"><div class="wrap">
-  <div class="eyebrow sw"><span class="en">The llama family</span><span class="sk">Rodina lám</span><span class="cs">Rodina lam</span><span class="de">Die Lama-Familie</span><span class="fr">La famille lama</span></div>
-  <h2 class="sw"><span class="en">Which job do you never want to do again?</span><span class="sk">Ktorú robotu už nechceš robiť?</span><span class="cs">Kterou práci už nechceš dělat?</span><span class="de">Welche Arbeit willst du nie wieder machen?</span><span class="fr">Quel travail ne veux-tu plus jamais faire&nbsp;?</span></h2>
-  <p class="lead sw">
-    <span class="en">Every llama takes one job and does all of it. Not an assistant that helps you — an employee that owns it.</span>
-    <span class="sk">Každá lama rieši jednu vec a robí ju celú. Nie asistent, ktorý ti pomáha — zamestnanec, ktorý to má na starosti.</span>
-    <span class="cs">Každá lama řeší jednu věc a dělá ji celou. Ne asistent, který ti pomáhá — zaměstnanec, který to má na starosti.</span>
-    <span class="de">Jedes Lama übernimmt eine Aufgabe — und zwar ganz. Kein Assistent, der dir hilft, sondern ein Mitarbeiter, der sie verantwortet.</span>
-    <span class="fr">Chaque lama prend un travail et le fait en entier. Pas un assistant qui t'aide — un employé qui s'en charge.</span>
-  </p>
+  <div class="eyebrow sw" data-i18n="famEye">The llama family</div>
+  <h2 class="sw" data-i18n="famH2">Which job do you never want to do again?</h2>
+  <p class="lead sw" data-i18n="famLead">Every llama takes one job and does all of it. Not an assistant that helps you — an employee that owns it.</p>
   <div class="cards">
 
     <a class="card sw" style="--c:var(--tax)" href="https://tax.lamaon.com">
@@ -298,14 +293,8 @@ footer a:hover{color:var(--ink)}
         </g>
       </svg>
       <div class="nm"><b>lama</b><span>tax</span></div>
-      <div class="desc">
-        <span class="en">Send the documents; it processes and files them. It watches the deadline for you.</span>
-        <span class="sk">Pošleš doklady, ona spracuje a podá. Termín stráži za teba.</span>
-        <span class="cs">Pošleš doklady, ona je zpracuje a podá. Termín hlídá za tebe.</span>
-        <span class="de">Du schickst die Belege, es verarbeitet und reicht ein. Die Frist behält es für dich im Blick.</span>
-        <span class="fr">Envoie tes documents&nbsp;: il traite et déclare. Il surveille l'échéance pour toi.</span>
-      </div>
-      <div class="foot"><span class="url">tax.lamaon.com</span><span class="pillb now"><span class="en">first up</span><span class="sk">prvá na rade</span><span class="cs">první na řadě</span><span class="de">zuerst dran</span><span class="fr">première</span></span></div>
+      <div class="desc" data-i18n="dTax">Send the documents; it processes and files them. It watches the deadline for you.</div>
+      <div class="foot"><span class="url">tax.lamaon.com</span><span class="pillb now" data-i18n="pillFirst">first up</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--care)" href="https://care.lamaon.com">
@@ -315,14 +304,8 @@ footer a:hover{color:var(--ink)}
         <g transform="translate(110 233.5) scale(2)"><path d="M9.5 2h5v7.5H22v5h-7.5V22h-5v-7.5H2v-5h7.5z" fill="var(--c)"/></g>
       </svg>
       <div class="nm"><b>lama</b><span>care</span></div>
-      <div class="desc">
-        <span class="en">Bookings, payments and patient replies. Picks up even when the nurse can't.</span>
-        <span class="sk">Rezervácie, platby a odpovede pacientom. Dvíha aj vtedy, keď sestra nemôže.</span>
-        <span class="cs">Rezervace, platby a odpovědi pacientům. Zvedá to, i když sestra nemůže.</span>
-        <span class="de">Termine, Zahlungen, Patientenantworten. Geht ran, auch wenn die Schwester nicht kann.</span>
-        <span class="fr">Réservations, paiements, réponses aux patients. Décroche même quand l'infirmière ne peut pas.</span>
-      </div>
-      <div class="foot"><span class="url">care.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dCare">Bookings, payments and patient replies. Picks up even when the nurse can't.</div>
+      <div class="foot"><span class="url">care.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--desk)" href="https://desk.lamaon.com">
@@ -336,14 +319,8 @@ footer a:hover{color:var(--ink)}
         </g>
       </svg>
       <div class="nm"><b>lama</b><span>desk</span></div>
-      <div class="desc">
-        <span class="en">Documents, e-mails, calendar, stock. An office that runs itself.</span>
-        <span class="sk">Doklady, e-maily, kalendár, sklad. Kancelária, ktorá sa spravuje sama.</span>
-        <span class="cs">Doklady, e-maily, kalendář, sklad. Kancelář, která se spravuje sama.</span>
-        <span class="de">Belege, E-Mails, Kalender, Lager. Ein Büro, das sich selbst verwaltet.</span>
-        <span class="fr">Documents, e-mails, agenda, stock. Un bureau qui se gère tout seul.</span>
-      </div>
-      <div class="foot"><span class="url">desk.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dDesk">Documents, e-mails, calendar, stock. An office that runs itself.</div>
+      <div class="foot"><span class="url">desk.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--page)" href="https://page.lamaon.com">
@@ -353,14 +330,8 @@ footer a:hover{color:var(--ink)}
         <g transform="translate(110 233.5) scale(2)"><path d="M2 5a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v9a3 3 0 0 1-3 3H9l-5 4v-4a2 2 0 0 1-2-2z" fill="var(--c)"/></g>
       </svg>
       <div class="nm"><b>lama</b><span>page</span></div>
-      <div class="desc">
-        <span class="en">Builds and updates your site around what you sell. No agency.</span>
-        <span class="sk">Postaví a upraví stránku podľa toho, čo predávaš. Bez agentúry.</span>
-        <span class="cs">Postaví a upraví stránku podle toho, co prodáváš. Bez agentury.</span>
-        <span class="de">Baut und pflegt deine Seite rund um das, was du verkaufst. Ohne Agentur.</span>
-        <span class="fr">Construit et met à jour ton site selon ce que tu vends. Sans agence.</span>
-      </div>
-      <div class="foot"><span class="url">page.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dPage">Builds and updates your site around what you sell. No agency.</div>
+      <div class="foot"><span class="url">page.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--track)" href="https://track.lamaon.com">
@@ -374,14 +345,8 @@ footer a:hover{color:var(--ink)}
         </g>
       </svg>
       <div class="nm"><b>lama</b><span>track</span></div>
-      <div class="desc">
-        <span class="en">See what works and what just burns money. No spreadsheets, no analyst.</span>
-        <span class="sk">Vidíš, čo funguje a čo len míňa. Bez tabuliek a bez analytika.</span>
-        <span class="cs">Vidíš, co funguje a co jen utrácí. Bez tabulek a bez analytika.</span>
-        <span class="de">Du siehst, was funktioniert und was nur Geld frisst. Ohne Tabellen, ohne Analysten.</span>
-        <span class="fr">Tu vois ce qui marche et ce qui dépense pour rien. Sans tableurs, sans analyste.</span>
-      </div>
-      <div class="foot"><span class="url">track.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dTrack">See what works and what just burns money. No spreadsheets, no analyst.</div>
+      <div class="foot"><span class="url">track.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--zap)" href="https://zap.lamaon.com">
@@ -391,14 +356,8 @@ footer a:hover{color:var(--ink)}
         <g transform="translate(110 233.5) scale(2)"><path d="M14 1L3 14h6l-1 9L21 10h-7z" fill="var(--c)"/></g>
       </svg>
       <div class="nm"><b>lama</b><span>zap</span></div>
-      <div class="desc">
-        <span class="en">Connects the tools that don't talk to each other — and puts them to work.</span>
-        <span class="sk">Prepojí nástroje, ktoré spolu nehovoria, a nechá ich pracovať.</span>
-        <span class="cs">Propojí nástroje, které spolu nemluví, a nechá je pracovat.</span>
-        <span class="de">Verbindet Tools, die nicht miteinander reden — und lässt sie arbeiten.</span>
-        <span class="fr">Relie les outils qui ne se parlent pas — et les met au travail.</span>
-      </div>
-      <div class="foot"><span class="url">zap.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dZap">Connects the tools that don't talk to each other — and puts them to work.</div>
+      <div class="foot"><span class="url">zap.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--scope)" href="https://scope.lamaon.com">
@@ -411,14 +370,8 @@ footer a:hover{color:var(--ink)}
         </g>
       </svg>
       <div class="nm"><b>lama</b><span>scope</span></div>
-      <div class="desc">
-        <span class="en">Turns “something's broken” into a brief you can hand over.</span>
-        <span class="sk">Z „niečo nám nefunguje“ spraví zadanie, ktoré sa dá odovzdať.</span>
-        <span class="cs">Z „něco nám nefunguje“ udělá zadání, které se dá předat.</span>
-        <span class="de">Macht aus „irgendwas funktioniert nicht“ ein Briefing, das man übergeben kann.</span>
-        <span class="fr">Transforme «&nbsp;ça ne marche pas&nbsp;» en un brief qu'on peut transmettre.</span>
-      </div>
-      <div class="foot"><span class="url">scope.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dScope">Turns “something's broken” into a brief you can hand over.</div>
+      <div class="foot"><span class="url">scope.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
     <a class="card sw" style="--c:var(--demo)" href="https://demo.lamaon.com">
@@ -428,14 +381,8 @@ footer a:hover{color:var(--ink)}
         <g transform="translate(110 233.5) scale(2)"><path d="M5 3l16 9-16 9z" fill="var(--c)"/></g>
       </svg>
       <div class="nm"><b>lama</b><span>demo</span></div>
-      <div class="desc">
-        <span class="en">Shows your own case solved before you buy anything.</span>
-        <span class="sk">Ukáže tvoj vlastný prípad vyriešený skôr, než čokoľvek kúpiš.</span>
-        <span class="cs">Ukáže tvůj vlastní případ vyřešený dřív, než cokoli koupíš.</span>
-        <span class="de">Zeigt deinen eigenen Fall gelöst, bevor du irgendwas kaufst.</span>
-        <span class="fr">Montre ton propre cas résolu avant que tu n'achètes quoi que ce soit.</span>
-      </div>
-      <div class="foot"><span class="url">demo.lamaon.com</span><span class="pillb"><span class="en">soon</span><span class="sk">čoskoro</span><span class="cs">brzy</span><span class="de">bald</span><span class="fr">bientôt</span></span></div>
+      <div class="desc" data-i18n="dDemo">Shows your own case solved before you buy anything.</div>
+      <div class="foot"><span class="url">demo.lamaon.com</span><span class="pillb" data-i18n="pillSoon">soon</span></div>
     </a>
 
   </div>
@@ -443,132 +390,72 @@ footer a:hover{color:var(--ink)}
 
 <!-- ============ AKO TO FUNGUJE ============ -->
 <section id="ako"><div class="wrap">
-  <div class="eyebrow sw"><span class="en">How it works</span><span class="sk">Ako to funguje</span><span class="cs">Jak to funguje</span><span class="de">So funktioniert's</span><span class="fr">Comment ça marche</span></div>
-  <h2 class="sw"><span class="en">Three steps and it's off your plate</span><span class="sk">Tri kroky a máš to z krku</span><span class="cs">Tři kroky a máš to z krku</span><span class="de">Drei Schritte und es ist vom Tisch</span><span class="fr">Trois étapes et c'est réglé</span></h2>
+  <div class="eyebrow sw" data-i18n="navHow">How it works</div>
+  <h2 class="sw" data-i18n="howH2">Three steps and it's off your plate</h2>
   <div class="steps">
     <div class="step sw">
-      <h3><span class="en">Switch on your account</span><span class="sk">Zapneš účet</span><span class="cs">Zapneš účet</span><span class="de">Konto einschalten</span><span class="fr">Active ton compte</span></h3>
-      <p>
-        <span class="en">One sign-up at lamaon.com. No implementation, no onboarding call, no consultant.</span>
-        <span class="sk">Jedna registrácia na lamaon.com. Žiadna implementácia, žiadny onboarding call, žiadny konzultant.</span>
-        <span class="cs">Jedna registrace na lamaon.com. Žádná implementace, žádný onboarding call, žádný konzultant.</span>
-        <span class="de">Eine Registrierung auf lamaon.com. Keine Implementierung, kein Onboarding-Call, kein Berater.</span>
-        <span class="fr">Une inscription sur lamaon.com. Pas d'implémentation, pas de call d'onboarding, pas de consultant.</span>
-      </p>
+      <h3 data-i18n="s1h">Switch on your account</h3>
+      <p data-i18n="s1p">One sign-up at lamaon.com. No implementation, no onboarding call, no consultant.</p>
     </div>
     <div class="step sw">
-      <h3><span class="en">Top up credits</span><span class="sk">Nabiješ kredity</span><span class="cs">Nabiješ kredity</span><span class="de">Credits aufladen</span><span class="fr">Recharge tes crédits</span></h3>
-      <p>
-        <span class="en">You pay for work done, not for access. Credits work across every llama.</span>
-        <span class="sk">Platíš za spravenú robotu, nie za prístup. Kredity platia naprieč všetkými lamami.</span>
-        <span class="cs">Platíš za odvedenou práci, ne za přístup. Kredity platí napříč všemi lamami.</span>
-        <span class="de">Du zahlst für erledigte Arbeit, nicht für Zugang. Credits gelten über alle Lamas hinweg.</span>
-        <span class="fr">Tu paies le travail fait, pas l'accès. Les crédits valent pour tous les lamas.</span>
-      </p>
+      <h3 data-i18n="s2h">Top up credits</h3>
+      <p data-i18n="s2p">You pay for work done, not for access. Credits work across every llama.</p>
     </div>
     <div class="step sw">
-      <h3><span class="en">Send your inputs</span><span class="sk">Pošleš podklady</span><span class="cs">Pošleš podklady</span><span class="de">Unterlagen schicken</span><span class="fr">Envoie tes éléments</span></h3>
-      <p>
-        <span class="en">Documents, access, a brief. The rest is on the llama — you get the finished output.</span>
-        <span class="sk">Doklady, prístupy, zadanie. Zvyšok je na lame — ty dostaneš hotový výstup.</span>
-        <span class="cs">Doklady, přístupy, zadání. Zbytek je na lamě — ty dostaneš hotový výstup.</span>
-        <span class="de">Belege, Zugänge, Auftrag. Der Rest liegt beim Lama — du bekommst das fertige Ergebnis.</span>
-        <span class="fr">Documents, accès, consignes. Le reste est pour le lama — tu reçois le résultat fini.</span>
-      </p>
+      <h3 data-i18n="s3h">Send your inputs</h3>
+      <p data-i18n="s3p">Documents, access, a brief. The rest is on the llama — you get the finished output.</p>
     </div>
   </div>
 </div></section>
 
 <!-- ============ PLATFORMA ============ -->
 <section class="dark"><div class="wrap">
-  <div class="eyebrow sw"><span class="en">Platform</span><span class="sk">Platforma</span><span class="cs">Platforma</span><span class="de">Plattform</span><span class="fr">Plateforme</span></div>
-  <h2 class="sw"><span class="en">Every llama under one login</span><span class="sk">Všetky lamy pod jedným prihlásením</span><span class="cs">Všechny lamy pod jedním přihlášením</span><span class="de">Alle Lamas unter einem Login</span><span class="fr">Tous les lamas sous un seul login</span></h2>
-  <p class="lead sw">
-    <span class="en">lamaon isn't a catalogue of tools. It's the account you use to switch work on and off, depending on what you need right now.</span>
-    <span class="sk">lamaon nie je katalóg nástrojov. Je to účet, cez ktorý si zapínaš a vypínaš robotu podľa toho, čo práve potrebuješ.</span>
-    <span class="cs">lamaon není katalog nástrojů. Je to účet, přes který si zapínáš a vypínáš práci podle toho, co zrovna potřebuješ.</span>
-    <span class="de">lamaon ist kein Werkzeugkatalog. Es ist das Konto, über das du Arbeit ein- und ausschaltest — je nachdem, was du gerade brauchst.</span>
-    <span class="fr">lamaon n'est pas un catalogue d'outils. C'est le compte qui te sert à allumer et éteindre le travail, selon ce dont tu as besoin.</span>
-  </p>
+  <div class="eyebrow sw" data-i18n="platEye">Platform</div>
+  <h2 class="sw" data-i18n="platH2">Every llama under one login</h2>
+  <p class="lead sw" data-i18n="platLead">lamaon isn't a catalogue of tools. It's the account you use to switch work on and off, depending on what you need right now.</p>
   <div class="facts sw">
     <div class="fact">
-      <b><span class="en">One wallet</span><span class="sk">Jedna peňaženka</span><span class="cs">Jedna peněženka</span><span class="de">Eine Geldbörse</span><span class="fr">Un portefeuille</span></b>
-      <span>
-        <span class="en">Credits are spent across the llamas. Nothing gets bought twice.</span>
-        <span class="sk">Kredity sa míňajú naprieč lamami. Nič sa nekupuje dvakrát.</span>
-        <span class="cs">Kredity se utrácejí napříč lamami. Nic se nekupuje dvakrát.</span>
-        <span class="de">Credits werden über alle Lamas hinweg ausgegeben. Nichts wird doppelt gekauft.</span>
-        <span class="fr">Les crédits se dépensent entre les lamas. Rien ne s'achète deux fois.</span>
-      </span>
+      <b data-i18n="f1h">One wallet</b>
+      <span data-i18n="f1p">Credits are spent across the llamas. Nothing gets bought twice.</span>
     </div>
     <div class="fact">
-      <b><span class="en">Credits for finished work</span><span class="sk">Kredity za hotovú robotu</span><span class="cs">Kredity za hotovou práci</span><span class="de">Credits für erledigte Arbeit</span><span class="fr">Des crédits pour du travail fini</span></b>
-      <span>
-        <span class="en">You see what a specific job cost you. No conversions, no surprises.</span>
-        <span class="sk">Vidíš, čo ťa stála konkrétna robota. Bez prepočtov a bez prekvapení.</span>
-        <span class="cs">Vidíš, co tě stála konkrétní práce. Bez přepočtů a bez překvapení.</span>
-        <span class="de">Du siehst, was eine konkrete Arbeit gekostet hat. Ohne Umrechnungen, ohne Überraschungen.</span>
-        <span class="fr">Tu vois ce qu'un travail précis t'a coûté. Sans conversions, sans surprises.</span>
-      </span>
+      <b data-i18n="f2h">Credits for finished work</b>
+      <span data-i18n="f2p">You see what a specific job cost you. No conversions, no surprises.</span>
     </div>
     <div class="fact">
-      <b><span class="en">Switch on, switch off</span><span class="sk">Zapneš a vypneš</span><span class="cs">Zapneš a vypneš</span><span class="de">Ein- und ausschalten</span><span class="fr">Tu allumes, tu éteins</span></b>
-      <span>
-        <span class="en">Run a llama for a month or a single week. There's no lock-in.</span>
-        <span class="sk">Lamu si zapneš na mesiac aj na jeden týždeň. Viazanosť nie je.</span>
-        <span class="cs">Lamu si zapneš na měsíc i na jeden týden. Žádný závazek.</span>
-        <span class="de">Ein Lama läuft einen Monat oder eine einzige Woche. Keine Vertragsbindung.</span>
-        <span class="fr">Un lama pour un mois ou une seule semaine. Sans engagement.</span>
-      </span>
+      <b data-i18n="f3h">Switch on, switch off</b>
+      <span data-i18n="f3p">Run a llama for a month or a single week. There's no lock-in.</span>
     </div>
   </div>
 </div></section>
 
 <!-- ============ PREČO TO ROBÍME ============ -->
 <section id="preco"><div class="wrap">
-  <div class="eyebrow sw"><span class="en">Why we do this</span><span class="sk">Prečo to robíme</span><span class="cs">Proč to děláme</span><span class="de">Warum wir das machen</span><span class="fr">Pourquoi on fait ça</span></div>
-  <h2 class="sw"><span class="en">We don't sell time or work.</span><span class="sk">Nepredávame čas ani prácu.</span><span class="cs">Neprodáváme čas ani práci.</span><span class="de">Wir verkaufen weder Zeit noch Arbeit.</span><span class="fr">On ne vend ni du temps ni du travail.</span></h2>
-  <p class="lead sw">
-    <span class="en">We sell products you switch on — and from that moment they run without you. A small business can't afford people for everything; it can afford a llama. So we build employees that turn on with a switch.</span>
-    <span class="sk">Predávame produkty, ktoré si zapneš a ktoré od toho momentu bežia bez teba. Malá firma si nemôže dovoliť ľudí na všetko — lamu áno. Preto staviame zamestnancov, ktorí sa zapínajú vypínačom.</span>
-    <span class="cs">Prodáváme produkty, které si zapneš a které od té chvíle běží bez tebe. Malá firma si nemůže dovolit lidi na všechno — lamu ano. Proto stavíme zaměstnance, kteří se zapínají vypínačem.</span>
-    <span class="de">Wir verkaufen Produkte, die du einschaltest — und die ab diesem Moment ohne dich laufen. Ein kleines Unternehmen kann sich nicht für alles Leute leisten — ein Lama schon. Also bauen wir Mitarbeiter, die man per Schalter einschaltet.</span>
-    <span class="fr">On vend des produits que tu allumes — et qui, dès cet instant, tournent sans toi. Une petite entreprise ne peut pas se payer des gens pour tout — un lama, si. Alors on construit des employés qui s'allument avec un interrupteur.</span>
-  </p>
+  <div class="eyebrow sw" data-i18n="whyEye">Why we do this</div>
+  <h2 class="sw" data-i18n="whyH2">We don't sell time or work.</h2>
+  <p class="lead sw" data-i18n="whyLead">We sell products you switch on — and from that moment they run without you. A small business can't afford people for everything; it can afford a llama. So we build employees that turn on with a switch.</p>
   <div class="pledges">
     <div class="pledge sw">
-      <span class="no"><span class="en">We don't promise it helps.</span><span class="sk">Nesľubujeme, že pomáha.</span><span class="cs">Neslibujeme, že pomáhá.</span><span class="de">Wir versprechen nicht, dass es hilft.</span><span class="fr">On ne promet pas que ça aide.</span></span>
-      <span class="yes"><span class="en">It replaces.</span><span class="sk">Nahrádza.</span><span class="cs">Nahrazuje.</span><span class="de">Es ersetzt.</span><span class="fr">Ça remplace.</span></span>
+      <span class="no" data-i18n="p1a">We don't promise it helps.</span>
+      <span class="yes" data-i18n="p1b">It replaces.</span>
     </div>
     <div class="pledge sw">
-      <span class="no"><span class="en">It's not a tool.</span><span class="sk">Nie je to nástroj.</span><span class="cs">Není to nástroj.</span><span class="de">Es ist kein Werkzeug.</span><span class="fr">Ce n'est pas un outil.</span></span>
-      <span class="yes"><span class="en">It's an employee.</span><span class="sk">Je to zamestnanec.</span><span class="cs">Je to zaměstnanec.</span><span class="de">Es ist ein Mitarbeiter.</span><span class="fr">C'est un employé.</span></span>
+      <span class="no" data-i18n="p2a">It's not a tool.</span>
+      <span class="yes" data-i18n="p2b">It's an employee.</span>
     </div>
     <div class="pledge sw">
-      <span class="no"><span class="en">We don't promise faster.</span><span class="sk">Nesľubujeme rýchlejšie.</span><span class="cs">Neslibujeme rychlejší.</span><span class="de">Wir versprechen nicht schneller.</span><span class="fr">On ne promet pas plus vite.</span></span>
-      <span class="yes"><span class="en">We promise done.</span><span class="sk">Sľubujeme hotové.</span><span class="cs">Slibujeme hotové.</span><span class="de">Wir versprechen fertig.</span><span class="fr">On promet fini.</span></span>
+      <span class="no" data-i18n="p3a">We don't promise faster.</span>
+      <span class="yes" data-i18n="p3b">We promise done.</span>
     </div>
   </div>
-  <p class="aihonest sw">
-    <span class="en">We don't apologise for AI. We use it and we don't hide it.</span>
-    <span class="sk">Za AI sa neospravedlňujeme. Používame ju a netajíme to.</span>
-    <span class="cs">Za AI se neomlouváme. Používáme ji a netajíme to.</span>
-    <span class="de">Für KI entschuldigen wir uns nicht. Wir nutzen sie und verstecken es nicht.</span>
-    <span class="fr">On ne s'excuse pas d'utiliser l'IA. On l'utilise et on ne le cache pas.</span>
-  </p>
+  <p class="aihonest sw" data-i18n="whyAi">We don't apologise for AI. We use it and we don't hide it.</p>
 </div></section>
 
 <!-- ============ FINAL CTA ============ -->
 <section class="final"><div class="wrap">
-  <h2 class="sw"><span class="en">Start with the one that slows you down most</span><span class="sk">Začni tou, ktorá ťa najviac zdržuje</span><span class="cs">Začni tou, která tě nejvíc zdržuje</span><span class="de">Fang mit dem an, was dich am meisten aufhält</span><span class="fr">Commence par celui qui te ralentit le plus</span></h2>
-  <p class="sw">
-    <span class="en">Signing up takes a minute. Your first llama can be on today.</span>
-    <span class="sk">Registrácia trvá minútu. Prvú lamu môžeš mať zapnutú ešte dnes.</span>
-    <span class="cs">Registrace trvá minutu. První lamu můžeš mít zapnutou ještě dnes.</span>
-    <span class="de">Die Registrierung dauert eine Minute. Dein erstes Lama kann noch heute laufen.</span>
-    <span class="fr">L'inscription prend une minute. Ton premier lama peut être allumé aujourd'hui.</span>
-  </p>
-  <a class="btn p sw" href="#produkty"><span class="en">Pick your llama</span><span class="sk">Vybrať lamu</span><span class="cs">Vybrat lamu</span><span class="de">Lama auswählen</span><span class="fr">Choisir son lama</span></a>
+  <h2 class="sw" data-i18n="finH2">Start with the one that slows you down most</h2>
+  <p class="sw" data-i18n="finP">Signing up takes a minute. Your first llama can be on today.</p>
+  <a class="btn p sw" href="#produkty" data-i18n="pick">Pick your llama</a>
 </div></section>
 
 <!-- ============ FOOTER ============ -->
@@ -580,10 +467,7 @@ footer a:hover{color:var(--ink)}
     </svg>
     <span class="wm"><b>lama</b><i>on</i></span>
   </a>
-  <span>
-    lamaon.com ·
-    <span class="en">One account, all the llamas</span><span class="sk">Jeden účet, všetky lamy</span><span class="cs">Jeden účet, všechny lamy</span><span class="de">Ein Konto, alle Lamas</span><span class="fr">Un compte, tous les lamas</span>
-  </span>
+  <span>lamaon.com · <span data-i18n="footTag">One account, all the llamas</span></span>
   <span><a href="mailto:office@lamaon.com">office@lamaon.com</a> · © <span id="year"></span> LAMAON.COM s.r.o.</span>
 </div></footer>
 
@@ -593,26 +477,408 @@ footer a:hover{color:var(--ink)}
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  /* ---------- jazyk: EN default · SK · CS · DE · FR ---------- */
-  var LANGS = ["en","sk","cs","de","fr"];
+  /* ================= I18N ================= */
+  var LANGS = ["en","sk","cs","de","fr","pl","hu","ro","uk","hr","sr","el","es","pt"];
+  var NAMES = {en:"English",sk:"Slovenčina",cs:"Čeština",de:"Deutsch",fr:"Français",pl:"Polski",hu:"Magyar",ro:"Română",uk:"Українська",hr:"Hrvatski",sr:"Srpski",el:"Ελληνικά",es:"Español",pt:"Português"};
   var TITLES = {
-    en:"lamaon — Turn your llama on.",
-    sk:"lamaon — Zapni si lamu.",
-    cs:"lamaon — Zapni si lamu.",
-    de:"lamaon — Schalt dein Lama ein.",
-    fr:"lamaon — Allume ton lama."
+    en:"lamaon — Turn your llama on.", sk:"lamaon — Zapni si lamu.", cs:"lamaon — Zapni si lamu.",
+    de:"lamaon — Schalt dein Lama ein.", fr:"lamaon — Allume ton lama.", pl:"lamaon — Włącz swoją lamę.",
+    hu:"lamaon — Kapcsold be a lámád.", ro:"lamaon — Pornește-ți lama.", uk:"lamaon — Увімкни свою ламу.",
+    hr:"lamaon — Upali svoju lamu.", sr:"lamaon — Upali svoju lamu.", el:"lamaon — Άναψε το λάμα σου.",
+    es:"lamaon — Enciende tu llama.", pt:"lamaon — Liga a tua lama."
   };
-  var sel = document.getElementById("lang");
+  /* zjednodušené SVG vlajky (30×20) */
+  var FLAGS = {
+    en:"<svg viewBox='0 0 30 20'><rect width='30' height='20' fill='#012169'/><path d='M0 0l30 20M30 0L0 20' stroke='#fff' stroke-width='4'/><path d='M0 0l30 20M30 0L0 20' stroke='#C8102E' stroke-width='2'/><path d='M15 0v20M0 10h30' stroke='#fff' stroke-width='6'/><path d='M15 0v20M0 10h30' stroke='#C8102E' stroke-width='3.6'/></svg>",
+    sk:"<svg viewBox='0 0 30 20'><rect width='30' height='20' fill='#fff'/><rect y='6.7' width='30' height='13.3' fill='#0B4EA2'/><rect y='13.3' width='30' height='6.7' fill='#EE1C25'/><path d='M8.5 4.5c2.6 0 4.3.5 4.3.5v6c0 2.8-4.3 4.5-4.3 4.5S4.2 13.8 4.2 11v-6s1.7-.5 4.3-.5z' fill='#EE1C25' stroke='#fff' stroke-width='.7'/><path d='M8.5 6v7M6.3 8h4.4M6 10h5' stroke='#fff' stroke-width='1.1' fill='none'/></svg>",
+    cs:"<svg viewBox='0 0 30 20'><rect width='30' height='10' fill='#fff'/><rect y='10' width='30' height='10' fill='#D7141A'/><path d='M0 0l15 10L0 20z' fill='#11457E'/></svg>",
+    de:"<svg viewBox='0 0 30 20'><rect width='30' height='6.7' fill='#000'/><rect y='6.7' width='30' height='6.7' fill='#DD0000'/><rect y='13.3' width='30' height='6.7' fill='#FFCE00'/></svg>",
+    fr:"<svg viewBox='0 0 30 20'><rect width='10' height='20' fill='#002395'/><rect x='10' width='10' height='20' fill='#fff'/><rect x='20' width='10' height='20' fill='#ED2939'/></svg>",
+    pl:"<svg viewBox='0 0 30 20'><rect width='30' height='10' fill='#fff'/><rect y='10' width='30' height='10' fill='#DC143C'/></svg>",
+    hu:"<svg viewBox='0 0 30 20'><rect width='30' height='6.7' fill='#CE2939'/><rect y='6.7' width='30' height='6.7' fill='#fff'/><rect y='13.3' width='30' height='6.7' fill='#477050'/></svg>",
+    ro:"<svg viewBox='0 0 30 20'><rect width='10' height='20' fill='#002B7F'/><rect x='10' width='10' height='20' fill='#FCD116'/><rect x='20' width='10' height='20' fill='#CE1126'/></svg>",
+    uk:"<svg viewBox='0 0 30 20'><rect width='30' height='10' fill='#0057B7'/><rect y='10' width='30' height='10' fill='#FFD700'/></svg>",
+    hr:"<svg viewBox='0 0 30 20'><rect width='30' height='6.7' fill='#FF0000'/><rect y='6.7' width='30' height='6.7' fill='#fff'/><rect y='13.3' width='30' height='6.7' fill='#171796'/><g><rect x='11' y='4' width='2' height='2' fill='#FF0000'/><rect x='15' y='4' width='2' height='2' fill='#FF0000'/><rect x='13' y='4' width='2' height='2' fill='#fff'/><rect x='17' y='4' width='2' height='2' fill='#fff'/><rect x='11' y='6' width='2' height='2' fill='#fff'/><rect x='13' y='6' width='2' height='2' fill='#FF0000'/><rect x='15' y='6' width='2' height='2' fill='#fff'/><rect x='17' y='6' width='2' height='2' fill='#FF0000'/><rect x='11' y='8' width='2' height='2' fill='#FF0000'/><rect x='13' y='8' width='2' height='2' fill='#fff'/><rect x='15' y='8' width='2' height='2' fill='#FF0000'/><rect x='17' y='8' width='2' height='2' fill='#fff'/></g></svg>",
+    sr:"<svg viewBox='0 0 30 20'><rect width='30' height='6.7' fill='#C6363C'/><rect y='6.7' width='30' height='6.7' fill='#0C4076'/><rect y='13.3' width='30' height='6.7' fill='#fff'/></svg>",
+    el:"<svg viewBox='0 0 30 20'><rect width='30' height='20' fill='#0D5EAF'/><path d='M0 2.2h30M0 6.7h30M0 11.1h30M0 15.6h30' stroke='#fff' stroke-width='2.2'/><rect width='11' height='11.1' fill='#0D5EAF'/><path d='M5.5 0v11.1M0 5.6h11' stroke='#fff' stroke-width='2.2'/></svg>",
+    es:"<svg viewBox='0 0 30 20'><rect width='30' height='20' fill='#AA151B'/><rect y='5' width='30' height='10' fill='#F1BF00'/></svg>",
+    pt:"<svg viewBox='0 0 30 20'><rect width='30' height='20' fill='#FF0000'/><rect width='12' height='20' fill='#006600'/><circle cx='12' cy='10' r='4' fill='#FFFF00'/><circle cx='12' cy='10' r='2.4' fill='#FF0000'/></svg>"
+  };
+  var I18N = {
+    navProducts:{en:"Products",sk:"Produkty",cs:"Produkty",de:"Produkte",fr:"Produits",pl:"Produkty",hu:"Termékek",ro:"Produse",uk:"Продукти",hr:"Proizvodi",sr:"Proizvodi",el:"Προϊόντα",es:"Productos",pt:"Produtos"},
+    navHow:{en:"How it works",sk:"Ako to funguje",cs:"Jak to funguje",de:"So funktioniert's",fr:"Comment ça marche",pl:"Jak to działa",hu:"Hogyan működik",ro:"Cum funcționează",uk:"Як це працює",hr:"Kako radi",sr:"Kako radi",el:"Πώς λειτουργεί",es:"Cómo funciona",pt:"Como funciona"},
+    navWhy:{en:"Why",sk:"Prečo",cs:"Proč",de:"Warum",fr:"Pourquoi",pl:"Dlaczego",hu:"Miért",ro:"De ce",uk:"Чому",hr:"Zašto",sr:"Zašto",el:"Γιατί",es:"Por qué",pt:"Porquê"},
+    navCta:{en:"Turn your llama on",sk:"Zapnúť lamu",cs:"Zapnout lamu",de:"Lama einschalten",fr:"Allumer le lama",pl:"Włącz lamę",hu:"Kapcsold be a lámád",ro:"Pornește lama",uk:"Увімкнути ламу",hr:"Upali lamu",sr:"Upali lamu",el:"Άναψε το λάμα",es:"Enciende tu llama",pt:"Liga a lama"},
+    navCtaS:{en:"Turn it on",sk:"Zapnúť",cs:"Zapnout",de:"Einschalten",fr:"Allumer",pl:"Włącz",hu:"Bekapcsol",ro:"Pornește",uk:"Увімкнути",hr:"Upali",sr:"Upali",el:"Άναψέ το",es:"Enciéndela",pt:"Liga"},
+    claim:{en:"Turn your llama on.",sk:"Zapni si lamu.",cs:"Zapni si lamu.",de:"Schalt dein Lama ein.",fr:"Allume ton lama.",pl:"Włącz swoją lamę.",hu:"Kapcsold be a lámád.",ro:"Pornește-ți lama.",uk:"Увімкни свою ламу.",hr:"Upali svoju lamu.",sr:"Upali svoju lamu.",el:"Άναψε το λάμα σου.",es:"Enciende tu llama.",pt:"Liga a tua lama."},
+    claim2:{en:"The llama does the work.",sk:"Prácu spraví ona.",cs:"Práci udělá ona.",de:"Die Arbeit macht das Lama.",fr:"Le lama fait le travail.",pl:"Robotę zrobi ona.",hu:"A munkát elvégzi ő.",ro:"Munca o face ea.",uk:"Роботу зробить вона.",hr:"Posao obavi ona.",sr:"Posao obavi ona.",el:"Τη δουλειά την κάνει εκείνο.",es:"El trabajo lo hace ella.",pt:"O trabalho fá-lo ela."},
+    heroSub:{
+      en:"One account, one wallet, credits. Pick a llama for whatever slows you down — and from that moment it runs without you.",
+      sk:"Jeden účet, jedna peňaženka, kredity. Vyberieš si lamu podľa toho, čo ťa zdržuje — a od toho momentu to beží bez teba.",
+      cs:"Jeden účet, jedna peněženka, kredity. Vybereš si lamu podle toho, co tě zdržuje — a od té chvíle to běží bez tebe.",
+      de:"Ein Konto, eine Geldbörse, Credits. Wähl ein Lama für das, was dich aufhält — ab dem Moment läuft es ohne dich.",
+      fr:"Un compte, un portefeuille, des crédits. Choisis un lama pour ce qui te ralentit — et à partir de là, ça tourne sans toi.",
+      pl:"Jedno konto, jeden portfel, kredyty. Wybierasz lamę do tego, co cię spowalnia — i od tej chwili działa bez ciebie.",
+      hu:"Egy fiók, egy tárca, kreditek. Válassz lámát ahhoz, ami hátráltat — és attól a pillanattól nélküled fut.",
+      ro:"Un cont, un portofel, credite. Alegi o lama pentru ce te încetinește — și din acel moment merge fără tine.",
+      uk:"Один акаунт, один гаманець, кредити. Обираєш ламу для того, що тебе гальмує — і з цього моменту все працює без тебе.",
+      hr:"Jedan račun, jedan novčanik, krediti. Odabereš lamu za ono što te usporava — i od tog trenutka radi bez tebe.",
+      sr:"Jedan nalog, jedan novčanik, krediti. Izabereš lamu za ono što te usporava — i od tog trenutka radi bez tebe.",
+      el:"Ένας λογαριασμός, ένα πορτοφόλι, credits. Διαλέγεις ένα λάμα για ό,τι σε καθυστερεί — κι από εκείνη τη στιγμή τρέχει χωρίς εσένα.",
+      es:"Una cuenta, una cartera, créditos. Eliges una llama para lo que te frena — y desde ese momento funciona sin ti.",
+      pt:"Uma conta, uma carteira, créditos. Escolhes uma lama para o que te atrasa — e a partir daí funciona sem ti."},
+    pick:{en:"Pick your llama",sk:"Vybrať lamu",cs:"Vybrat lamu",de:"Lama auswählen",fr:"Choisir son lama",pl:"Wybierz lamę",hu:"Válassz lámát",ro:"Alege-ți lama",uk:"Обрати ламу",hr:"Odaberi lamu",sr:"Izaberi lamu",el:"Διάλεξε λάμα",es:"Elige tu llama",pt:"Escolhe a tua lama"},
+    meta1:{en:"One account for everything",sk:"Jeden účet na všetko",cs:"Jeden účet na všechno",de:"Ein Konto für alles",fr:"Un compte pour tout",pl:"Jedno konto na wszystko",hu:"Egy fiók mindenre",ro:"Un cont pentru tot",uk:"Один акаунт на все",hr:"Jedan račun za sve",sr:"Jedan nalog za sve",el:"Ένας λογαριασμός για όλα",es:"Una cuenta para todo",pt:"Uma conta para tudo"},
+    meta2:{en:"You pay credits, not subscriptions for nothing",sk:"Platíš kredity, nie predplatné za nič",cs:"Platíš kredity, ne předplatné za nic",de:"Du zahlst Credits, keine Abos für nichts",fr:"Des crédits, pas des abonnements pour rien",pl:"Płacisz kredytami, nie za puste abonamenty",hu:"Kreditekkel fizetsz, nem üres előfizetésekkel",ro:"Plătești credite, nu abonamente degeaba",uk:"Платиш кредитами, а не за порожні підписки",hr:"Plaćaš kredite, ne pretplate ni za što",sr:"Plaćaš kredite, ne pretplate ni za šta",el:"Πληρώνεις credits, όχι συνδρομές για το τίποτα",es:"Pagas créditos, no suscripciones por nada",pt:"Pagas créditos, não assinaturas para nada"},
+    meta3:{en:"Up and running in 24 hours",sk:"Spustenie do 24 hodín",cs:"Spuštění do 24 hodin",de:"Startklar in 24 Stunden",fr:"Opérationnel en 24 heures",pl:"Działa w 24 godziny",hu:"24 órán belül működik",ro:"Funcțional în 24 de ore",uk:"Запуск за 24 години",hr:"Pokrenuto u 24 sata",sr:"Pokrenuto za 24 sata",el:"Σε λειτουργία σε 24 ώρες",es:"En marcha en 24 horas",pt:"A funcionar em 24 horas"},
+    famEye:{en:"The llama family",sk:"Rodina lám",cs:"Rodina lam",de:"Die Lama-Familie",fr:"La famille lama",pl:"Rodzina lam",hu:"A lámacsalád",ro:"Familia lama",uk:"Родина лам",hr:"Obitelj lama",sr:"Porodica lama",el:"Η οικογένεια των λάμα",es:"La familia llama",pt:"A família lama"},
+    famH2:{en:"Which job do you never want to do again?",sk:"Ktorú robotu už nechceš robiť?",cs:"Kterou práci už nechceš dělat?",de:"Welche Arbeit willst du nie wieder machen?",fr:"Quel travail ne veux-tu plus jamais faire ?",pl:"Której roboty nie chcesz już nigdy robić?",hu:"Melyik munkát nem akarod többé csinálni?",ro:"Ce muncă nu mai vrei să faci niciodată?",uk:"Яку роботу ти більше не хочеш робити?",hr:"Koji posao više ne želiš raditi?",sr:"Koji posao više ne želiš da radiš?",el:"Ποια δουλειά δεν θέλεις να ξανακάνεις ποτέ;",es:"¿Qué trabajo no quieres volver a hacer?",pt:"Que trabalho nunca mais queres fazer?"},
+    famLead:{
+      en:"Every llama takes one job and does all of it. Not an assistant that helps you — an employee that owns it.",
+      sk:"Každá lama rieši jednu vec a robí ju celú. Nie asistent, ktorý ti pomáha — zamestnanec, ktorý to má na starosti.",
+      cs:"Každá lama řeší jednu věc a dělá ji celou. Ne asistent, který ti pomáhá — zaměstnanec, který to má na starosti.",
+      de:"Jedes Lama übernimmt eine Aufgabe — und zwar ganz. Kein Assistent, der dir hilft, sondern ein Mitarbeiter, der sie verantwortet.",
+      fr:"Chaque lama prend un travail et le fait en entier. Pas un assistant qui t'aide — un employé qui s'en charge.",
+      pl:"Każda lama bierze jedną rzecz i robi ją w całości. Nie asystent, który ci pomaga — pracownik, który to ogarnia.",
+      hu:"Minden láma egy feladatot visz — de azt teljesen. Nem asszisztens, aki segít, hanem munkatárs, aki felel érte.",
+      ro:"Fiecare lama ia o treabă și o face pe toată. Nu un asistent care te ajută — un angajat care o are în grijă.",
+      uk:"Кожна лама бере одну справу й робить її повністю. Не асистент, що допомагає, — працівник, який за це відповідає.",
+      hr:"Svaka lama preuzima jednu stvar i radi je cijelu. Nije asistent koji ti pomaže — nego zaposlenik koji je za to zadužen.",
+      sr:"Svaka lama preuzima jednu stvar i radi je celu. Nije asistent koji ti pomaže — već zaposleni koji je za to zadužen.",
+      el:"Κάθε λάμα αναλαμβάνει μία δουλειά και την κάνει ολόκληρη. Όχι βοηθός που σε βοηθά — υπάλληλος που την έχει αναλάβει.",
+      es:"Cada llama toma un trabajo y lo hace entero. No es un asistente que te ayuda — es un empleado que se encarga.",
+      pt:"Cada lama pega num trabalho e fá-lo inteiro. Não é um assistente que te ajuda — é um funcionário que trata disso."},
+    dTax:{
+      en:"Send the documents; it processes and files them. It watches the deadline for you.",
+      sk:"Pošleš doklady, ona spracuje a podá. Termín stráži za teba.",
+      cs:"Pošleš doklady, ona je zpracuje a podá. Termín hlídá za tebe.",
+      de:"Du schickst die Belege, es verarbeitet und reicht ein. Die Frist behält es für dich im Blick.",
+      fr:"Envoie tes documents : il traite et déclare. Il surveille l'échéance pour toi.",
+      pl:"Wysyłasz dokumenty, ona przetwarza i składa. Terminu pilnuje za ciebie.",
+      hu:"Elküldöd a bizonylatokat, ő feldolgozza és beadja. A határidőt helyetted figyeli.",
+      ro:"Trimiți documentele, ea le procesează și le depune. Termenul îl urmărește pentru tine.",
+      uk:"Надсилаєш документи — вона опрацює й подасть. За дедлайном стежить замість тебе.",
+      hr:"Pošalješ dokumente, ona ih obradi i preda. Rok čuva umjesto tebe.",
+      sr:"Pošalješ dokumente, ona ih obradi i preda. Rok čuva umesto tebe.",
+      el:"Στέλνεις τα έγγραφα· τα επεξεργάζεται και τα υποβάλλει. Την προθεσμία την προσέχει για σένα.",
+      es:"Envías los documentos; los procesa y los presenta. Vigila el plazo por ti.",
+      pt:"Envias os documentos; ela processa e entrega. O prazo, vigia-o por ti."},
+    dCare:{
+      en:"Bookings, payments and patient replies. Picks up even when the nurse can't.",
+      sk:"Rezervácie, platby a odpovede pacientom. Dvíha aj vtedy, keď sestra nemôže.",
+      cs:"Rezervace, platby a odpovědi pacientům. Zvedá to, i když sestra nemůže.",
+      de:"Termine, Zahlungen, Patientenantworten. Geht ran, auch wenn die Schwester nicht kann.",
+      fr:"Réservations, paiements, réponses aux patients. Décroche même quand l'infirmière ne peut pas.",
+      pl:"Rezerwacje, płatności i odpowiedzi dla pacjentów. Odbiera nawet wtedy, gdy pielęgniarka nie może.",
+      hu:"Foglalások, fizetések, válaszok a betegeknek. Akkor is felveszi, ha a nővér nem tudja.",
+      ro:"Programări, plăți și răspunsuri pentru pacienți. Răspunde chiar și când asistenta nu poate.",
+      uk:"Записи, оплати й відповіді пацієнтам. Бере слухавку навіть тоді, коли медсестра не може.",
+      hr:"Rezervacije, plaćanja i odgovori pacijentima. Javlja se i kad sestra ne može.",
+      sr:"Rezervacije, plaćanja i odgovori pacijentima. Javlja se i kad sestra ne može.",
+      el:"Ραντεβού, πληρωμές, απαντήσεις σε ασθενείς. Το σηκώνει ακόμα κι όταν η νοσηλεύτρια δεν μπορεί.",
+      es:"Reservas, pagos y respuestas a pacientes. Contesta incluso cuando la enfermera no puede.",
+      pt:"Marcações, pagamentos e respostas aos pacientes. Atende mesmo quando a enfermeira não pode."},
+    dDesk:{
+      en:"Documents, e-mails, calendar, stock. An office that runs itself.",
+      sk:"Doklady, e-maily, kalendár, sklad. Kancelária, ktorá sa spravuje sama.",
+      cs:"Doklady, e-maily, kalendář, sklad. Kancelář, která se spravuje sama.",
+      de:"Belege, E-Mails, Kalender, Lager. Ein Büro, das sich selbst verwaltet.",
+      fr:"Documents, e-mails, agenda, stock. Un bureau qui se gère tout seul.",
+      pl:"Dokumenty, e-maile, kalendarz, magazyn. Biuro, które prowadzi się samo.",
+      hu:"Bizonylatok, e-mailek, naptár, raktár. Iroda, amely önmagát viszi.",
+      ro:"Documente, e-mailuri, calendar, stoc. Un birou care se administrează singur.",
+      uk:"Документи, листи, календар, склад. Офіс, що керує собою сам.",
+      hr:"Dokumenti, e-mailovi, kalendar, skladište. Ured koji se vodi sam.",
+      sr:"Dokumenti, mejlovi, kalendar, magacin. Kancelarija koja se vodi sama.",
+      el:"Έγγραφα, e-mail, ημερολόγιο, απόθεμα. Ένα γραφείο που τρέχει μόνο του.",
+      es:"Documentos, correos, calendario, inventario. Una oficina que se gestiona sola.",
+      pt:"Documentos, e-mails, agenda, stock. Um escritório que se gere sozinho."},
+    dPage:{
+      en:"Builds and updates your site around what you sell. No agency.",
+      sk:"Postaví a upraví stránku podľa toho, čo predávaš. Bez agentúry.",
+      cs:"Postaví a upraví stránku podle toho, co prodáváš. Bez agentury.",
+      de:"Baut und pflegt deine Seite rund um das, was du verkaufst. Ohne Agentur.",
+      fr:"Construit et met à jour ton site selon ce que tu vends. Sans agence.",
+      pl:"Buduje i aktualizuje stronę pod to, co sprzedajesz. Bez agencji.",
+      hu:"Felépíti és frissíti az oldalad ahhoz, amit árulsz. Ügynökség nélkül.",
+      ro:"Construiește și actualizează site-ul după ce vinzi. Fără agenție.",
+      uk:"Будує й оновлює сайт під те, що ти продаєш. Без агенції.",
+      hr:"Gradi i ažurira stranicu prema onome što prodaješ. Bez agencije.",
+      sr:"Gradi i ažurira sajt prema onome što prodaješ. Bez agencije.",
+      el:"Χτίζει και ενημερώνει τη σελίδα σου γύρω από ό,τι πουλάς. Χωρίς agency.",
+      es:"Crea y actualiza tu web según lo que vendes. Sin agencia.",
+      pt:"Constrói e atualiza o teu site à volta do que vendes. Sem agência."},
+    dTrack:{
+      en:"See what works and what just burns money. No spreadsheets, no analyst.",
+      sk:"Vidíš, čo funguje a čo len míňa. Bez tabuliek a bez analytika.",
+      cs:"Vidíš, co funguje a co jen utrácí. Bez tabulek a bez analytika.",
+      de:"Du siehst, was funktioniert und was nur Geld frisst. Ohne Tabellen, ohne Analysten.",
+      fr:"Tu vois ce qui marche et ce qui dépense pour rien. Sans tableurs, sans analyste.",
+      pl:"Widzisz, co działa, a co tylko pali pieniądze. Bez arkuszy i bez analityka.",
+      hu:"Látod, mi működik és mi csak viszi a pénzt. Táblázatok és elemző nélkül.",
+      ro:"Vezi ce funcționează și ce doar arde bani. Fără tabele, fără analist.",
+      uk:"Бачиш, що працює, а що лише палить гроші. Без таблиць і без аналітика.",
+      hr:"Vidiš što radi, a što samo troši novac. Bez tablica i bez analitičara.",
+      sr:"Vidiš šta radi, a šta samo troši novac. Bez tabela i bez analitičara.",
+      el:"Βλέπεις τι δουλεύει και τι απλώς καίει χρήματα. Χωρίς φύλλα εργασίας, χωρίς αναλυτή.",
+      es:"Ves qué funciona y qué solo quema dinero. Sin hojas de cálculo ni analista.",
+      pt:"Vês o que funciona e o que só queima dinheiro. Sem folhas de cálculo nem analista."},
+    dZap:{
+      en:"Connects the tools that don't talk to each other — and puts them to work.",
+      sk:"Prepojí nástroje, ktoré spolu nehovoria, a nechá ich pracovať.",
+      cs:"Propojí nástroje, které spolu nemluví, a nechá je pracovat.",
+      de:"Verbindet Tools, die nicht miteinander reden — und lässt sie arbeiten.",
+      fr:"Relie les outils qui ne se parlent pas — et les met au travail.",
+      pl:"Łączy narzędzia, które ze sobą nie gadają — i bierze je do roboty.",
+      hu:"Összeköti az eszközöket, amelyek nem beszélnek egymással — és munkára fogja őket.",
+      ro:"Leagă uneltele care nu vorbesc între ele — și le pune la treabă.",
+      uk:"З'єднує інструменти, які не спілкуються між собою, — і змушує їх працювати.",
+      hr:"Povezuje alate koji ne razgovaraju — i tjera ih na posao.",
+      sr:"Povezuje alate koji ne razgovaraju — i tera ih da rade.",
+      el:"Συνδέει τα εργαλεία που δεν μιλούν μεταξύ τους — και τα βάζει να δουλέψουν.",
+      es:"Conecta las herramientas que no se hablan — y las pone a trabajar.",
+      pt:"Liga as ferramentas que não falam entre si — e põe-nas a trabalhar."},
+    dScope:{
+      en:"Turns “something's broken” into a brief you can hand over.",
+      sk:"Z „niečo nám nefunguje“ spraví zadanie, ktoré sa dá odovzdať.",
+      cs:"Z „něco nám nefunguje“ udělá zadání, které se dá předat.",
+      de:"Macht aus „irgendwas funktioniert nicht“ ein Briefing, das man übergeben kann.",
+      fr:"Transforme « ça ne marche pas » en un brief qu'on peut transmettre.",
+      pl:"Z „coś nam nie działa” robi brief, który można komuś przekazać.",
+      hu:"A „valami nem működik”-ből átadható feladatleírást csinál.",
+      ro:"Din „ceva nu ne merge” face un brief pe care îl poți preda.",
+      uk:"Перетворює «щось у нас не працює» на завдання, яке можна передати.",
+      hr:"Od „nešto nam ne radi“ napravi zadatak koji se može predati.",
+      sr:"Od „nešto nam ne radi“ napravi zadatak koji može da se preda.",
+      el:"Μετατρέπει το «κάτι δεν δουλεύει» σε brief που μπορείς να παραδώσεις.",
+      es:"Convierte «algo no funciona» en un encargo que se puede entregar.",
+      pt:"Transforma «algo não funciona» num briefing que podes entregar."},
+    dDemo:{
+      en:"Shows your own case solved before you buy anything.",
+      sk:"Ukáže tvoj vlastný prípad vyriešený skôr, než čokoľvek kúpiš.",
+      cs:"Ukáže tvůj vlastní případ vyřešený dřív, než cokoli koupíš.",
+      de:"Zeigt deinen eigenen Fall gelöst, bevor du irgendwas kaufst.",
+      fr:"Montre ton propre cas résolu avant que tu n'achètes quoi que ce soit.",
+      pl:"Pokazuje twój własny przypadek rozwiązany, zanim cokolwiek kupisz.",
+      hu:"Megmutatja a saját esetedet megoldva, mielőtt bármit vennél.",
+      ro:"Îți arată propriul caz rezolvat înainte să cumperi ceva.",
+      uk:"Показує твій власний кейс розв'язаним ще до того, як ти щось купиш.",
+      hr:"Pokaže tvoj vlastiti slučaj riješen prije nego išta kupiš.",
+      sr:"Pokaže tvoj slučaj rešen pre nego što išta kupiš.",
+      el:"Σου δείχνει τη δική σου περίπτωση λυμένη πριν αγοράσεις οτιδήποτε.",
+      es:"Te muestra tu propio caso resuelto antes de comprar nada.",
+      pt:"Mostra o teu próprio caso resolvido antes de comprares seja o que for."},
+    pillFirst:{en:"first up",sk:"prvá na rade",cs:"první na řadě",de:"zuerst dran",fr:"première",pl:"pierwsza w kolejce",hu:"elsőként",ro:"prima la rând",uk:"перша на черзі",hr:"prva na redu",sr:"prva na redu",el:"πρώτο στη σειρά",es:"la primera",pt:"a primeira"},
+    pillSoon:{en:"soon",sk:"čoskoro",cs:"brzy",de:"bald",fr:"bientôt",pl:"wkrótce",hu:"hamarosan",ro:"în curând",uk:"незабаром",hr:"uskoro",sr:"uskoro",el:"σύντομα",es:"pronto",pt:"em breve"},
+    howH2:{en:"Three steps and it's off your plate",sk:"Tri kroky a máš to z krku",cs:"Tři kroky a máš to z krku",de:"Drei Schritte und es ist vom Tisch",fr:"Trois étapes et c'est réglé",pl:"Trzy kroki i masz to z głowy",hu:"Három lépés, és le van tudva",ro:"Trei pași și ai scăpat de ea",uk:"Три кроки — і це вже не твій клопіт",hr:"Tri koraka i skinuo si to s vrata",sr:"Tri koraka i skinuo si to s vrata",el:"Τρία βήματα και ξεμπέρδεψες",es:"Tres pasos y te lo quitas de encima",pt:"Três passos e está despachado"},
+    s1h:{en:"Switch on your account",sk:"Zapneš účet",cs:"Zapneš účet",de:"Konto einschalten",fr:"Active ton compte",pl:"Włączasz konto",hu:"Bekapcsolod a fiókod",ro:"Îți pornești contul",uk:"Вмикаєш акаунт",hr:"Upališ račun",sr:"Upališ nalog",el:"Ανάβεις τον λογαριασμό",es:"Activas tu cuenta",pt:"Ligas a conta"},
+    s1p:{
+      en:"One sign-up at lamaon.com. No implementation, no onboarding call, no consultant.",
+      sk:"Jedna registrácia na lamaon.com. Žiadna implementácia, žiadny onboarding call, žiadny konzultant.",
+      cs:"Jedna registrace na lamaon.com. Žádná implementace, žádný onboarding call, žádný konzultant.",
+      de:"Eine Registrierung auf lamaon.com. Keine Implementierung, kein Onboarding-Call, kein Berater.",
+      fr:"Une inscription sur lamaon.com. Pas d'implémentation, pas de call d'onboarding, pas de consultant.",
+      pl:"Jedna rejestracja na lamaon.com. Bez wdrożenia, bez onboarding calla, bez konsultanta.",
+      hu:"Egy regisztráció a lamaon.com-on. Se bevezetés, se onboarding hívás, se tanácsadó.",
+      ro:"O singură înregistrare pe lamaon.com. Fără implementare, fără call de onboarding, fără consultant.",
+      uk:"Одна реєстрація на lamaon.com. Без впровадження, без онбординг-дзвінка, без консультанта.",
+      hr:"Jedna registracija na lamaon.com. Bez implementacije, bez onboarding poziva, bez konzultanta.",
+      sr:"Jedna registracija na lamaon.com. Bez implementacije, bez onboarding poziva, bez konsultanta.",
+      el:"Μία εγγραφή στο lamaon.com. Χωρίς υλοποίηση, χωρίς onboarding κλήση, χωρίς σύμβουλο.",
+      es:"Un registro en lamaon.com. Sin implementación, sin llamada de onboarding, sin consultor.",
+      pt:"Um registo em lamaon.com. Sem implementação, sem call de onboarding, sem consultor."},
+    s2h:{en:"Top up credits",sk:"Nabiješ kredity",cs:"Nabiješ kredity",de:"Credits aufladen",fr:"Recharge tes crédits",pl:"Doładowujesz kredyty",hu:"Feltöltöd a krediteket",ro:"Îți încarci creditele",uk:"Поповнюєш кредити",hr:"Napuniš kredite",sr:"Dopuniš kredite",el:"Φορτώνεις credits",es:"Recargas créditos",pt:"Carregas créditos"},
+    s2p:{
+      en:"You pay for work done, not for access. Credits work across every llama.",
+      sk:"Platíš za spravenú robotu, nie za prístup. Kredity platia naprieč všetkými lamami.",
+      cs:"Platíš za odvedenou práci, ne za přístup. Kredity platí napříč všemi lamami.",
+      de:"Du zahlst für erledigte Arbeit, nicht für Zugang. Credits gelten über alle Lamas hinweg.",
+      fr:"Tu paies le travail fait, pas l'accès. Les crédits valent pour tous les lamas.",
+      pl:"Płacisz za wykonaną robotę, nie za dostęp. Kredyty działają we wszystkich lamach.",
+      hu:"A kész munkáért fizetsz, nem a hozzáférésért. A kreditek minden lámánál érvényesek.",
+      ro:"Plătești pentru munca făcută, nu pentru acces. Creditele merg la toate lamele.",
+      uk:"Платиш за зроблену роботу, а не за доступ. Кредити діють у всіх лам.",
+      hr:"Plaćaš obavljeni posao, ne pristup. Krediti vrijede kod svih lama.",
+      sr:"Plaćaš obavljeni posao, ne pristup. Krediti važe kod svih lama.",
+      el:"Πληρώνεις για δουλειά που έγινε, όχι για πρόσβαση. Τα credits ισχύουν σε όλα τα λάμα.",
+      es:"Pagas por el trabajo hecho, no por el acceso. Los créditos valen en todas las llamas.",
+      pt:"Pagas pelo trabalho feito, não pelo acesso. Os créditos valem em todas as lamas."},
+    s3h:{en:"Send your inputs",sk:"Pošleš podklady",cs:"Pošleš podklady",de:"Unterlagen schicken",fr:"Envoie tes éléments",pl:"Wysyłasz materiały",hu:"Elküldöd az anyagokat",ro:"Trimiți materialele",uk:"Надсилаєш матеріали",hr:"Pošalješ podloge",sr:"Pošalješ materijale",el:"Στέλνεις τα στοιχεία",es:"Envías tus materiales",pt:"Envias os teus elementos"},
+    s3p:{
+      en:"Documents, access, a brief. The rest is on the llama — you get the finished output.",
+      sk:"Doklady, prístupy, zadanie. Zvyšok je na lame — ty dostaneš hotový výstup.",
+      cs:"Doklady, přístupy, zadání. Zbytek je na lamě — ty dostaneš hotový výstup.",
+      de:"Belege, Zugänge, Auftrag. Der Rest liegt beim Lama — du bekommst das fertige Ergebnis.",
+      fr:"Documents, accès, consignes. Le reste est pour le lama — tu reçois le résultat fini.",
+      pl:"Dokumenty, dostępy, zadanie. Reszta jest na lamie — ty dostajesz gotowy efekt.",
+      hu:"Bizonylatok, hozzáférések, feladat. A többi a lámáé — te a kész eredményt kapod.",
+      ro:"Documente, accese, un brief. Restul e treaba lamei — tu primești rezultatul gata.",
+      uk:"Документи, доступи, завдання. Решта — на ламі, ти отримуєш готовий результат.",
+      hr:"Dokumenti, pristupi, zadatak. Ostalo je na lami — ti dobiješ gotov rezultat.",
+      sr:"Dokumenti, pristupi, zadatak. Ostalo je na lami — ti dobiješ gotov rezultat.",
+      el:"Έγγραφα, προσβάσεις, οδηγίες. Τα υπόλοιπα στο λάμα — εσύ παίρνεις το τελικό αποτέλεσμα.",
+      es:"Documentos, accesos, un encargo. El resto es cosa de la llama — tú recibes el resultado final.",
+      pt:"Documentos, acessos, instruções. O resto é com a lama — tu recebes o resultado pronto."},
+    platEye:{en:"Platform",sk:"Platforma",cs:"Platforma",de:"Plattform",fr:"Plateforme",pl:"Platforma",hu:"Platform",ro:"Platformă",uk:"Платформа",hr:"Platforma",sr:"Platforma",el:"Πλατφόρμα",es:"Plataforma",pt:"Plataforma"},
+    platH2:{en:"Every llama under one login",sk:"Všetky lamy pod jedným prihlásením",cs:"Všechny lamy pod jedním přihlášením",de:"Alle Lamas unter einem Login",fr:"Tous les lamas sous un seul login",pl:"Wszystkie lamy pod jednym loginem",hu:"Minden láma egy belépés alatt",ro:"Toate lamele sub un singur login",uk:"Усі лами під одним логіном",hr:"Sve lame pod jednom prijavom",sr:"Sve lame pod jednom prijavom",el:"Όλα τα λάμα κάτω από ένα login",es:"Todas las llamas bajo un solo login",pt:"Todas as lamas num único login"},
+    platLead:{
+      en:"lamaon isn't a catalogue of tools. It's the account you use to switch work on and off, depending on what you need right now.",
+      sk:"lamaon nie je katalóg nástrojov. Je to účet, cez ktorý si zapínaš a vypínaš robotu podľa toho, čo práve potrebuješ.",
+      cs:"lamaon není katalog nástrojů. Je to účet, přes který si zapínáš a vypínáš práci podle toho, co zrovna potřebuješ.",
+      de:"lamaon ist kein Werkzeugkatalog. Es ist das Konto, über das du Arbeit ein- und ausschaltest — je nachdem, was du gerade brauchst.",
+      fr:"lamaon n'est pas un catalogue d'outils. C'est le compte qui te sert à allumer et éteindre le travail, selon ce dont tu as besoin.",
+      pl:"lamaon to nie katalog narzędzi. To konto, którym włączasz i wyłączasz robotę w zależności od tego, czego akurat potrzebujesz.",
+      hu:"A lamaon nem eszközkatalógus. Egy fiók, amellyel ki-be kapcsolod a munkát, attól függően, mire van épp szükséged.",
+      ro:"lamaon nu e un catalog de unelte. E contul prin care pornești și oprești munca, în funcție de ce ai nevoie acum.",
+      uk:"lamaon — це не каталог інструментів. Це акаунт, яким ти вмикаєш і вимикаєш роботу залежно від того, що потрібно зараз.",
+      hr:"lamaon nije katalog alata. To je račun kojim pališ i gasiš posao, ovisno o tome što trenutno trebaš.",
+      sr:"lamaon nije katalog alata. To je nalog kojim pališ i gasiš posao, u zavisnosti od toga šta ti trenutno treba.",
+      el:"Το lamaon δεν είναι κατάλογος εργαλείων. Είναι ο λογαριασμός με τον οποίο ανάβεις και σβήνεις τη δουλειά, ανάλογα με το τι χρειάζεσαι τώρα.",
+      es:"lamaon no es un catálogo de herramientas. Es la cuenta con la que enciendes y apagas el trabajo según lo que necesitas ahora.",
+      pt:"O lamaon não é um catálogo de ferramentas. É a conta com que ligas e desligas o trabalho, conforme o que precisas agora."},
+    f1h:{en:"One wallet",sk:"Jedna peňaženka",cs:"Jedna peněženka",de:"Eine Geldbörse",fr:"Un portefeuille",pl:"Jeden portfel",hu:"Egy tárca",ro:"Un portofel",uk:"Один гаманець",hr:"Jedan novčanik",sr:"Jedan novčanik",el:"Ένα πορτοφόλι",es:"Una cartera",pt:"Uma carteira"},
+    f1p:{
+      en:"Credits are spent across the llamas. Nothing gets bought twice.",
+      sk:"Kredity sa míňajú naprieč lamami. Nič sa nekupuje dvakrát.",
+      cs:"Kredity se utrácejí napříč lamami. Nic se nekupuje dvakrát.",
+      de:"Credits werden über alle Lamas hinweg ausgegeben. Nichts wird doppelt gekauft.",
+      fr:"Les crédits se dépensent entre les lamas. Rien ne s'achète deux fois.",
+      pl:"Kredyty wydajesz we wszystkich lamach. Niczego nie kupujesz dwa razy.",
+      hu:"A krediteket a lámák között költöd el. Semmit sem veszel meg kétszer.",
+      ro:"Creditele se cheltuie între lame. Nimic nu se cumpără de două ori.",
+      uk:"Кредити витрачаються між ламами. Ніщо не купується двічі.",
+      hr:"Krediti se troše kroz sve lame. Ništa se ne kupuje dvaput.",
+      sr:"Krediti se troše kroz sve lame. Ništa se ne kupuje dvaput.",
+      el:"Τα credits ξοδεύονται σε όλα τα λάμα. Τίποτα δεν αγοράζεται δύο φορές.",
+      es:"Los créditos se gastan entre las llamas. Nada se compra dos veces.",
+      pt:"Os créditos gastam-se entre as lamas. Nada se compra duas vezes."},
+    f2h:{en:"Credits for finished work",sk:"Kredity za hotovú robotu",cs:"Kredity za hotovou práci",de:"Credits für erledigte Arbeit",fr:"Des crédits pour du travail fini",pl:"Kredyty za skończoną robotę",hu:"Kreditek a kész munkáért",ro:"Credite pentru muncă terminată",uk:"Кредити за готову роботу",hr:"Krediti za gotov posao",sr:"Krediti za gotov posao",el:"Credits για τελειωμένη δουλειά",es:"Créditos por trabajo terminado",pt:"Créditos por trabalho terminado"},
+    f2p:{
+      en:"You see what a specific job cost you. No conversions, no surprises.",
+      sk:"Vidíš, čo ťa stála konkrétna robota. Bez prepočtov a bez prekvapení.",
+      cs:"Vidíš, co tě stála konkrétní práce. Bez přepočtů a bez překvapení.",
+      de:"Du siehst, was eine konkrete Arbeit gekostet hat. Ohne Umrechnungen, ohne Überraschungen.",
+      fr:"Tu vois ce qu'un travail précis t'a coûté. Sans conversions, sans surprises.",
+      pl:"Widzisz, ile kosztowała cię konkretna robota. Bez przeliczników i bez niespodzianek.",
+      hu:"Látod, mennyibe került egy konkrét munka. Átváltások és meglepetések nélkül.",
+      ro:"Vezi cât te-a costat o treabă anume. Fără conversii, fără surprize.",
+      uk:"Бачиш, скільки коштувала конкретна робота. Без перерахунків і без сюрпризів.",
+      hr:"Vidiš koliko te koštao konkretan posao. Bez preračunavanja i bez iznenađenja.",
+      sr:"Vidiš koliko te je koštao konkretan posao. Bez preračunavanja i bez iznenađenja.",
+      el:"Βλέπεις τι σου κόστισε μια συγκεκριμένη δουλειά. Χωρίς μετατροπές, χωρίς εκπλήξεις.",
+      es:"Ves lo que te costó un trabajo concreto. Sin conversiones ni sorpresas.",
+      pt:"Vês o que te custou um trabalho concreto. Sem conversões, sem surpresas."},
+    f3h:{en:"Switch on, switch off",sk:"Zapneš a vypneš",cs:"Zapneš a vypneš",de:"Ein- und ausschalten",fr:"Tu allumes, tu éteins",pl:"Włączasz i wyłączasz",hu:"Be- és kikapcsolod",ro:"Pornești și oprești",uk:"Вмикаєш і вимикаєш",hr:"Upališ i ugasiš",sr:"Upališ i ugasiš",el:"Ανάβεις και σβήνεις",es:"Enciendes y apagas",pt:"Ligas e desligas"},
+    f3p:{
+      en:"Run a llama for a month or a single week. There's no lock-in.",
+      sk:"Lamu si zapneš na mesiac aj na jeden týždeň. Viazanosť nie je.",
+      cs:"Lamu si zapneš na měsíc i na jeden týden. Žádný závazek.",
+      de:"Ein Lama läuft einen Monat oder eine einzige Woche. Keine Vertragsbindung.",
+      fr:"Un lama pour un mois ou une seule semaine. Sans engagement.",
+      pl:"Lamę włączasz na miesiąc albo na jeden tydzień. Zero zobowiązań.",
+      hu:"Egy láma mehet egy hónapig vagy egyetlen hétig. Nincs hűségidő.",
+      ro:"Pornești o lama pe o lună sau doar pe o săptămână. Fără obligații.",
+      uk:"Вмикаєш ламу на місяць або на один тиждень. Жодних зобов'язань.",
+      hr:"Lamu upališ na mjesec ili na jedan tjedan. Nema vezanja.",
+      sr:"Lamu upališ na mesec ili na jednu nedelju. Nema vezivanja.",
+      el:"Ανάβεις ένα λάμα για έναν μήνα ή για μία εβδομάδα. Χωρίς δέσμευση.",
+      es:"Enciendes una llama un mes o una sola semana. Sin permanencia.",
+      pt:"Ligas uma lama por um mês ou por uma única semana. Sem fidelização."},
+    whyEye:{en:"Why we do this",sk:"Prečo to robíme",cs:"Proč to děláme",de:"Warum wir das machen",fr:"Pourquoi on fait ça",pl:"Dlaczego to robimy",hu:"Miért csináljuk",ro:"De ce facem asta",uk:"Чому ми це робимо",hr:"Zašto to radimo",sr:"Zašto to radimo",el:"Γιατί το κάνουμε",es:"Por qué lo hacemos",pt:"Porque o fazemos"},
+    whyH2:{en:"We don't sell time or work.",sk:"Nepredávame čas ani prácu.",cs:"Neprodáváme čas ani práci.",de:"Wir verkaufen weder Zeit noch Arbeit.",fr:"On ne vend ni du temps ni du travail.",pl:"Nie sprzedajemy czasu ani pracy.",hu:"Nem időt vagy munkát árulunk.",ro:"Nu vindem timp sau muncă.",uk:"Ми не продаємо час чи роботу.",hr:"Ne prodajemo vrijeme ni posao.",sr:"Ne prodajemo vreme ni posao.",el:"Δεν πουλάμε χρόνο ή δουλειά.",es:"No vendemos tiempo ni trabajo.",pt:"Não vendemos tempo nem trabalho."},
+    whyLead:{
+      en:"We sell products you switch on — and from that moment they run without you. A small business can't afford people for everything; it can afford a llama. So we build employees that turn on with a switch.",
+      sk:"Predávame produkty, ktoré si zapneš a ktoré od toho momentu bežia bez teba. Malá firma si nemôže dovoliť ľudí na všetko — lamu áno. Preto staviame zamestnancov, ktorí sa zapínajú vypínačom.",
+      cs:"Prodáváme produkty, které si zapneš a které od té chvíle běží bez tebe. Malá firma si nemůže dovolit lidi na všechno — lamu ano. Proto stavíme zaměstnance, kteří se zapínají vypínačem.",
+      de:"Wir verkaufen Produkte, die du einschaltest — und die ab diesem Moment ohne dich laufen. Ein kleines Unternehmen kann sich nicht für alles Leute leisten — ein Lama schon. Also bauen wir Mitarbeiter, die man per Schalter einschaltet.",
+      fr:"On vend des produits que tu allumes — et qui, dès cet instant, tournent sans toi. Une petite entreprise ne peut pas se payer des gens pour tout — un lama, si. Alors on construit des employés qui s'allument avec un interrupteur.",
+      pl:"Sprzedajemy produkty, które włączasz — i od tej chwili działają bez ciebie. Małej firmy nie stać na ludzi do wszystkiego — na lamę tak. Dlatego budujemy pracowników, których włącza się przełącznikiem.",
+      hu:"Olyan termékeket árulunk, amelyeket bekapcsolsz — és attól kezdve nélküled futnak. Egy kis cégnek nem telik mindenre emberre — lámára igen. Ezért olyan munkatársakat építünk, akiket kapcsolóval kapcsolsz be.",
+      ro:"Vindem produse pe care le pornești — și din acel moment merg fără tine. O firmă mică nu-și permite oameni pentru toate — o lama, da. Așa că construim angajați care se pornesc de la un întrerupător.",
+      uk:"Ми продаємо продукти, які ти вмикаєш — і з цього моменту вони працюють без тебе. Мала фірма не може дозволити собі людей на все — ламу може. Тому ми будуємо працівників, які вмикаються вимикачем.",
+      hr:"Prodajemo proizvode koje upališ — i od tog trenutka rade bez tebe. Mala firma ne može si priuštiti ljude za sve — lamu može. Zato gradimo zaposlenike koji se pale prekidačem.",
+      sr:"Prodajemo proizvode koje upališ — i od tog trenutka rade bez tebe. Mala firma ne može sebi da priušti ljude za sve — lamu može. Zato gradimo zaposlene koji se pale prekidačem.",
+      el:"Πουλάμε προϊόντα που τα ανάβεις — κι από εκείνη τη στιγμή τρέχουν χωρίς εσένα. Μια μικρή επιχείρηση δεν έχει χρήματα για ανθρώπους για όλα — για ένα λάμα έχει. Γι' αυτό χτίζουμε υπαλλήλους που ανάβουν με διακόπτη.",
+      es:"Vendemos productos que enciendes — y desde ese momento funcionan sin ti. Una empresa pequeña no puede permitirse gente para todo — una llama sí. Por eso construimos empleados que se encienden con un interruptor.",
+      pt:"Vendemos produtos que ligas — e a partir daí funcionam sem ti. Uma pequena empresa não pode pagar pessoas para tudo — uma lama pode. Por isso construímos funcionários que se ligam com um interruptor."},
+    p1a:{en:"We don't promise it helps.",sk:"Nesľubujeme, že pomáha.",cs:"Neslibujeme, že pomáhá.",de:"Wir versprechen nicht, dass es hilft.",fr:"On ne promet pas que ça aide.",pl:"Nie obiecujemy, że pomaga.",hu:"Nem ígérjük, hogy segít.",ro:"Nu promitem că ajută.",uk:"Ми не обіцяємо, що допомагає.",hr:"Ne obećavamo da pomaže.",sr:"Ne obećavamo da pomaže.",el:"Δεν υποσχόμαστε ότι βοηθά.",es:"No prometemos que ayude.",pt:"Não prometemos que ajuda."},
+    p1b:{en:"It replaces.",sk:"Nahrádza.",cs:"Nahrazuje.",de:"Es ersetzt.",fr:"Ça remplace.",pl:"Zastępuje.",hu:"Helyettesít.",ro:"Înlocuiește.",uk:"Замінює.",hr:"Zamjenjuje.",sr:"Zamenjuje.",el:"Αντικαθιστά.",es:"Sustituye.",pt:"Substitui."},
+    p2a:{en:"It's not a tool.",sk:"Nie je to nástroj.",cs:"Není to nástroj.",de:"Es ist kein Werkzeug.",fr:"Ce n'est pas un outil.",pl:"To nie narzędzie.",hu:"Nem eszköz.",ro:"Nu e o unealtă.",uk:"Це не інструмент.",hr:"Nije alat.",sr:"Nije alat.",el:"Δεν είναι εργαλείο.",es:"No es una herramienta.",pt:"Não é uma ferramenta."},
+    p2b:{en:"It's an employee.",sk:"Je to zamestnanec.",cs:"Je to zaměstnanec.",de:"Es ist ein Mitarbeiter.",fr:"C'est un employé.",pl:"To pracownik.",hu:"Munkatárs.",ro:"E un angajat.",uk:"Це працівник.",hr:"To je zaposlenik.",sr:"To je zaposleni.",el:"Είναι υπάλληλος.",es:"Es un empleado.",pt:"É um funcionário."},
+    p3a:{en:"We don't promise faster.",sk:"Nesľubujeme rýchlejšie.",cs:"Neslibujeme rychlejší.",de:"Wir versprechen nicht schneller.",fr:"On ne promet pas plus vite.",pl:"Nie obiecujemy szybciej.",hu:"Nem ígérünk gyorsabbat.",ro:"Nu promitem mai repede.",uk:"Ми не обіцяємо швидше.",hr:"Ne obećavamo brže.",sr:"Ne obećavamo brže.",el:"Δεν υποσχόμαστε πιο γρήγορα.",es:"No prometemos más rápido.",pt:"Não prometemos mais rápido."},
+    p3b:{en:"We promise done.",sk:"Sľubujeme hotové.",cs:"Slibujeme hotové.",de:"Wir versprechen fertig.",fr:"On promet fini.",pl:"Obiecujemy zrobione.",hu:"Készet ígérünk.",ro:"Promitem gata.",uk:"Ми обіцяємо зроблене.",hr:"Obećavamo gotovo.",sr:"Obećavamo gotovo.",el:"Υποσχόμαστε τελειωμένο.",es:"Prometemos hecho.",pt:"Prometemos feito."},
+    whyAi:{
+      en:"We don't apologise for AI. We use it and we don't hide it.",
+      sk:"Za AI sa neospravedlňujeme. Používame ju a netajíme to.",
+      cs:"Za AI se neomlouváme. Používáme ji a netajíme to.",
+      de:"Für KI entschuldigen wir uns nicht. Wir nutzen sie und verstecken es nicht.",
+      fr:"On ne s'excuse pas d'utiliser l'IA. On l'utilise et on ne le cache pas.",
+      pl:"Nie przepraszamy za AI. Używamy jej i tego nie ukrywamy.",
+      hu:"Nem kérünk bocsánatot az AI-ért. Használjuk, és nem titkoljuk.",
+      ro:"Nu ne cerem scuze pentru AI. O folosim și nu ascundem asta.",
+      uk:"Ми не вибачаємося за ШІ. Ми ним користуємось і не приховуємо цього.",
+      hr:"Ne ispričavamo se zbog AI-ja. Koristimo ga i ne skrivamo to.",
+      sr:"Ne izvinjavamo se zbog AI-ja. Koristimo ga i ne krijemo to.",
+      el:"Δεν απολογούμαστε για την AI. Τη χρησιμοποιούμε και δεν το κρύβουμε.",
+      es:"No pedimos perdón por la IA. La usamos y no lo escondemos.",
+      pt:"Não pedimos desculpa pela IA. Usamo-la e não o escondemos."},
+    finH2:{en:"Start with the one that slows you down most",sk:"Začni tou, ktorá ťa najviac zdržuje",cs:"Začni tou, která tě nejvíc zdržuje",de:"Fang mit dem an, was dich am meisten aufhält",fr:"Commence par celui qui te ralentit le plus",pl:"Zacznij od tej, która najbardziej cię spowalnia",hu:"Kezdd azzal, amelyik a legjobban hátráltat",ro:"Începe cu cea care te încetinește cel mai mult",uk:"Почни з тієї, що гальмує тебе найбільше",hr:"Kreni s onom koja te najviše usporava",sr:"Kreni od one koja te najviše usporava",el:"Ξεκίνα με αυτό που σε καθυστερεί περισσότερο",es:"Empieza por la que más te frena",pt:"Começa pela que mais te atrasa"},
+    finP:{
+      en:"Signing up takes a minute. Your first llama can be on today.",
+      sk:"Registrácia trvá minútu. Prvú lamu môžeš mať zapnutú ešte dnes.",
+      cs:"Registrace trvá minutu. První lamu můžeš mít zapnutou ještě dnes.",
+      de:"Die Registrierung dauert eine Minute. Dein erstes Lama kann noch heute laufen.",
+      fr:"L'inscription prend une minute. Ton premier lama peut être allumé aujourd'hui.",
+      pl:"Rejestracja zajmuje minutę. Pierwszą lamę możesz mieć włączoną jeszcze dziś.",
+      hu:"A regisztráció egy perc. Az első lámád már ma bekapcsolhatod.",
+      ro:"Înregistrarea durează un minut. Prima ta lama poate fi pornită chiar azi.",
+      uk:"Реєстрація займає хвилину. Першу ламу можеш увімкнути вже сьогодні.",
+      hr:"Registracija traje minutu. Prvu lamu možeš upaliti još danas.",
+      sr:"Registracija traje minut. Prvu lamu možeš upaliti još danas.",
+      el:"Η εγγραφή παίρνει ένα λεπτό. Το πρώτο σου λάμα μπορεί να ανάψει σήμερα.",
+      es:"Registrarse lleva un minuto. Tu primera llama puede estar encendida hoy.",
+      pt:"O registo demora um minuto. A tua primeira lama pode ficar ligada ainda hoje."},
+    footTag:{en:"One account, all the llamas",sk:"Jeden účet, všetky lamy",cs:"Jeden účet, všechny lamy",de:"Ein Konto, alle Lamas",fr:"Un compte, tous les lamas",pl:"Jedno konto, wszystkie lamy",hu:"Egy fiók, az összes láma",ro:"Un cont, toate lamele",uk:"Один акаунт, усі лами",hr:"Jedan račun, sve lame",sr:"Jedan nalog, sve lame",el:"Ένας λογαριασμός, όλα τα λάμα",es:"Una cuenta, todas las llamas",pt:"Uma conta, todas as lamas"}
+  };
+
+  var btn = document.getElementById("langBtn");
+  var menu = document.getElementById("langMenu");
+  var curFlag = document.getElementById("curFlag");
+  var curCode = document.getElementById("curCode");
+
+  LANGS.forEach(function(l){
+    var li = document.createElement("li");
+    li.setAttribute("role","option");
+    li.dataset.l = l;
+    li.innerHTML = "<span class='flag'>" + FLAGS[l] + "</span>" + NAMES[l];
+    li.addEventListener("click", function(){ setLang(l); closeMenu(); });
+    menu.appendChild(li);
+  });
+
   function setLang(l){
     if(LANGS.indexOf(l) === -1) l = "en";
-    LANGS.forEach(function(x){ document.body.classList.remove("l-"+x); });
-    document.body.classList.add("l-"+l);
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var t = I18N[el.dataset.i18n];
+      if(t) el.textContent = t[l] || t.en;
+    });
     document.documentElement.lang = l;
     document.title = TITLES[l];
-    sel.value = l;
+    curFlag.innerHTML = FLAGS[l];
+    curCode.textContent = l.toUpperCase();
+    menu.querySelectorAll("li").forEach(function(li){ li.classList.toggle("act", li.dataset.l === l); });
     try{ localStorage.setItem("lamaon-lang", l); }catch(e){}
   }
-  sel.addEventListener("change", function(){ setLang(sel.value); });
+  function closeMenu(){ menu.hidden = true; btn.setAttribute("aria-expanded","false"); }
+  btn.addEventListener("click", function(ev){
+    ev.stopPropagation();
+    menu.hidden = !menu.hidden;
+    btn.setAttribute("aria-expanded", String(!menu.hidden));
+  });
+  document.addEventListener("click", function(ev){
+    if(!menu.hidden && !menu.contains(ev.target)) closeMenu();
+  });
+  document.addEventListener("keydown", function(ev){ if(ev.key === "Escape") closeMenu(); });
+
   var saved = null;
   try{ saved = localStorage.getItem("lamaon-lang"); }catch(e){}
   setLang(saved || "en");
