@@ -96,7 +96,6 @@ nav .in{display:flex;align-items:center;justify-content:space-between;height:74p
 .hero .txt{flex:1 1 auto;min-width:0}
 h1{font-weight:700;font-size:clamp(46px,7.5vw,88px);line-height:.98;letter-spacing:-.045em;margin:0}
 h1 .l{font-weight:300;display:block}
-.claim-cap{margin:14px 0 0;font-size:13px;color:var(--ink-40);font-weight:300}
 .hero p.sub{font-size:clamp(17px,2vw,21px);line-height:1.5;max-width:46ch;margin:26px 0 0;
   color:var(--ink-60);font-weight:300}
 .hero .cta{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
@@ -109,6 +108,14 @@ h1 .l{font-weight:300;display:block}
 #heroLama{transform:translateX(40px);opacity:0;transition:transform .7s cubic-bezier(.25,.8,.3,1),opacity .5s ease}
 body.hero-in #heroLama{transform:none;opacity:1}
 body.hero-on #heroLama .fill,body.hero-on #heroLama .knob{fill:url(#lg)}
+/* chôdza po 3 s od zapnutia — krokový rytmus ako v gife */
+body.walk #heroLama{transform-origin:50% 88%;animation:walk .72s ease-in-out infinite}
+@keyframes walk{
+  0%,100%{transform:translate(0,0) rotate(0deg)}
+  25%{transform:translate(2px,-7px) rotate(-1.7deg)}
+  50%{transform:translate(4px,0) rotate(0deg)}
+  75%{transform:translate(2px,-7px) rotate(1.7deg)}
+}
 @media (max-width:820px){
   .hero .in{flex-direction:column-reverse;align-items:flex-start}
   .hero .mark{width:140px}
@@ -241,8 +248,7 @@ footer a:hover{color:var(--ink)}
 <!-- ============ HERO ============ -->
 <header class="hero" id="top"><div class="wrap in">
   <div class="txt">
-    <h1>Zapni si lamu.<span class="l"><span class="en">The llama does the work.</span><span class="sk">Prácu spraví ona.</span><span class="cs">Práci udělá ona.</span><span class="de">Die Arbeit macht das Lama.</span><span class="fr">Le lama fait le travail.</span></span></h1>
-    <p class="claim-cap"><span class="en">(Slovak for “turn your llama on.”)</span><span class="cs">(slovensky — a rozumíš tomu i tak)</span><span class="de">(Slowakisch für „Schalt dein Lama ein.“)</span><span class="fr">(en slovaque : « Allume ton lama. »)</span></p>
+    <h1><span class="en">Turn your llama on.</span><span class="sk">Zapni si lamu.</span><span class="cs">Zapni si lamu.</span><span class="de">Schalt dein Lama ein.</span><span class="fr">Allume ton lama.</span><span class="l"><span class="en">The llama does the work.</span><span class="sk">Prácu spraví ona.</span><span class="cs">Práci udělá ona.</span><span class="de">Die Arbeit macht das Lama.</span><span class="fr">Le lama fait le travail.</span></span></h1>
     <p class="sub">
       <span class="en">One account, one wallet, credits. Pick a llama for whatever slows you down — and from that moment it runs without you.</span>
       <span class="sk">Jeden účet, jedna peňaženka, kredity. Vyberieš si lamu podľa toho, čo ťa zdržuje — a od toho momentu to beží bez teba.</span>
@@ -618,6 +624,7 @@ footer a:hover{color:var(--ink)}
       document.body.classList.add("hero-on");
       var k = document.querySelector("#heroLama .knob");
       if(k) k.setAttribute("cx","100.5");
+      if(!reduced) setTimeout(function(){ document.body.classList.add("walk"); }, 3000);
     }, reduced ? 0 : 650);
   }
   function finishLoad(){
