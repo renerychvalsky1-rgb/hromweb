@@ -94,8 +94,9 @@ nav .in{display:flex;align-items:center;justify-content:space-between;height:74p
 .hero{padding:88px 0 64px;border-bottom:1px solid var(--line)}
 .hero .in{display:flex;align-items:center;gap:48px}
 .hero .txt{flex:1 1 auto;min-width:0}
-h1{font-weight:700;font-size:clamp(46px,7.5vw,88px);line-height:.98;letter-spacing:-.045em;margin:0}
+h1{font-weight:700;font-size:clamp(30px,4.2vw,56px);line-height:1.06;letter-spacing:-.045em;margin:0}
 h1 .l{font-weight:300;display:block}
+@media (min-width:821px){h1{white-space:nowrap}}
 .hero p.sub{font-size:clamp(17px,2vw,21px);line-height:1.5;max-width:46ch;margin:26px 0 0;
   color:var(--ink-60);font-weight:300}
 .hero .cta{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
@@ -108,8 +109,8 @@ h1 .l{font-weight:300;display:block}
 #heroLama{transform:translateX(40px);opacity:0;transition:transform .7s cubic-bezier(.25,.8,.3,1),opacity .5s ease}
 body.hero-in #heroLama{transform:none;opacity:1}
 body.hero-on #heroLama .fill,body.hero-on #heroLama .knob{fill:url(#lg)}
-/* chôdza po 3 s od zapnutia — krokový rytmus ako v gife */
-body.walk #heroLama{transform-origin:50% 88%;animation:walk .72s ease-in-out infinite}
+/* po zapnutí sa lama každých 5 s rozpohybuje — 3 kroky a stop */
+body.walk #heroLama{transform-origin:50% 88%;animation:walk .72s ease-in-out 3}
 @keyframes walk{
   0%,100%{transform:translate(0,0) rotate(0deg)}
   25%{transform:translate(2px,-7px) rotate(-1.7deg)}
@@ -624,7 +625,11 @@ footer a:hover{color:var(--ink)}
       document.body.classList.add("hero-on");
       var k = document.querySelector("#heroLama .knob");
       if(k) k.setAttribute("cx","100.5");
-      if(!reduced) setTimeout(function(){ document.body.classList.add("walk"); }, 3000);
+      if(!reduced){
+        var lam = document.getElementById("heroLama");
+        lam.addEventListener("animationend", function(){ document.body.classList.remove("walk"); });
+        setInterval(function(){ document.body.classList.add("walk"); }, 5000);
+      }
     }, reduced ? 0 : 650);
   }
   function finishLoad(){
