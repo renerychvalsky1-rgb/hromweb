@@ -660,13 +660,13 @@ var pozadie = [];
 function reset() {
   blesk = { x: 110, y: GROUND, vy: 0, w: 26, h: 42, naZemi: true, mrk: 0 };
   mraky = [];
-  speed = 6.2;
+  speed = 4.0;
   dist = 0;
   running = false;
   dead = false;
   holding = false;
   holdTicks = 0;
-  tOd = 0;
+  tOd = -70;               /* chvíľa pokoja pred prvým mrakom */
   scoreEl.textContent = '0 m';
   ovDead.classList.add('hidden');
   ovStart.classList.remove('hidden');
@@ -737,7 +737,7 @@ function krok() {
 
     /* skóre a zrýchľovanie */
     dist += speed * .22;
-    speed = Math.min(15.5, 6.2 + dist / 260);
+    speed = Math.min(15, 4.0 + dist / 620);
     scoreEl.textContent = Math.floor(dist) + ' m';
   }
 
