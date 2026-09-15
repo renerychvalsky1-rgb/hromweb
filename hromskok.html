@@ -927,13 +927,19 @@ function loadBoard() {
     .catch(function () { lbNote.textContent = 'Rebríček sa teraz nedá načítať.'; });
 }
 
+function hraci(n) {
+  if (n === 1) return 'hráč';
+  if (n >= 2 && n <= 4) return 'hráči';
+  return 'hráčov';
+}
+
 function drawBoard(rows) {
   if (!rows.length) {
     lbNote.textContent = '';
     lbBody.innerHTML = '<div class="lb-empty">Zatiaľ nikto neskákal. Buďte prvý.</div>';
     return;
   }
-  lbNote.textContent = 'Top ' + rows.length;
+  lbNote.textContent = 'Top ' + rows.length + ' ' + hraci(rows.length);
   lbBody.innerHTML = rows.map(function (r, i) {
     return '<div class="lb-row' + (i < 3 ? ' top' : '') + (r.ja ? ' me' : '') + '">' +
              '<span class="lb-rank">' + (r.poradie || i + 1) + '.</span>' +
