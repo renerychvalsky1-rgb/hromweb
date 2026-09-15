@@ -475,7 +475,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="hra-err" id="err"></div>
             <button type="submit" class="hra-btn" id="gateBtn">Chcem sa naučiť o reklame ⚡</button>
           </form>
-          <p class="hra-note">Nič iné od vás nechceme. Meno sa zobrazuje v rebríčku, e-mail používame len na to, aby sme vám vedeli poslať ďalšie veci o reklame — odhlásiť sa viete kedykoľvek.</p>
+          <p class="hra-note">Nič iné od vás nechceme. Meno sa zobrazuje v rebríčku, e-mail používame len na to, aby sme vám vedeli poslať ďalšie veci o reklame — odhlásiť sa viete kedykoľvek. V rebríčku sa e-maily nikomu nezobrazujú.</p>
         </div>
 
         <div class="hra-teaser">
@@ -574,19 +574,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* ============================================================
    HROM HRA — generátor 100 faktov o reklame + rebríček
 
-   NASTAVENIE REBRÍČKA A ZBERU E-MAILOV
-   ------------------------------------
-   Do CFG.API vložte adresu Google Apps Script web aplikácie
-   (návod: leaderboard-navod.md). Kým je prázdna:
-     • rebríček sa NEZOBRAZUJE (hra funguje normálne),
-     • e-maily chodia cez web3forms do schránky.
-   Keď je vyplnená:
-     • mená, e-maily a skóre padajú do Google tabuľky,
-     • rebríček sa zobrazí pod hrou.
+   Dáta hráčov (meno, e-mail, skóre) idú do Supabase projektu
+   HROM cez dve databázové funkcie:
+     hra_zapis()    — založí hráča alebo zvýši jeho skóre
+     hra_rebricek() — vráti TOP hráčov (iba mená a skóre)
+
+   Kľúč nižšie je verejný (publishable) — je určený do prehliadača.
+   Na tabuľku hra_hraci sa cez neho priamo dostať nedá, RLS ju chráni
+   a e-maily z rebríčka nikdy neodchádzajú.
    ============================================================ */
 var CFG = {
-  API: '',
-  WEB3FORMS_KEY: 'bf8cf82c-fa8b-4fa1-aab4-ddc33bb67396'
+  SUPABASE_URL: 'https://hsdjsgpwxgkkwpijeufv.supabase.co',
+  SUPABASE_KEY: 'sb_publishable_bp-vbeq8ChL9aZteuVSfBw_Z-zc4DJ9',
+  TOP: 10
 };
 
 var FACTS = [{"n":1,"k":"Z histórie reklamy","i":"📜","t":"Najstaršia známa reklama je egyptský papyrus z Téb (cca 3000 rokov starý), v ktorom majiteľ ponúka odmenu za nájdenie utečeného otroka – a mimochodom chváli aj svoju tkáčsku dielňu."},{"n":2,"k":"Z histórie reklamy","i":"📜","t":"V Pompejach sa pod sopečným popolom zachovali maľované reklamy na kúpele, víno a politických kandidátov – outdoor z roku 79."},{"n":3,"k":"Z histórie reklamy","i":"📜","t":"V stredoveku väčšina ľudí nevedela čítať, takže obchody používali obrázkové vývesné štíty (čižma, klobúk, džbán) – priamy predchodca dnešného loga."},{"n":4,"k":"Z histórie reklamy","i":"📜","t":"Prvú tlačenú reklamu v angličtine vydal William Caxton v roku 1477 – leták propagujúci jeho vlastnú knihu."},{"n":5,"k":"Z histórie reklamy","i":"📜","t":"Prvá novinová reklama v Amerike vyšla v Boston News-Letter v roku 1704 – bol to inzerát na predaj nehnuteľnosti."},{"n":6,"k":"Z histórie reklamy","i":"📜","t":"Prvú skutočnú reklamnú agentúru založil William Taylor v Londýne 1786; v Amerike Volney B. Palmer vo Philadelphii 1841 – jeho model bol jednoduchý: kupoval novinový priestor so zľavou a predával ho ďalej."},{"n":7,"k":"Z histórie reklamy","i":"📜","t":"Agentúra N.W. Ayer & Son ako prvá prešla od sprostredkovania priestoru k plánovaniu a tvorbe celých kampaní – vytvorila slogany pre De Beers či AT&T."},{"n":8,"k":"Z histórie reklamy","i":"📜","t":"Obchodník John Wanamaker je autorom najcitovanejšej vety reklamy: „Polovica peňazí na reklamu je vyhodená, len neviem ktorá.“ Jeho firemná kniha z 1911 prirovnávala bežnú reklamu k sudom osiva, v ktorých je polovica semien mŕtva."},{"n":9,"k":"Z histórie reklamy","i":"📜","t":"Prvým „umením v reklame“ bol obraz Bubbles od maliara Millaisa – výrobca mydla Pears ho v 1886 kúpil a domaľoval doň svoj produkt. Umelecký svet bol pobúrený."},{"n":10,"k":"Z histórie reklamy","i":"📜","t":"Prvá reklama Coca-Coly vyšla v 1886 v The Atlanta Journal – mala veľkosť dvoch poštových známok a znela „Delicious! Refreshing! Exhilarating! Invigorating!“"},{"n":11,"k":"Z histórie reklamy","i":"📜","t":"Sprievodca Michelin (1900) vznikol ako marketing na predaj pneumatík – aby ľudia viac jazdili. Guinnessova kniha rekordov (1955) vznikla ako marketingový nástroj pivovaru, aby mali chlapi v krčme o čom sa hádať."},{"n":12,"k":"Z histórie reklamy","i":"📜","t":"Prvá rozhlasová reklama zaznela v 1922 na newyorskej stanici WEAF – bola to viacminútová prezentácia realitnej firmy."},{"n":13,"k":"Z histórie reklamy","i":"📜","t":"„Fakle slobody“ (1929): Edward Bernays nechal na veľkonočnom sprievode v New Yorku verejne fajčiť mladé ženy ako akt emancipácie – v skutočnosti to bola platená kampaň Lucky Strike, ktorá prelomila tabu ženského fajčenia."},{"n":14,"k":"Z histórie reklamy","i":"📜","t":"Coca-Cola nevymyslela Santu: červený, bacuľatý Santa existoval už v kresbách Thomasa Nasta z 1863. Coca-Cola ho však od 1931 cez ilustrátora Haddona Sundbloma ustálila ako globálny štandard."},{"n":15,"k":"Z histórie reklamy","i":"📜","t":"Prvá TV reklama: 1. júla 1941, Bulova, 10 sekúnd, cena 9 USD, pred zápasom Dodgers–Phillies, cca 4 000 domácností. FCC zrušila zákaz TV reklamy len mesiac predtým."},{"n":16,"k":"Z histórie reklamy","i":"📜","t":"Prvý infomercial (1949) bol živá polhodinová demonštrácia mixéra Vitamix – zakladateľ potreboval predať 18 kusov, aby sa mu to oplatilo, predal 400 za jeden večer."},{"n":17,"k":"Z histórie reklamy","i":"📜","t":"Do Japonska priniesla TV reklamu Seiko (1953), do Británie zubná pasta Gibbs SR (1955)."},{"n":18,"k":"Z histórie reklamy","i":"📜","t":"V rokoch 1946–52 bežal slogan „Viac lekárov fajčí Camel než ktorúkoľvek inú cigaretu“ – s prieskumom medzi lekármi, ktorým výrobca predtým rozdal kartóny cigariet zadarmo."},{"n":19,"k":"Z histórie reklamy","i":"📜","t":"Marlboro bola pôvodne (1924) dámska cigareta so sloganom „Mild as May“ a červeným filtrom, ktorý skrýval stopy rúžu. Až Marlboro Man z roku 1954 z nej urobil symbol mužnosti a najpredávanejšiu značku sveta."},{"n":20,"k":"Z histórie reklamy","i":"📜","t":"Pri prvom Super Bowle (1967) stálo 30 sekúnd 37 500 USD; v 2026 to bolo priemerne 8 miliónov a niekoľko slotov sa predalo za viac než 10 miliónov."},{"n":21,"k":"Z histórie reklamy","i":"📜","t":"Reklamu Apple „1984“ od Ridleyho Scotta odvysielali celonárodne iba raz – počas Super Bowlu 1984 – a dodnes je považovaná za najlepšiu TV reklamu histórie."},{"n":22,"k":"Z histórie reklamy","i":"📜","t":"Product placement: Mars odmietol dať M&M's do filmu E.T. (1982), tak tam Spielberg dal Reese's Pieces od Hershey – ich predaj vyskočil o cca 65 %."},{"n":23,"k":"Z histórie reklamy","i":"📜","t":"Prvý internetový banner (1994, AT&T na HotWired) znel „Klikli ste už niekedy myšou práve sem? Kliknete.“ Miera prekliku bola 44 % – dnes je bežný banner rád, keď má 0,1 %."},{"n":24,"k":"Z histórie reklamy","i":"📜","t":"Prvý spam poslal v 1978 Gary Thuerk z DEC na cca 400 adries ARPANETu – pozvánku na prezentáciu počítačov. Rozčúlil sieť, ale podľa neho priniesol objednávky za milióny."},{"n":25,"k":"Z histórie reklamy","i":"📜","t":"Pop-up okno vymyslel Ethan Zuckerman pre Tripod.com v 1997 – a v 2014 sa za to verejne ospravedlnil celému internetu."},{"n":26,"k":"Legendárne kampane","i":"🏆","t":"„Just Do It“ vzniklo z posledných slov vraha Garyho Gilmora pred popravou: „Let's do it.“ Dan Wieden z W+K to v 1988 upravil na „Just Do It“."},{"n":27,"k":"Legendárne kampane","i":"🏆","t":"Od 1988 do 1998 zvýšil Nike svoj podiel na severoamerickom trhu športovej obuvi z 18 % na 43 % a tržby z 877 mil. na 9,2 mld USD."},{"n":28,"k":"Legendárne kampane","i":"🏆","t":"Slovo „Just“ si Wieden podľa legendy požičal z protidrogovej kampane Nancy Reaganovej „Just Say No“."},{"n":29,"k":"Legendárne kampane","i":"🏆","t":"„A Diamond Is Forever“ (1947) napísala copywriterka Frances Gerety z N.W. Ayer – ktorá sa sama nikdy nevydala. Advertising Age ho v 1999 vyhlásil za slogan storočia."},{"n":30,"k":"Legendárne kampane","i":"🏆","t":"Pred kampaňou De Beers nebol diamantový zásnubný prsteň štandardom; kampaň naučila mužov pravidlo „dva mesačné platy“ a predaj diamantov v USA stúpol z 23 mil. na 2,1 mld USD za tri dekády."},{"n":31,"k":"Legendárne kampane","i":"🏆","t":"Listerine bol pôvodne chirurgický antiseptik – v 20. rokoch výrobca „vynašiel“ ochorenie „chronická halitóza“ (zápach z úst) a predal riešenie. Tržby stúpli zo 115 000 na 8 mil. USD za 7 rokov."},{"n":32,"k":"Legendárne kampane","i":"🏆","t":"Slogan Maxwell House „Good to the last drop“ údajne vyslovil prezident Theodore Roosevelt po káve v 1907 – a firma tak získala slogan aj celebritné odporúčanie naraz."},{"n":33,"k":"Legendárne kampane","i":"🏆","t":"Volkswagen „Think Small“ (DDB, 1959) – reklama na „škaredé“ auto v ére obrích amerických krížnikov – bola Ad Age vyhlásená za najlepšiu reklamnú kampaň 20. storočia."},{"n":34,"k":"Legendárne kampane","i":"🏆","t":"Avis v 1962 priznal, že je len druhý: „We try harder.“ Firma sa z rokov strát dostala do zisku a slogan bežal vyše 50 rokov."},{"n":35,"k":"Legendárne kampane","i":"🏆","t":"David Ogilvy napísal pre Rolls-Royce (1958) titulok: „Pri 100 km/h je najhlasnejší zvuk v tomto novom Rolls-Royci tikanie elektrických hodín.“ Predaj vzrástol o desiatky percent."},{"n":36,"k":"Legendárne kampane","i":"🏆","t":"Ogilvy tiež povedal: „Spotrebiteľ nie je idiot, je to tvoja manželka.“ – reakcia na reklamy, ktoré podceňovali ženy."},{"n":37,"k":"Legendárne kampane","i":"🏆","t":"Printová kampaň Absolut Vodka (fľaša + jedno slovo) bežala od 1980 vyše 25 rokov a mala viac než 1 500 vizuálov – najdlhšia nepretržitá printová kampaň histórie."},{"n":38,"k":"Legendárne kampane","i":"🏆","t":"Minimálne štyria herci, ktorí hrali Marlboro Mana, zomreli na choroby spojené s fajčením; jeden z nich, Wayne McLaren, sa pred smrťou stal aktivistom proti fajčeniu."},{"n":39,"k":"Legendárne kampane","i":"🏆","t":"„Where's the beef?“ (Wendy's, 1984) s 81-ročnou Clarou Peller sa stalo tak známym, že ho Walter Mondale použil v prezidentských primárkach proti Garymu Hartovi."},{"n":40,"k":"Legendárne kampane","i":"🏆","t":"Najdrahšia TV reklama histórie: Chanel No. 5 „The Film“ (2004) od Baza Luhrmanna s Nicole Kidman stála 18 mil. libier (33 mil. USD). Kidman dostala 2 milióny libier – toľko, koľko stál celý film Trainspotting. Za jednu sekundu to vychádza na cca 288 888 USD."},{"n":41,"k":"Legendárne kampane","i":"🏆","t":"Druhé v poradí: Guinness „Tipping Point“ (cca 20 mil. USD, natočený v argentínskej horskej dedine) a Amazon Alexa „Mind Reader“ – najdrahší vysielací čas Super Bowlu, 26 mil. USD za 130 sekúnd."},{"n":42,"k":"Legendárne kampane","i":"🏆","t":"Estée Lauder zaplatila NASA 128 000 USD za natočenie séra na ISS; Lexus natočil prvú reklamu so scenárom napísaným AI."},{"n":43,"k":"Legendárne kampane","i":"🏆","t":"Logo Nike „Swoosh“ navrhla študentka Carolyn Davidson v 1971 za 35 USD. Firma jej neskôr darovala diamantový prsteň a akcie."},{"n":44,"k":"Legendárne kampane","i":"🏆","t":"Cadbury „Gorilla“ (2007) – 90 sekúnd gorily bubnujúcej na Phila Collinsa bez jediného záberu na čokoládu – zdvihla predaj a stala sa jednou z najoceňovanejších reklám sveta."},{"n":45,"k":"Legendárne kampane","i":"🏆","t":"Old Spice (2010) odpovedal na komentáre fanúšikov 186 personalizovanými videami za necelé 3 dni – jeden z prvých „real-time“ marketingov."},{"n":46,"k":"Legendárne kampane","i":"🏆","t":"Dollar Shave Club natočil zakladateľské video za 4 500 USD, získal 12 000 objednávok za 48 hodín a firmu v 2016 kúpil Unilever za miliardu dolárov."},{"n":47,"k":"Legendárne kampane","i":"🏆","t":"Red Bull Stratos (2012): skok Felixa Baumgartnera zo stratosféry sledovalo naživo 8 miliónov ľudí na YouTube – dovtedy rekord."},{"n":48,"k":"Legendárne kampane","i":"🏆","t":"Smokey Bear („Only you can prevent wildfires“) beží od 1944 – najdlhšia verejnoprospešná kampaň v USA."},{"n":49,"k":"Legendárne kampane","i":"🏆","t":"New Coke (1985) vydržala 79 dní – firma dostávala tisíce nahnevaných hovorov denne, kým vrátila pôvodnú receptúru ako „Coca-Cola Classic“."},{"n":50,"k":"Legendárne kampane","i":"🏆","t":"Burma-Shave (1925–1963) používala sekvenčné billboardy pri cestách – rýmovanú vetu rozdelenú na 5–6 tabúľ, ktoré vodiči čítali za jazdy."},{"n":51,"k":"Psychológia reklamy","i":"🧠","t":"Podprahová reklama je z veľkej časti hoax: James Vicary v 1957 tvrdil, že bleskové titulky „Jedz popcorn / Pi Coca-Colu“ v kine zvýšili predaj o 57 % a 18 %. V 1962 priznal, že si dáta vymyslel."},{"n":52,"k":"Psychológia reklamy","i":"🧠","t":"Napriek tomu Británia aj Austrália podprahovú reklamu zákonom zakázali – zákaz na základe neexistujúceho efektu."},{"n":53,"k":"Psychológia reklamy","i":"🧠","t":"Efekt púhej expozície (Zajonc, 1968): stačí, že niečo vidíme opakovane, a začne sa nám to páčiť – bez akéhokoľvek argumentu. Preto funguje frekvencia."},{"n":54,"k":"Psychológia reklamy","i":"🧠","t":"Ceny končiace na 9: v experimente sa šaty za 39 USD predávali lepšie než tie isté za 34 USD – nižšia cena predala menej."},{"n":55,"k":"Psychológia reklamy","i":"🧠","t":"Efekt návnady: keď The Economist ponúkol web za 59, print za 125 a print+web za 125, 84 % ľudí zobralo kombináciu. Po odstránení nezmyselnej „print only“ možnosti si ju vybralo len 32 %."},{"n":56,"k":"Psychológia reklamy","i":"🧠","t":"Eye-tracking: ak model v reklame pozerá do kamery, ľudia pozerajú na tvár. Ak pozerá na produkt alebo text, pozerajú tam – pohľad v reklame je ukazovátko."},{"n":57,"k":"Psychológia reklamy","i":"🧠","t":"Emocionálne kampane dosahujú veľké obchodné efekty v 31 % prípadov, čisto racionálne len v 16 % (Binet & Field, IPA databáza)."},{"n":58,"k":"Psychológia reklamy","i":"🧠","t":"Pravidlo 60/40: dlhodobo najefektívnejší mix je cca 60 % rozpočtu na budovanie značky a 40 % na aktiváciu/výkon."},{"n":59,"k":"Psychológia reklamy","i":"🧠","t":"Značka, ktorej podiel na reklamnom hluku (share of voice) je vyšší než jej podiel na trhu, spravidla rastie – a naopak."},{"n":60,"k":"Psychológia reklamy","i":"🧠","t":"„Pozornosť ľudí klesla na 8 sekúnd, menej než zlatá rybka“ – jeden z najcitovanejších faktov reklamy je mýtus bez vedeckého podkladu."},{"n":61,"k":"Psychológia reklamy","i":"🧠","t":"Hoci sme vystavení tisícom reklám, vedome ich za deň zaregistrujeme okolo 100 – experiment nameral 98,5."},{"n":62,"k":"Psychológia reklamy","i":"🧠","t":"Odhady hovoria o 4 000–10 000 reklamách denne; v 70. rokoch to bolo 500–1 600."},{"n":63,"k":"Psychológia reklamy","i":"🧠","t":"41 % ľudí si z celého dňa vie spomenúť len na 1–10 % reklám, ktoré videli."},{"n":64,"k":"Psychológia reklamy","i":"🧠","t":"Lumen: len 30 % „viewable“ digitálnych reklám ľudia reálne vidia – rozpočet na 70 % je vyhodený; a len 1 z 5 si pamätá značku."},{"n":65,"k":"Psychológia reklamy","i":"🧠","t":"Desktopový banner má 22 % šancu, že si ho niekto všimne, a udrží pohľad 1–2 sekundy."},{"n":66,"k":"Psychológia reklamy","i":"🧠","t":"66 % ľudí TV reklamy aktívne nesleduje: 64 % siahne po telefóne, 21 % prepne, 15 % odíde z izby."},{"n":67,"k":"Psychológia reklamy","i":"🧠","t":"91 % divákov streamu používa popri sledovaní druhé zariadenie, polovica väčšinu času; 45 % preskočí reklamu vždy, keď sa dá."},{"n":68,"k":"Psychológia reklamy","i":"🧠","t":"73 % TV divákov považuje množstvo reklám v obľúbených reláciách za otravné."},{"n":69,"k":"Psychológia reklamy","i":"🧠","t":"89 % ľudí najviac dôveruje odporúčaniam známych, vyše 78 % dôveruje TV reklame; najdôverčivejší sú mileniáli a Gen X, najmenej dôverujú 65+ a Gen Z. Dôvera v reklamu je najnižšia v Európe a Severnej Amerike – až o 20 % pod Afrikou či LatAm."},{"n":70,"k":"Psychológia reklamy","i":"🧠","t":"Kampane sú 7x účinnejšie u publika, ktoré je voči reklame receptívne – kontext, v ktorom sa reklama ukáže, je dôležitejší než jej dosah."},{"n":71,"k":"Psychológia reklamy","i":"🧠","t":"Ad blockery používa cca 29,5 % ľudí na svete (1,77 miliardy) a 62,9 % z nich si ho nainštalovalo, lebo sú z reklamy otrávení."},{"n":72,"k":"Psychológia reklamy","i":"🧠","t":"Jingle „I'm lovin' it“ (2003) nazvspieval Justin Timberlake – údajne za 6 mil. USD – a McDonald's ho používa dodnes, najdlhšie zo všetkých svojich sloganov."},{"n":73,"k":"Psychológia reklamy","i":"🧠","t":"Prvou „celebritou“ v reklame bol pápež Lev XIII. – v 19. storočí udelil zlatú medailu vínu s kokaínom Vin Mariani a jeho tvár sa objavila v inzerátoch."},{"n":74,"k":"Psychológia reklamy","i":"🧠","t":"Farby sa dajú zaregistrovať ako ochranná známka: tyrkysová Tiffany, fialová Cadbury, hnedá UPS či magenta T-Mobile sú právne chránené."},{"n":75,"k":"Psychológia reklamy","i":"🧠","t":"Zvuk tiež: prvou registrovanou zvukovou ochrannou známkou v USA boli tri tóny NBC (1950); dnes je chránený aj rev leva MGM či „bong“ Intelu."},{"n":76,"k":"Peniaze a rekordy","i":"💰","t":"Globálne výdavky na reklamu dosiahli v 2025 cca 1,19 bilióna USD a v 2027 majú byť 1,40 bilióna – zhruba 150 USD na každého človeka na planéte."},{"n":77,"k":"Peniaze a rekordy","i":"💰","t":"Alphabet, Amazon a Meta zoberú cca 55 % globálnej reklamy mimo Číny – spolu 524,4 mld USD ročne."},{"n":78,"k":"Peniaze a rekordy","i":"💰","t":"V 2026 má Meta prvýkrát predbehnúť Google v reklamných príjmoch: 243,46 vs 239,54 mld USD."},{"n":79,"k":"Peniaze a rekordy","i":"💰","t":"Google zarobil v 2025 na reklame 294,69 mld USD a obsluhuje vyše 82 % desktopového vyhľadávania."},{"n":80,"k":"Peniaze a rekordy","i":"💰","t":"Amazon, ktorý pred pár rokmi reklamu takmer nepredával, mal v 2025 reklamné príjmy 68,63 mld USD."},{"n":81,"k":"Peniaze a rekordy","i":"💰","t":"Reddit zvýšil reklamné príjmy o 74 % na 549 mil. USD za štvrťrok; Instagram má 3 miliardy užívateľov a samotné Reels generujú vyše 50 mld USD ročného run-rate."},{"n":82,"k":"Peniaze a rekordy","i":"💰","t":"Coca-Cola minie na reklamu cca 5 mld USD ročne a predáva sa vo vyše 200 krajinách."},{"n":83,"k":"Peniaze a rekordy","i":"💰","t":"Super Bowl LIX (2025) sledovalo rekordných 127,7 mil. divákov – najsledovanejšie vysielanie v histórii USA."},{"n":84,"k":"Peniaze a rekordy","i":"💰","t":"Hranica 1 mil. USD za 30 sekúnd Super Bowlu padla v 1995, 5 mil. v 2017, 8 mil. v 2025."},{"n":85,"k":"Peniaze a rekordy","i":"💰","t":"Super Bowl LX mal 80 slotov a NBC ho vypredala už v septembri 2025 – ešte pred začiatkom sezóny; OpenAI si kúpila 60 sekúnd."},{"n":86,"k":"Peniaze a rekordy","i":"💰","t":"10-miliónový 30-sekundový spot vychádza na cca 333 333 USD za sekundu."},{"n":87,"k":"Peniaze a rekordy","i":"💰","t":"Reklamné podvody (ad fraud) stoja odhadom cca 120 mld USD ročne; podľa rôznych odhadov je 15–25 % výdavkov na vyhľadávanie podvodných."},{"n":88,"k":"Peniaze a rekordy","i":"💰","t":"Analýza 43 701 účtov Google Ads zistila 17,8 % neplatných klikov – oproti 11,4 %, ktoré priznáva Google."},{"n":89,"k":"Peniaze a rekordy","i":"💰","t":"Najdrahšie kľúčové slovo: „mesothelioma lawyer“ údajne prekračuje 900 USD za jeden klik; „truck accident lawyer“ cca 500 USD."},{"n":90,"k":"Peniaze a rekordy","i":"💰","t":"Priemerná cena za klik v Google Ads bola v 2025 5,26 USD a priemerná cena za lead 70,11 USD."},{"n":91,"k":"Peniaze a rekordy","i":"💰","t":"Digitál má už 73 % všetkých reklamných výdavkov."},{"n":92,"k":"Peniaze a rekordy","i":"💰","t":"Sociálne siete tvoria 26,2 % globálnej reklamy, 60 % z toho ide Mete."},{"n":93,"k":"Peniaze a rekordy","i":"💰","t":"Retail media (reklama u Amazonu, v e-shopoch, reťazcoch) tvorí už 14,7 % svetových výdavkov."},{"n":94,"k":"Peniaze a rekordy","i":"💰","t":"Tlač stratila za dekádu 64,3 % reklamných výdavkov, no v Indii a Nemecku stále drží vyše 15 %."},{"n":95,"k":"Peniaze a rekordy","i":"💰","t":"Najdlhšia TV reklama histórie: Arby's v 2014 odvysielal 13 hodín nepretržitého záberu na údiaci sa brisket – zapísané v Guinnessovej knihe."},{"n":96,"k":"Peniaze a rekordy","i":"💰","t":"Hershey odmietal celonárodnú spotrebiteľskú reklamu až do roku 1970 – Milton Hershey veril, že kvalita sa predá sama."},{"n":97,"k":"Peniaze a rekordy","i":"💰","t":"„99 44/100 % pure“ mydla Ivory je z roku 1882 – jeden z najstarších sloganov, ktorý sa stále používa."},{"n":98,"k":"Peniaze a rekordy","i":"💰","t":"TikTok má v 2027 dosiahnuť 45,2 mld USD reklamných príjmov – stále menej než pätina Mety."},{"n":99,"k":"Peniaze a rekordy","i":"💰","t":"Reklama sa v 2025 zaradila medzi „biliónové“ odvetvia vedľa ropy, poisťovníctva a realít; v 2011 mala len 384 mld USD."},{"n":100,"k":"Peniaze a rekordy","i":"💰","t":"Ad Age nikdy nevyhlásil reklamu storočia z digitálu – top 3 kampane 20. storočia boli VW „Think Small“, Coca-Cola „The pause that refreshes“ a Marlboro Man. Všetky tri stavali na jednej jednoduchej myšlienke, nie na dátach."}];
@@ -651,21 +651,7 @@ form.addEventListener('submit', function (e) {
   user = { meno: meno, email: mail };
   save(KEY_USER, user);
 
-  syncUp(0);
-
-  if (!CFG.API && CFG.WEB3FORMS_KEY) {
-    try {
-      var fd = new FormData();
-      fd.append('access_key', CFG.WEB3FORMS_KEY);
-      fd.append('subject', 'HROM HRA — nový hráč');
-      fd.append('from_name', 'HROM HRA');
-      fd.append('meno', meno);
-      fd.append('email', mail);
-      fd.append('zdroj', 'hromhra.html (QR na plagáte)');
-      fd.append('botcheck', form.botcheck.checked ? 'true' : '');
-      fetch('https://api.web3forms.com/submit', { method: 'POST', body: fd });
-    } catch (e2) {}
-  }
+  syncUp(used.length, true);
 
   startGame();
 });
@@ -735,34 +721,67 @@ spinBtn.addEventListener('click', function () {
       spinBtn.disabled = false;
       spinBtn.textContent = '⚡ Ďalší fakt';
       render();
-      syncUp(used.length);
+      syncUp(used.length, false);
     }
   }, 70);
 });
 
 /* ---------- REBRÍČEK ---------- */
-var syncTimer = null;
-
-function syncUp(score) {
-  if (!CFG.API || !user) return;
-  clearTimeout(syncTimer);
-  syncTimer = setTimeout(function () {
-    try {
-      fetch(CFG.API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ action: 'save', meno: user.meno, email: user.email, skore: score })
-      }).then(function () { loadBoard(); }).catch(function () {});
-    } catch (e) {}
-  }, 900);
+function rpc(fn, telo) {
+  return fetch(CFG.SUPABASE_URL + '/rest/v1/rpc/' + fn, {
+    method: 'POST',
+    headers: {
+      'apikey': CFG.SUPABASE_KEY,
+      'Authorization': 'Bearer ' + CFG.SUPABASE_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(telo)
+  });
 }
 
+/* Server nevolame po každom točení — pri prihlásení, každých 5 faktov
+   a na konci. Menej volaní, rovnaký rebríček. */
+var zapisane = -1;
+
+function syncUp(score, hned) {
+  if (!user) return;
+  if (!hned && score % 5 !== 0 && score !== 100) return;
+  if (score === zapisane) return;
+  zapisane = score;
+  rpc('hra_zapis', { p_meno: user.meno, p_email: user.email, p_skore: score })
+    .then(function () { loadBoard(); })
+    .catch(function () { zapisane = -1; });
+}
+
+/* Keď hráč odchádza zo stránky, dopíšeme aj zvyšok (napr. skončil na 12). */
+function syncFinal() {
+  if (!user || used.length === zapisane) return;
+  zapisane = used.length;
+  try {
+    fetch(CFG.SUPABASE_URL + '/rest/v1/rpc/hra_zapis', {
+      method: 'POST',
+      keepalive: true,
+      headers: {
+        'apikey': CFG.SUPABASE_KEY,
+        'Authorization': 'Bearer ' + CFG.SUPABASE_KEY,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ p_meno: user.meno, p_email: user.email, p_skore: used.length })
+    });
+  } catch (e) {}
+}
+
+window.addEventListener('pagehide', syncFinal);
+document.addEventListener('visibilitychange', function () {
+  if (document.visibilityState === 'hidden') syncFinal();
+});
+
 function loadBoard() {
-  if (!CFG.API) return;
+  if (!user) return;
   lbEl.classList.remove('hidden');
-  fetch(CFG.API + '?action=top')
+  rpc('hra_rebricek', { p_email: user.email, p_limit: CFG.TOP })
     .then(function (r) { return r.json(); })
-    .then(function (data) { drawBoard(data && data.top ? data.top : []); })
+    .then(function (rows) { drawBoard(Array.isArray(rows) ? rows : []); })
     .catch(function () { lbNote.textContent = 'Rebríček sa teraz nedá načítať.'; });
 }
 
@@ -772,12 +791,10 @@ function drawBoard(rows) {
     lbBody.innerHTML = '<div class="lb-empty">Zatiaľ nikto netočil. Buďte prvý.</div>';
     return;
   }
-  lbNote.textContent = 'Top ' + rows.length + ' hráčov';
-  var mail = user ? user.email.toLowerCase() : '';
+  lbNote.textContent = 'Top ' + rows.length + (rows.length < 5 ? ' hráčov' : '');
   lbBody.innerHTML = rows.map(function (r, i) {
-    var me = mail && r.email && String(r.email).toLowerCase() === mail;
-    return '<div class="lb-row' + (i < 3 ? ' top' : '') + (me ? ' me' : '') + '">' +
-             '<span class="lb-rank">' + (i + 1) + '.</span>' +
+    return '<div class="lb-row' + (i < 3 ? ' top' : '') + (r.ja ? ' me' : '') + '">' +
+             '<span class="lb-rank">' + (r.poradie || i + 1) + '.</span>' +
              '<span class="lb-name">' + esc(r.meno || 'Hráč') + '</span>' +
              '<span class="lb-score">' + (r.skore || 0) + ' <span>faktov</span></span>' +
            '</div>';
