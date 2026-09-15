@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="HROM Marketing">
 <meta property="og:url" content="https://hrom.marketing/hromhra.html">
 <meta property="og:title" content="HROM HRA — 100 faktov o reklame">
-<meta property="og:description" content="Zadajte meno a e-mail a točte. 100 faktov o reklame, ktoré väčšina marketérov nepozná.">
+<meta property="og:description" content="Zadajte meno a e-mail a točte. 100 faktov o reklame, ktoré väčšina ľudí nepozná.">
 <meta property="og:image" content="https://hrom.marketing/lecture1.jgp.png">
 <meta property="og:image:alt" content="HROM HRA — 100 faktov o reklame">
 <meta name="twitter:card" content="summary_large_image">
@@ -368,6 +368,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 560px) { .lb-head, .lb-row, .lb-empty { padding-left: 1.25rem; padding-right: 1.25rem; } }
 
   .hidden { display: none !important; }
+
+  /* ---- mobil: menej prázdna nad hrou, aby sa zmestila na jednu obrazovku ---- */
+  @media (max-width: 760px) {
+    #hra .section-inner, #skok .section-inner { padding-top: 6rem !important; padding-bottom: 3.5rem !important; }
+  }
+  @media (max-width: 760px) and (max-height: 720px) {
+    #hra .section-inner, #skok .section-inner { padding-top: 5rem !important; }
+    .sk-h1, .hra-h1 { margin-bottom: 1.25rem !important; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -458,7 +467,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <!-- KROK 1: PRIHLÁSENIE -->
       <div id="gate" class="hra-center reveal">
         <div class="section-label">⚡ HROM HRA</div>
-        <h1 class="hra-h1">100 faktov o reklame,<br><span>ktoré väčšina marketérov nepozná.</span></h1>
+        <h1 class="hra-h1">100 faktov o reklame,<br><span>ktoré väčšina ľudí nepozná.</span></h1>
         <p class="hra-lead">Zadajte meno a e-mail, točte a učte sa. Každé točenie vám vytiahne jeden fakt — z histórie reklamy, legendárnych kampaní, psychológie aj peňazí. Sto faktov, žiadny sa neopakuje.</p>
 
         <div class="hra-card">

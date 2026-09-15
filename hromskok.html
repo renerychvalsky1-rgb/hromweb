@@ -18,7 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HROM SKOK — skákajúci blesk</title>
-<meta name="description" content="Jedno tlačidlo, jedno pravidlo: skáčte cez mraky. Keď sa blesk dotkne mraku, je koniec. Hra od HROM Marketing.">
+<meta name="description" content="Jedno tlačidlo, jedno pravidlo: skáčte cez mraky. Kto bude v rebríčku prvý, vyhráva konzultáciu s HROM zadarmo.">
 <meta name="author" content="René Rychvalský">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://hrom.marketing/hromskok.html">
@@ -27,12 +27,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="HROM Marketing">
 <meta property="og:url" content="https://hrom.marketing/hromskok.html">
 <meta property="og:title" content="HROM SKOK — skákajúci blesk">
-<meta property="og:description" content="Skáčte cez mraky. Keď sa blesk dotkne mraku, je koniec.">
+<meta property="og:description" content="Skáčte cez mraky. Prvé miesto vyhráva konzultáciu s HROM zadarmo.">
 <meta property="og:image" content="https://hrom.marketing/lecture1.jgp.png">
 <meta property="og:image:alt" content="HROM SKOK — skákajúci blesk">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HROM SKOK — skákajúci blesk">
-<meta name="twitter:description" content="Skáčte cez mraky a porovnajte sa s ostatnými v rebríčku.">
+<meta name="twitter:description" content="Skáčte cez mraky. Prvé miesto vyhráva konzultáciu s HROM zadarmo.">
 <meta name="twitter:image" content="https://hrom.marketing/lecture1.jgp.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -362,6 +362,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 560px) { .lb-head, .lb-row, .lb-empty { padding-left: 1.25rem; padding-right: 1.25rem; } }
 
   .hidden { display: none !important; }
+
+  .sk-cena { display: inline-flex; align-items: center; gap: .5rem; background: linear-gradient(135deg, rgba(0,227,202,.12), rgba(0,227,202,.04)); border: 1px solid rgba(0,227,202,.35); border-radius: 1rem; padding: .85rem 1.25rem; margin: -1.5rem auto 2.5rem; font-size: .92rem; color: #cfcfcf; line-height: 1.5; text-align: left; }
+  .sk-cena b { color: var(--accent); font-weight: 800; }
+  .lb-cena { background: linear-gradient(135deg, rgba(0,227,202,.12), transparent); border-bottom: 1px solid rgba(0,227,202,.25); padding: .9rem 1.75rem; font-size: .86rem; color: #cfcfcf; line-height: 1.5; }
+  .lb-cena b { color: var(--accent); font-weight: 800; }
+  @media (max-width: 560px) { .lb-cena { padding-left: 1.25rem; padding-right: 1.25rem; } .sk-cena { font-size: .86rem; padding: .75rem 1rem; } }
+
+  /* ---- mobil: menej prázdna nad hrou, aby sa zmestila na jednu obrazovku ---- */
+  @media (max-width: 760px) {
+    #hra .section-inner, #skok .section-inner { padding-top: 6rem !important; padding-bottom: 3.5rem !important; }
+  }
+  @media (max-width: 760px) and (max-height: 720px) {
+    #hra .section-inner, #skok .section-inner { padding-top: 5rem !important; }
+    .sk-h1, .hra-h1 { margin-bottom: 1.25rem !important; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -454,6 +469,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="section-label">⚡ HROM SKOK</div>
         <h1 class="sk-h1">Blesk, ktorý sa vyhýba<br><span>mrakom.</span></h1>
         <p class="sk-lead">Jedno tlačidlo, jedno pravidlo: skáčte cez mraky. Keď sa blesk dotkne mraku, je koniec. Čím dlhšie vydržíte, tým vyššie skóre — a tým vyššie ste v rebríčku.</p>
+        <div class="sk-cena">🏆 <b>Prvé miesto vyhráva konzultáciu s HROM zadarmo.</b></div>
 
         <div class="sk-card">
           <form id="gateForm" novalidate>
@@ -507,8 +523,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <!-- REBRÍČEK -->
         <div class="lb hidden" id="lb">
+          <div class="lb-cena">🏆 Kto skončí v rebríčku prvý, vyhráva <b>konzultáciu s HROM zadarmo</b>.</div>
           <div class="lb-head">
-            <h3>🏆 Kto vydržal najdlhšie</h3>
+            <h3>Kto vydržal najdlhšie</h3>
             <span id="lbNote">Načítavam rebríček…</span>
           </div>
           <div id="lbBody"></div>
