@@ -18,7 +18,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HROM HRA — 100 faktov o reklame</title>
-<meta name="description" content="Naskenujte, zadajte meno a e-mail a točte. 100 faktov z histórie reklamy, legendárnych kampaní, psychológie a peňazí — na konci vám pošleme e-book so všetkými faktami.">
+<meta name="description" content="Naskenujte, zadajte meno a e-mail a točte. 100 faktov z histórie reklamy, legendárnych kampaní, psychológie a peňazí — po konferencii vám pošleme e-book so všetkými faktami.">
 <meta name="author" content="René Rychvalský">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://hrom.marketing/hromhra.html">
@@ -27,7 +27,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:site_name" content="HROM Marketing">
 <meta property="og:url" content="https://hrom.marketing/hromhra.html">
 <meta property="og:title" content="HROM HRA — 100 faktov o reklame">
-<meta property="og:description" content="Zadajte meno a e-mail a točte. 100 faktov o reklame, ktoré väčšina ľudí nepozná — na konci vám pošleme e-book.">
+<meta property="og:description" content="Zadajte meno a e-mail a točte. 100 faktov o reklame, ktoré väčšina ľudí nepozná — po konferencii vám pošleme e-book.">
 <meta property="og:image" content="https://hrom.marketing/lecture1.jgp.png">
 <meta property="og:image:alt" content="HROM HRA — 100 faktov o reklame">
 <meta name="twitter:card" content="summary_large_image">
@@ -373,6 +373,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .hra-bonus b { color: var(--accent); font-weight: 800; }
   @media (max-width: 560px) { .hra-bonus { font-size: .86rem; padding: .75rem 1rem; } }
 
+  .hra-bonus-hra { display: flex; align-items: flex-start; width: 100%; margin: 1.75rem 0 0; }
+  .hra-bonus-hra > :first-child { line-height: 1.5; }
+
   /* ---- mobil: menej prázdna nad hrou, aby sa zmestila na jednu obrazovku ---- */
   @media (max-width: 760px) {
     #hra .section-inner, #skok .section-inner { padding-top: 6rem !important; padding-bottom: 3.5rem !important; }
@@ -473,7 +476,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="section-label">⚡ HROM HRA</div>
         <h1 class="hra-h1">100 faktov o reklame,<br><span>ktoré väčšina ľudí nepozná.</span></h1>
         <p class="hra-lead">Zadajte meno a e-mail, točte a učte sa. Každé točenie vám vytiahne jeden fakt — z histórie reklamy, legendárnych kampaní, psychológie aj peňazí. Sto faktov, žiadny sa neopakuje.</p>
-        <div class="hra-bonus">📘 <span>Na konci vám pošleme <b>e-book so všetkými 100 faktami</b> — nemusíte si nič zapisovať.</span></div>
+        <div class="hra-bonus">📘 <span>Po skončení konferencie vám pošleme <b>e-book so všetkými 100 faktami</b> na e-mail, ktorý ste zadali. Nemusíte si nič zapisovať.</span></div>
 
         <div class="hra-card">
           <form id="gateForm" novalidate>
@@ -489,7 +492,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <div class="hra-err" id="err"></div>
             <button type="submit" class="hra-btn" id="gateBtn">Chcem sa naučiť o reklame ⚡</button>
           </form>
-          <p class="hra-note">Nič iné od vás nechceme. Meno sa zobrazuje v rebríčku, na e-mail vám pošleme e-book so všetkými faktami a občas ďalšie veci o reklame — odhlásiť sa viete kedykoľvek. V rebríčku sa e-maily nikomu nezobrazujú.</p>
+          <p class="hra-note">Nič iné od vás nechceme. Meno sa zobrazuje v rebríčku, na e-mail vám po konferencii pošleme e-book so všetkými faktami a občas ďalšie veci o reklame — odhlásiť sa viete kedykoľvek. V rebríčku sa e-maily nikomu nezobrazujú.</p>
         </div>
 
         <div class="hra-teaser">
@@ -525,9 +528,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
         </div>
 
+        <div class="hra-bonus hra-bonus-hra">📘 <span>Po skončení konferencie vám pošleme <b>e-book so všetkými 100 faktami</b> na e-mail, ktorý ste zadali.</span></div>
+
         <div class="hra-done hidden" id="done">
           <h3>⚡ Máte všetkých 100 faktov.</h3>
-          <p><strong style="color:var(--accent)">E-book so všetkými 100 faktami vám pošleme na e-mail</strong>, ktorý ste zadali — nemusíte si nič pamätať.</p>
+          <p><strong style="color:var(--accent)">Po skončení konferencie vám pošleme e-book so všetkými 100 faktami</strong> na e-mail, ktorý ste zadali — nemusíte si nič pamätať.</p>
           <p style="margin-top:.8rem;">A ak chcete, aby reklama robila aj niečo pre vaše tržby, ozvite sa — pozrieme sa na váš biznis a povieme vám, kde strácate zákazníkov.</p>
           <div style="margin-top:1.2rem;"><a href="index.html#cta" class="btn-primary">Chcem sa porozprávať →</a></div>
         </div>
