@@ -312,45 +312,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     background: linear-gradient(to right, var(--accent), transparent);
   }
 
-  /* ─── MARQUEE ───────────────────────────── */
-  .marquee-wrap {
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 1.2rem 0;
-    overflow: hidden;
-    background: var(--bg2);
-  }
-
-  .marquee-track {
-    display: flex;
-    gap: 4rem;
-    width: max-content;
-    animation: marquee 20s linear infinite;
-  }
-
-  .marquee-item {
-    font-family: var(--font-head);
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .marquee-item::after {
-    content: '⚡';
-    font-size: 0.8rem;
-  }
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-
   /* ─── SECTION BASE ──────────────────────── */
   section {
     position: relative;
@@ -958,12 +919,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links { flex-wrap: wrap; gap: 1rem; }
   }
 
-  /* MARQUEE */
-  .marquee-wrap { border-top:1px solid var(--border); border-bottom:1px solid var(--border); padding:1.2rem 0; overflow:hidden; background:var(--bg2); }
-  .marquee-track { display:flex; gap:4rem; width:max-content; animation:marquee 20s linear infinite; }
-  .marquee-item { font-family:var(--font-head); font-size:1rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); white-space:nowrap; display:flex; align-items:center; gap:1.5rem; }
-  .marquee-item::after { content:'⚡'; font-size:.8rem; }
-  @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  /* DÔVERUJÚ NÁM — pás s logami klientov */
+  .trust-wrap { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg2); padding:2rem 0 2.25rem; overflow:hidden; position:relative; z-index:2; }
+  .trust-head { display:flex; justify-content:center; margin-bottom:1.5rem; }
+  .trust-label { display:inline-flex; align-items:center; gap:.6rem; color:var(--accent); font-family:var(--font-head); font-size:.72rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; }
+  .trust-label::before, .trust-label::after { content:''; display:inline-block; width:22px; height:2px; background:var(--accent); opacity:.55; }
+  .trust-viewport { overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image:linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+  .trust-track { display:flex; align-items:center; gap:4.5rem; width:max-content; animation:trust 38s linear infinite; }
+  .trust-item { display:flex; align-items:center; justify-content:center; height:56px; width:200px; flex:0 0 auto; }
+  .trust-item img { max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; opacity:.72; filter:grayscale(15%); transition:opacity .25s, filter .25s; }
+  a.trust-item:hover img { opacity:1; filter:none; }
+  @keyframes trust { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .trust-wrap:hover .trust-track { animation-play-state:paused; }
+
+  @media (max-width:900px) {
+    .trust-wrap { padding:1.6rem 0 1.8rem; }
+    .trust-head { margin-bottom:1.1rem; }
+    .trust-track { gap:2.5rem; animation-duration:28s; }
+    .trust-item { height:38px; width:128px; }
+    .trust-item img { opacity:.85; filter:none; }
+  }
+  @media (max-width:420px) {
+    .trust-track { gap:2rem; }
+    .trust-item { height:34px; width:110px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trust-track { animation:none; }
+    .trust-viewport { overflow-x:auto; -webkit-mask-image:none; mask-image:none; }
+  }
 
   /* SECTIONS */
   section { position:relative; z-index:1; }
@@ -1321,35 +1304,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="psc-head"><span class="h-prob">✕ Poznáte to?</span><span class="h-arrow">→</span><span class="h-sol">✓ Presne toto riešime</span></div>
     <div class="psc-viewport">
       <div class="psc-track" id="pscTrack">
-        <a href="ai-chatbot.html" class="psc-card">
-          <div class="psc-prob"><span class="x">✕</span><span>Zákazník píše o 22:00 — a nikto neodpovie.</span></div>
+        <a href="strategia.html" class="psc-card">
+          <div class="psc-prob"><span class="x">✕</span><span>Neviete, kde začať a čo nefunguje.</span></div>
           <div class="psc-arrow">→</div>
-          <div class="psc-sol"><span class="v">⚡</span><span><strong>AI zamestnanec</strong> — odpovie, poradí a predá 24/7.</span></div>
-        </a>
-        <a href="connector-ambulancie.html" class="psc-card">
-          <div class="psc-prob"><span class="x">✕</span><span>Recepcia dvíha telefón namiesto práce.</span></div>
-          <div class="psc-arrow">→</div>
-          <div class="psc-sol"><span class="v">⚡</span><span><strong>Connector</strong> — online objednávanie priamo do vášho systému.</span></div>
-        </a>
-        <a href="audit-ai-llm.html" class="psc-card">
-          <div class="psc-prob"><span class="x">✕</span><span>ChatGPT odporúča konkurenciu, nie vás.</span></div>
-          <div class="psc-arrow">→</div>
-          <div class="psc-sol"><span class="v">⚡</span><span><strong>AI/LLM audit</strong> — opravíme miesta, kde vás AI nevidí.</span></div>
-        </a>
-        <a href="herbert-hrom.html" class="psc-card">
-          <div class="psc-prob"><span class="x">✕</span><span>Blog stojí, organický traffic nerastie.</span></div>
-          <div class="psc-arrow">→</div>
-          <div class="psc-sol"><span class="v">⚡</span><span><strong>Herbert Hrom</strong> — AI bloger, ktorý píše a publikuje za vás.</span></div>
+          <div class="psc-sol"><span class="v">⚡</span><span><strong>Stratégia</strong> — jasný plán rastu na mieru.</span></div>
         </a>
         <a href="performance-marketing.html" class="psc-card">
           <div class="psc-prob"><span class="x">✕</span><span>Reklama míňa rozpočet bez výsledku.</span></div>
           <div class="psc-arrow">→</div>
           <div class="psc-sol"><span class="v">⚡</span><span><strong>Performance marketing</strong> — kampane, ktoré privádzajú zákazníkov.</span></div>
         </a>
-        <a href="strategia.html" class="psc-card">
-          <div class="psc-prob"><span class="x">✕</span><span>Neviete, kde začať a čo nefunguje.</span></div>
+        <a href="branding.html" class="psc-card">
+          <div class="psc-prob"><span class="x">✕</span><span>Logo nezaujme?</span></div>
           <div class="psc-arrow">→</div>
-          <div class="psc-sol"><span class="v">⚡</span><span><strong>Stratégia</strong> — jasný plán rastu na mieru.</span></div>
+          <div class="psc-sol"><span class="v">⚡</span><span><strong>Branding</strong> — identita, pri ktorej si ľudia povedia: toto sú tí správni.</span></div>
+        </a>
+        <a href="#produkty" class="psc-card">
+          <div class="psc-prob"><span class="x">✕</span><span>Cítite, že váš marketing nemá energiu?</span></div>
+          <div class="psc-arrow">→</div>
+          <div class="psc-sol"><span class="v">⚡</span><span><strong>HROM AI Stack</strong> — vylepšíme ho cez AI nástroje.</span></div>
         </a>
       </div>
     </div>
@@ -1359,21 +1332,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
 </section>
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item">Marketingová stratégia</span>
-    <span class="marquee-item">PPC kampane</span>
-    <span class="marquee-item">Branding</span>
-    <span class="marquee-item">Performance</span>
-    <span class="marquee-item">Webové riešenia</span>
-    <span class="marquee-item">Sociálne siete</span>
-    <span class="marquee-item">Marketingová stratégia</span>
-    <span class="marquee-item">PPC kampane</span>
-    <span class="marquee-item">Branding</span>
-    <span class="marquee-item">Performance</span>
-    <span class="marquee-item">Webové riešenia</span>
-    <span class="marquee-item">Sociálne siete</span>
+<!-- DÔVERUJÚ NÁM -->
+<div class="trust-wrap">
+  <div class="trust-head"><span class="trust-label">Dôverujú nám</span></div>
+  <div class="trust-viewport">
+    <div class="trust-track">
+      <a class="trust-item" href="https://suvko.sk" target="_blank" rel="noopener" title="SUVKO"><img src="klient-suvko.png" alt="SUVKO" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <a class="trust-item" href="https://sterio.sk" target="_blank" rel="noopener" title="STERIO Kino"><img src="klient-sterio.png" alt="STERIO Kino" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <a class="trust-item" href="https://mamkrcovezily.sk" target="_blank" rel="noopener" title="Mám krčové žily"><img src="klient-zily.png" alt="Mám krčové žily" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <a class="trust-item" href="https://ultrazvukovevysetrenie.sk" target="_blank" rel="noopener" title="Ultrazvukové vyšetrenie"><img src="klient-ultrazvuk.png" alt="Ultrazvukové vyšetrenie" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <span class="trust-item"><img src="klient-kdah.png" alt="Kultúrny dom Andreja Hlinku" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <a class="trust-item" href="https://www.marlus.sk/" target="_blank" rel="noopener" title="Marlus Group"><img src="klient-marlus.png" alt="Marlus Group" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <a class="trust-item" href="https://liptovklasik.sk" target="_blank" rel="noopener" title="Liptov Klasik"><img src="klient-liptovklasik.png" alt="Liptov Klasik" loading="lazy" onerror="this.parentNode.remove()"></a>
+      <span class="trust-item"><img src="klient-grownapps.png" alt="GrownApps" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item"><img src="klient-matsuko.png" alt="MATSUKO" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item"><img src="klient-b2bservices.png" alt="B2B Services" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item"><img src="klient-tulavekino.png" alt="Túlavé kino" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-suvko.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-sterio.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-zily.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-ultrazvuk.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-kdah.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-marlus.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-liptovklasik.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-grownapps.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-matsuko.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-b2bservices.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+      <span class="trust-item" aria-hidden="true"><img src="klient-tulavekino.png" alt="" loading="lazy" onerror="this.parentNode.remove()"></span>
+    </div>
   </div>
 </div>
 
