@@ -929,6 +929,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .trust-item { display:flex; align-items:center; justify-content:center; height:56px; width:200px; flex:0 0 auto; }
   .trust-item img { max-height:100%; max-width:100%; width:auto; height:auto; object-fit:contain; opacity:.72; filter:grayscale(15%); transition:opacity .25s, filter .25s; }
   a.trust-item:hover img { opacity:1; filter:none; }
+  /* Bonitax je samotný wordmark, opticky pôsobí väčší — zmenšíme ho na výšku Voltomu */
+  .trust-item img[src*="bonitax"] { max-height:89%; }
   @keyframes trust { from { transform:translateX(0); } to { transform:translateX(-50%); } }
   .trust-wrap:hover .trust-track { animation-play-state:paused; }
 
