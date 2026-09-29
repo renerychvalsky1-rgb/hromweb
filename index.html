@@ -919,6 +919,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links { flex-wrap: wrap; gap: 1rem; }
   }
 
+  .lead-link { color:var(--accent); font-weight:700; text-decoration:none; border-bottom:2px solid rgba(0,227,202,.35); transition:border-color .2s, color .2s; }
+  .lead-link:hover { border-bottom-color:var(--accent); color:#fff; }
+  .lead-link strong { font-weight:700; }
+
   /* DÔVERUJÚ NÁM — pás s logami klientov */
   .trust-wrap { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg2); padding:2rem 0 2.25rem; overflow:hidden; position:relative; z-index:2; }
   .trust-head { display:flex; justify-content:center; margin-bottom:1.5rem; }
@@ -1294,10 +1298,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     Marketingový<br>
     <span class="line2">výkon ako hrom.</span>
   </h1>
-        <p class="geo-lead">V digitálnom marketingu pracujeme s AI a hľadáme riešenia, ktoré <strong style="color:var(--accent);font-weight:700">nosia tržby</strong>.</p>
+        <p class="geo-lead">V digitálnom marketingu pracujeme s AI a hľadáme riešenia, ktoré <a href="#produkty" class="lead-link"><strong>nosia tržby</strong></a>.</p>
 
   <div class="hero-actions">
-    <a href="#projects" class="btn-primary">HROMOVÁ PRÁCA →</a>
+    <a href="#produkty" class="btn-primary">HROMOVÁ PRÁCA →</a>
     <a href="#about" class="btn-ghost" style="border-color:var(--accent);color:var(--accent);">PRÍBEH HROMU</a>
   </div>
     </div>
