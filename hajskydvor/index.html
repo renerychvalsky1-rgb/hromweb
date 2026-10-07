@@ -6,9 +6,9 @@
 <!-- NÁVRH: pred spustením na hajskydvor.sk odstrániť noindex -->
 <meta name="robots" content="noindex, nofollow">
 <title>Hájsky dvor — chalupa pre rodiny pod Hájskymi vodopádmi</title>
-<meta name="description" content="Celá chalupa pre 11 hostí v obci Háj v Slovenskom krase. Kaďa, sauna, detský kútik, oplotená záhrada a krb. Kúsok od Hájskych vodopádov, cca 45 min od Košíc.">
+<meta name="description" content="Celá chalupa pre 11 hostí v obci Háj v Slovenskom krase. Kaďa a sauna v cene, detský kútik, oplotená záhrada a krb. Kúsok od Hájskych vodopádov, cca 45 min od Košíc.">
 <meta property="og:title" content="Hájsky dvor — chalupa pre rodiny v Slovenskom krase">
-<meta property="og:description" content="Kaďa, sauna, detský kútik a záhrada. 800 m k Hájskym vodopádom. Rezervujte cez Booking, Megaubytovanie alebo Airbnb.">
+<meta property="og:description" content="Kaďa a sauna v cene, detský kútik a záhrada. Kúsok od Hájskych vodopádov. Rezervujte cez Booking, Megaubytovanie alebo Airbnb.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="logo.png">
 <link rel="icon" href="logo.png">
@@ -151,6 +151,9 @@
   .lang-menu a:hover { background: var(--sand); }
   .lang-menu a.active { color: var(--olive); }
   .lang-menu a em { font-style: normal; font-size: .72rem; color: var(--muted); }
+  .lang-menu a.soon { opacity: .45; cursor: default; }
+  .lang-menu a.soon:hover { background: transparent; }
+  html:not([lang="hu"]) .hu-only { display: none; }
 
   .menu-toggle { display: none; background: none; border: 0; cursor: pointer; padding: .4rem; color: var(--brown); }
 
@@ -453,35 +456,35 @@
 <!-- ============ HEADER ============ -->
 <header class="topbar">
   <div class="wrap">
-    <a href="#top" class="brand" aria-label="Hájsky dvor — domov">
+    <a href="#top" class="brand" aria-label="Hájsky dvor">
       <img src="logo.png" alt="Hájsky dvor logo">
       <span>Hájsky dvor</span>
     </a>
 
     <nav class="nav" id="nav">
-      <a href="#ubytovanie">Ubytovanie</a>
-      <a href="#wellness">Kaďa a sauna</a>
-      <a href="#galeria">Galéria</a>
-      <a href="#areal">Areál</a>
-      <a href="#okolie">Okolie</a>
-      <a href="#kontakt">Kontakt</a>
+      <a href="#ubytovanie" data-i18n="nav.1">Ubytovanie</a>
+      <a href="#wellness" data-i18n="nav.2">Kaďa a sauna</a>
+      <a href="#galeria" data-i18n="nav.3">Galéria</a>
+      <a href="#areal" data-i18n="nav.4">Areál</a>
+      <a href="#okolie" data-i18n="nav.5">Okolie</a>
+      <a href="#kontakt" data-i18n="nav.6">Kontakt</a>
     </nav>
 
     <div class="top-actions">
       <div class="lang" id="lang">
         <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false">
-          <svg width="16" height="16"><use href="#i-globe"/></svg> SK
+          <svg width="16" height="16"><use href="#i-globe"/></svg> <span id="langCode">SK</span>
         </button>
         <div class="lang-menu" role="menu">
-          <a href="#" class="active">Slovenčina <em>SK</em></a>
-          <a href="#" title="Pripravujeme">Magyar <em>HU</em></a>
-          <a href="#" title="Pripravujeme">English <em>EN</em></a>
-          <a href="#" title="Pripravujeme">Polski <em>PL</em></a>
-          <a href="#" title="Pripravujeme">Deutsch <em>DE</em></a>
-          <a href="#" title="Pripravujeme">Українська <em>UA</em></a>
+          <a href="?lang=sk" data-lang="sk">Slovenčina <em>SK</em></a>
+          <a href="?lang=hu" data-lang="hu">Magyar <em>HU</em></a>
+          <a class="soon" title="Pripravujeme">English <em>EN</em></a>
+          <a class="soon" title="Pripravujeme">Polski <em>PL</em></a>
+          <a class="soon" title="Pripravujeme">Deutsch <em>DE</em></a>
+          <a class="soon" title="Pripravujeme">Українська <em>UA</em></a>
         </div>
       </div>
-      <a href="#rezervacia" class="btn btn-accent">Rezervovať</a>
+      <a href="#rezervacia" class="btn btn-accent" data-i18n="nav.cta">Rezervovať</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Menu">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -495,18 +498,19 @@
 <section class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow">Háj · Slovenský kras · cca 45 min od Košíc</span>
-      <h1>Celá chalupa pre vašu rodinu, <em>kúsok od vodopádov</em></h1>
-      <p class="lead">Zrekonštruovaný dom na dedine pre 11 hostí s kaďou, saunou, detským kútikom a oplotenou záhradou. Deti sa vyšantia, vy si oddýchnete.</p>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Háj · Slovenský kras · cca 45 min od Košíc</span>
+      <h1 data-i18n="hero.h1">Celá chalupa pre vašu rodinu, <em>kúsok od vodopádov</em></h1>
+      <p class="lead" data-i18n="hero.lead">Zrekonštruovaný dom na dedine pre 11 hostí s kaďou, saunou, detským kútikom a oplotenou záhradou. <strong>Kaďa aj sauna sú v cene pobytu.</strong> Deti sa vyšantia, vy si oddýchnete.</p>
       <div class="hero-ctas">
         <a href="#rezervacia" class="btn btn-accent">
-          <svg><use href="#i-cal"/></svg> Overiť voľný termín
+          <svg><use href="#i-cal"/></svg> <span data-i18n="hero.cta1">Overiť voľný termín</span>
         </a>
-        <a href="#ubytovanie" class="btn btn-outline">Pozrieť chalupu</a>
+        <a href="#ubytovanie" class="btn btn-outline" data-i18n="hero.cta2">Pozrieť chalupu</a>
       </div>
       <div class="ratings">
-        <div class="rating"><b>9,7</b><span><strong>Booking.com</strong>22 hodnotení</span></div>
-        <div class="rating"><b>9,9</b><span><strong>Megaubytovanie</strong>5 hodnotení</span></div>
+        <div class="rating"><b>9,7</b><span><strong>Booking.com</strong><span data-i18n="rt.booking">22 hodnotení</span></span></div>
+        <div class="rating"><b>9,9</b><span><strong>Megaubytovanie</strong><span data-i18n="rt.mega">5 hodnotení</span></span></div>
+        <div class="rating hu-only"><b>HU</b><span><strong>Beszélünk magyarul</strong>Írjatok vagy hívjatok bátran</span></div>
       </div>
     </div>
 
@@ -519,7 +523,6 @@
           <path d="M0 230 Q90 150 190 200 T400 170 V440 H0Z" fill="#9AA567"/>
           <path d="M0 270 Q120 210 230 250 T400 230 V440 H0Z" fill="#7D8B4A"/>
           <path d="M0 330 Q140 290 260 320 T400 310 V440 H0Z" fill="#5E6B34"/>
-          <!-- dom -->
           <g transform="translate(120 230)">
             <rect x="0" y="40" width="150" height="80" fill="#FBF2E1"/>
             <path d="M-12 44 L75 -8 L162 44Z" fill="#B5643A"/>
@@ -528,19 +531,14 @@
             <rect x="62" y="62" width="24" height="28" fill="#6B5338"/>
             <rect x="104" y="70" width="26" height="50" fill="#8C6A43"/>
           </g>
-          <!-- strom -->
           <g transform="translate(62 222)">
             <rect x="14" y="60" width="8" height="70" fill="#6B5338"/>
             <ellipse cx="18" cy="48" rx="34" ry="46" fill="#4E5A2B"/>
           </g>
-          <!-- plot -->
           <g fill="#D7B98A">
             <rect x="0" y="352" width="400" height="6"/>
             <rect x="0" y="372" width="400" height="6"/>
-            <rect x="10" y="340" width="10" height="50" rx="2"/>
-          </g>
-          <g fill="#D7B98A">
-            <rect x="40" y="340" width="10" height="50" rx="2"/><rect x="70" y="340" width="10" height="50" rx="2"/><rect x="100" y="340" width="10" height="50" rx="2"/><rect x="130" y="340" width="10" height="50" rx="2"/><rect x="160" y="340" width="10" height="50" rx="2"/><rect x="190" y="340" width="10" height="50" rx="2"/><rect x="220" y="340" width="10" height="50" rx="2"/><rect x="250" y="340" width="10" height="50" rx="2"/><rect x="280" y="340" width="10" height="50" rx="2"/><rect x="310" y="340" width="10" height="50" rx="2"/><rect x="340" y="340" width="10" height="50" rx="2"/><rect x="370" y="340" width="10" height="50" rx="2"/>
+            <rect x="10" y="340" width="10" height="50" rx="2"/><rect x="40" y="340" width="10" height="50" rx="2"/><rect x="70" y="340" width="10" height="50" rx="2"/><rect x="100" y="340" width="10" height="50" rx="2"/><rect x="130" y="340" width="10" height="50" rx="2"/><rect x="160" y="340" width="10" height="50" rx="2"/><rect x="190" y="340" width="10" height="50" rx="2"/><rect x="220" y="340" width="10" height="50" rx="2"/><rect x="250" y="340" width="10" height="50" rx="2"/><rect x="280" y="340" width="10" height="50" rx="2"/><rect x="310" y="340" width="10" height="50" rx="2"/><rect x="340" y="340" width="10" height="50" rx="2"/><rect x="370" y="340" width="10" height="50" rx="2"/>
           </g>
           <rect y="390" width="400" height="50" fill="#4E5A2B"/>
         </svg>
@@ -548,7 +546,7 @@
       <span class="ph-note">Placeholder · hlavná fotka / video</span>
       <div class="hero-badge">
         <div class="ico"><svg width="24" height="24" style="color:var(--olive)"><use href="#i-water"/></svg></div>
-        <p><strong>Hájske vodopády pešo</strong>Hájska dolina začína priamo v obci.</p>
+        <p data-i18n="hero.badge"><strong>Hájske vodopády pešo</strong>Hájska dolina začína priamo v obci.</p>
       </div>
     </div>
   </div>
@@ -558,12 +556,12 @@
 <div class="facts">
   <div class="wrap">
     <div class="facts-grid">
-      <div class="fact"><svg><use href="#i-bed"/></svg><strong>11 lôžok</strong><span>celá chalupa len pre vás</span></div>
-      <div class="fact"><svg><use href="#i-door"/></svg><strong>4 spálne</strong><span>+ detská postieľka</span></div>
-      <div class="fact"><svg><use href="#i-tub"/></svg><strong>Kaďa</strong><span>pod holým nebom</span></div>
-      <div class="fact"><svg><use href="#i-sauna"/></svg><strong>Sauna</strong><span>po túre ako stvorená</span></div>
-      <div class="fact"><svg><use href="#i-kids"/></svg><strong>Detský kútik</strong><span>pre najmenších</span></div>
-      <div class="fact"><svg><use href="#i-fire"/></svg><strong>Krb a terasa</strong><span>oplotená záhrada</span></div>
+      <div class="fact"><svg><use href="#i-bed"/></svg><strong data-i18n="f1t">11 lôžok</strong><span data-i18n="f1s">celá chalupa len pre vás</span></div>
+      <div class="fact"><svg><use href="#i-door"/></svg><strong data-i18n="f2t">4 spálne</strong><span data-i18n="f2s">+ detská postieľka</span></div>
+      <div class="fact"><svg><use href="#i-tub"/></svg><strong data-i18n="f3t">Kaďa</strong><span data-i18n="f3s">v cene pobytu</span></div>
+      <div class="fact"><svg><use href="#i-sauna"/></svg><strong data-i18n="f4t">Sauna</strong><span data-i18n="f4s">v cene pobytu</span></div>
+      <div class="fact"><svg><use href="#i-kids"/></svg><strong data-i18n="f5t">Detský kútik</strong><span data-i18n="f5s">pre najmenších</span></div>
+      <div class="fact"><svg><use href="#i-fire"/></svg><strong data-i18n="f6t">Krb a terasa</strong><span data-i18n="f6s">oplotená záhrada</span></div>
     </div>
   </div>
 </div>
@@ -574,15 +572,15 @@
     <svg class="weekday-deco" viewBox="0 0 24 24"><use href="#i-leaf"/></svg>
     <div class="weekday-grid">
       <div>
-        <span class="eyebrow">Tip od nás</span>
-        <h2>Cez týždeň je tu najkrajšie</h2>
-        <p class="lead">Kým ostatní čakajú na víkend, vy máte vodopády, chodníky aj hrad takmer len pre seba. Ideálne pre mamičky na materskej s menšími deťmi, starých rodičov s vnúčatami alebo rodiny počas prázdnin.</p>
-        <a href="#rezervacia" class="btn btn-light">Nájsť termín cez týždeň <svg><use href="#i-arrow"/></svg></a>
+        <span class="eyebrow" data-i18n="wk.eyebrow">Tip od nás</span>
+        <h2 data-i18n="wk.h2">Cez týždeň je tu najkrajšie</h2>
+        <p class="lead" data-i18n="wk.lead">Kým ostatní čakajú na víkend, vy máte vodopády, chodníky aj hrad takmer len pre seba. Ideálne pre mamičky na materskej s menšími deťmi, starých rodičov s vnúčatami alebo rodiny počas prázdnin.</p>
+        <a href="#rezervacia" class="btn btn-light"><span data-i18n="wk.btn">Nájsť termín cez týždeň</span> <svg><use href="#i-arrow"/></svg></a>
       </div>
       <ul>
-        <li><svg><use href="#i-check"/></svg><div><strong>Vodopády bez fronty</strong><span>Roklinu prejdete svojím tempom, bez tlačenice na lávkach a rebríkoch.</span></div></li>
-        <li><svg><use href="#i-check"/></svg><div><strong>Ľahšie nájdete voľný termín</strong><span>Víkendy sa míňajú rýchlo, pracovné dni bývajú voľnejšie, často aj na poslednú chvíľu.</span></div></li>
-        <li><svg><use href="#i-check"/></svg><div><strong>Kaďa a sauna každý večer</strong><span>Deti po celom dni vonku zaspia rýchlo a vy si vychutnáte teplú vodu pod hviezdami.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div><strong data-i18n="wk.1t">Vodopády bez fronty</strong><span data-i18n="wk.1s">Roklinu prejdete svojím tempom, bez tlačenice na lávkach a rebríkoch.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div><strong data-i18n="wk.2t">Ľahšie nájdete voľný termín</strong><span data-i18n="wk.2s">Víkendy sa míňajú rýchlo, pracovné dni bývajú voľnejšie, často aj na poslednú chvíľu.</span></div></li>
+        <li><svg><use href="#i-check"/></svg><div><strong data-i18n="wk.3t">Kaďa a sauna každý večer, v cene</strong><span data-i18n="wk.3s">Deti po celom dni vonku zaspia rýchlo a vy si vychutnáte teplú vodu pod hviezdami.</span></div></li>
         <li><svg><use href="#i-euro"/></svg><div><strong>[Zvýhodnenie na pracovné dni?]</strong><span>Napr. „4 noci za cenu 3“ — overiť s Denisou, či chce ponúknuť.</span></div></li>
       </ul>
     </div>
@@ -593,28 +591,28 @@
 <section id="ubytovanie">
   <div class="wrap about-grid">
     <div class="about-text">
-      <span class="eyebrow">Ubytovanie</span>
-      <h2>Starý dom na dedine s novou dušou</h2>
-      <p>Hájsky dvor stojí v malebnej obci Háj v Slovenskom krase, kúsok od Hájskych vodopádov a sochy anjela. Je to miesto na útek od mestského ruchu: pokoj, čistý vzduch a zalesnené kopce hneď za plotom. [Príbeh domu a rekonštrukcie doplní Denisa.]</p>
-      <p>Prenajímate si <strong>celú chalupu len pre seba</strong>. Obývačka s krbom a gaučom, vybavená kuchyňa s jedálenským posedením, terasa a oplotená záhrada, kde môžu deti bezpečne behať. Parkovanie pri dome je zadarmo.</p>
+      <span class="eyebrow" data-i18n="ab.eyebrow">Ubytovanie</span>
+      <h2 data-i18n="ab.h2">Starý dom na dedine s novou dušou</h2>
+      <p><span data-i18n="ab.p1">Hájsky dvor stojí v malebnej obci Háj v Slovenskom krase, kúsok od Hájskych vodopádov a sochy anjela. Je to miesto na útek od mestského ruchu: pokoj, čistý vzduch a zalesnené kopce hneď za plotom.</span> [Príbeh domu a rekonštrukcie doplní Denisa.]</p>
+      <p data-i18n="ab.p2">Prenajímate si <strong>celú chalupu len pre seba</strong>. Obývačka s krbom a gaučom, vybavená kuchyňa s jedálenským posedením, terasa a oplotená záhrada, kde môžu deti bezpečne behať. Pri dome je bezplatné parkovisko.</p>
       <p style="color:var(--muted);font-size:.9rem;margin-top:1.25rem">[Text je návrh podľa Bookingu a Megaubytovania — doladíme s Denisou.]</p>
 
       <div class="equip">
-        <span class="chip">Wi-Fi</span><span class="chip">Krb</span><span class="chip">Rúra a varná doska</span>
-        <span class="chip">Chladnička s mrazničkou</span><span class="chip">Kávovar</span><span class="chip">Práčka</span>
-        <span class="chip">Terasa</span><span class="chip">Detská postieľka</span><span class="chip">Parkovanie zadarmo</span><span class="chip">Nefajčiarske</span>
+        <span class="chip">Wi-Fi</span><span class="chip" data-i18n="ch.2">Krb</span><span class="chip" data-i18n="ch.3">Rúra a varná doska</span>
+        <span class="chip" data-i18n="ch.4">Chladnička s mrazničkou</span><span class="chip" data-i18n="ch.5">Kávovar</span><span class="chip" data-i18n="ch.6">Práčka</span>
+        <span class="chip" data-i18n="ch.7">Terasa</span><span class="chip" data-i18n="ch.8">Detská postieľka</span><span class="chip" data-i18n="ch.9">Bezplatné parkovisko</span><span class="chip" data-i18n="ch.10">Nefajčiarske</span>
       </div>
     </div>
 
     <div>
-      <h3 style="margin-bottom:1rem">Rozloženie izieb</h3>
+      <h3 style="margin-bottom:1rem" data-i18n="rm.h3">Rozloženie izieb</h3>
       <div class="rooms">
-        <div class="room"><span class="num">1×</span><div><strong>Jednolôžková izba</strong><span>1 jednolôžková posteľ</span></div></div>
-        <div class="room"><span class="num">1×</span><div><strong>Dvojlôžková izba + detská postieľka</strong><span>1 manželská posteľ</span></div></div>
-        <div class="room"><span class="num">2×</span><div><strong>Štvorlôžková izba</strong><span>manželská posteľ + 2 jednolôžka</span></div></div>
-        <div class="room"><span class="num">🛁</span><div><strong>1 kúpeľňa + samostatná toaleta</strong><span>vaňa, uteráky v cene</span></div></div>
+        <div class="room"><span class="num">1×</span><div><strong data-i18n="rm.1t">Jednolôžková izba</strong><span data-i18n="rm.1s">1 jednolôžková posteľ</span></div></div>
+        <div class="room"><span class="num">1×</span><div><strong data-i18n="rm.2t">Dvojlôžková izba + detská postieľka</strong><span data-i18n="rm.2s">1 manželská posteľ</span></div></div>
+        <div class="room"><span class="num">2×</span><div><strong data-i18n="rm.3t">Štvorlôžková izba</strong><span data-i18n="rm.3s">manželská posteľ + 2 jednolôžka</span></div></div>
+        <div class="room"><span class="num">🛁</span><div><strong data-i18n="rm.4t">1 kúpeľňa + samostatná toaleta</strong><span data-i18n="rm.4s">vaňa, uteráky v cene</span></div></div>
       </div>
-      <p class="note">Min. 2 noci. Zvieratá nie sú povolené. Parkovanie pri dome [Megaubytovanie uvádza 1 miesto — overiť, koľko áut sa zmestí, pri 11 hosťoch to bude častá otázka]. Ceny neuvádzame, sú na portáloch.</p>
+      <p class="note" data-i18n="rm.note">Min. 2 noci. Zvieratá nie sú povolené. Bezplatné parkovisko pri dome. Ceny nájdete na portáloch.</p>
     </div>
   </div>
 </section>
@@ -623,33 +621,33 @@
 <section id="wellness" class="alt">
   <div class="wrap">
     <div class="section-head center">
-      <span class="eyebrow">Oddych pre dospelých, zábava pre deti</span>
-      <h2>Kaďa, sauna a kútik pre najmenších</h2>
-      <p class="lead">Kým sa deti hrajú v záhrade, vy sa nahrievate v kadi a stále ich máte na očiach. Večer potom všetci spolu pri krbe.</p>
+      <span class="eyebrow" data-i18n="wl.eyebrow">Oddych pre dospelých, zábava pre deti</span>
+      <h2 data-i18n="wl.h2">Kaďa, sauna a kútik pre najmenších</h2>
+      <p class="lead" data-i18n="wl.lead">Kým sa deti hrajú v záhrade, vy sa nahrievate v kadi a stále ich máte na očiach. Kaďa aj sauna sú v cene pobytu. Večer potom všetci spolu pri krbe.</p>
     </div>
     <div class="features">
       <article class="feature">
         <div class="ph wood"><svg><use href="#i-tub"/></svg><em>foto: kaďa</em></div>
         <div class="feature-body">
           <span class="tag">Wellness</span>
-          <h3>Vonkajšia kaďa</h3>
-          <p>Horúca voda pod holým nebom s výhľadom na kopce, v lete aj v zime. [Doplniť: kapacita, ako dlho trvá nahriatie, je v cene alebo za príplatok?]</p>
+          <h3 data-i18n="wl.1h">Vonkajšia kaďa</h3>
+          <p data-i18n="wl.1p">Horúca voda pod holým nebom s výhľadom na kopce, v lete aj v zime. <strong>V cene pobytu.</strong></p>
         </div>
       </article>
       <article class="feature">
         <div class="ph dusk"><svg><use href="#i-sauna"/></svg><em>foto: sauna</em></div>
         <div class="feature-body">
           <span class="tag">Wellness</span>
-          <h3>Sauna</h3>
-          <p>Na prehriatie po túre k vodopádom alebo na Turniansky hrad. [Doplniť: typ sauny, kapacita, je v cene alebo za príplatok?]</p>
+          <h3 data-i18n="f4t">Sauna</h3>
+          <p data-i18n="wl.2p">Na prehriatie po túre k vodopádom alebo na Turniansky hrad. <strong>V cene pobytu.</strong></p>
         </div>
       </article>
       <article class="feature">
         <div class="ph olive"><svg><use href="#i-kids"/></svg><em>foto: detský kútik</em></div>
         <div class="feature-body">
-          <span class="tag">Pre deti</span>
-          <h3>Detský kútik a záhrada</h3>
-          <p>Miesto na hranie pre najmenších a oplotená záhrada, kde ich máte stále na očiach. [Doplniť: čo v kútiku je, je vnútri alebo vonku, hojdačka, pieskovisko?]</p>
+          <span class="tag" data-i18n="wl.3tag">Pre deti</span>
+          <h3 data-i18n="wl.3h">Detský kútik a záhrada</h3>
+          <p><span data-i18n="wl.3p">Miesto na hranie pre najmenších a oplotená záhrada, kde ich máte stále na očiach.</span> [Doplniť: čo v kútiku je, je vnútri alebo vonku, hojdačka, pieskovisko?]</p>
         </div>
       </article>
     </div>
@@ -660,8 +658,8 @@
 <section id="galeria">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Galéria</span>
-      <h2>Pozrite sa dnu aj von</h2>
+      <span class="eyebrow" data-i18n="gl.eyebrow">Galéria</span>
+      <h2 data-i18n="gl.h2">Pozrite sa dnu aj von</h2>
     </div>
     <div class="gallery">
       <div class="ph olive big"><svg><use href="#i-camera"/></svg><em>dvor a záhrada</em></div>
@@ -674,7 +672,7 @@
     </div>
     <div class="gallery-foot">
       <p>[Fotky a videá doplníme z Bookingu, Instagramu a nové od Denisy. Po kliknutí sa fotka zväčší.]</p>
-      <a href="https://www.instagram.com/" class="btn btn-outline" target="_blank" rel="noopener" data-social="ig"><svg><use href="#i-ig"/></svg> Viac na Instagrame</a>
+      <a href="https://www.instagram.com/" class="btn btn-outline" target="_blank" rel="noopener" data-social="ig"><svg><use href="#i-ig"/></svg> <span data-i18n="gl.ig">Viac na Instagrame</span></a>
     </div>
   </div>
 </section>
@@ -684,39 +682,28 @@
   <div class="wrap map-grid">
     <div class="areal-map">
       <!-- Orientačná mapka — prekreslíme podľa Denisinho náčrtu -->
-      <svg viewBox="0 0 640 440" role="img" aria-label="Mapka areálu Hájsky dvor">
+      <svg viewBox="0 0 640 440" role="img" aria-label="Hájsky dvor">
         <rect width="640" height="440" rx="16" fill="#F4EAD3"/>
-        <!-- tráva -->
         <rect x="30" y="30" width="580" height="380" rx="18" fill="#DDE0B6"/>
-        <!-- plot -->
         <rect x="30" y="30" width="580" height="380" rx="18" fill="none" stroke="#B08A5A" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round"/>
-        <!-- cesta / vstup -->
         <path d="M0 420 H640" stroke="#CDBE9E" stroke-width="30"/>
-        <text x="20" y="425" font-family="Nunito Sans" font-size="12" font-weight="700" fill="#7A6A55">cesta · Háj 83</text>
+        <text x="20" y="425" font-family="Nunito Sans" font-size="12" font-weight="700" fill="#7A6A55" data-i18n="mp.road">cesta · Háj 83</text>
         <path d="M120 410 L120 300" stroke="#E6D5B5" stroke-width="26" stroke-linecap="round"/>
-        <!-- parkovanie -->
         <rect x="60" y="310" width="120" height="80" rx="10" fill="#E6D5B5" stroke="#B9A57F" stroke-width="2"/>
         <text x="120" y="356" text-anchor="middle" font-family="Nunito Sans" font-size="24" font-weight="800" fill="#7A6A55">P</text>
-        <!-- dom -->
         <rect x="60" y="60" width="300" height="130" rx="8" fill="#FFFCF6" stroke="#6B5338" stroke-width="3"/>
         <path d="M60 60 L210 40 L360 60" fill="none" stroke="#B5643A" stroke-width="5" stroke-linejoin="round"/>
-        <text x="210" y="125" text-anchor="middle" font-family="Fraunces" font-size="20" font-weight="600" fill="#3B301E">Dom</text>
-        <text x="210" y="148" text-anchor="middle" font-family="Nunito Sans" font-size="12" fill="#7A6A55">4 spálne · kuchyňa · krb</text>
-        <!-- terasa -->
+        <text x="210" y="125" text-anchor="middle" font-family="Fraunces" font-size="20" font-weight="600" fill="#3B301E" data-i18n="mp.house">Dom</text>
+        <text x="210" y="148" text-anchor="middle" font-family="Nunito Sans" font-size="12" fill="#7A6A55" data-i18n="mp.houseSub">4 spálne · kuchyňa · krb</text>
         <rect x="60" y="195" width="200" height="60" rx="6" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
-        <text x="160" y="230" text-anchor="middle" font-family="Nunito Sans" font-size="13" font-weight="700" fill="#6B5338">Terasa s posedením</text>
-        <!-- kaďa -->
+        <text x="160" y="230" text-anchor="middle" font-family="Nunito Sans" font-size="13" font-weight="700" fill="#6B5338" data-i18n="mp.l2">Terasa s posedením</text>
         <circle cx="440" cy="110" r="38" fill="#C9A86E" stroke="#6B5338" stroke-width="3"/>
         <circle cx="440" cy="110" r="27" fill="#9CC3C9"/>
-        <!-- sauna -->
         <rect x="510" y="70" width="80" height="70" rx="6" fill="#B08A5A" stroke="#6B5338" stroke-width="3"/>
-        <!-- detský kútik -->
         <rect x="380" y="230" width="140" height="100" rx="14" fill="#F1E4CB" stroke="#7D8B4A" stroke-width="3" stroke-dasharray="6 5"/>
-        <path d="M410 300 L430 255 L450 300 M430 255 v-0" stroke="#6B5338" stroke-width="3" fill="none"/>
+        <path d="M410 300 L430 255 L450 300" stroke="#6B5338" stroke-width="3" fill="none"/>
         <circle cx="485" cy="285" r="14" fill="#E8C774"/>
-        <!-- stromy -->
         <g fill="#7D8B4A"><circle cx="560" cy="200" r="22"/><circle cx="585" cy="360" r="18"/></g>
-        <!-- čísla legendy -->
         <g font-family="Nunito Sans" font-size="14" font-weight="800" text-anchor="middle">
           <g><circle cx="210" cy="78" r="14" fill="var(--accent)"/><text x="210" y="83" fill="var(--accent-ink)">1</text></g>
           <g><circle cx="88" cy="225" r="14" fill="var(--accent)"/><text x="88" y="230" fill="var(--accent-ink)">2</text></g>
@@ -728,16 +715,16 @@
       </svg>
     </div>
     <div>
-      <span class="eyebrow">Mapka areálu</span>
-      <h2>Všetko na jednom dvore</h2>
-      <p class="lead" style="margin-bottom:1.5rem">Celý areál je oplotený, takže deti môžu voľne behať a vy ich máte stále na očiach.</p>
+      <span class="eyebrow" data-i18n="mp.eyebrow">Mapka areálu</span>
+      <h2 data-i18n="mp.h2">Všetko na jednom dvore</h2>
+      <p class="lead" style="margin-bottom:1.5rem" data-i18n="mp.lead">Celý areál je oplotený, takže deti môžu voľne behať a vy ich máte stále na očiach.</p>
       <ol class="legend">
-        <li><b>1</b> Dom so 4 spálňami, kuchyňou a krbom</li>
-        <li><b>2</b> Terasa s posedením</li>
-        <li><b>3</b> Vonkajšia kaďa</li>
-        <li><b>4</b> Sauna</li>
-        <li><b>5</b> Detský kútik</li>
-        <li><b>6</b> Parkovanie</li>
+        <li><b>1</b> <span data-i18n="mp.l1">Dom so 4 spálňami, kuchyňou a krbom</span></li>
+        <li><b>2</b> <span data-i18n="mp.l2">Terasa s posedením</span></li>
+        <li><b>3</b> <span data-i18n="mp.l3">Vonkajšia kaďa</span></li>
+        <li><b>4</b> <span data-i18n="f4t">Sauna</span></li>
+        <li><b>5</b> <span data-i18n="mp.l5">Detský kútik</span></li>
+        <li><b>6</b> <span data-i18n="mp.l6">Bezplatné parkovisko</span></li>
       </ol>
       <p class="note">Orientačný návrh, rozmiestnenie je zatiaľ vymyslené. Prekreslíme podľa náčrtu od Denisy (doplníme aj gril či ohnisko, ak sú).</p>
     </div>
@@ -748,71 +735,71 @@
 <section id="okolie">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Tipy na výlety</span>
-      <h2>Dôvod prísť v každom ročnom období</h2>
-      <p class="lead">Slovenský kras je krásny celý rok. Tu sú miesta, kam sa dá ísť aj s deťmi. Vzdialenosti sú vzdušnou čiarou, autom je to viac. [Čas jazdy doplníme.]</p>
+      <span class="eyebrow" data-i18n="ok.eyebrow">Tipy na výlety</span>
+      <h2 data-i18n="ok.h2">Dôvod prísť v každom ročnom období</h2>
+      <p class="lead"><span data-i18n="ok.lead">Slovenský kras je krásny celý rok. Tu sú miesta, kam sa dá ísť aj s deťmi. Vzdialenosti sú vzdušnou čiarou, autom je to viac.</span> [Čas jazdy doplníme.]</p>
     </div>
     <div class="season-tabs" role="tablist">
-      <button class="active" data-season="all">Všetko</button>
-      <button data-season="jar">Jar</button>
-      <button data-season="leto">Leto</button>
-      <button data-season="jesen">Jeseň</button>
-      <button data-season="zima">Zima</button>
+      <button class="active" data-season="all" data-i18n="ok.all">Všetko</button>
+      <button data-season="jar" data-i18n="ok.jar">Jar</button>
+      <button data-season="leto" data-i18n="ok.leto">Leto</button>
+      <button data-season="jesen" data-i18n="ok.jesen">Jeseň</button>
+      <button data-season="zima" data-i18n="ok.zima">Zima</button>
     </div>
     <div class="tips">
       <article class="tip" data-seasons="jar leto jesen">
         <span class="km">0,8 km</span>
-        <h3>Hájske vodopády</h3>
-        <p>Roklina s lávkami a rebríkmi, ktorá začína priamo v dedine. Najkrajšia na jar, keď je vody najviac.</p>
-        <span class="kids">👶 rebríky sú skôr pre väčšie deti [overiť s Denisou]</span>
+        <h3 data-i18n="t1h">Hájske vodopády</h3>
+        <p data-i18n="t1p">Roklina s lávkami a rebríkmi, ktorá začína priamo v dedine. Najkrajšia na jar, keď je vody najviac.</p>
+        <span class="kids"><span data-i18n="t1k">👶 rebríky sú skôr pre väčšie deti</span> [overiť s Denisou]</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen zima">
         <span class="km">3,5 km</span>
-        <h3>Turniansky hrad</h3>
-        <p>Zrúcanina nad Turňou nad Bodvou s výhľadom na celú kotlinu. Krátky výstup, veľký zážitok.</p>
-        <span class="kids">👶 kratšia túra aj pre menšie deti</span>
+        <h3 data-i18n="t2h">Turniansky hrad</h3>
+        <p data-i18n="t2p">Zrúcanina nad Turňou nad Bodvou s výhľadom na celú kotlinu. Krátky výstup, veľký zážitok.</p>
+        <span class="kids" data-i18n="t2k">👶 kratšia túra aj pre menšie deti</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen">
         <span class="km">~10 km</span>
-        <h3>Zádielska tiesňava</h3>
-        <p>Jeden z najhlbších kaňonov na Slovensku so skalnou ihlou Cukrová homoľa. Po dne doliny vedie pohodlná cesta.</p>
-        <span class="kids">👶 vhodné aj s kočíkom</span>
+        <h3 data-i18n="t3h">Zádielska tiesňava</h3>
+        <p data-i18n="t3p">Jeden z najhlbších kaňonov na Slovensku so skalnou ihlou Cukrová homoľa. Po dne doliny vedie pohodlná cesta.</p>
+        <span class="kids" data-i18n="t3k">👶 vhodné aj s kočíkom</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen">
         <span class="km">~21 km</span>
-        <h3>Jasovská jaskyňa</h3>
-        <p>Sprístupnená jaskyňa s krápníkovou výzdobou. Dobrý program, aj keď prší. [Overiť otváraciu sezónu.]</p>
-        <span class="kids">🌧️ tip na daždivý deň</span>
+        <h3 data-i18n="t4h">Jasovská jaskyňa</h3>
+        <p><span data-i18n="t4p">Sprístupnená jaskyňa s krápníkovou výzdobou. Dobrý program, aj keď prší.</span> [Overiť otváraciu sezónu.]</p>
+        <span class="kids" data-i18n="t4k">🌧️ tip na daždivý deň</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen zima">
         <span class="km">8,4 km</span>
-        <h3>Hvezdáreň a planetárium Medzev</h3>
-        <p>Planetárium a pozorovanie oblohy, v Medzeve je aj starý vodný hámor. [Overiť program a otváracie hodiny.]</p>
-        <span class="kids">🌙 cez týždeň menej ľudí</span>
+        <h3 data-i18n="t5h">Hvezdáreň a planetárium Medzev</h3>
+        <p><span data-i18n="t5p">Planetárium a pozorovanie oblohy, v Medzeve je aj starý vodný hámor.</span> [Overiť program a otváracie hodiny.]</p>
+        <span class="kids" data-i18n="t5k">🌙 cez týždeň menej ľudí</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen zima">
         <span class="km">0,7 km</span>
-        <h3>Socha anjela v Háji</h3>
-        <p>Krátka prechádzka po dedine, ideálna na prvý večer po príchode. [Pár slov o soche doplní Denisa.]</p>
-        <span class="kids">👣 aj s kočíkom</span>
+        <h3 data-i18n="t6h">Socha anjela v Háji</h3>
+        <p><span data-i18n="t6p">Krátka prechádzka po dedine, ideálna na prvý večer po príchode.</span> [Pár slov o soche doplní Denisa.]</p>
+        <span class="kids" data-i18n="t6k">👣 aj s kočíkom</span>
       </article>
       <article class="tip" data-seasons="zima">
         <span class="km">~45 km</span>
-        <h3>Košice a vianočné trhy</h3>
-        <p>Historické centrum, Spievajúca fontána a v decembri vianočné trhy. Poldenný výlet do mesta.</p>
-        <span class="kids">❄️ zima</span>
+        <h3 data-i18n="t7h">Košice a vianočné trhy</h3>
+        <p data-i18n="t7p">Historické centrum, Spievajúca fontána a v decembri vianočné trhy. Poldenný výlet do mesta.</p>
+        <span class="kids" data-i18n="t7k">❄️ zima</span>
       </article>
       <article class="tip" data-seasons="zima jesen">
         <span class="km">0 km</span>
-        <h3>Deň pri krbe a v saune</h3>
-        <p>Niekedy je najlepší výlet žiadny výlet. Hry s deťmi, krb, sauna a večer kaďa.</p>
-        <span class="kids">🔥 celý rok</span>
+        <h3 data-i18n="t8h">Deň pri krbe a v saune</h3>
+        <p data-i18n="t8p">Niekedy je najlepší výlet žiadny výlet. Hry s deťmi, krb, sauna a večer kaďa.</p>
+        <span class="kids" data-i18n="t8k">🔥 celý rok</span>
       </article>
       <article class="tip" data-seasons="jar leto jesen">
         <span class="km">8,1 km</span>
-        <h3>Hrhovský vodopád</h3>
-        <p>Travertínový vodopád pri Hrhove. Dá sa spojiť s výletom do Zádielu alebo na hrad. [Overiť prístup s deťmi.]</p>
-        <span class="kids">🍂 krásny aj na jeseň</span>
+        <h3 data-i18n="t9h">Hrhovský vodopád</h3>
+        <p><span data-i18n="t9p">Travertínový vodopád pri Hrhove. Dá sa spojiť s výletom do Zádielu alebo na hrad.</span> [Overiť prístup s deťmi.]</p>
+        <span class="kids" data-i18n="t9k">🍂 krásny aj na jeseň</span>
       </article>
     </div>
   </div>
@@ -822,30 +809,30 @@
 <section class="alt">
   <div class="wrap reviews">
     <div class="score-card">
-      <span class="eyebrow" style="color:var(--accent)">Hodnotenia hostí</span>
+      <span class="eyebrow" style="color:var(--accent)" data-i18n="rv.eyebrow">Hodnotenia hostí</span>
       <div class="big">9,7</div>
-      <p>„Skutočne výnimočné“ na Booking.com</p>
+      <p data-i18n="rv.label">„Skutočne výnimočné“ na Booking.com</p>
       <div class="score-rows">
-        <div><span>Booking.com · 22 hodnotení</span><b>9,7</b></div>
-        <div><span>Megaubytovanie · 5 hodnotení</span><b>9,9</b></div>
-        <div><span>Personál · Čistota</span><b>10 · 10</b></div>
+        <div><span data-i18n="rv.r1">Booking.com · 22 hodnotení</span><b>9,7</b></div>
+        <div><span data-i18n="rv.r2">Megaubytovanie · 5 hodnotení</span><b>9,9</b></div>
+        <div><span data-i18n="rv.r3">Personál · Čistota</span><b>10 · 10</b></div>
       </div>
     </div>
     <div>
       <div class="section-head" style="margin-bottom:1.5rem">
-        <h2>Čo hovoria hostia</h2>
+        <h2 data-i18n="rv.h2">Čo hovoria hostia</h2>
       </div>
       <div class="quotes">
         <blockquote class="quote">
-          <p>„Zachovalá architektúra, dobré vybavenie, záhrada, terasa, príjemné prostredie…“</p>
-          <footer>Jitka · Booking.com</footer>
+          <p data-i18n="rv.q1">„Zachovalá architektúra, dobré vybavenie, záhrada, terasa, príjemné prostredie…“</p>
+          <footer data-i18n="rv.q1f">Jitka · Booking.com</footer>
         </blockquote>
         <blockquote class="quote todo">
           <p>[Recenzia z Megaubytovania — vybrať s Denisou, ideálne od rodiny s deťmi]</p>
           <footer>Meno · portál</footer>
         </blockquote>
         <blockquote class="quote todo">
-          <p>[Recenzia od maďarských hostí — v HU verzii webu v origináli]</p>
+          <p>[Recenzia od maďarských hostí — v HU verzii v origináli]</p>
           <footer>Meno · portál</footer>
         </blockquote>
         <blockquote class="quote todo">
@@ -860,13 +847,13 @@
 <!-- ============ REZERVÁCIA ============ -->
 <section id="rezervacia" class="book">
   <div class="wrap">
-    <span class="eyebrow">Rezervácia</span>
-    <h2>Vyberte si, kde rezervujete</h2>
-    <p class="lead">Voľné termíny a aktuálne ceny nájdete na portáloch nižšie. Vyberte si ten, ktorý používate.</p>
+    <span class="eyebrow" data-i18n="bk.eyebrow">Rezervácia</span>
+    <h2 data-i18n="bk.h2">Vyberte si, kde rezervujete</h2>
+    <p class="lead" data-i18n="bk.lead">Voľné termíny a aktuálne ceny nájdete na portáloch nižšie. Vyberte si ten, ktorý používate.</p>
 
     <div class="book-cards" id="bookCards"><!-- generuje JS z PORTALS --></div>
 
-    <p class="book-direct">Máte otázku k termínu alebo pobytu? <a href="#kontakt">Napíšte nám priamo</a>.</p>
+    <p class="book-direct" data-i18n="bk.direct">Máte otázku k termínu alebo pobytu? <a href="#kontakt">Napíšte nám priamo</a>.</p>
   </div>
 </section>
 
@@ -874,12 +861,12 @@
 <section id="kontakt">
   <div class="wrap contact-grid">
     <div>
-      <span class="eyebrow">Hostitelia</span>
+      <span class="eyebrow" data-i18n="ct.eyebrow">Hostitelia</span>
       <div class="host">
         <svg class="avatar" viewBox="0 0 92 92" aria-hidden="true"><circle cx="46" cy="46" r="46" fill="#E3E4C6"/><circle cx="36" cy="38" r="11" fill="#7D8B4A"/><circle cx="58" cy="40" r="10" fill="#6B5338"/><path d="M16 80c3-15 11-24 20-24s15 6 18 14c3-8 9-12 15-12 8 0 14 9 16 22" fill="#5E6B34"/></svg>
         <div>
-          <h2 style="font-size:1.8rem;margin-bottom:.2rem">Denisa a Tomáš</h2>
-          <p>Vaši hostitelia v Hájskom dvore</p>
+          <h2 style="font-size:1.8rem;margin-bottom:.2rem" data-i18n="ct.h2">Denisa a Tomáš</h2>
+          <p data-i18n="ct.sub">Vaši hostitelia v Hájskom dvore</p>
         </div>
       </div>
       <p>[Krátky osobný text a fotka od Denisy, napr. prečo sa pustili do domu v Háji a čo majú v okolí najradšej. Stačia 2–3 vety.]</p>
@@ -887,10 +874,9 @@
       <ul class="contact-list">
         <li><span class="ico"><svg><use href="#i-phone"/></svg></span><div><a href="tel:+421900000000">+421 9XX XXX XXX</a><small>[Volať / WhatsApp / Viber? overiť]</small></div></li>
         <li><span class="ico"><svg><use href="#i-mail"/></svg></span><div><a href="mailto:info@hajskydvor.sk">info@hajskydvor.sk</a><small>[e-mail je návrh, doména ešte nie je kúpená]</small></div></li>
-        <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><strong>Háj 83, 044 03 Háj</strong><small>okres Košice-okolie, Slovensko</small></div></li>
+        <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><strong>Háj 83, 044 03 Háj</strong><small data-i18n="ct.addr">okres Košice-okolie, Slovensko</small></div></li>
+        <li><span class="ico"><svg><use href="#i-globe"/></svg></span><div data-i18n="ct.lang"><strong>Hovoríme po slovensky aj po maďarsky</strong><small>Dohovoríme sa aj anglicky a španielsky.</small></div></li>
       </ul>
-
-      <p class="note" style="margin:0 0 1.5rem">[Jazyky komunikácie: na Bookingu je angličtina, španielčina a slovenčina. Ak hostitelia zvládnu aj maďarčinu, patrí to sem, pre polovicu hostí je to silný argument.]</p>
 
       <div class="socials">
         <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-social="ig"><svg><use href="#i-ig"/></svg> Instagram</a>
@@ -900,18 +886,18 @@
 
     <div>
       <div class="gmap">
-        <iframe title="Mapa — Hájsky dvor, Háj 83" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        <iframe title="Hájsky dvor, Háj 83" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://maps.google.com/maps?q=H%C3%A1j%2083%2C%20044%2003%20H%C3%A1j&z=13&output=embed"></iframe>
       </div>
       <div class="distances">
-        <div><span>Hájske vodopády</span><b>0,8 km</b></div>
-        <div><span>Turniansky hrad</span><b>3,5 km</b></div>
-        <div><span>Jasovská jaskyňa</span><b>~21 km</b></div>
-        <div><span>Košice</span><b>~45 km</b></div>
-        <div><span>Letisko Košice</span><b>~41 km</b></div>
+        <div><span data-i18n="t1h">Hájske vodopády</span><b>0,8 km</b></div>
+        <div><span data-i18n="t2h">Turniansky hrad</span><b>3,5 km</b></div>
+        <div><span data-i18n="t4h">Jasovská jaskyňa</span><b>~21 km</b></div>
+        <div><span data-i18n="ds.ke">Košice</span><b>~45 km</b></div>
+        <div><span data-i18n="ds.air">Letisko Košice</span><b>~41 km</b></div>
         <div><span>Miskolc (HU)</span><b>[overiť]</b></div>
       </div>
-      <p style="font-size:.8rem;color:var(--muted);margin-top:.6rem">Vzdialenosti vzdušnou čiarou podľa Bookingu a Megaubytovania.</p>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:.6rem" data-i18n="ds.note">Vzdialenosti vzdušnou čiarou podľa Bookingu a Megaubytovania.</p>
     </div>
   </div>
 </section>
@@ -925,9 +911,9 @@
       Háj 83, 044 03 Háj · © 2026
     </div>
     <div class="f-links">
-      <a href="#ubytovanie">Ubytovanie</a>
-      <a href="#okolie">Okolie</a>
-      <a href="#rezervacia">Rezervácia</a>
+      <a href="#ubytovanie" data-i18n="nav.1">Ubytovanie</a>
+      <a href="#okolie" data-i18n="nav.5">Okolie</a>
+      <a href="#rezervacia" data-i18n="bk.eyebrow">Rezervácia</a>
       <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
       <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a>
     </div>
@@ -935,10 +921,10 @@
 </footer>
 
 <!-- Mobilný sticky CTA -->
-<div class="sticky-cta"><button class="btn btn-accent" id="openSheet" type="button"><svg><use href="#i-cal"/></svg> Rezervovať pobyt</button></div>
+<div class="sticky-cta"><button class="btn btn-accent" id="openSheet" type="button"><svg><use href="#i-cal"/></svg> <span data-i18n="sticky">Rezervovať pobyt</span></button></div>
 <div class="sheet-bg" id="sheetBg"></div>
-<div class="sheet" id="sheet" role="dialog" aria-label="Vyberte portál">
-  <h3>Kde chcete rezervovať?</h3>
+<div class="sheet" id="sheet" role="dialog">
+  <h3 data-i18n="sheet.h3">Kde chcete rezervovať?</h3>
   <div class="portal-btns" id="sheetPortals"></div>
 </div>
 
@@ -956,29 +942,172 @@
      URL doplniť po získaní presných odkazov na inzeráty.
      ========================================================= */
   const PORTALS = [
-    { id: 'booking',  name: 'Booking.com',    note: 'Hodnotenie 9,7 · 22 hodnotení', color: '#003580', url: 'https://www.booking.com/', enabled: true },
-    { id: 'mega',     name: 'Megaubytovanie', note: 'Hodnotenie 9,9 · 5 hodnotení',    color: '#1BB5A8', url: 'https://www.megaubytovanie.sk/', enabled: true },
-    { id: 'airbnb',   name: 'Airbnb',         note: 'Rezervácia cez Airbnb',                color: '#FF5A5F', url: 'https://www.airbnb.com/', enabled: true },
+    { id: 'booking', name: 'Booking.com',    color: '#003580', url: 'https://www.booking.com/',       enabled: true,
+      note: { sk: 'Hodnotenie 9,7 · 22 hodnotení', hu: 'Értékelés 9,7 · 22 értékelés' } },
+    { id: 'mega',    name: 'Megaubytovanie', color: '#1BB5A8', url: 'https://www.megaubytovanie.sk/', enabled: true,
+      note: { sk: 'Hodnotenie 9,9 · 5 hodnotení',  hu: 'Értékelés 9,9 · 5 értékelés' } },
+    { id: 'airbnb',  name: 'Airbnb',         color: '#FF5A5F', url: 'https://www.airbnb.com/',        enabled: true,
+      note: { sk: 'Rezervácia cez Airbnb',         hu: 'Foglalás az Airbnb-n' } },
   ];
 
-  const active = PORTALS.filter(p => p.enabled);
-  const track = (id) => { if (window.gtag) gtag('event', 'booking_click', { portal: id }); };
+  /* =========================================================
+     PREKLADY
+     Slovenčina je priamo v HTML (data-i18n), ostatné jazyky tu.
+     Nový jazyk = nový blok v I18N + odkaz v .lang-menu.
+     Poznámky v [hranatých zátvorkách] sú interné a neprekladajú sa.
+     ========================================================= */
+  const I18N = {
+    hu: {
+      'meta.title': 'Hájsky dvor — családbarát vendégház az Áji-vízeséseknél',
+      'meta.desc': 'Az egész ház a tiétek: 11 férőhely Ájon, a Szlovák-karsztban. Dézsa és szauna az árban, gyereksarok, bekerített kert, kandalló. Kb. 45 perc Kassától.',
+      'js.check': 'Időpont ellenőrzése',
 
-  document.getElementById('bookCards').innerHTML = active.map(p => `
-    <a class="book-card" href="${p.url}" target="_blank" rel="noopener" data-portal="${p.id}">
-      <span class="logo-txt" style="color:${p.color}">${p.name}</span>
-      <small>${p.note}</small>
-      <span class="btn btn-accent">Overiť termín</span>
-    </a>`).join('');
+      'nav.1': 'Szállás', 'nav.2': 'Dézsa és szauna', 'nav.3': 'Galéria', 'nav.4': 'Az udvar', 'nav.5': 'Környék', 'nav.6': 'Kapcsolat',
+      'nav.cta': 'Foglalás',
 
-  document.getElementById('sheetPortals').innerHTML = active.map(p => `
-    <a class="portal-btn" href="${p.url}" target="_blank" rel="noopener" data-portal="${p.id}">
-      <span class="dot" style="background:${p.color}"></span>
-      <span>${p.name}<small>${p.note}</small></span>
-      <span class="arrow">→</span>
-    </a>`).join('');
+      'hero.eyebrow': 'Áj · Szlovák-karszt · kb. 45 perc Kassától',
+      'hero.h1': 'Az egész ház a tiétek, <em>a vízesések szomszédságában</em>',
+      'hero.lead': 'Felújított falusi ház 11 fő részére dézsával, szaunával, gyereksarokkal és bekerített kerttel. <strong>A dézsa és a szauna benne van az árban.</strong> A gyerekek kitombolhatják magukat, ti pedig kipihenhetitek magatokat.',
+      'hero.cta1': 'Szabad időpont keresése',
+      'hero.cta2': 'Megnézem a házat',
+      'rt.booking': '22 értékelés', 'rt.mega': '5 értékelés',
+      'hero.badge': '<strong>Gyalog a vízesésekhez</strong>Az Áji-völgy közvetlenül a faluból indul.',
 
-  document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track(a.dataset.portal)));
+      'f1t': '11 férőhely', 'f1s': 'az egész ház csak a tiétek',
+      'f2t': '4 hálószoba', 'f2s': '+ kiságy',
+      'f3t': 'Dézsa', 'f3s': 'benne van az árban',
+      'f4t': 'Szauna', 'f4s': 'benne van az árban',
+      'f5t': 'Gyereksarok', 'f5s': 'a legkisebbeknek',
+      'f6t': 'Kandalló és terasz', 'f6s': 'bekerített kert',
+
+      'wk.eyebrow': 'Tippünk',
+      'wk.h2': 'Hétköznap a legszebb itt',
+      'wk.lead': 'Amíg mások a hétvégére várnak, ti szinte egyedül járhatjátok be a vízeséseket, az ösvényeket és a várat. Ideális kisgyermekes anyukáknak, unokázó nagyszülőknek vagy családoknak a szünidőben.',
+      'wk.btn': 'Hétköznapi időpont keresése',
+      'wk.1t': 'Vízesések tömeg nélkül', 'wk.1s': 'A szurdokot a saját tempótokban járhatjátok be, tolongás nélkül a pallókon és a létrákon.',
+      'wk.2t': 'Könnyebb szabad időpontot találni', 'wk.2s': 'A hétvégék gyorsan betelnek, a hétköznapok szabadabbak, gyakran még az utolsó pillanatban is.',
+      'wk.3t': 'Dézsa és szauna minden este, az árban', 'wk.3s': 'Egy egész napos kirándulás után a gyerekek hamar elalszanak, ti pedig élvezhetitek a meleg vizet a csillagok alatt.',
+
+      'ab.eyebrow': 'Szállás',
+      'ab.h2': 'Régi falusi ház új lélekkel',
+      'ab.p1': 'A Hájsky dvor a festői Áj községben, a Szlovák-karsztban áll, közel az Áji-vízesésekhez és az angyalszoborhoz. Tökéletes menedék a város zajától: csend, tiszta levegő és erdős dombok közvetlenül a kerítés mögött.',
+      'ab.p2': 'Az <strong>egész házat csak ti bérlitek</strong>. Nappali kandallóval és kanapéval, felszerelt konyha étkezővel, terasz és bekerített kert, ahol a gyerekek biztonságban szaladgálhatnak. A ház mellett ingyenes parkoló van.',
+      'ch.2': 'Kandalló', 'ch.3': 'Sütő és főzőlap', 'ch.4': 'Hűtő fagyasztóval', 'ch.5': 'Kávéfőző', 'ch.6': 'Mosógép',
+      'ch.7': 'Terasz', 'ch.8': 'Kiságy', 'ch.9': 'Ingyenes parkoló', 'ch.10': 'Nemdohányzó',
+      'rm.h3': 'A szobák',
+      'rm.1t': 'Egyágyas szoba', 'rm.1s': '1 egyszemélyes ágy',
+      'rm.2t': 'Kétágyas szoba + kiságy', 'rm.2s': '1 franciaágy',
+      'rm.3t': 'Négyágyas szoba', 'rm.3s': 'franciaágy + 2 egyszemélyes ágy',
+      'rm.4t': '1 fürdőszoba + külön WC', 'rm.4s': 'kád, törölközők az árban',
+      'rm.note': 'Minimum 2 éjszaka. Háziállat nem hozható. Ingyenes parkoló a ház mellett. Az árakat a foglalási portálokon találjátok.',
+
+      'wl.eyebrow': 'Pihenés a felnőtteknek, játék a gyerekeknek',
+      'wl.h2': 'Dézsa, szauna és gyereksarok',
+      'wl.lead': 'Amíg a gyerekek a kertben játszanak, ti a dézsában melegedtek, és közben végig szem előtt vannak. A dézsa és a szauna benne van az árban. Este pedig mindenki együtt a kandalló mellett.',
+      'wl.1h': 'Kültéri dézsa',
+      'wl.1p': 'Forró víz a szabad ég alatt, kilátással a dombokra, nyáron és télen is. <strong>Benne van az árban.</strong>',
+      'wl.2p': 'Jólesik átmelegedni a vízesésekhez vagy a tornai várhoz tett túra után. <strong>Benne van az árban.</strong>',
+      'wl.3tag': 'Gyerekeknek', 'wl.3h': 'Gyereksarok és kert',
+      'wl.3p': 'Játszósarok a legkisebbeknek és bekerített kert, ahol mindig szem előtt vannak.',
+
+      'gl.eyebrow': 'Galéria', 'gl.h2': 'Nézzetek körül bent és kint', 'gl.ig': 'Továbbiak az Instagramon',
+
+      'mp.eyebrow': 'Az udvar térképe', 'mp.h2': 'Minden egy udvaron',
+      'mp.lead': 'Az egész udvar be van kerítve, így a gyerekek szabadon szaladgálhatnak, ti pedig végig szem előtt tarthatjátok őket.',
+      'mp.l1': 'Ház 4 hálószobával, konyhával és kandallóval', 'mp.l2': 'Terasz ülőhelyekkel', 'mp.l3': 'Kültéri dézsa',
+      'mp.l5': 'Gyereksarok', 'mp.l6': 'Ingyenes parkoló',
+      'mp.road': 'út · Háj 83', 'mp.house': 'Ház', 'mp.houseSub': '4 hálószoba · konyha · kandalló',
+
+      'ok.eyebrow': 'Kirándulási tippek', 'ok.h2': 'Minden évszakban van miért eljönni',
+      'ok.lead': 'A Szlovák-karszt egész évben gyönyörű. Íme néhány hely, ahová gyerekekkel is érdemes elmenni. A távolságok légvonalban értendők, autóval valamivel több.',
+      'ok.all': 'Mind', 'ok.jar': 'Tavasz', 'ok.leto': 'Nyár', 'ok.jesen': 'Ősz', 'ok.zima': 'Tél',
+      't1h': 'Áji-vízesések', 't1p': 'Pallókkal és létrákkal járható szurdok, amely közvetlenül a faluból indul. Tavasszal a legszebb, amikor a legtöbb a víz.', 't1k': '👶 a létrák inkább nagyobb gyerekeknek valók',
+      't2h': 'Tornai vár', 't2p': 'Várrom Torna fölött, kilátással az egész völgyre. Rövid túra, nagy élmény.', 't2k': '👶 rövidebb túra kisebb gyerekekkel is',
+      't3h': 'Szádelői-völgy', 't3p': 'Szlovákia egyik legmélyebb kanyonja a Cukorsüveg nevű sziklatűvel. A völgy alján kényelmes út vezet.', 't3k': '👶 babakocsival is járható',
+      't4h': 'Jászói-barlang', 't4p': 'Cseppkövekkel díszített, látogatható barlang. Jó program akkor is, ha esik az eső.', 't4k': '🌧️ tipp esős napra',
+      't5h': 'Mecenzéfi csillagvizsgáló és planetárium', 't5p': 'Planetárium és csillagnézés, Mecenzéfen egy régi vízi hámor is megtekinthető.', 't5k': '🌙 hétköznap kevesebb a látogató',
+      't6h': 'Angyalszobor Ájon', 't6p': 'Rövid séta a faluban, ideális az érkezés estéjére.', 't6k': '👣 babakocsival is',
+      't7h': 'Kassa és a karácsonyi vásár', 't7p': 'Történelmi belváros, Zenélő szökőkút, decemberben karácsonyi vásár. Félnapos kirándulás a városba.', 't7k': '❄️ tél',
+      't8h': 'Egy nap a kandalló mellett és a szaunában', 't8p': 'Néha az a legjobb kirándulás, ha sehová sem megyünk. Játék a gyerekekkel, kandalló, szauna, este pedig dézsa.', 't8k': '🔥 egész évben',
+      't9h': 'Hárskúti-vízesés', 't9p': 'Mésztufa vízesés Hárskút mellett. Összeköthető a szádelői vagy a tornai kirándulással.', 't9k': '🍂 ősszel is gyönyörű',
+
+      'rv.eyebrow': 'Vendégértékelések', 'rv.label': '„Kivételes” a Booking.com-on',
+      'rv.r1': 'Booking.com · 22 értékelés', 'rv.r2': 'Megaubytovanie · 5 értékelés', 'rv.r3': 'Személyzet · Tisztaság',
+      'rv.h2': 'Mit mondanak a vendégek',
+      'rv.q1': '„Megőrzött építészet, jó felszereltség, kert, terasz, kellemes környezet…”',
+      'rv.q1f': 'Jitka · Booking.com (fordítás)',
+
+      'bk.eyebrow': 'Foglalás', 'bk.h2': 'Válasszátok ki, hol foglaltok',
+      'bk.lead': 'A szabad időpontokat és az aktuális árakat az alábbi portálokon találjátok. Válasszátok azt, amelyiket megszoktátok.',
+      'bk.direct': 'Kérdésetek van az időponttal vagy a tartózkodással kapcsolatban? <a href="#kontakt">Írjatok nekünk közvetlenül</a>.',
+
+      'ct.eyebrow': 'Vendéglátók', 'ct.h2': 'Denisa és Tomáš', 'ct.sub': 'A vendéglátóitok a Hájsky dvorban',
+      'ct.addr': 'Kassa-vidéki járás, Szlovákia',
+      'ct.lang': '<strong>Beszélünk magyarul!</strong><small>Szlovákul, angolul és spanyolul is.</small>',
+      'ds.ke': 'Kassa', 'ds.air': 'Kassai repülőtér',
+      'ds.note': 'Légvonalbeli távolságok a Booking és a Megaubytovanie adatai alapján.',
+
+      'sticky': 'Szállás foglalása', 'sheet.h3': 'Hol szeretnétek foglalni?',
+    },
+  };
+  const SK_JS = { 'js.check': 'Overiť termín' };
+  const LANGS = ['sk', ...Object.keys(I18N)];
+
+  const i18nEls = [...document.querySelectorAll('[data-i18n]')];
+  const skHTML = new Map(i18nEls.map(el => [el, el.innerHTML]));
+  const skMeta = { title: document.title, desc: document.querySelector('meta[name=description]').content };
+  let lang = 'sk';
+  const t = (key) => (lang !== 'sk' && I18N[lang][key]) || SK_JS[key] || key;
+
+  const track = (id) => { if (window.gtag) gtag('event', 'booking_click', { portal: id, lang }); };
+
+  function renderPortals() {
+    const active = PORTALS.filter(p => p.enabled);
+    document.getElementById('bookCards').innerHTML = active.map(p => `
+      <a class="book-card" href="${p.url}" target="_blank" rel="noopener" data-portal="${p.id}">
+        <span class="logo-txt" style="color:${p.color}">${p.name}</span>
+        <small>${p.note[lang] || p.note.sk}</small>
+        <span class="btn btn-accent">${t('js.check')}</span>
+      </a>`).join('');
+    document.getElementById('sheetPortals').innerHTML = active.map(p => `
+      <a class="portal-btn" href="${p.url}" target="_blank" rel="noopener" data-portal="${p.id}">
+        <span class="dot" style="background:${p.color}"></span>
+        <span>${p.name}<small>${p.note[lang] || p.note.sk}</small></span>
+        <span class="arrow">→</span>
+      </a>`).join('');
+    document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track(a.dataset.portal)));
+  }
+
+  function setLang(next, remember) {
+    lang = LANGS.includes(next) ? next : 'sk';
+    const dict = I18N[lang] || {};
+    i18nEls.forEach(el => {
+      const key = el.dataset.i18n;
+      if (lang !== 'sk' && dict[key] === undefined) console.warn('Chýba preklad', lang, key);
+      el.innerHTML = lang === 'sk' ? skHTML.get(el) : (dict[key] ?? skHTML.get(el));
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === 'sk' ? skMeta.title : dict['meta.title'];
+    document.querySelector('meta[name=description]').content = lang === 'sk' ? skMeta.desc : dict['meta.desc'];
+    document.getElementById('langCode').textContent = lang.toUpperCase();
+    document.querySelectorAll('.lang-menu [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
+    renderPortals();
+    if (remember) {
+      try { localStorage.setItem('hd-lang', lang); } catch (e) {}
+      const url = new URL(location.href);
+      lang === 'sk' ? url.searchParams.delete('lang') : url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    }
+  }
+
+  /* Úvodný jazyk: ?lang=hu (na zdieľanie v HU skupinách) → uložená voľba → jazyk prehliadača → SK */
+  (function initLang() {
+    let saved = null;
+    try { saved = localStorage.getItem('hd-lang'); } catch (e) {}
+    const fromUrl = new URLSearchParams(location.search).get('lang');
+    const fromBrowser = (navigator.languages || [navigator.language || '']).map(l => l.slice(0, 2).toLowerCase()).find(l => LANGS.includes(l));
+    setLang(fromUrl || saved || fromBrowser || 'sk', false);
+  })();
 
   /* Mobilný výber portálu */
   const sheet = document.getElementById('sheet'), sheetBg = document.getElementById('sheetBg');
@@ -992,19 +1121,24 @@
   nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
 
   /* Jazyky */
-  const lang = document.getElementById('lang');
-  lang.querySelector('.lang-btn').addEventListener('click', (e) => {
+  const langBox = document.getElementById('lang');
+  langBox.querySelector('.lang-btn').addEventListener('click', (e) => {
     e.stopPropagation();
-    const open = lang.classList.toggle('open');
+    const open = langBox.classList.toggle('open');
     e.currentTarget.setAttribute('aria-expanded', open);
   });
-  document.addEventListener('click', () => lang.classList.remove('open'));
+  langBox.querySelectorAll('.lang-menu a').forEach(a => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (a.dataset.lang) setLang(a.dataset.lang, true);
+    else e.stopPropagation();
+  }));
+  document.addEventListener('click', () => langBox.classList.remove('open'));
 
   /* Sezónne tipy */
   document.querySelectorAll('.season-tabs button').forEach(btn => btn.addEventListener('click', () => {
     document.querySelectorAll('.season-tabs button').forEach(b => b.classList.toggle('active', b === btn));
     const s = btn.dataset.season;
-    document.querySelectorAll('.tip').forEach(t => { t.hidden = s !== 'all' && !t.dataset.seasons.split(' ').includes(s); });
+    document.querySelectorAll('.tip').forEach(tip => { tip.hidden = s !== 'all' && !tip.dataset.seasons.split(' ').includes(s); });
   }));
 
   /* Návrh: prepínač detailovej farby */
