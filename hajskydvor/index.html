@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Hájsky dvor — návrhy webu</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root { --bg: #F6EFE2; --card: #FFFBF3; --ink: #2A281D; --muted: #7A705A; --line: rgba(42,40,29,.14); --accent: #C9933F; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #14160F; --card: #22261B; --ink: #EEE6D4; --muted: #A89E86; --line: rgba(238,230,212,.12); } }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 17px/1.6 system-ui, sans-serif; min-height: 100vh; display: grid; place-items: center; padding: 2rem 1rem; }
+  main { width: min(860px, 100%); }
+  header { display: flex; gap: 1rem; align-items: center; margin-bottom: 2rem; }
+  header img { width: 64px; height: 64px; border-radius: 14px; }
+  h1 { font-family: Georgia, serif; font-weight: 500; font-size: 1.9rem; line-height: 1.2; }
+  header p { color: var(--muted); font-size: .95rem; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  a.card { display: block; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 1.6rem; text-decoration: none; color: inherit; transition: transform .2s, border-color .2s; }
+  a.card:hover { transform: translateY(-3px); border-color: var(--accent); }
+  .card small { display: block; font-size: .75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); margin-bottom: .4rem; }
+  .card h2 { font-family: Georgia, serif; font-weight: 500; font-size: 1.45rem; margin-bottom: .5rem; }
+  .card p { color: var(--muted); font-size: .95rem; }
+  .card span { display: inline-block; margin-top: 1rem; font-weight: 600; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="logo.png" alt="Hájsky dvor">
+    <div><h1>Hájsky dvor — návrhy webu</h1><p>Oba návrhy majú rovnaký obsah, 6 jazykov a svetlý / tmavý režim.</p></div>
+  </header>
+  <div class="grid">
+    <a class="card" href="v1.html">
+      <small>Verzia 1</small>
+      <h2>Svetlá a jednoduchá</h2>
+      <p>Krémové pozadie, kompaktné sekcie, ilustrovaný úvod. Rýchlo prehľadná na mobile.</p>
+      <span>Otvoriť verziu 1 →</span>
+    </a>
+    <a class="card" href="v2.html">
+      <small>Verzia 2</small>
+      <h2>Prírodná, veľkorysá</h2>
+      <p>Celoobrazovkový úvod, rezervačný pruh, oblúkové fotky, tmavé zelené sekcie, video a časté otázky.</p>
+      <span>Otvoriť verziu 2 →</span>
+    </a>
+  </div>
+</main>
+</body>
+</html>
