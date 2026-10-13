@@ -343,6 +343,20 @@
   .gallery .tall { grid-row: span 2; }
   .gallery .wide { grid-column: span 2; }
 
+  /* ---------- Videá z Instagramu (ukážky, celé video na Instagrame) ---------- */
+  .reels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin: 2.2rem 0 1rem; }
+  .reel { display: flex; flex-direction: column; gap: .35rem; text-decoration: none; color: inherit; }
+  .reel-media { position: relative; display: block; aspect-ratio: 9 / 14; background: var(--paper-2); -webkit-mask: var(--m2) center / 100% 100% no-repeat; mask: var(--m2) center / 100% 100% no-repeat; }
+  .reel:nth-child(odd) .reel-media { -webkit-mask-image: var(--m3); mask-image: var(--m3); }
+  .reel-media > video, .reel-media > img, .reel-media > .ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .reel-media > .ph { -webkit-mask: none; mask: none; }
+  .reel-play { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; margin: -29px 0 0 -29px; border-radius: 50%; background: rgba(252, 247, 236, .9); color: var(--head); display: grid; place-items: center; box-shadow: var(--shadow); transition: transform .2s; }
+  .reel-play svg { width: 22px; height: 22px; margin-left: 3px; }
+  .reel:hover .reel-play { transform: scale(1.08); }
+  .reel-cap { font-family: var(--title); font-weight: 600; font-size: 1.08rem; color: var(--head); margin-top: .4rem; }
+  .reel-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .85rem; font-weight: 700; color: var(--green); }
+  .reel-link svg { width: 16px; height: 16px; }
+
   /* ---------- Okolie ---------- */
   .season-tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.6rem 0 2.2rem; }
   .season-tabs button { font: 700 .92rem var(--serif); padding: .5rem 1.1rem; border-radius: 8px; cursor: pointer; border: 1px solid var(--line); background: transparent; color: var(--ink-2); }
@@ -472,6 +486,7 @@
     .weekday-body { padding: 0 .6rem .8rem; }
     .tips { grid-template-columns: 1fr 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+    .reels { grid-template-columns: 1fr 1fr; }
     .todo-quotes { grid-template-columns: 1fr; }
     .foot { grid-template-columns: 1fr 1fr; }
     .foot > div:first-child { grid-column: 1 / -1; }
@@ -817,9 +832,25 @@
       <div class="ph dusk"><svg><use href="#i-camera"/></svg><em>kuchyňa</em></div>
       <div class="ph water"><svg><use href="#i-camera"/></svg><em>Hájske vodopády</em></div>
       <div class="ph wood wide"><svg><use href="#i-camera"/></svg><em>terasa</em></div>
-      <div class="ph olive wide"><svg><use href="#i-camera"/></svg><em>video z IG (reels)</em></div>
+      <div class="ph olive wide"><svg><use href="#i-camera"/></svg><em>záhrada</em></div>
     </div>
     <p class="note-in" style="margin-top:1rem">[Fotky a videá doplníme z Bookingu, Instagramu a nové od Denisy. Po kliknutí sa fotka zväčší.]</p>
+  </div>
+</section>
+
+<!-- ============ VIDEÁ Z INSTAGRAMU ============ -->
+<section id="videa" class="wash wash-sky">
+  <div class="wrap">
+    <div class="split-head">
+      <div>
+        <span class="eyebrow"><span data-i18n="vid.eyebrow">Videá z Instagramu</span></span>
+        <h2 data-i18n="vid.h2">Pozrite sa, ako to u nás žije</h2>
+        <p class="lead" data-i18n="vid.lead">Krátke ukážky z nášho Instagramu. Po kliknutí si pozriete celé video.</p>
+      </div>
+      <a href="https://www.instagram.com/" class="btn btn-line" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span data-i18n="gl.ig">Viac na Instagrame</span></a>
+    </div>
+    <div class="reels" id="reels"><!-- generuje JS zo zoznamu REELS --></div>
+    <p class="note-in">[Ukážky: 3–5 s slučky bez zvuku (MP4/WebM, do ~500 kB), vystrihnuté z vašich reels. Celé videá ostávajú na Instagrame.]</p>
   </div>
 </section>
 
@@ -1162,6 +1193,21 @@
   ];
 
   /* =========================================================
+     VIDEÁ Z INSTAGRAMU
+     Na webe sú len krátke ukážky, celé video sa otvorí na Instagrame.
+     url:     odkaz na reel (instagram.com/reel/…)
+     preview: krátka ukážka – 3 až 5 s slučka bez zvuku (.mp4 / .webm, do ~500 kB),
+              prípadne .gif / .webp; prázdne = zatiaľ miesto na ukážku
+     poster:  statický obrázok, kým sa ukážka načíta (nepovinné)
+     ========================================================= */
+  const REELS = [
+    { url: 'https://www.instagram.com/', preview: '', poster: '', title: 'vid.1', tone: 'dusk' },
+    { url: 'https://www.instagram.com/', preview: '', poster: '', title: 'vid.2', tone: 'olive' },
+    { url: 'https://www.instagram.com/', preview: '', poster: '', title: 'vid.3', tone: 'water' },
+    { url: 'https://www.instagram.com/', preview: '', poster: '', title: 'vid.4', tone: 'wood' },
+  ];
+
+  /* =========================================================
      PREKLADY
      Slovenčina je priamo v HTML (data-i18n), ostatné jazyky tu.
      Poznámky v [hranatých zátvorkách] sú interné a neprekladajú sa.
@@ -1362,7 +1408,15 @@
       "kids.lead": "Udvar, kert és természet közvetlenül a kerítés mögött. A gyerekeknek reggeltől estig van mit felfedezniük.",
       "kids.3t": "Bekerített udvar",
       "kids.3s": "biztonságos futkározás és játék a szabadban",
-      "kids.4s": "kaland a ház közelében"
+      "kids.4s": "kaland a ház közelében",
+      "vid.eyebrow": "Videók az Instagramról",
+      "vid.h2": "Nézzétek meg, milyen nálunk az élet",
+      "vid.lead": "Rövid részletek az Instagramunkról. Kattintásra megnézhetitek a teljes videót.",
+      "vid.cta": "Megnézem az Instagramon",
+      "vid.1": "Este a dézsában",
+      "vid.2": "Gyerekek az udvaron",
+      "vid.3": "Kirándulás a vízesésekhez",
+      "vid.4": "Körbevezetés a házban"
     },
     en: {
       "meta.title": "Hájsky dvor — 1857 cottage near the Háj Waterfalls",
@@ -1559,7 +1613,15 @@
       "kids.lead": "A yard, a garden and nature right beyond the fence. Kids have something to discover from morning till night.",
       "kids.3t": "Fenced yard",
       "kids.3s": "safe running and outdoor play",
-      "kids.4s": "an adventure close to the house"
+      "kids.4s": "an adventure close to the house",
+      "vid.eyebrow": "Videos from Instagram",
+      "vid.h2": "See what life is like here",
+      "vid.lead": "Short previews from our Instagram. Click to watch the full video.",
+      "vid.cta": "Watch on Instagram",
+      "vid.1": "Evening in the hot tub",
+      "vid.2": "Kids in the yard",
+      "vid.3": "Trip to the waterfalls",
+      "vid.4": "Cottage tour"
     },
     de: {
       "meta.title": "Hájsky dvor — Ferienhaus von 1857 bei den Wasserfällen von Háj",
@@ -1756,7 +1818,15 @@
       "kids.lead": "Hof, Garten und Natur direkt hinter dem Zaun. Kinder haben hier von morgens bis abends etwas zu entdecken.",
       "kids.3t": "Eingezäunter Hof",
       "kids.3s": "sicher toben und draußen spielen",
-      "kids.4s": "Abenteuer ganz in der Nähe"
+      "kids.4s": "Abenteuer ganz in der Nähe",
+      "vid.eyebrow": "Videos von Instagram",
+      "vid.h2": "So sieht es bei uns aus",
+      "vid.lead": "Kurze Ausschnitte aus unserem Instagram. Mit einem Klick sehen Sie das ganze Video.",
+      "vid.cta": "Auf Instagram ansehen",
+      "vid.1": "Abends im Badezuber",
+      "vid.2": "Kinder im Hof",
+      "vid.3": "Ausflug zu den Wasserfällen",
+      "vid.4": "Rundgang durchs Haus"
     },
     pl: {
       "meta.title": "Hájsky dvor — chata z 1857 roku przy Wodospadach w Háju",
@@ -1953,7 +2023,15 @@
       "kids.lead": "Podwórko, ogród i przyroda tuż za płotem. Dzieci mają tu co odkrywać od rana do wieczora.",
       "kids.3t": "Ogrodzone podwórko",
       "kids.3s": "bezpieczne bieganie i zabawy na dworze",
-      "kids.4s": "przygoda niedaleko domu"
+      "kids.4s": "przygoda niedaleko domu",
+      "vid.eyebrow": "Filmy z Instagrama",
+      "vid.h2": "Zobaczcie, jak u nas jest",
+      "vid.lead": "Krótkie fragmenty z naszego Instagrama. Po kliknięciu obejrzycie cały film.",
+      "vid.cta": "Zobacz na Instagramie",
+      "vid.1": "Wieczór w balii",
+      "vid.2": "Dzieci na podwórku",
+      "vid.3": "Wycieczka do wodospadów",
+      "vid.4": "Spacer po chacie"
     },
     uk: {
       "meta.title": "Hájsky dvor — хата 1857 року біля Гайських водоспадів",
@@ -2150,7 +2228,15 @@
       "kids.lead": "Подвір’я, сад і природа просто за парканом. Дітям тут є що досліджувати з ранку до вечора.",
       "kids.3t": "Огороджене подвір’я",
       "kids.3s": "безпечно бігати й гратися надворі",
-      "kids.4s": "пригода неподалік від дому"
+      "kids.4s": "пригода неподалік від дому",
+      "vid.eyebrow": "Відео з Instagram",
+      "vid.h2": "Подивіться, як у нас живеться",
+      "vid.lead": "Короткі уривки з нашого Instagram. Натисніть, щоб переглянути відео повністю.",
+      "vid.cta": "Дивитися в Instagram",
+      "vid.1": "Вечір у купелі",
+      "vid.2": "Діти на подвір’ї",
+      "vid.3": "Прогулянка до водоспадів",
+      "vid.4": "Огляд хати"
     }
   }/*__END__*/;
   const SK_JS = {
@@ -2160,6 +2246,8 @@
     'js.note.airbnb': 'Rezervácia cez Airbnb',
     'ui.theme': 'Prepnúť svetlý / tmavý režim',
     'ui.portal': 'Vyberte portál',
+    'vid.cta': 'Pozrieť na Instagrame',
+    'vid.1': 'Večer v kadi', 'vid.2': 'Deti na dvore', 'vid.3': 'Výlet k vodopádom', 'vid.4': 'Prehliadka chalupy',
   };
   const LANGS = ['sk', ...Object.keys(I18N)];
   const LANG_LABEL = { uk: 'UA' };
@@ -2194,6 +2282,29 @@
     document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track(a.dataset.portal)));
   }
 
+  /* Ukážky videí: prehrávajú sa len keď sú na obrazovke (šetrí dáta na mobile) */
+  const reelObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+  }), { threshold: .4 }) : null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderReels() {
+    const box = document.getElementById('reels'); if (!box) return;
+    box.innerHTML = REELS.map(r => {
+      const media = /\.(mp4|webm)$/i.test(r.preview)
+        ? `<video src="${r.preview}"${r.poster ? ` poster="${r.poster}"` : ''} muted loop playsinline preload="none" aria-hidden="true"></video>`
+        : r.preview ? `<img src="${reduceMotion && r.poster ? r.poster : r.preview}" alt="" loading="lazy">`
+        : `<span class="ph ${r.tone}"><svg><use href="#i-camera"/></svg><em>ukážka videa</em></span>`;
+      return `<a class="reel" href="${r.url}" target="_blank" rel="noopener" data-reel="${r.title}">
+        <span class="reel-media">${media}<span class="reel-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span></span>
+        <span class="reel-cap">${t(r.title)}</span>
+        <span class="reel-link"><svg><use href="#i-ig"/></svg>${t('vid.cta')}</span>
+      </a>`;
+    }).join('');
+    box.querySelectorAll('video').forEach(v => { if (reelObserver && !reduceMotion) reelObserver.observe(v); });
+    box.querySelectorAll('[data-reel]').forEach(a => a.addEventListener('click', () => { if (window.gtag) gtag('event', 'reel_click', { reel: a.dataset.reel, lang }); }));
+  }
+
   function setLang(next, remember) {
     lang = LANGS.includes(next) ? next : 'sk';
     const dict = I18N[lang] || {};
@@ -2215,6 +2326,7 @@
     themeBtn.title = t('ui.theme'); themeBtn.setAttribute('aria-label', t('ui.theme'));
     document.getElementById('sheet').setAttribute('aria-label', t('ui.portal'));
     renderPortals();
+    renderReels();
     if (remember) {
       try { localStorage.setItem('hd-lang', lang); } catch (e) {}
       const url = new URL(location.href);
