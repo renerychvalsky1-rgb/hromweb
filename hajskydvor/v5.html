@@ -526,6 +526,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ill.photo img { filter: brightness(.9); } }
   button.ill { display: block; width: 100%; padding: 0; border: 0; font: inherit; color: inherit; cursor: zoom-in; }
   .gallery button.ill:focus-visible, .ill.photo img:focus-visible { outline: 3px solid var(--accent); outline-offset: -6px; }
+  .tip .ill { aspect-ratio: 16 / 9.5; }
+  .map-btn { margin-top: 1rem; }
   .gallery-more { display: flex; justify-content: center; margin-top: 1.6rem; }
   .gallery-more .btn span.n { opacity: .7; font-weight: 600; }
 
@@ -560,6 +562,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .lb .lb-prev { left: calc(50% - 60px); }
     .lb .lb-next { right: calc(50% - 60px); }
   }
+
+  /* jazykové menu a pätička s vlajkami */
+  .lang-btn .flag { width: 20px; height: 14px; }
+  .lang-menu a { justify-content: flex-start; align-items: center; gap: .65rem; }
+  .lang-menu em { margin-left: auto; }
+  .foot-langs { display: flex; flex-wrap: wrap; gap: .5rem 1rem; }
+  .foot-langs a { display: inline-flex; align-items: center; gap: .4rem; color: inherit; text-decoration: none; }
+  .foot-langs a:hover { color: var(--head); }
+  .foot-langs a.active { color: var(--green); font-weight: 700; }
+  /* ===== Vlajky jazykov ===== */
+  .flag { display: inline-block; flex: none; width: 20px; height: 14px; border-radius: 3px; background: center / cover no-repeat; box-shadow: 0 0 0 1px rgba(0, 0, 0, .14); vertical-align: -2px; }
+  .fl-sk { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%230B4EA2%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23EE1C25%27%2F%3E%3Cpath%20d%3D%27M7.4%203.6h7.4v6.6c0%203.3-2.3%205.2-3.7%206c-1.4-.8-3.7-2.7-3.7-6z%27%20fill%3D%27%23EE1C25%27%20stroke%3D%27%23fff%27%20stroke-width%3D%27.8%27%2F%3E%3Cpath%20d%3D%27M10.7%205h.8v7.4h-.8zM9.2%206.5h3.8v.8H9.2zM8.7%208.4h4.8v.8H8.7z%27%20fill%3D%27%23fff%27%2F%3E%3Cpath%20d%3D%27M8.1%2012.2c.9-1%201.9-1%202.5%200c.6-1%201.6-1%202.5%200c-.4%201.6-1.5%202.6-2.5%203.2c-1-.6-2.1-1.6-2.5-3.2z%27%20fill%3D%27%230B4EA2%27%2F%3E%3C%2Fsvg%3E"); }
+  .fl-hu { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23CD2A3E%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23FFFFFF%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23436F4D%27%2F%3E%3C%2Fsvg%3E"); }
+  .fl-en { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2060%2030%27%3E%3CclipPath%20id%3D%27t%27%3E%3Cpath%20d%3D%27M30%2C15h30v15zv15h-30zh-30v-15zv-15h30z%27%2F%3E%3C%2FclipPath%3E%3Cpath%20d%3D%27M0%2C0v30h60v-30z%27%20fill%3D%27%23012169%27%2F%3E%3Cpath%20d%3D%27M0%2C0L60%2C30M60%2C0L0%2C30%27%20stroke%3D%27%23fff%27%20stroke-width%3D%276%27%2F%3E%3Cpath%20d%3D%27M0%2C0L60%2C30M60%2C0L0%2C30%27%20clip-path%3D%27url%28%23t%29%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%274%27%2F%3E%3Cpath%20d%3D%27M30%2C0v30M0%2C15h60%27%20stroke%3D%27%23fff%27%20stroke-width%3D%2710%27%2F%3E%3Cpath%20d%3D%27M30%2C0v30M0%2C15h60%27%20stroke%3D%27%23C8102E%27%20stroke-width%3D%276%27%2F%3E%3C%2Fsvg%3E"); }
+  .fl-de { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23000000%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23DD0000%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23FFCE00%27%2F%3E%3C%2Fsvg%3E"); }
+  .fl-pl { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20y%3D%2710%27%20width%3D%2730%27%20height%3D%2710%27%20fill%3D%27%23DC143C%27%2F%3E%3C%2Fsvg%3E"); }
+  .fl-uk { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%230057B7%27%2F%3E%3Crect%20y%3D%2710%27%20width%3D%2730%27%20height%3D%2710%27%20fill%3D%27%23FFD700%27%2F%3E%3C%2Fsvg%3E"); }
 </style>
 </head>
 <body data-accent="green">
@@ -636,14 +655,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
     <div class="top-actions">
       <div class="lang" id="lang">
-        <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"><svg><use href="#i-globe"/></svg><span id="langCode">SK</span></button>
+        <button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"><i class="flag fl-sk" id="langFlag" aria-hidden="true"></i><span id="langCode">SK</span></button>
         <div class="lang-menu" role="menu">
-          <a href="?lang=sk" data-lang="sk">Slovenčina <em>SK</em></a>
-          <a href="?lang=hu" data-lang="hu">Magyar <em>HU</em></a>
-          <a href="?lang=en" data-lang="en">English <em>EN</em></a>
-          <a href="?lang=de" data-lang="de">Deutsch <em>DE</em></a>
-          <a href="?lang=pl" data-lang="pl">Polski <em>PL</em></a>
-          <a href="?lang=uk" data-lang="uk">Українська <em>UA</em></a>
+          <a href="?lang=sk" data-lang="sk"><i class="flag fl-sk" aria-hidden="true"></i>Slovenčina <em>SK</em></a>
+          <a href="?lang=hu" data-lang="hu"><i class="flag fl-hu" aria-hidden="true"></i>Magyar <em>HU</em></a>
+          <a href="?lang=en" data-lang="en"><i class="flag fl-en" aria-hidden="true"></i>English <em>EN</em></a>
+          <a href="?lang=de" data-lang="de"><i class="flag fl-de" aria-hidden="true"></i>Deutsch <em>DE</em></a>
+          <a href="?lang=pl" data-lang="pl"><i class="flag fl-pl" aria-hidden="true"></i>Polski <em>PL</em></a>
+          <a href="?lang=uk" data-lang="uk"><i class="flag fl-uk" aria-hidden="true"></i>Українська <em>UA</em></a>
         </div>
       </div>
       <button class="icon-btn theme-btn" id="themeBtn" type="button" title="Prepnúť svetlý / tmavý režim" aria-label="Prepnúť svetlý / tmavý režim">
@@ -1068,7 +1087,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </article>
       <article class="tip reveal" data-seasons="jar leto jesen zima">
-        <div class="ph wood"><span class="km">0 km</span><svg><use href="#i-fire"/></svg></div>
+        <div class="ill photo"><span class="km">0 km</span><img data-photo="yard2" alt="Ležadlá na dvore"></div>
         <div class="tip-body">
         <h3 data-i18n="tip.12h">Deň doma na dvore</h3>
         <p data-i18n="tip.12p">Niekedy je najlepší výlet žiadny výlet. Záhrada, hry s deťmi, sauna a večer kaďa, v chladné dni aj krb.</p>
@@ -1158,7 +1177,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <ul class="contact-list">
         <li><span class="ico"><svg><use href="#i-phone"/></svg></span><div><a href="tel:+421900000000">+421 9XX XXX XXX</a><small>[Volať / WhatsApp / Viber? overiť]</small></div></li>
         <li><span class="ico"><svg><use href="#i-mail"/></svg></span><div><a href="mailto:info@hajskydvor.sk">info@hajskydvor.sk</a><small>[e-mail je návrh, doména ešte nie je kúpená]</small></div></li>
-        <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><strong>Háj 83, 044 03 Háj</strong><small data-i18n="ct.addr">okres Košice-okolie, Slovensko</small></div></li>
+        <li><span class="ico"><svg><use href="#i-pin"/></svg></span><div><a href="https://maps.app.goo.gl/eDrvEYHP3DEzSBfe7" target="_blank" rel="noopener">Háj 83, 044 03 Háj</a><small data-i18n="ct.addr">okres Košice-okolie, Slovensko</small></div></li>
         <li><span class="ico"><svg><use href="#i-globe"/></svg></span><div data-i18n="ct.lang"><strong>Hovoríme po slovensky aj po maďarsky</strong><small>Dohovoríme sa aj anglicky a španielsky.</small></div></li>
       </ul>
       <div class="socials">
@@ -1168,13 +1187,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div>
       <div class="gmap"><iframe title="Hájsky dvor, Háj 83" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=H%C3%A1j%2083%2C%20044%2003%20H%C3%A1j&z=13&output=embed"></iframe></div>
+      <a class="btn btn-line map-btn" href="https://maps.app.goo.gl/eDrvEYHP3DEzSBfe7" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg><span data-i18n="ct.nav">Navigovať v Google Mapách</span></a>
       <div class="distances">
         <div><span data-i18n="tip.1h">Hájske vodopády</span><b>0,8 km</b></div>
         <div><span data-i18n="tip.2h">Turniansky hrad</span><b>3,5 km</b></div>
         <div><span data-i18n="ds.jasov">Jasovská jaskyňa</span><b>~21 km</b></div>
         <div><span data-i18n="ds.ke">Košice</span><b>~45 km</b></div>
         <div><span data-i18n="ds.air">Letisko Košice</span><b>~41 km</b></div>
-        <div><span>Miskolc (HU)</span><b>[overiť]</b></div>
+        <div><span>Miskolc (HU)</span><b>105 km</b></div>
       </div>
       <p class="note-in" style="margin-top:.6rem" data-i18n="ds.note">Vzdialenosti vzdušnou čiarou podľa Bookingu a Megaubytovania.</p>
     </div>
@@ -1203,13 +1223,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div>
         <h4 data-i18n="nav.6">Kontakt</h4>
         <ul>
-          <li>Háj 83, 044 03 Háj</li>
+          <li><a href="https://maps.app.goo.gl/eDrvEYHP3DEzSBfe7" target="_blank" rel="noopener">Háj 83, 044 03 Háj</a></li>
           <li><a href="mailto:info@hajskydvor.sk">info@hajskydvor.sk</a></li>
           <li><a href="https://www.instagram.com/hajsky_dvor/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook</a></li>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom"><span>© 2026 Hájsky dvor</span><span>SK · HU · EN · DE · PL · UA</span></div>
+    <div class="foot-bottom"><span>© 2026 Hájsky dvor</span><span class="foot-langs"><a href="?lang=sk" data-lang="sk" lang="sk" title="Slovenčina"><i class="flag fl-sk" aria-hidden="true"></i>SK</a><a href="?lang=hu" data-lang="hu" lang="hu" title="Magyar"><i class="flag fl-hu" aria-hidden="true"></i>HU</a><a href="?lang=en" data-lang="en" lang="en" title="English"><i class="flag fl-en" aria-hidden="true"></i>EN</a><a href="?lang=de" data-lang="de" lang="de" title="Deutsch"><i class="flag fl-de" aria-hidden="true"></i>DE</a><a href="?lang=pl" data-lang="pl" lang="pl" title="Polski"><i class="flag fl-pl" aria-hidden="true"></i>PL</a><a href="?lang=uk" data-lang="uk" lang="uk" title="Українська"><i class="flag fl-uk" aria-hidden="true"></i>UA</a></span></div>
   </div>
 </footer>
 
@@ -1506,7 +1526,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "gc.terrace": "Fedett terasz",
       "gc.garden": "Udvar és kert",
       "gc.tub": "Dézsa",
-      "gc.history": "A ház régen"
+      "gc.history": "A ház régen",
+      "ct.nav": "Útvonal a Google Térképen"
     },
     en: {
       "meta.title": "Hájsky dvor — 1857 cottage near the Háj Waterfalls",
@@ -1733,7 +1754,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "gc.terrace": "Covered terrace",
       "gc.garden": "Yard and garden",
       "gc.tub": "Hot tub",
-      "gc.history": "The house in the old days"
+      "gc.history": "The house in the old days",
+      "ct.nav": "Directions in Google Maps"
     },
     de: {
       "meta.title": "Hájsky dvor — Ferienhaus von 1857 bei den Wasserfällen von Háj",
@@ -1960,7 +1982,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "gc.terrace": "Überdachte Terrasse",
       "gc.garden": "Hof und Garten",
       "gc.tub": "Badezuber",
-      "gc.history": "Das Haus früher"
+      "gc.history": "Das Haus früher",
+      "ct.nav": "Route in Google Maps"
     },
     pl: {
       "meta.title": "Hájsky dvor — chata z 1857 roku przy Wodospadach w Háju",
@@ -2187,7 +2210,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "gc.terrace": "Zadaszony taras",
       "gc.garden": "Podwórze i ogród",
       "gc.tub": "Balia",
-      "gc.history": "Dom dawniej"
+      "gc.history": "Dom dawniej",
+      "ct.nav": "Nawiguj w Mapach Google"
     },
     uk: {
       "meta.title": "Hájsky dvor — хата 1857 року біля Гайських водоспадів",
@@ -2414,7 +2438,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "gc.terrace": "Крита тераса",
       "gc.garden": "Подвір’я і сад",
       "gc.tub": "Купель",
-      "gc.history": "Будинок колись"
+      "gc.history": "Будинок колись",
+      "ct.nav": "Маршрут у Google Картах"
     }
   }/*__END__*/;
   const SK_JS = {
@@ -2444,7 +2469,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const t = (key) => (lang !== 'sk' && I18N[lang][key]) || SK_JS[key] || key;
 
   /* Meranie: udalosti idú do Google Tag Managera (dataLayer), v GTM sa posielajú do GA4.
-     booking_click {portal} · reel_click {reel} · gallery_open {photo} · contact_click {method} */
+     booking_click {portal} · reel_click {reel} · gallery_open {photo} · contact_click {method} · map_click */
   const track = (event, params) => { (window.dataLayer = window.dataLayer || []).push({ event, ...params, lang }); };
 
   function renderPortals() {
@@ -2558,7 +2583,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.title = lang === 'sk' ? skMeta.title : dict['meta.title'];
     document.querySelector('meta[name=description]').content = lang === 'sk' ? skMeta.desc : dict['meta.desc'];
     document.getElementById('langCode').textContent = LANG_LABEL[lang] || lang.toUpperCase();
-    document.querySelectorAll('.lang-menu [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
+    document.querySelectorAll('.lang-menu [data-lang], .foot-langs [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
+    document.getElementById('langFlag').className = 'flag fl-' + lang;
     const themeBtn = document.getElementById('themeBtn');
     themeBtn.title = t('ui.theme'); themeBtn.setAttribute('aria-label', t('ui.theme'));
     document.getElementById('sheet').setAttribute('aria-label', t('ui.portal'));
@@ -2583,6 +2609,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const fromBrowser = (navigator.languages || [navigator.language || '']).map(l => l.slice(0, 2).toLowerCase()).find(l => LANGS.includes(l));
     setLang(fromUrl || saved || fromBrowser || 'sk', false);
   })();
+
+  /* Navigácia na Google Mapách */
+  document.querySelectorAll('a[href^="https://maps.app.goo.gl/"]').forEach(a => a.addEventListener('click', () => track('map_click', {})));
 
   /* Kontakt: kliknutie na telefón alebo e-mail */
   document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(a => a.addEventListener('click', () => track('contact_click', { method: a.protocol === 'tel:' ? 'phone' : 'email' })));
@@ -2619,6 +2648,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     if (a.dataset.lang) setLang(a.dataset.lang, true);
   }));
   document.addEventListener('click', () => langBox.classList.remove('open'));
+  document.querySelectorAll('.foot-langs a').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); setLang(a.dataset.lang, true); }));
 
   /* Sezónne tipy */
   document.querySelectorAll('.season-tabs button').forEach(btn => btn.addEventListener('click', () => {
