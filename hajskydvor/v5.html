@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-57KFFMZ4');</script>
+<!-- End Google Tag Manager -->
 <!-- NÁVRH 5: pred spustením na hajskydvor.sk odstrániť noindex -->
 <meta name="robots" content="noindex, nofollow">
 <title>Hájsky dvor — chalupa z roku 1857 pri Hájskych vodopádoch</title>
@@ -16,15 +23,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Google Analytics 4 — doplniť ID merania po vytvorení property
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
-</script>
--->
 
 <script>
   /* Téma: uložená voľba má prednosť, inak sa riadi systémom */
@@ -565,6 +563,10 @@
 </style>
 </head>
 <body data-accent="green">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57KFFMZ4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
@@ -2441,7 +2443,9 @@
   let lang = 'sk';
   const t = (key) => (lang !== 'sk' && I18N[lang][key]) || SK_JS[key] || key;
 
-  const track = (id) => { if (window.gtag) gtag('event', 'booking_click', { portal: id, lang }); };
+  /* Meranie: udalosti idú do Google Tag Managera (dataLayer), v GTM sa posielajú do GA4.
+     booking_click {portal} · reel_click {reel} · gallery_open {photo} · contact_click {method} */
+  const track = (event, params) => { (window.dataLayer = window.dataLayer || []).push({ event, ...params, lang }); };
 
   function renderPortals() {
     const active = PORTALS.filter(p => p.enabled);
@@ -2459,7 +2463,7 @@
       </a>`).join('');
     document.getElementById('stripPortals').innerHTML = active.map(p => `
       <a href="${p.url(lang)}" target="_blank" rel="noopener" data-portal="${p.id}">${p.name}</a>`).join('');
-    document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track(a.dataset.portal)));
+    document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track('booking_click', { portal: a.dataset.portal })));
   }
 
   /* Ukážky videí: prehrávajú sa len keď sú na obrazovke (šetrí dáta na mobile) */
@@ -2482,7 +2486,7 @@
       </a>`;
     }).join('');
     box.querySelectorAll('video').forEach(v => { if (reelObserver && !reduceMotion) reelObserver.observe(v); });
-    box.querySelectorAll('[data-reel]').forEach(a => a.addEventListener('click', () => { if (window.gtag) gtag('event', 'reel_click', { reel: a.dataset.reel, lang }); }));
+    box.querySelectorAll('[data-reel]').forEach(a => a.addEventListener('click', () => track('reel_click', { reel: a.dataset.reel })));
   }
 
   /* Fotky: obrázky na stránke dostanú dáta zo zoznamu PHOTOS */
@@ -2500,7 +2504,7 @@
     lbFrom = document.activeElement;
     showLb(i); lb.hidden = false; lb.classList.add('open'); document.body.classList.add('lb-lock');
     document.getElementById('lbClose').focus();
-    if (window.gtag) gtag('event', 'gallery_open', { photo: PHOTOS[lbAt].k, lang });
+    track('gallery_open', { photo: PHOTOS[lbAt].k });
   }
   function closeLb() {
     lb.classList.remove('open'); lb.hidden = true; document.body.classList.remove('lb-lock');
@@ -2579,6 +2583,9 @@
     const fromBrowser = (navigator.languages || [navigator.language || '']).map(l => l.slice(0, 2).toLowerCase()).find(l => LANGS.includes(l));
     setLang(fromUrl || saved || fromBrowser || 'sk', false);
   })();
+
+  /* Kontakt: kliknutie na telefón alebo e-mail */
+  document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(a => a.addEventListener('click', () => track('contact_click', { method: a.protocol === 'tel:' ? 'phone' : 'email' })));
 
   /* Svetlý / tmavý režim */
   const darkMq = window.matchMedia('(prefers-color-scheme: dark)');
