@@ -1,11 +1,9 @@
 # robots.txt pre https://hajskydvor.sk
 # Vyhľadávače aj AI asistenti (ChatGPT, Claude, Perplexity, Gemini, Copilot…) môžu web čítať,
-# aby vedeli Hájsky dvor odporučiť. Zakázaná je len administrácia WordPressu.
+# aby vedeli Hájsky dvor odporučiť.
 
 User-agent: *
 Allow: /
-Disallow: /wp-admin/
-Allow: /wp-admin/admin-ajax.php
 
 # AI vyhľadávače a asistenti – výslovne povolení (skupina pre konkrétneho robota nahrádza „*“, preto opakujeme pravidlá)
 User-agent: GPTBot
@@ -25,8 +23,5 @@ User-agent: MistralAI-User
 User-agent: meta-externalagent
 User-agent: CCBot
 Allow: /
-Disallow: /wp-admin/
-Allow: /wp-admin/admin-ajax.php
 
-# Pri WordPresse s Yoast/Rank Math je mapa stránok /sitemap_index.xml – podľa toho upraviť
 Sitemap: https://hajskydvor.sk/sitemap.xml
