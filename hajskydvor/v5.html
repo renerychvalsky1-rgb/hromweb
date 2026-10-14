@@ -1271,22 +1271,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="areal-map">
       <!-- Orientačná mapka — prekreslíme podľa Denisinho náčrtu -->
       <svg viewBox="0 0 640 440" role="img" aria-label="Mapka areálu Hájsky dvor">
-        <!-- Prekreslené podľa náčrtu Denisy (otočené o 90°): dom a altánok hore vľavo, smerom doprava kaďa a šmykľavka, na konci svah s ohniskom a drevárňa -->
+        <!-- Podľa náčrtu Denisy a spresnení (otočené o 90°): dom a altánok zarovno hore vľavo, svah klesá k domu, nad ním rovinka s ohniskom, pod ňou dielňa -->
         <rect width="640" height="440" rx="16" fill="#F4EAD3"/>
         <rect x="20" y="20" width="600" height="400" rx="18" fill="#DDE0B6"/>
-        <!-- svah so stromami -->
-        <path d="M528 20 H602 Q620 20 620 38 V232 H532 C546 180 520 120 532 70 C536 46 526 32 528 20Z" fill="#C9D29A"/>
-        <g fill="none" stroke="#9DAA6B" stroke-width="2" stroke-linecap="round" opacity=".8">
-          <path d="M556 34 c-10 40 12 80 0 120 c-6 24 6 46 2 66"/>
-          <path d="M590 32 c-8 40 10 80 0 120 c-6 24 6 46 2 70"/>
+        <!-- svah klesá smerom k domu (doľava) -->
+        <path d="M520 20 H574 C570 30 578 44 576 60 C566 110 580 170 574 232 H526 C540 180 514 120 526 70 C530 46 518 32 520 20Z" fill="#C9D29A"/>
+        <g fill="none" stroke="#9DAA6B" stroke-width="2" stroke-linecap="round" opacity=".85">
+          <path d="M566 34 L548 40 M570 62 L550 68 M566 92 L546 98 M568 122 L548 128 M572 152 L552 158 M570 182 L550 188 M570 212 L552 218"/>
         </g>
-        <text x="594" y="206" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="700" fill="#5E6B34" data-i18n="mpn.slope">Svah</text>
+        <text x="540" y="128" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="700" fill="#5E6B34" transform="rotate(-90 540 128)" data-i18n="mpn.slope">Svah</text>
+        <!-- rovinka s ohniskom nad svahom -->
+        <path d="M574 20 H602 Q620 20 620 38 V232 H574 C580 170 566 110 576 60 C578 44 570 30 574 20Z" fill="#E4E6C2"/>
         <!-- rovná tráva -->
         <path d="M118 420 L124 262 C126 210 150 170 176 172 C206 176 222 232 252 260 C284 290 318 300 340 270 C360 242 392 230 410 258 C428 292 436 360 448 420 Z" fill="#E9ECC9"/>
         <text x="300" y="372" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="700" fill="#7D8B4A" data-i18n="mpn.lawn">Rovná tráva</text>
         <!-- stromy a kríky -->
-        <g fill="#7D8B4A"><circle cx="470" cy="56" r="16"/><circle cx="496" cy="44" r="12"/><circle cx="486" cy="108" r="15"/><circle cx="512" cy="132" r="11"/><circle cx="494" cy="364" r="22"/></g>
-        <g fill="#93A15E"><circle cx="478" cy="80" r="10"/><circle cx="514" cy="98" r="9"/><circle cx="480" cy="348" r="12"/></g>
+        <g fill="#7D8B4A"><circle cx="466" cy="56" r="16"/><circle cx="492" cy="44" r="12"/><circle cx="482" cy="108" r="15"/><circle cx="506" cy="134" r="11"/><circle cx="494" cy="364" r="22"/></g>
+        <g fill="#93A15E"><circle cx="474" cy="80" r="10"/><circle cx="508" cy="98" r="9"/><circle cx="480" cy="348" r="12"/></g>
         <!-- dom -->
         <rect x="24" y="24" width="138" height="68" rx="8" fill="#FFFCF6" stroke="#6B5338" stroke-width="3"/>
         <path d="M24 30 H162" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
@@ -1296,55 +1297,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <path d="M24 106 H162 M38 96 V106 M58 96 V106 M78 96 V106 M98 96 V106 M118 96 V106 M138 96 V106 M48 106 V116 M68 106 V116 M88 106 V116 M108 106 V116 M128 106 V116 M148 106 V116" fill="none" stroke="#A9694B" stroke-width="1"/>
         <rect x="56" y="99" width="46" height="9" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
         <path d="M60 108 V113 M98 108 V113" stroke="#6B5338" stroke-width="2" stroke-linecap="round"/>
-        <!-- altánok: stôl s 10 stoličkami, gril, závesné hojdacie kreslo a detská hojdačka -->
-        <rect x="168" y="24" width="62" height="182" rx="6" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
-        <rect x="188" y="34" width="22" height="72" rx="3" fill="#C9A06A" stroke="#8C6A43" stroke-width="1.5"/>
-        <g fill="#B07A43"><circle cx="180" cy="42" r="4"/><circle cx="180" cy="57" r="4"/><circle cx="180" cy="72" r="4"/><circle cx="180" cy="87" r="4"/><circle cx="180" cy="102" r="4"/>
-          <circle cx="218" cy="42" r="4"/><circle cx="218" cy="57" r="4"/><circle cx="218" cy="72" r="4"/><circle cx="218" cy="87" r="4"/><circle cx="218" cy="102" r="4"/></g>
-        <rect x="176" y="118" width="20" height="14" rx="3" fill="#4A4038" stroke="#2E2822" stroke-width="1.5"/>
-        <path d="M178 125 H194" stroke="#8C7A62" stroke-width="1"/>
-        <circle cx="214" cy="126" r="8" fill="#F4EDE0" stroke="#8C7A62" stroke-width="1.5"/>
-        <path d="M176 146 H222" stroke="#6B5338" stroke-width="3" stroke-linecap="round"/>
-        <path d="M190 146 V164 M208 146 V164" stroke="#8C7A62" stroke-width="1.5"/>
-        <rect x="186" y="163" width="26" height="7" rx="2" fill="#D98B5F" stroke="#9E5A37" stroke-width="1.5"/>
-        <!-- detský domček -->
-        <path d="M246 54 L262 38 L278 54 V76 H246Z" fill="#F1E4CB" stroke="#8C6A43" stroke-width="2" stroke-linejoin="round"/>
-        <!-- ohnisko s kotlíkom pri domčeku -->
-        <circle cx="302" cy="112" r="13" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
-        <circle cx="302" cy="112" r="7" fill="#3E3730"/>
-        <path d="M302 112 L288 98 M302 112 L316 98 M302 112 V128" stroke="#5E4A33" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- altánok zarovno s domom: stôl s 10 stoličkami, gril, závesné hojdacie kreslo a detská hojdačka -->
+        <rect x="166" y="24" width="98" height="68" rx="6" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
+        <path d="M166 30 H264" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
+        <rect x="176" y="49" width="52" height="15" rx="3" fill="#C9A06A" stroke="#8C6A43" stroke-width="1.5"/>
+        <g fill="#B07A43"><circle cx="182" cy="42" r="3.6"/><circle cx="192" cy="42" r="3.6"/><circle cx="202" cy="42" r="3.6"/><circle cx="212" cy="42" r="3.6"/><circle cx="222" cy="42" r="3.6"/>
+          <circle cx="182" cy="71" r="3.6"/><circle cx="192" cy="71" r="3.6"/><circle cx="202" cy="71" r="3.6"/><circle cx="212" cy="71" r="3.6"/><circle cx="222" cy="71" r="3.6"/></g>
+        <rect x="238" y="38" width="18" height="12" rx="2" fill="#4A4038" stroke="#2E2822" stroke-width="1.5"/>
+        <circle cx="247" cy="62" r="6" fill="#F4EDE0" stroke="#8C7A62" stroke-width="1.5"/>
+        <path d="M236 74 H258 M240 74 V84 M254 74 V84" stroke="#8C7A62" stroke-width="1.5"/>
+        <rect x="237" y="83" width="20" height="5" rx="2" fill="#D98B5F" stroke="#9E5A37" stroke-width="1.2"/>
+        <!-- pieskovisko napravo od altánku -->
+        <rect x="272" y="30" width="50" height="52" rx="6" fill="#EBD9A8" stroke="#A07A4E" stroke-width="4"/>
+        <g fill="#D8C08A"><circle cx="284" cy="42" r="3"/><circle cx="312" cy="72" r="3"/><circle cx="286" cy="72" r="2.5"/></g>
+        <!-- detský domček a vedľa neho malé ohnisko s kotlíkom -->
+        <path d="M264 128 L279 112 L294 128 V150 H264Z" fill="#F1E4CB" stroke="#8C6A43" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="314" cy="132" r="12" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
+        <circle cx="314" cy="132" r="6.5" fill="#3E3730"/>
+        <path d="M314 132 L302 119 M314 132 L326 119 M314 132 V147" stroke="#5E4A33" stroke-width="1.5" stroke-linecap="round"/>
         <!-- kaďa so svetielkami -->
-        <rect x="330" y="40" width="90" height="128" rx="8" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
-        <circle cx="372" cy="104" r="36" fill="#C9A86E" stroke="#6B5338" stroke-width="3"/>
-        <circle cx="372" cy="104" r="26" fill="#9CC3C9"/>
-        <path d="M424 44 C428 80 420 130 424 164" fill="none" stroke="#8C7A62" stroke-width="1.2"/>
-        <g fill="#E8C774"><circle cx="425" cy="52" r="3.4"/><circle cx="423" cy="72" r="3.4"/><circle cx="424" cy="92" r="3.4"/><circle cx="423" cy="112" r="3.4"/><circle cx="424" cy="132" r="3.4"/><circle cx="424" cy="152" r="3.4"/></g>
+        <rect x="334" y="40" width="88" height="128" rx="8" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
+        <circle cx="376" cy="104" r="36" fill="#C9A86E" stroke="#6B5338" stroke-width="3"/>
+        <circle cx="376" cy="104" r="26" fill="#9CC3C9"/>
+        <path d="M426 44 C430 80 422 130 426 164" fill="none" stroke="#8C7A62" stroke-width="1.2"/>
+        <g fill="#E8C774"><circle cx="427" cy="52" r="3.4"/><circle cx="425" cy="72" r="3.4"/><circle cx="426" cy="92" r="3.4"/><circle cx="425" cy="112" r="3.4"/><circle cx="426" cy="132" r="3.4"/><circle cx="426" cy="152" r="3.4"/></g>
         <!-- šmykľavka -->
         <rect x="437" y="198" width="70" height="20" rx="9" fill="#D98B5F" stroke="#9E5A37" stroke-width="2"/>
         <rect x="490" y="236" width="28" height="40" rx="3" fill="#E6D5B5" stroke="#8C6A43" stroke-width="2"/>
         <path d="M503 218 L504 236" stroke="#8C6A43" stroke-width="2"/>
-        <!-- lavička pod drevárňou -->
+        <!-- lavička pod dielňou -->
         <rect x="510" y="290" width="10" height="40" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
         <path d="M520 294 H525 M520 326 H525" stroke="#6B5338" stroke-width="2" stroke-linecap="round"/>
-        <!-- ohnisko -->
-        <circle cx="568" cy="80" r="20" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
-        <circle cx="568" cy="80" r="10" fill="#E8A33A"/>
-        <g fill="#A89A80"><circle cx="540" cy="58" r="4"/><circle cx="596" cy="58" r="4"/><circle cx="540" cy="102" r="4"/><circle cx="596" cy="102" r="4"/></g>
-        <!-- drevárňa: oddelená od svahu aj od dvora -->
-        <path d="M531 233 H619 V402 Q619 419 602 419 H531Z" fill="#E6D9B8"/>
+        <!-- ohnisko na rovinke -->
+        <circle cx="597" cy="92" r="16" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
+        <circle cx="597" cy="92" r="8" fill="#E8A33A"/>
+        <g fill="#A89A80"><circle cx="580" cy="72" r="3.5"/><circle cx="614" cy="72" r="3.5"/><circle cx="580" cy="112" r="3.5"/><circle cx="614" cy="112" r="3.5"/></g>
+        <!-- dielňa (pre hostí neprístupná) -->
+        <path d="M531 233 H619 V402 Q619 419 602 419 H531Z" fill="#E2DACB"/>
         <path d="M528 232 H620 M530 232 V420" fill="none" stroke="#8C6A43" stroke-width="3" stroke-linecap="round"/>
-        <rect x="546" y="260" width="60" height="92" rx="4" fill="#D9B98C" stroke="#6B5338" stroke-width="2"/>
-        <path d="M542 262 H610" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
-        <g fill="#EBD3A6" stroke="#8C6A43" stroke-width="1.5">
-          <circle cx="557" cy="282" r="6"/><circle cx="570" cy="282" r="6"/><circle cx="583" cy="282" r="6"/><circle cx="596" cy="282" r="6"/>
-          <circle cx="563" cy="294" r="6"/><circle cx="576" cy="294" r="6"/><circle cx="589" cy="294" r="6"/>
-          <circle cx="557" cy="306" r="6"/><circle cx="570" cy="306" r="6"/><circle cx="583" cy="306" r="6"/><circle cx="596" cy="306" r="6"/>
-          <circle cx="563" cy="318" r="6"/><circle cx="576" cy="318" r="6"/><circle cx="589" cy="318" r="6"/>
-          <circle cx="557" cy="330" r="6"/><circle cx="570" cy="330" r="6"/><circle cx="583" cy="330" r="6"/><circle cx="596" cy="330" r="6"/>
-        </g>
-        <!-- pieskovisko pri altánku -->
-        <rect x="102" y="140" width="60" height="58" rx="6" fill="#EBD9A8" stroke="#A07A4E" stroke-width="4"/>
-        <g fill="#D8C08A"><circle cx="116" cy="154" r="3"/><circle cx="148" cy="186" r="3"/><circle cx="120" cy="188" r="2.5"/></g>
+        <rect x="546" y="260" width="60" height="92" rx="4" fill="#CDBFA6" stroke="#6B5338" stroke-width="2"/>
+        <path d="M542 262 H610" stroke="#8C7A62" stroke-width="5" stroke-linecap="round"/>
+        <rect x="554" y="278" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
+        <rect x="584" y="278" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
+        <rect x="566" y="316" width="20" height="36" rx="1.5" fill="#8C6A43" stroke="#6B5338" stroke-width="1.2"/>
+        <circle cx="576" cy="304" r="7" fill="#C0533A"/>
+        <path d="M572 304 H580" stroke="#FFFCF6" stroke-width="2" stroke-linecap="round"/>
         <!-- kvety pri susedovom plote -->
         <g fill="#93A15E"><circle cx="134" cy="406" r="7"/><circle cx="158" cy="404" r="7"/><circle cx="182" cy="406" r="7"/><circle cx="206" cy="404" r="7"/><circle cx="230" cy="406" r="7"/><circle cx="252" cy="405" r="6"/></g>
         <g><circle cx="126" cy="398" r="5.5" fill="#D98BA0"/><circle cx="146" cy="395" r="5.5" fill="#E8C774"/><circle cx="166" cy="398" r="5.5" fill="#B79BD3"/><circle cx="188" cy="395" r="5.5" fill="#D98BA0"/><circle cx="210" cy="398" r="5.5" fill="#E8C774"/><circle cx="230" cy="395" r="5.5" fill="#B79BD3"/><circle cx="250" cy="398" r="5.5" fill="#D98BA0"/></g>
@@ -1353,19 +1350,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- čísla podľa legendy -->
         <g font-family="Nunito" font-size="14" font-weight="600" text-anchor="middle">
           <g><circle cx="134" cy="58" r="14" fill="var(--accent)"/><text x="134" y="63" fill="var(--accent-ink)">1</text></g>
-          <g><circle cx="199" cy="190" r="14" fill="var(--accent)"/><text x="199" y="195" fill="var(--accent-ink)">2</text></g>
-          <g><circle cx="262" cy="98" r="14" fill="var(--accent)"/><text x="262" y="103" fill="var(--accent-ink)">3</text></g>
-          <g><circle cx="372" cy="186" r="14" fill="var(--accent)"/><text x="372" y="191" fill="var(--accent-ink)">4</text></g>
+          <g><circle cx="215" cy="110" r="14" fill="var(--accent)"/><text x="215" y="115" fill="var(--accent-ink)">2</text></g>
+          <g><circle cx="279" cy="172" r="14" fill="var(--accent)"/><text x="279" y="177" fill="var(--accent-ink)">3</text></g>
+          <g><circle cx="376" cy="186" r="14" fill="var(--accent)"/><text x="376" y="191" fill="var(--accent-ink)">4</text></g>
           <g><circle cx="472" cy="242" r="14" fill="var(--accent)"/><text x="472" y="247" fill="var(--accent-ink)">5</text></g>
-          <g><circle cx="568" cy="128" r="14" fill="var(--accent)"/><text x="568" y="133" fill="var(--accent-ink)">6</text></g>
+          <g><circle cx="597" cy="140" r="14" fill="var(--accent)"/><text x="597" y="145" fill="var(--accent-ink)">6</text></g>
           <g><circle cx="230" cy="330" r="14" fill="var(--accent)"/><text x="230" y="335" fill="var(--accent-ink)">7</text></g>
-          <g><circle cx="556" cy="196" r="14" fill="var(--accent)"/><text x="556" y="201" fill="var(--accent-ink)">8</text></g>
+          <g><circle cx="548" cy="204" r="14" fill="var(--accent)"/><text x="548" y="209" fill="var(--accent-ink)">8</text></g>
           <g><circle cx="576" cy="384" r="14" fill="var(--accent)"/><text x="576" y="389" fill="var(--accent-ink)">9</text></g>
-          <g><circle cx="132" cy="169" r="14" fill="var(--accent)"/><text x="132" y="174" fill="var(--accent-ink)">10</text></g>
+          <g><circle cx="297" cy="56" r="14" fill="var(--accent)"/><text x="297" y="61" fill="var(--accent-ink)">10</text></g>
           <g><circle cx="52" cy="138" r="14" fill="var(--accent)"/><text x="52" y="143" fill="var(--accent-ink)">11</text></g>
-          <g><circle cx="302" cy="150" r="14" fill="var(--accent)"/><text x="302" y="155" fill="var(--accent-ink)">14</text></g>
           <g><circle cx="186" cy="370" r="14" fill="var(--accent)"/><text x="186" y="375" fill="var(--accent-ink)">12</text></g>
           <g><circle cx="492" cy="310" r="14" fill="var(--accent)"/><text x="492" y="315" fill="var(--accent-ink)">13</text></g>
+          <g><circle cx="318" cy="172" r="14" fill="var(--accent)"/><text x="318" y="177" fill="var(--accent-ink)">14</text></g>
         </g>
       </svg>
     </div>
@@ -1379,14 +1376,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><b>3</b> <span data-i18n="mpn.3">Detský domček</span></li>
         <li><b>4</b> <span data-i18n="mpn.4">Kaďa so svetielkami</span></li>
         <li><b>5</b> <span data-i18n="mpn.5">Šmykľavka</span></li>
-        <li><b>6</b> <span data-i18n="mpn.6">Ohnisko na svahu</span></li>
+        <li><b>6</b> <span data-i18n="mpn.6">Ohnisko na rovinke nad svahom</span></li>
         <li><b>7</b> <span data-i18n="mpn.7">Rovná tráva na hry a bedminton</span></li>
         <li><b>8</b> <span data-i18n="mpn.8">Svah so stromami</span></li>
-        <li><b>9</b> <span data-i18n="mpn.9">Drevárňa s pripraveným drevom</span></li>
+        <li><b>9</b> <span data-i18n="mpn.9">Dielňa (pre hostí neprístupná)</span></li>
         <li><b>10</b> <span data-i18n="mpn.10">Pieskovisko</span></li>
         <li><b>11</b> <span data-i18n="mpn.11">Tehlový chodník pri dome s drevenou lavičkou</span></li>
         <li><b>12</b> <span data-i18n="mpn.12">Kvety pri susedovom plote</span></li>
-        <li><b>13</b> <span data-i18n="mpn.13">Lavička pod drevárňou</span></li>
+        <li><b>13</b> <span data-i18n="mpn.13">Lavička pod dielňou</span></li>
         <li><b>14</b> <span data-i18n="mpn.14">Ohnisko s kotlíkom pri domčeku</span></li>
       </ol>
     </div>
@@ -2049,12 +2046,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.3": "Gyerek játszóházikó",
       "mpn.4": "Dézsa fényfüzérrel",
       "mpn.5": "Csúszda",
-      "mpn.6": "Tűzrakóhely a lejtőn",
+      "mpn.6": "Tűzrakóhely a lejtő feletti sík részen",
       "mpn.7": "Sík füves rész játékhoz és tollaslabdához",
       "mpn.8": "Lejtő fákkal",
       "mpn.lawn": "Sík fű",
       "mpn.slope": "Lejtő",
-      "mpn.9": "Fatároló előkészített tűzifával",
+      "mpn.9": "Műhely (vendégek számára nem látogatható)",
       "more.9": "Mecenzéf: csillagvizsgáló és hámor",
       "more.10": "Síelés: Stósz – Šikmá stráň",
       "walk.h": "A háztól egyenesen kirándulni, autó nélkül",
@@ -2075,7 +2072,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.10": "Homokozó",
       "mpn.11": "Téglajárda a ház mellett fapaddal",
       "mpn.12": "Virágok a szomszéd kerítésénél",
-      "mpn.13": "Pad a fatároló alatt",
+      "mpn.13": "Pad a műhelynél",
       "mpn.14": "Tűzrakóhely bográccsal a házikónál"
     },
     en: {
@@ -2320,12 +2317,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.3": "Children’s playhouse",
       "mpn.4": "Hot tub with string lights",
       "mpn.5": "Slide",
-      "mpn.6": "Fire pit on the slope",
+      "mpn.6": "Fire pit on the flat ground above the slope",
       "mpn.7": "Flat lawn for games and badminton",
       "mpn.8": "Slope with trees",
       "mpn.lawn": "Flat lawn",
       "mpn.slope": "Slope",
-      "mpn.9": "Woodshed with firewood ready",
+      "mpn.9": "Workshop (not open to guests)",
       "more.9": "Medzev: observatory and hammer mill",
       "more.10": "Skiing at Štós – Šikmá stráň",
       "walk.h": "Straight from the door, no car needed",
@@ -2346,7 +2343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.10": "Sandpit",
       "mpn.11": "Brick path by the house with a wooden bench",
       "mpn.12": "Flowers along the neighbour’s fence",
-      "mpn.13": "Bench by the woodshed",
+      "mpn.13": "Bench by the workshop",
       "mpn.14": "Fire pit with a cauldron by the playhouse"
     },
     de: {
@@ -2591,12 +2588,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.3": "Kinderspielhaus",
       "mpn.4": "Badezuber mit Lichterkette",
       "mpn.5": "Rutsche",
-      "mpn.6": "Feuerstelle am Hang",
+      "mpn.6": "Feuerstelle auf der Ebene oberhalb des Hangs",
       "mpn.7": "Ebene Wiese für Spiele und Federball",
       "mpn.8": "Hang mit Bäumen",
       "mpn.lawn": "Wiese",
       "mpn.slope": "Hang",
-      "mpn.9": "Holzschuppen mit Brennholz",
+      "mpn.9": "Werkstatt (für Gäste nicht zugänglich)",
       "more.9": "Medzev: Sternwarte und Hammerwerk",
       "more.10": "Skifahren in Štós – Šikmá stráň",
       "walk.h": "Direkt ab Haustür, ganz ohne Auto",
@@ -2617,7 +2614,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.10": "Sandkasten",
       "mpn.11": "Ziegelweg am Haus mit Holzbank",
       "mpn.12": "Blumen am Nachbarzaun",
-      "mpn.13": "Bank am Holzschuppen",
+      "mpn.13": "Bank an der Werkstatt",
       "mpn.14": "Feuerstelle mit Kessel am Spielhaus"
     },
     pl: {
@@ -2862,12 +2859,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.3": "Domek dla dzieci",
       "mpn.4": "Balia z lampkami",
       "mpn.5": "Zjeżdżalnia",
-      "mpn.6": "Palenisko na zboczu",
+      "mpn.6": "Palenisko na płaskim terenie nad zboczem",
       "mpn.7": "Płaski trawnik do zabaw i badmintona",
       "mpn.8": "Zbocze z drzewami",
       "mpn.lawn": "Trawnik",
       "mpn.slope": "Zbocze",
-      "mpn.9": "Drewutnia z przygotowanym drewnem",
+      "mpn.9": "Warsztat (niedostępny dla gości)",
       "more.9": "Medzev: obserwatorium i kuźnia",
       "more.10": "Narty: Štós – Šikmá stráň",
       "walk.h": "Prosto z domu na wycieczkę, bez samochodu",
@@ -2888,7 +2885,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.10": "Piaskownica",
       "mpn.11": "Ceglany chodnik przy domu z drewnianą ławką",
       "mpn.12": "Kwiaty przy płocie sąsiada",
-      "mpn.13": "Ławka pod drewutnią",
+      "mpn.13": "Ławka pod warsztatem",
       "mpn.14": "Palenisko z kociołkiem przy domku"
     },
     uk: {
@@ -3133,12 +3130,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.3": "Дитячий будиночок",
       "mpn.4": "Купель з гірляндою",
       "mpn.5": "Гірка",
-      "mpn.6": "Вогнище на схилі",
+      "mpn.6": "Вогнище на рівній ділянці над схилом",
       "mpn.7": "Рівна галявина для ігор і бадмінтону",
       "mpn.8": "Схил з деревами",
       "mpn.lawn": "Галявина",
       "mpn.slope": "Схил",
-      "mpn.9": "Дровітня з підготовленими дровами",
+      "mpn.9": "Майстерня (недоступна для гостей)",
       "more.9": "Медзев: обсерваторія і кузня",
       "more.10": "Лижі: Штос – Шікма странь",
       "walk.h": "З дому одразу на прогулянку, без авто",
@@ -3159,7 +3156,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "mpn.10": "Пісочниця",
       "mpn.11": "Цегляна доріжка біля будинку з дерев’яною лавкою",
       "mpn.12": "Квіти біля сусідського паркану",
-      "mpn.13": "Лавка біля дровітні",
+      "mpn.13": "Лавка біля майстерні",
       "mpn.14": "Вогнище з казанком біля будиночка"
     }
   }/*__END__*/;
