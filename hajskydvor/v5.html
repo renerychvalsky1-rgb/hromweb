@@ -633,6 +633,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .walk-list small { display: block; color: var(--muted); font-size: .9rem; line-height: 1.4; }
   .tip .walk-badge { position: absolute; top: 14%; right: 8%; background: var(--accent); color: var(--accent-ink); font-size: .78rem; font-weight: 700; border-radius: 999px; padding: .05rem .65rem; }
   @media (max-width: 900px) { .walk { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding: 1rem; } }
+
+  /* mapka areálu na výšku (pohľad zhora ako na náčrte) */
+  .areal-map.areal-tall { width: 100%; max-width: 470px; margin-inline: auto; justify-self: center; }
   /* ===== Vlajky jazykov ===== */
   .flag { display: inline-block; flex: none; width: 20px; height: 14px; border-radius: 3px; background: center / cover no-repeat; box-shadow: 0 0 0 1px rgba(0, 0, 0, .14); vertical-align: -2px; }
   .fl-sk { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%230B4EA2%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23EE1C25%27%2F%3E%3Cpath%20d%3D%27M7.4%203.6h7.4v6.6c0%203.3-2.3%205.2-3.7%206c-1.4-.8-3.7-2.7-3.7-6z%27%20fill%3D%27%23EE1C25%27%20stroke%3D%27%23fff%27%20stroke-width%3D%27.8%27%2F%3E%3Cpath%20d%3D%27M10.7%205h.8v7.4h-.8zM9.2%206.5h3.8v.8H9.2zM8.7%208.4h4.8v.8H8.7z%27%20fill%3D%27%23fff%27%2F%3E%3Cpath%20d%3D%27M8.1%2012.2c.9-1%201.9-1%202.5%200c.6-1%201.6-1%202.5%200c-.4%201.6-1.5%202.6-2.5%203.2c-1-.6-2.1-1.6-2.5-3.2z%27%20fill%3D%27%230B4EA2%27%2F%3E%3C%2Fsvg%3E"); }
@@ -1268,101 +1271,98 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- ============ AREÁL ============ -->
 <section id="areal">
   <div class="wrap map-grid">
-    <div class="areal-map">
+    <div class="areal-map areal-tall">
       <!-- Orientačná mapka — prekreslíme podľa Denisinho náčrtu -->
-      <svg viewBox="0 0 640 440" role="img" aria-label="Mapka areálu Hájsky dvor">
-        <!-- Podľa náčrtu Denisy a spresnení (otočené o 90°): dom a altánok zarovno hore vľavo, svah klesá k domu, nad ním rovinka s ohniskom, pod ňou dielňa -->
-        <rect width="640" height="440" rx="16" fill="#F4EAD3"/>
-        <rect x="20" y="20" width="600" height="400" rx="18" fill="#DDE0B6"/>
-        <!-- svah klesá smerom k domu (doľava) -->
-        <path d="M520 20 H574 C570 30 578 44 576 60 C566 110 580 170 574 232 H526 C540 180 514 120 526 70 C530 46 518 32 520 20Z" fill="#C9D29A"/>
-        <g fill="none" stroke="#9DAA6B" stroke-width="2" stroke-linecap="round" opacity=".85">
-          <path d="M566 34 L548 40 M570 62 L550 68 M566 92 L546 98 M568 122 L548 128 M572 152 L552 158 M570 182 L550 188 M570 212 L552 218"/>
-        </g>
-        <text x="540" y="128" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="700" fill="#5E6B34" transform="rotate(-90 540 128)" data-i18n="mpn.slope">Svah</text>
-        <!-- rovinka s ohniskom nad svahom -->
-        <path d="M574 20 H602 Q620 20 620 38 V232 H574 C580 170 566 110 576 60 C578 44 570 30 574 20Z" fill="#E4E6C2"/>
+      <svg viewBox="0 0 460 660" role="img" aria-label="Mapka areálu Hájsky dvor">
+        <!-- Pohľad zhora podľa náčrtov Denisy: dole dom s chodníkom a altánkom, nad nimi domček, ohnisko, pieskovisko a kaďa, hore svah, rovinka s ohniskom a dielňa -->
+        <rect width="460" height="660" rx="16" fill="#F4EAD3"/>
+        <rect x="20" y="20" width="420" height="620" rx="18" fill="#DDE0B6"/>
+        <!-- rovinka s ohniskom -->
+        <path d="M20 38 Q20 20 38 20 H262 V92 C200 98 120 92 20 100Z" fill="#E4E6C2"/>
+        <!-- svah klesá smerom k domu -->
+        <path d="M20 100 C120 92 200 98 262 92 V150 C250 166 228 180 214 186 C160 192 80 182 20 190Z" fill="#C9D29A"/>
+        <path d="M40 108 L44 124 M80 108 L84 124 M120 108 L124 124 M160 108 L164 124 M200 108 L204 124 M60 138 L64 154 M100 138 L104 154 M140 138 L144 154 M180 138 L184 154" fill="none" stroke="#9DAA6B" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+        <text x="120" y="178" text-anchor="middle" font-family="Nunito" font-size="13" font-weight="700" fill="#5E6B34" data-i18n="mpn.slope">Svah</text>
         <!-- rovná tráva -->
-        <path d="M118 420 L124 262 C126 210 150 170 176 172 C206 176 222 232 252 260 C284 290 318 300 340 270 C360 242 392 230 410 258 C428 292 436 360 448 420 Z" fill="#E9ECC9"/>
-        <text x="300" y="372" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="700" fill="#7D8B4A" data-i18n="mpn.lawn">Rovná tráva</text>
-        <!-- stromy a kríky -->
-        <g fill="#7D8B4A"><circle cx="466" cy="56" r="16"/><circle cx="492" cy="44" r="12"/><circle cx="482" cy="108" r="15"/><circle cx="506" cy="134" r="11"/><circle cx="494" cy="364" r="22"/></g>
-        <g fill="#93A15E"><circle cx="474" cy="80" r="10"/><circle cx="508" cy="98" r="9"/><circle cx="480" cy="348" r="12"/></g>
-        <!-- dom -->
-        <rect x="24" y="24" width="138" height="68" rx="8" fill="#FFFCF6" stroke="#6B5338" stroke-width="3"/>
-        <path d="M24 30 H162" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
-        <text x="74" y="66" text-anchor="middle" font-family="Bitter" font-size="20" font-weight="600" fill="#3B301E" data-i18n="mp.house">Dom</text>
-        <!-- tehlový chodník pri dome s drevenou lavičkou -->
-        <rect x="24" y="96" width="138" height="20" rx="3" fill="#D29C7C" stroke="#A9694B" stroke-width="1.5"/>
-        <path d="M24 106 H162 M38 96 V106 M58 96 V106 M78 96 V106 M98 96 V106 M118 96 V106 M138 96 V106 M48 106 V116 M68 106 V116 M88 106 V116 M108 106 V116 M128 106 V116 M148 106 V116" fill="none" stroke="#A9694B" stroke-width="1"/>
-        <rect x="56" y="99" width="46" height="9" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
-        <path d="M60 108 V113 M98 108 V113" stroke="#6B5338" stroke-width="2" stroke-linecap="round"/>
-        <!-- altánok zarovno s domom: stôl s 10 stoličkami, gril, závesné hojdacie kreslo a detská hojdačka -->
-        <rect x="166" y="24" width="98" height="68" rx="6" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
-        <path d="M166 30 H264" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
-        <rect x="176" y="49" width="52" height="15" rx="3" fill="#C9A06A" stroke="#8C6A43" stroke-width="1.5"/>
-        <g fill="#B07A43"><circle cx="182" cy="42" r="3.6"/><circle cx="192" cy="42" r="3.6"/><circle cx="202" cy="42" r="3.6"/><circle cx="212" cy="42" r="3.6"/><circle cx="222" cy="42" r="3.6"/>
-          <circle cx="182" cy="71" r="3.6"/><circle cx="192" cy="71" r="3.6"/><circle cx="202" cy="71" r="3.6"/><circle cx="212" cy="71" r="3.6"/><circle cx="222" cy="71" r="3.6"/></g>
-        <rect x="238" y="38" width="18" height="12" rx="2" fill="#4A4038" stroke="#2E2822" stroke-width="1.5"/>
-        <circle cx="247" cy="62" r="6" fill="#F4EDE0" stroke="#8C7A62" stroke-width="1.5"/>
-        <path d="M236 74 H258 M240 74 V84 M254 74 V84" stroke="#8C7A62" stroke-width="1.5"/>
-        <rect x="237" y="83" width="20" height="5" rx="2" fill="#D98B5F" stroke="#9E5A37" stroke-width="1.2"/>
-        <!-- pieskovisko napravo od altánku -->
-        <rect x="272" y="30" width="50" height="52" rx="6" fill="#EBD9A8" stroke="#A07A4E" stroke-width="4"/>
-        <g fill="#D8C08A"><circle cx="284" cy="42" r="3"/><circle cx="312" cy="72" r="3"/><circle cx="286" cy="72" r="2.5"/></g>
-        <!-- detský domček a vedľa neho malé ohnisko s kotlíkom -->
-        <path d="M264 128 L279 112 L294 128 V150 H264Z" fill="#F1E4CB" stroke="#8C6A43" stroke-width="2" stroke-linejoin="round"/>
-        <circle cx="314" cy="132" r="12" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
-        <circle cx="314" cy="132" r="6.5" fill="#3E3730"/>
-        <path d="M314 132 L302 119 M314 132 L326 119 M314 132 V147" stroke="#5E4A33" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- kaďa so svetielkami -->
-        <rect x="334" y="40" width="88" height="128" rx="8" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
-        <circle cx="376" cy="104" r="36" fill="#C9A86E" stroke="#6B5338" stroke-width="3"/>
-        <circle cx="376" cy="104" r="26" fill="#9CC3C9"/>
-        <path d="M426 44 C430 80 422 130 426 164" fill="none" stroke="#8C7A62" stroke-width="1.2"/>
-        <g fill="#E8C774"><circle cx="427" cy="52" r="3.4"/><circle cx="425" cy="72" r="3.4"/><circle cx="426" cy="92" r="3.4"/><circle cx="425" cy="112" r="3.4"/><circle cx="426" cy="132" r="3.4"/><circle cx="426" cy="152" r="3.4"/></g>
-        <!-- šmykľavka -->
-        <rect x="437" y="198" width="70" height="20" rx="9" fill="#D98B5F" stroke="#9E5A37" stroke-width="2"/>
-        <rect x="490" y="236" width="28" height="40" rx="3" fill="#E6D5B5" stroke="#8C6A43" stroke-width="2"/>
-        <path d="M503 218 L504 236" stroke="#8C6A43" stroke-width="2"/>
-        <!-- lavička pod dielňou -->
-        <rect x="510" y="290" width="10" height="40" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
-        <path d="M520 294 H525 M520 326 H525" stroke="#6B5338" stroke-width="2" stroke-linecap="round"/>
-        <!-- ohnisko na rovinke -->
-        <circle cx="597" cy="92" r="16" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
-        <circle cx="597" cy="92" r="8" fill="#E8A33A"/>
-        <g fill="#A89A80"><circle cx="580" cy="72" r="3.5"/><circle cx="614" cy="72" r="3.5"/><circle cx="580" cy="112" r="3.5"/><circle cx="614" cy="112" r="3.5"/></g>
+        <path d="M440 226 C380 222 300 236 268 270 C246 296 300 330 318 372 C334 420 280 466 240 512 C210 548 214 590 262 598 V640 H422 Q440 640 440 622Z" fill="#E9ECC9"/>
+        <text x="372" y="334" text-anchor="middle" font-family="Nunito" font-size="14" font-weight="700" fill="#7D8B4A" data-i18n="mpn.lawn">Rovná tráva</text>
+        <!-- ohnisko na rovinke, kríky -->
+        <g fill="#93A15E"><circle cx="46" cy="40" r="9"/><circle cx="58" cy="74" r="8"/><circle cx="176" cy="34" r="7"/><circle cx="44" cy="124" r="8"/></g>
+        <g fill="#7D8B4A"><circle cx="34" cy="152" r="12"/><circle cx="62" cy="176" r="10"/></g>
+        <circle cx="110" cy="56" r="18" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
+        <circle cx="110" cy="56" r="9" fill="#E8A33A"/>
+        <g fill="#A89A80"><circle cx="88" cy="36" r="3.5"/><circle cx="132" cy="36" r="3.5"/><circle cx="88" cy="76" r="3.5"/><circle cx="132" cy="76" r="3.5"/></g>
         <!-- dielňa (pre hostí neprístupná) -->
-        <path d="M531 233 H619 V402 Q619 419 602 419 H531Z" fill="#E2DACB"/>
-        <path d="M528 232 H620 M530 232 V420" fill="none" stroke="#8C6A43" stroke-width="3" stroke-linecap="round"/>
-        <rect x="546" y="260" width="60" height="92" rx="4" fill="#CDBFA6" stroke="#6B5338" stroke-width="2"/>
-        <path d="M542 262 H610" stroke="#8C7A62" stroke-width="5" stroke-linecap="round"/>
-        <rect x="554" y="278" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
-        <rect x="584" y="278" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
-        <rect x="566" y="316" width="20" height="36" rx="1.5" fill="#8C6A43" stroke="#6B5338" stroke-width="1.2"/>
-        <circle cx="576" cy="304" r="7" fill="#C0533A"/>
-        <path d="M572 304 H580" stroke="#FFFCF6" stroke-width="2" stroke-linecap="round"/>
+        <path d="M263 21 H422 Q439 21 439 38 V103 H263Z" fill="#E2DACB"/>
+        <path d="M262 20 V104 H440" fill="none" stroke="#8C6A43" stroke-width="3" stroke-linecap="round"/>
+        <rect x="290" y="34" width="100" height="56" rx="4" fill="#CDBFA6" stroke="#6B5338" stroke-width="2"/>
+        <path d="M286 36 H394" stroke="#8C7A62" stroke-width="5" stroke-linecap="round"/>
+        <rect x="302" y="48" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
+        <rect x="364" y="48" width="14" height="12" rx="1.5" fill="#EFE8DA" stroke="#6B5338" stroke-width="1.2"/>
+        <rect x="330" y="62" width="20" height="28" rx="1.5" fill="#8C6A43" stroke="#6B5338" stroke-width="1.2"/>
+        <circle cx="340" cy="52" r="6" fill="#C0533A"/>
+        <path d="M336.5 52 H343.5" stroke="#FFFCF6" stroke-width="2" stroke-linecap="round"/>
+        <!-- lavička pod dielňou a strom -->
+        <rect x="300" y="112" width="42" height="9" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
+        <path d="M304 121 V126 M338 121 V126" stroke="#6B5338" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="394" cy="152" r="26" fill="#7D8B4A"/><circle cx="372" cy="138" r="13" fill="#93A15E"/>
+        <!-- šmykľavka -->
+        <rect x="226" y="118" width="22" height="110" rx="10" fill="#D98B5F" stroke="#9E5A37" stroke-width="2"/>
+        <rect x="262" y="110" width="30" height="32" rx="3" fill="#E6D5B5" stroke="#8C6A43" stroke-width="2"/>
+        <path d="M248 126 H262" stroke="#8C6A43" stroke-width="2"/>
+        <!-- kaďa so svetielkami -->
+        <rect x="48" y="206" width="160" height="96" rx="8" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
+        <circle cx="128" cy="254" r="40" fill="#C9A86E" stroke="#6B5338" stroke-width="3"/>
+        <circle cx="128" cy="254" r="29" fill="#9CC3C9"/>
+        <path d="M52 200 C90 196 160 204 204 200" fill="none" stroke="#8C7A62" stroke-width="1.2"/>
+        <g fill="#E8C774"><circle cx="60" cy="200" r="3.4"/><circle cx="84" cy="200" r="3.4"/><circle cx="108" cy="200" r="3.4"/><circle cx="132" cy="200" r="3.4"/><circle cx="156" cy="200" r="3.4"/><circle cx="180" cy="200" r="3.4"/><circle cx="204" cy="200" r="3.4"/></g>
+        <!-- detský domček, malé ohnisko s kotlíkom, strom -->
+        <path d="M28 340 L49 318 L70 340 V364 H28Z" fill="#F1E4CB" stroke="#8C6A43" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="106" cy="344" r="13" fill="#B9A57F" stroke="#6B5338" stroke-width="2"/>
+        <circle cx="106" cy="344" r="7" fill="#3E3730"/>
+        <path d="M106 344 L93 330 M106 344 L119 330 M106 344 V360" stroke="#5E4A33" stroke-width="1.5" stroke-linecap="round"/>
+        <circle cx="170" cy="334" r="20" fill="#7D8B4A"/><circle cx="158" cy="322" r="10" fill="#93A15E"/>
+        <!-- pieskovisko napravo nad altánkom -->
+        <rect x="130" y="364" width="66" height="44" rx="6" fill="#EBD9A8" stroke="#A07A4E" stroke-width="4"/>
+        <!-- altánok zarovno s domom: stôl s 10 stoličkami, gril, závesné kreslo, detská hojdačka -->
+        <rect x="24" y="414" width="154" height="54" rx="6" fill="#E3C9A0" stroke="#8C6A43" stroke-width="2"/>
+        <path d="M24 418 H178" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
+        <rect x="38" y="434" width="72" height="16" rx="3" fill="#C9A06A" stroke="#8C6A43" stroke-width="1.5"/>
+        <g fill="#B07A43"><circle cx="45" cy="428" r="3.4"/><circle cx="59" cy="428" r="3.4"/><circle cx="73" cy="428" r="3.4"/><circle cx="87" cy="428" r="3.4"/><circle cx="101" cy="428" r="3.4"/><circle cx="45" cy="456" r="3.4"/><circle cx="59" cy="456" r="3.4"/><circle cx="73" cy="456" r="3.4"/><circle cx="87" cy="456" r="3.4"/><circle cx="101" cy="456" r="3.4"/></g>
+        <rect x="118" y="426" width="18" height="12" rx="2" fill="#4A4038" stroke="#2E2822" stroke-width="1.5"/>
+        <circle cx="127" cy="454" r="6" fill="#F4EDE0" stroke="#8C7A62" stroke-width="1.5"/>
+        <path d="M146 428 H172" stroke="#6B5338" stroke-width="3" stroke-linecap="round"/>
+        <path d="M150 428 V442 M168 428 V442" stroke="#8C7A62" stroke-width="1.5"/>
+        <rect x="146" y="441" width="26" height="6" rx="2" fill="#D98B5F" stroke="#9E5A37" stroke-width="1.2"/>
+        <!-- dom -->
+        <rect x="24" y="472" width="112" height="164" rx="8" fill="#FFFCF6" stroke="#6B5338" stroke-width="3"/>
+        <path d="M30 478 H130" stroke="#B5643A" stroke-width="5" stroke-linecap="round"/>
+        <text x="80" y="548" text-anchor="middle" font-family="Bitter" font-size="20" font-weight="600" fill="#3B301E" data-i18n="mp.house">Dom</text>
+        <!-- tehlový chodník vedľa domu s drevenou lavičkou -->
+        <rect x="140" y="472" width="38" height="164" rx="3" fill="#D29C7C" stroke="#A9694B" stroke-width="1.5"/>
+        <path d="M159 472 V636 M140 486 H159 M159 500 H178 M140 514 H159 M159 528 H178 M140 542 H159 M159 556 H178 M140 570 H159 M159 584 H178 M140 598 H159 M159 612 H178 M140 626 H159 " fill="none" stroke="#A9694B" stroke-width="1"/>
+        <rect x="148" y="526" width="14" height="50" rx="2" fill="#A07A4E" stroke="#6B5338" stroke-width="1.5"/>
         <!-- kvety pri susedovom plote -->
-        <g fill="#93A15E"><circle cx="134" cy="406" r="7"/><circle cx="158" cy="404" r="7"/><circle cx="182" cy="406" r="7"/><circle cx="206" cy="404" r="7"/><circle cx="230" cy="406" r="7"/><circle cx="252" cy="405" r="6"/></g>
-        <g><circle cx="126" cy="398" r="5.5" fill="#D98BA0"/><circle cx="146" cy="395" r="5.5" fill="#E8C774"/><circle cx="166" cy="398" r="5.5" fill="#B79BD3"/><circle cx="188" cy="395" r="5.5" fill="#D98BA0"/><circle cx="210" cy="398" r="5.5" fill="#E8C774"/><circle cx="230" cy="395" r="5.5" fill="#B79BD3"/><circle cx="250" cy="398" r="5.5" fill="#D98BA0"/></g>
+        <g fill="#93A15E"><circle cx="430" cy="482" r="7"/><circle cx="430" cy="504" r="7"/><circle cx="430" cy="526" r="7"/><circle cx="430" cy="548" r="7"/><circle cx="430" cy="570" r="7"/><circle cx="430" cy="592" r="7"/></g>
+        <g><circle cx="432" cy="476" r="5.5" fill="#D98BA0"/><circle cx="422" cy="496" r="5.5" fill="#E8C774"/><circle cx="432" cy="516" r="5.5" fill="#B79BD3"/><circle cx="422" cy="536" r="5.5" fill="#D98BA0"/><circle cx="432" cy="556" r="5.5" fill="#E8C774"/><circle cx="422" cy="576" r="5.5" fill="#B79BD3"/><circle cx="432" cy="596" r="5.5" fill="#D98BA0"/></g>
         <!-- plot -->
-        <rect x="20" y="20" width="600" height="400" rx="18" fill="none" stroke="#B08A5A" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round"/>
+        <rect x="20" y="20" width="420" height="620" rx="18" fill="none" stroke="#B08A5A" stroke-width="5" stroke-dasharray="2 9" stroke-linecap="round"/>
         <!-- čísla podľa legendy -->
         <g font-family="Nunito" font-size="14" font-weight="600" text-anchor="middle">
-          <g><circle cx="134" cy="58" r="14" fill="var(--accent)"/><text x="134" y="63" fill="var(--accent-ink)">1</text></g>
-          <g><circle cx="215" cy="110" r="14" fill="var(--accent)"/><text x="215" y="115" fill="var(--accent-ink)">2</text></g>
-          <g><circle cx="279" cy="172" r="14" fill="var(--accent)"/><text x="279" y="177" fill="var(--accent-ink)">3</text></g>
-          <g><circle cx="376" cy="186" r="14" fill="var(--accent)"/><text x="376" y="191" fill="var(--accent-ink)">4</text></g>
-          <g><circle cx="472" cy="242" r="14" fill="var(--accent)"/><text x="472" y="247" fill="var(--accent-ink)">5</text></g>
-          <g><circle cx="597" cy="140" r="14" fill="var(--accent)"/><text x="597" y="145" fill="var(--accent-ink)">6</text></g>
-          <g><circle cx="230" cy="330" r="14" fill="var(--accent)"/><text x="230" y="335" fill="var(--accent-ink)">7</text></g>
-          <g><circle cx="548" cy="204" r="14" fill="var(--accent)"/><text x="548" y="209" fill="var(--accent-ink)">8</text></g>
-          <g><circle cx="576" cy="384" r="14" fill="var(--accent)"/><text x="576" y="389" fill="var(--accent-ink)">9</text></g>
-          <g><circle cx="297" cy="56" r="14" fill="var(--accent)"/><text x="297" y="61" fill="var(--accent-ink)">10</text></g>
-          <g><circle cx="52" cy="138" r="14" fill="var(--accent)"/><text x="52" y="143" fill="var(--accent-ink)">11</text></g>
-          <g><circle cx="186" cy="370" r="14" fill="var(--accent)"/><text x="186" y="375" fill="var(--accent-ink)">12</text></g>
-          <g><circle cx="492" cy="310" r="14" fill="var(--accent)"/><text x="492" y="315" fill="var(--accent-ink)">13</text></g>
-          <g><circle cx="318" cy="172" r="14" fill="var(--accent)"/><text x="318" y="177" fill="var(--accent-ink)">14</text></g>
+          <g><circle cx="80" cy="592" r="14" fill="var(--accent)"/><text x="80" y="597" fill="var(--accent-ink)">1</text></g>
+          <g><circle cx="202" cy="441" r="14" fill="var(--accent)"/><text x="202" y="446" fill="var(--accent-ink)">2</text></g>
+          <g><circle cx="49" cy="388" r="14" fill="var(--accent)"/><text x="49" y="393" fill="var(--accent-ink)">3</text></g>
+          <g><circle cx="192" cy="286" r="14" fill="var(--accent)"/><text x="192" y="291" fill="var(--accent-ink)">4</text></g>
+          <g><circle cx="237" cy="252" r="14" fill="var(--accent)"/><text x="237" y="257" fill="var(--accent-ink)">5</text></g>
+          <g><circle cx="162" cy="60" r="14" fill="var(--accent)"/><text x="162" y="65" fill="var(--accent-ink)">6</text></g>
+          <g><circle cx="372" cy="362" r="14" fill="var(--accent)"/><text x="372" y="367" fill="var(--accent-ink)">7</text></g>
+          <g><circle cx="196" cy="150" r="14" fill="var(--accent)"/><text x="196" y="155" fill="var(--accent-ink)">8</text></g>
+          <g><circle cx="418" cy="62" r="14" fill="var(--accent)"/><text x="418" y="67" fill="var(--accent-ink)">9</text></g>
+          <g><circle cx="163" cy="386" r="14" fill="var(--accent)"/><text x="163" y="391" fill="var(--accent-ink)">10</text></g>
+          <g><circle cx="159" cy="612" r="14" fill="var(--accent)"/><text x="159" y="617" fill="var(--accent-ink)">11</text></g>
+          <g><circle cx="400" cy="540" r="14" fill="var(--accent)"/><text x="400" y="545" fill="var(--accent-ink)">12</text></g>
+          <g><circle cx="322" cy="142" r="14" fill="var(--accent)"/><text x="322" y="147" fill="var(--accent-ink)">13</text></g>
+          <g><circle cx="106" cy="388" r="14" fill="var(--accent)"/><text x="106" y="393" fill="var(--accent-ink)">14</text></g>
         </g>
       </svg>
     </div>
