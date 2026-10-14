@@ -50,7 +50,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script>
   /* Téma: uložená voľba má prednosť, inak sa riadi systémom */
   document.documentElement.classList.add('js');
-  (function () { try { var th = localStorage.getItem('hd-theme'); if (th === 'dark' || th === 'light') document.documentElement.dataset.theme = th; } catch (e) {} })();
+  (function () { var th = null; try { th = localStorage.getItem('hd-theme'); } catch (e) {} document.documentElement.dataset.theme = th === 'dark' ? 'dark' : 'light'; })();
 </script>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
