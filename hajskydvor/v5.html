@@ -13,7 +13,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- NÁVRH 5: pred spustením na hajskydvor.sk odstrániť noindex -->
 <meta name="robots" content="noindex, nofollow">
 <title>Hájsky dvor — chalupa z roku 1857 pri Hájskych vodopádoch</title>
-<meta name="description" content="Dom z roku 1857 v obci Háj v Slovenskom krase, celý pre 11 hostí. Kaďa v cene, detský kútik, jedlá záhrada a krb. Kúsok od Hájskych vodopádov, cca 45 min od Košíc.">
+<meta name="description" content="Dom z roku 1857 v obci Háj v Slovenskom krase, celý pre 10 hostí a deti. Kaďa v cene, detský kútik, jedlá záhrada a krb. Kúsok od Hájskych vodopádov, cca 45 min od Košíc.">
 <meta property="og:title" content="Hájsky dvor — chalupa z roku 1857 v Slovenskom krase">
 <meta property="og:description" content="Chalupa z roku 1857 v Háji, okres Košice-okolie. Hlinené omietky, drevo, kachľová pec a kaďa pod holým nebom. Pre rodiny s deťmi, s jedlou záhradou plnou bylín a ovocia.">
 <meta property="og:type" content="website">
@@ -645,6 +645,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .tip .km { top: .7rem; left: .7rem; }
   .tip .walk-badge { top: .7rem; right: .7rem; }
   .hero-photo::before, .about-media::before, .zig-media::before { display: none; }
+
+  /* izby: veta o rozložení */
+  .rooms-layout { margin-top: 1.8rem; color: var(--ink-2); text-align: center; max-width: 62ch; margin-inline: auto; }
+  .rooms-layout + .rooms-note { margin-top: .6rem; }
   /* ===== Vlajky jazykov ===== */
   .flag { display: inline-block; flex: none; width: 20px; height: 14px; border-radius: 3px; background: center / cover no-repeat; box-shadow: 0 0 0 1px rgba(0, 0, 0, .14); vertical-align: -2px; }
   .fl-sk { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%230B4EA2%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23EE1C25%27%2F%3E%3Cpath%20d%3D%27M7.4%203.6h7.4v6.6c0%203.3-2.3%205.2-3.7%206c-1.4-.8-3.7-2.7-3.7-6z%27%20fill%3D%27%23EE1C25%27%20stroke%3D%27%23fff%27%20stroke-width%3D%27.8%27%2F%3E%3Cpath%20d%3D%27M10.7%205h.8v7.4h-.8zM9.2%206.5h3.8v.8H9.2zM8.7%208.4h4.8v.8H8.7z%27%20fill%3D%27%23fff%27%2F%3E%3Cpath%20d%3D%27M8.1%2012.2c.9-1%201.9-1%202.5%200c.6-1%201.6-1%202.5%200c-.4%201.6-1.5%202.6-2.5%203.2c-1-.6-2.1-1.6-2.5-3.2z%27%20fill%3D%27%230B4EA2%27%2F%3E%3C%2Fsvg%3E"); }
@@ -664,7 +668,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    "@id": "https://hajskydvor.sk/#lodging",
    "name": "Hájsky dvor",
    "url": "https://hajskydvor.sk/",
-   "description": "Chalupa z roku 1857 v obci Háj v Slovenskom krase, celá len pre vás: 11 lôžok v 4 spálňach. Kaďa v cene, detský kútik, jedlá záhrada, kachľová pec a terasa s grilom. 0,8 km od Hájskych vodopádov, 3,5 km od Turnianskeho hradu, cca 45 minút od Košíc.",
+   "description": "Chalupa z roku 1857 v obci Háj v Slovenskom krase, celá len pre vás: 10 lôžok, 2 detské postele a 2 detské postieľky v 4 izbách. Kaďa v cene, detský kútik, jedlá záhrada, kachľová pec a terasa s grilom. 0,8 km od Hájskych vodopádov, 3,5 km od Turnianskeho hradu, cca 45 minút od Košíc.",
    "telephone": "+421908864513",
    "image": [
     "https://hajskydvor.sk/og-image.jpg"
@@ -717,7 +721,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     },
     {
      "@type": "LocationFeatureSpecification",
-     "name": "Detská postieľka a vysoká stolička",
+     "name": "Detské postieľky (2) a vysoká stolička",
+     "value": true
+    },
+    {
+     "@type": "LocationFeatureSpecification",
+     "name": "Detské postele so zábranou v štýle Montessori (2)",
      "value": true
     },
     {
@@ -776,7 +785,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "name": "Hájsky dvor – celá chalupa",
     "occupancy": {
      "@type": "QuantitativeValue",
-     "maxValue": 11
+     "maxValue": 12
     },
     "numberOfBedrooms": 4,
     "numberOfBathroomsTotal": 1,
@@ -825,7 +834,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      "name": "Koľko ľudí sa u vás ubytuje a aké sú spálne?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Chalupa má 11 lôžok v štyroch spálňach: jednolôžková spálňa s lôžkom 90 × 200 a detským lôžkom 70 × 140 (pre dospelého s dieťaťom), dvojlôžková s manželskou posteľou a detskou postieľkou a dve štvorlôžkové s manželskou posteľou a samostatnými lôžkami."
+      "text": "Chalupa má 10 lôžok, 2 detské postele so zábranou v štýle Montessori (200 × 90 a 140 × 70) a 2 detské postieľky. Na prízemí je spálňa s manželskou posteľou a hneď vedľa detská izba, sú prechodné. V podkroví sú dve samostatné spálne, každá s manželskou posteľou a dvoma jednolôžkami."
      }
     },
     {
@@ -865,7 +874,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
      "name": "Čo tu nájdu deti?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Detský kútik s knižkami a hračkami, detské ihrisko s domčekom, pieskovisko, preliezku a hojdačku, v lete aj detský bazén. Pre najmenších je pripravená detská postieľka, vysoká stolička, prebaľovací pult aj nočník."
+      "text": "Detský kútik s knižkami a hračkami, detské ihrisko s domčekom, pieskovisko, preliezku a hojdačku, v lete aj detský bazén. Pre najmenších sú pripravené 2 detské postieľky a 2 postele so zábranou, vysoká stolička, prebaľovací pult aj nočník."
      }
     },
     {
@@ -1034,7 +1043,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-text">
         <span class="eyebrow"><svg><use href="#d-flower"/></svg><span data-i18n="hero.eyebrow">Háj · Slovenský kras · cca 45 min od Košíc</span></span>
         <h1 data-i18n="hero.h1"><span class="ln">Celá chalupa</span> <span class="ln">pre vašu rodinu,</span> <em class="ln">kúsok od vodopádov</em></h1>
-        <p class="lead" data-i18n="hero.lead">Dom z roku 1857, ktorý sme vlastnými rukami vrátili k životu. Celý pre 11 hostí, s detským kútikom, jedlou záhradou a oploteným dvorom. <strong>Kaďa je v cene pobytu.</strong></p>
+        <p class="lead" data-i18n="hero.lead">Dom z roku 1857, ktorý sme vlastnými rukami vrátili k životu. Celý pre 10 hostí a vaše deti, s detským kútikom, jedlou záhradou a oploteným dvorom. <strong>Kaďa je v cene pobytu.</strong></p>
       <div class="hero-ctas">
         <a href="#rezervacia" class="btn btn-accent"><svg><use href="#i-cal"/></svg><span data-i18n="hero.cta1">Overiť voľný termín</span></a>
         <a href="#o-nas" class="btn btn-line" data-i18n="hero.cta2">Pozrieť chalupu</a>
@@ -1054,7 +1063,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="strip">
   <div class="wrap">
     <div class="strip-card">
-      <div class="strip-item"><div class="ico"><svg><use href="#i-users"/></svg></div><div><strong data-i18n="f1t">11 lôžok</strong><span data-i18n="f1s">celá chalupa len pre vás</span></div></div>
+      <div class="strip-item"><div class="ico"><svg><use href="#i-users"/></svg></div><div><strong data-i18n="f1t">10 lôžok</strong><span data-i18n="f1s">+ 2 detské postele a 2 postieľky</span></div></div>
       <div class="strip-item"><div class="ico"><svg><use href="#i-tub"/></svg></div><div><strong data-i18n="bs.wt">Vonkajšia kaďa</strong><span data-i18n="f3s">v cene pobytu</span></div></div>
       <div class="strip-item"><div class="ico"><svg><use href="#i-cal"/></svg></div><div><strong data-i18n="bs.min">Min. 2 noci</strong><span data-i18n="bs.minS">celoročne</span></div></div>
       <div class="strip-book"><small data-i18n="bs.check">Overiť voľný termín na:</small><div class="strip-portals" id="stripPortals"></div></div>
@@ -1221,11 +1230,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 data-i18n="rm.h3">Rozloženie izieb</h2>
     </div>
     <div class="rooms">
-      <article class="room"><div class="ill photo"><span class="room-count">1×</span><img data-photo="room_single" alt="Izba s detskou posteľou"></div><div class="room-body"><h3 data-i18n="rm.1t">Jednolôžková izba</h3><span data-i18n="rm.1s">lôžko 90 × 200 a detské lôžko 70 × 140</span></div></article>
-      <article class="room"><div class="ill photo"><span class="room-count">1×</span><img data-photo="room_double" alt="Dvojlôžková izba"></div><div class="room-body"><h3 data-i18n="rm.2t">Dvojlôžková izba + detská postieľka</h3><span data-i18n="rm.2s">1 manželská posteľ</span></div></article>
-      <article class="room"><div class="ill photo"><span class="room-count">2×</span><img data-photo="attic1" alt="Podkrovná izba"></div><div class="room-body"><h3 data-i18n="rm.3t">Štvorlôžková izba</h3><span data-i18n="rm.3s">manželská posteľ + 2 jednolôžka</span></div></article>
+      <article class="room"><div class="ill photo"><span class="room-count">1×</span><img data-photo="room_double2" alt="Spálňa na prízemí s dverami do detskej izby"></div><div class="room-body"><h3 data-i18n="rm.1t">Spálňa na prízemí</h3><span data-i18n="rm.1s">manželská posteľ + detská postieľka</span></div></article>
+      <article class="room"><div class="ill photo"><span class="room-count">1×</span><img data-photo="kids_room" alt="Detská izba s posteľami Montessori"></div><div class="room-body"><h3 data-i18n="rm.2t">Detská izba</h3><span data-i18n="rm.2s">2 detské postele so zábranou v štýle Montessori, 200 × 90 a 140 × 70</span></div></article>
+      <article class="room"><div class="ill photo"><span class="room-count">2×</span><img data-photo="attic1" alt="Spálňa v podkroví"></div><div class="room-body"><h3 data-i18n="rm.3t">Spálňa v podkroví</h3><span data-i18n="rm.3s">manželská posteľ + 2 jednolôžka</span></div></article>
       <article class="room"><div class="ill photo"><span class="room-count">1×</span><img data-photo="bath" alt="Kúpeľňa" style="object-position:50% 55%"></div><div class="room-body"><h3 data-i18n="rm.4t">1 kúpeľňa + samostatná toaleta</h3><span data-i18n="rm.4s">vaňa, práčka a sušička, uteráky v cene</span></div></article>
     </div>
+    <p class="rooms-layout" data-i18n="rm.layout">Spálňa a detská izba na prízemí sú vedľa seba a sú prechodné, obe spálne v podkroví sú samostatné. Spolu 10 lôžok, 2 detské postele a 2 detské postieľky.</p>
     <p class="rooms-note" data-i18n="rm.note">Min. 2 noci. Zvieratá nie sú povolené. Bezplatné parkovisko pri dome. Ceny nájdete na portáloch.</p>
   </div>
 </section>
@@ -1650,12 +1660,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div>
       <details open><summary><span data-i18n="faq.q1">Pre koho je Hájsky dvor vhodný?</span></summary><p data-i18n="faq.a1">Pre rodiny s deťmi, páry, turistov aj partiu priateľov. Chalupu si prenajímate celú – vždy je v nej len jedna skupina hostí – a sme otvorení počas celého roka.</p></details>
-      <details><summary><span data-i18n="faq.q2">Koľko ľudí sa u vás ubytuje a aké sú spálne?</span></summary><p data-i18n="faq.a2">Chalupa má 11 lôžok v štyroch spálňach: jednolôžková spálňa s lôžkom 90 × 200 a detským lôžkom 70 × 140 (pre dospelého s dieťaťom), dvojlôžková s manželskou posteľou a detskou postieľkou a dve štvorlôžkové s manželskou posteľou a samostatnými lôžkami.</p></details>
+      <details><summary><span data-i18n="faq.q2">Koľko ľudí sa u vás ubytuje a aké sú spálne?</span></summary><p data-i18n="faq.a2">Chalupa má 10 lôžok, 2 detské postele so zábranou v štýle Montessori (200 × 90 a 140 × 70) a 2 detské postieľky. Na prízemí je spálňa s manželskou posteľou a hneď vedľa detská izba, sú prechodné. V podkroví sú dve samostatné spálne, každá s manželskou posteľou a dvoma jednolôžkami.</p></details>
       <details><summary><span data-i18n="faq.q3">Kedy je príchod a odchod?</span></summary><p data-i18n="faq.a3">Príchod je od 15:00 do 23:59, odchod od 7:00 do 10:00. Check-in je samoobslužný, takže v tomto čase prídete, kedy vám to vyhovuje. Skorší príchod alebo neskorší odchod je možný za poplatok 60 €. Počas pobytu v chalupe nebývame, máte ju celú pre seba.</p></details>
       <details><summary><span data-i18n="faq.q4">Je kaďa v cene?</span></summary><p data-i18n="faq.a4">Áno, vonkajšia kaďa je v cene pobytu.</p></details>
       <details><summary><span data-i18n="faq.q5">Čo je vybavené v kuchyni?</span></summary><p data-i18n="faq.a5">Plne vybavená kuchyňa má elektrickú rúru, keramickú varnú dosku, chladničku s mrazničkou, rýchlovarnú kanvicu a kávovar. Nechýba jedálenské posedenie pre celú partiu.</p></details>
       <details><summary><span data-i18n="faq.q6">Aká je kúpeľňa a je tu Wi-Fi?</span></summary><p data-i18n="faq.a6">Kúpeľňa má vaňu, umývadlo, práčku a sušičku, uteráky sú pripravené. Toaleta je samostatne. Wi-Fi funguje v celom dome.</p></details>
-      <details><summary><span data-i18n="faq.q7">Čo tu nájdu deti?</span></summary><p data-i18n="faq.a7">Detský kútik s knižkami a hračkami, detské ihrisko s domčekom, pieskovisko, preliezku a hojdačku, v lete aj detský bazén. Pre najmenších je pripravená detská postieľka, vysoká stolička, prebaľovací pult aj nočník.</p></details>
+      <details><summary><span data-i18n="faq.q7">Čo tu nájdu deti?</span></summary><p data-i18n="faq.a7">Detský kútik s knižkami a hračkami, detské ihrisko s domčekom, pieskovisko, preliezku a hojdačku, v lete aj detský bazén. Pre najmenších sú pripravené 2 detské postieľky a 2 postele so zábranou, vysoká stolička, prebaľovací pult aj nočník.</p></details>
       <details><summary><span data-i18n="faq.q8">Čo je vonku na dvore?</span></summary><p data-i18n="faq.a8">Zastrešená terasa s posedením na rannú kávu aj večernú grilovačku, záhradná hojdačka a priestor na bedminton. Gril, ohnisko aj kotlík na guláš sú vám k dispozícii a drevo máte pripravené. Uhlie alebo grilovacie brikety si, prosím, prineste so sebou.</p></details>
       <details><summary><span data-i18n="faq.q9">Je v chalupe teplo aj v zime?</span></summary><p data-i18n="faq.a9">Áno. Dom má podlahové kúrenie a v obývačke krb, pri ktorom sa dobre sedí aj v najchladnejšie večery.</p></details>
       <details><summary><span data-i18n="faq.q10">Dá sa pri dome parkovať?</span></summary><p data-i18n="faq.a10">Áno, bezplatne priamo pri dome. Autobusová zastávka je asi 100 m od chalupy, vlaková stanica 5,5 km.</p></details>
@@ -1814,7 +1824,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const I18N = /*__I18N__*/{
     hu: {
       "meta.title": "Hájsky dvor — 1857-ben épült vendégház az Áji-vízeséseknél",
-      "meta.desc": "1857-ben épült ház Ájon, a Szlovák-karsztban, egészben a tiétek, 11 főre. Dézsa az árban, gyereksarok, ehető kert és kandalló. Közel az Áji-vízesésekhez, kb. 45 perc Kassától.",
+      "meta.desc": "1857-ben épült ház Ájon, a Szlovák-karsztban, egészben a tiétek, 10 vendégnek és a gyerekeknek. Dézsa az árban, gyereksarok, ehető kert és kandalló. Közel az Áji-vízesésekhez, kb. 45 perc Kassától.",
       "nav.1": "Szállás",
       "nav.2": "Dézsa és kert",
       "nav.3": "Galéria",
@@ -1824,13 +1834,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "nav.cta": "Foglalás",
       "hero.eyebrow": "Áj · Szlovák-karszt · kb. 45 perc Kassától",
       "hero.h1": "<span class=\"ln\">Az egész ház</span> <span class=\"ln\">a családotoké,</span> <em class=\"ln\">a vízesések közelében</em>",
-      "hero.lead": "1857-ben épült ház, amelyet saját kezünkkel keltettünk új életre. Egészben a tiétek, 11 főre, gyereksarokkal, ehető kerttel és bekerített udvarral. <strong>A dézsa benne van az árban.</strong>",
+      "hero.lead": "1857-ben épült ház, amelyet saját kezünkkel keltettünk új életre. Egészben a tiétek, 10 vendégnek és a gyerekeknek, gyereksarokkal, ehető kerttel és bekerített udvarral. <strong>A dézsa benne van az árban.</strong>",
       "hero.cta1": "Szabad időpont keresése",
       "hero.cta2": "Megnézem a házat",
       "rt.booking": "22 értékelés",
       "rt.mega": "5 értékelés",
-      "f1t": "11 férőhely",
-      "f1s": "az egész ház csak a tiétek",
+      "f1t": "10 ágy",
+      "f1s": "+ 2 gyerekágy és 2 kiságy",
       "f3t": "Dézsa",
       "f3s": "benne van az árban",
       "f5t": "Gyereksarok",
@@ -1850,11 +1860,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "ab.p1b": "A ház 1857-ben épült, és saját kezünkkel, nagy gonddal újítottuk fel. A meszes vakolat, az agyagfalak és a fagerendák különleges élménnyé teszik. Minden részletnek megvan a maga története és a maga ideje.",
       "ch.9": "Ingyenes parkoló",
       "rm.h3": "Szobabeosztás",
-      "rm.1t": "Egyágyas szoba",
-      "rm.1s": "egy 90 × 200-as ágy és egy 70 × 140-es gyerekágy",
-      "rm.2t": "Kétágyas szoba + kiságy",
-      "rm.2s": "1 franciaágy",
-      "rm.3t": "Négyágyas szoba",
+      "rm.1t": "Hálószoba a földszinten",
+      "rm.1s": "franciaágy + kiságy",
+      "rm.2t": "Gyerekszoba",
+      "rm.2s": "2 leesésgátlós Montessori-gyerekágy, 200 × 90 és 140 × 70",
+      "rm.3t": "Tetőtéri hálószoba",
       "rm.3s": "franciaágy + 2 egyszemélyes ágy",
       "rm.4t": "1 fürdőszoba + külön WC",
       "rm.4s": "kád, mosógép és szárítógép, törölköző az árban",
@@ -1980,7 +1990,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q1": "Kinek ajánljuk a Hájsky dvort?",
       "faq.a1": "Gyermekes családoknak, pároknak, túrázóknak és baráti társaságoknak. A házat egészben bérelik ki – egyszerre mindig csak egy vendégcsoport van itt –, és egész évben nyitva vagyunk.",
       "faq.q2": "Hányan férnek el, és milyenek a hálószobák?",
-      "faq.a2": "A házban 11 fekvőhely van négy hálószobában: egyágyas szoba egy 90 × 200-as ággyal és egy 70 × 140-es gyerekággyal (felnőttnek gyerekkel), kétágyas szoba franciaággyal és kiságyal, valamint két négyágyas szoba franciaággyal és külön ágyakkal.",
+      "faq.a2": "A házban 10 ágy, 2 leesésgátlós Montessori-gyerekágy (200 × 90 és 140 × 70) és 2 kiságy van. A földszinten egy hálószoba franciaággyal, mellette a gyerekszoba, átjárós szobák. A tetőtérben két külön hálószoba van, mindegyikben egy franciaágy és két egyszemélyes ágy.",
       "faq.q3": "Mikor van az érkezés és a távozás?",
       "faq.a3": "Érkezés 15:00 és 23:59 között, távozás 7:00 és 10:00 között. A bejelentkezés önkiszolgáló, így ebben az időszakban akkor érkeznek, amikor Önöknek kényelmes. Korábbi érkezés vagy későbbi távozás 60 € díj ellenében lehetséges. Ottlétük alatt nem lakunk a házban, egészen az Önöké.",
       "faq.q4": "Benne van az árban a dézsa?",
@@ -1990,7 +2000,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q6": "Milyen a fürdőszoba, és van wifi?",
       "faq.a6": "A fürdőszobában kád, mosdó, mosógép és szárítógép van, törölközőt biztosítunk. A WC külön helyiségben van. A wifi az egész házban működik.",
       "faq.q7": "Mit találnak itt a gyerekek?",
-      "faq.a7": "Gyereksarkot könyvekkel és játékokkal, játszóteret házikóval, homokozót, mászókát és hintát, nyáron gyerekmedencét is. A legkisebbeknek kiságy, etetőszék, pelenkázó és bili is van.",
+      "faq.a7": "Gyereksarkot könyvekkel és játékokkal, játszóteret házikóval, homokozót, mászókát és hintát, nyáron gyerekmedencét is. A legkisebbeknek 2 kiságy és 2 leesésgátlós ágy, etetőszék, pelenkázó és bili is van.",
       "kids.eyebrow": "Gyerekeknek",
       "kids.h2": "A kis felfedezők itt nem unatkoznak",
       "kids.lead": "Udvar, kert és természet közvetlenül a kerítés mögött. A gyerekeknek reggeltől estig van mit felfedezniük.",
@@ -2083,11 +2093,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "am.play.t": "Játszótér és homokozó",
       "am.play.s": "csúszda, hinták, házikó",
       "wl.fire.h": "Tűzrakóhely bográccsal",
-      "wl.fire.p": "Este bográcsgulyás vagy szalonnasütés a tűz mellett. A tűzifa elő van készítve."
+      "wl.fire.p": "Este bográcsgulyás vagy szalonnasütés a tűz mellett. A tűzifa elő van készítve.",
+      "rm.layout": "A földszinti hálószoba és a gyerekszoba egymás mellett van, átjárós szobák; a két tetőtéri hálószoba külön nyílik. Összesen 10 ágy, 2 gyerekágy és 2 kiságy."
     },
     en: {
       "meta.title": "Hájsky dvor — 1857 cottage near the Háj Waterfalls",
-      "meta.desc": "An 1857 house in the village of Háj in the Slovak Karst, all yours for up to 11 guests. Hot tub included, kids' corner, edible garden and fireplace. Close to the Háj Waterfalls, about 45 min from Košice.",
+      "meta.desc": "An 1857 house in the village of Háj in the Slovak Karst, all yours for 10 guests plus the kids. Hot tub included, kids' corner, edible garden and fireplace. Close to the Háj Waterfalls, about 45 min from Košice.",
       "nav.1": "Accommodation",
       "nav.2": "Hot tub & garden",
       "nav.3": "Gallery",
@@ -2097,13 +2108,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "nav.cta": "Book now",
       "hero.eyebrow": "Háj · Slovak Karst · about 45 min from Košice",
       "hero.h1": "<span class=\"ln\">The whole cottage</span> <span class=\"ln\">for your family,</span> <em class=\"ln\">near the waterfalls</em>",
-      "hero.lead": "An 1857 house we brought back to life with our own hands. All yours for up to 11 guests, with a kids' corner, an edible garden and a fenced yard. <strong>The hot tub is included in your stay.</strong>",
+      "hero.lead": "An 1857 house we brought back to life with our own hands. All yours for 10 guests plus the kids, with a kids' corner, an edible garden and a fenced yard. <strong>The hot tub is included in your stay.</strong>",
       "hero.cta1": "Check availability",
       "hero.cta2": "See the cottage",
       "rt.booking": "22 reviews",
       "rt.mega": "5 reviews",
-      "f1t": "Sleeps 11",
-      "f1s": "the whole cottage just for you",
+      "f1t": "10 beds",
+      "f1s": "+ 2 children’s beds and 2 cots",
       "f3t": "Hot tub",
       "f3s": "included in your stay",
       "f5t": "Kids' corner",
@@ -2123,11 +2134,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "ab.p1b": "The house was built in 1857, and we carefully restored it with our own hands. Lime plaster, clay walls and wooden beams make staying here an experience. Every detail has its own story and its own time.",
       "ch.9": "Free parking",
       "rm.h3": "Room layout",
-      "rm.1t": "Single room",
-      "rm.1s": "a 90 × 200 bed and a 70 × 140 child’s bed",
-      "rm.2t": "Double room + baby cot",
-      "rm.2s": "1 double bed",
-      "rm.3t": "Four-bed room",
+      "rm.1t": "Ground-floor bedroom",
+      "rm.1s": "double bed + baby cot",
+      "rm.2t": "Children’s room",
+      "rm.2s": "2 Montessori-style children’s beds with rails, 200 × 90 and 140 × 70",
+      "rm.3t": "Attic bedroom",
       "rm.3s": "double bed + 2 single beds",
       "rm.4t": "1 bathroom + separate toilet",
       "rm.4s": "bathtub, washing machine and dryer, towels included",
@@ -2253,7 +2264,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q1": "Who is Hájsky dvor for?",
       "faq.a1": "For families with children, couples, hikers and groups of friends. You rent the whole cottage – there is only ever one group of guests – and we are open all year round.",
       "faq.q2": "How many people can stay and what are the bedrooms like?",
-      "faq.a2": "The cottage has 11 beds in four bedrooms: a single room with a 90 × 200 bed and a 70 × 140 child’s bed (for an adult with a child), a double room with a double bed and a baby cot, and two four-bed rooms with a double bed and single beds.",
+      "faq.a2": "The cottage has 10 beds, 2 Montessori-style children’s beds with rails (200 × 90 and 140 × 70) and 2 baby cots. On the ground floor there is a bedroom with a double bed and the children’s room right next to it, connected as walk-through rooms. In the attic there are two separate bedrooms, each with a double bed and two single beds.",
       "faq.q3": "What are the check-in and check-out times?",
       "faq.a3": "Check-in is from 15:00 to 23:59, check-out from 7:00 to 10:00. Check-in is self-service, so you can arrive whenever suits you within that window. Early check-in or late check-out is possible for a fee of €60. We don’t live in the cottage during your stay, so you have it all to yourselves.",
       "faq.q4": "Is the hot tub included in the price?",
@@ -2263,7 +2274,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q6": "What is the bathroom like, and is there Wi-Fi?",
       "faq.a6": "The bathroom has a bathtub, washbasin, washing machine and dryer, and towels are provided. The toilet is separate. Wi-Fi works throughout the house.",
       "faq.q7": "What is there for children?",
-      "faq.a7": "A kids’ corner with books and toys, a playground with a playhouse, a sandpit, a climbing frame and a swing, and a paddling pool in summer. For the little ones there is a baby cot, a high chair, a changing table and a potty.",
+      "faq.a7": "A kids’ corner with books and toys, a playground with a playhouse, a sandpit, a climbing frame and a swing, and a paddling pool in summer. For the little ones there are 2 baby cots and 2 beds with rails, a high chair, a changing table and a potty.",
       "kids.eyebrow": "For kids",
       "kids.h2": "Little adventurers never get bored here",
       "kids.lead": "A yard, a garden and nature right beyond the fence. Kids have something to discover from morning till night.",
@@ -2356,11 +2367,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "am.play.t": "Playground and sandpit",
       "am.play.s": "slide, swings, playhouse",
       "wl.fire.h": "Fire pit with a cauldron",
-      "wl.fire.p": "Goulash from the cauldron or a cookout by the fire in the evening. Firewood is ready for you."
+      "wl.fire.p": "Goulash from the cauldron or a cookout by the fire in the evening. Firewood is ready for you.",
+      "rm.layout": "The ground-floor bedroom and the children’s room are side by side and connected (walk-through); both attic bedrooms are separate. In total 10 beds, 2 children’s beds and 2 baby cots."
     },
     de: {
       "meta.title": "Hájsky dvor — Ferienhaus von 1857 bei den Wasserfällen von Háj",
-      "meta.desc": "Haus von 1857 im Dorf Háj im Slowakischen Karst, ganz für Sie, für 11 Gäste. Badezuber inklusive, Spielecke, essbarer Garten und Kamin. Nahe den Wasserfällen von Háj, ca. 45 Min. von Košice (Kaschau).",
+      "meta.desc": "Haus von 1857 im Dorf Háj im Slowakischen Karst, ganz für Sie, für 10 Gäste plus Kinder. Badezuber inklusive, Spielecke, essbarer Garten und Kamin. Nahe den Wasserfällen von Háj, ca. 45 Min. von Košice (Kaschau).",
       "nav.1": "Unterkunft",
       "nav.2": "Badezuber und Garten",
       "nav.3": "Galerie",
@@ -2370,13 +2382,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "nav.cta": "Buchen",
       "hero.eyebrow": "Háj · Slowakischer Karst · ca. 45 Min. von Košice",
       "hero.h1": "<span class=\"ln\">Das ganze Haus</span> <span class=\"ln\">für Ihre Familie,</span> <em class=\"ln\">nahe den Wasserfällen</em>",
-      "hero.lead": "Ein Haus von 1857, das wir mit eigenen Händen wieder zum Leben erweckt haben. Ganz für Sie, für 11 Gäste, mit Spielecke, essbarem Garten und eingezäuntem Hof. <strong>Der Badezuber ist im Preis inbegriffen.</strong>",
+      "hero.lead": "Ein Haus von 1857, das wir mit eigenen Händen wieder zum Leben erweckt haben. Ganz für Sie, für 10 Gäste plus Kinder, mit Spielecke, essbarem Garten und eingezäuntem Hof. <strong>Der Badezuber ist im Preis inbegriffen.</strong>",
       "hero.cta1": "Freie Termine prüfen",
       "hero.cta2": "Haus ansehen",
       "rt.booking": "22 Bewertungen",
       "rt.mega": "5 Bewertungen",
-      "f1t": "11 Schlafplätze",
-      "f1s": "das ganze Haus nur für Sie",
+      "f1t": "10 Betten",
+      "f1s": "+ 2 Kinderbetten und 2 Babybetten",
       "f3t": "Badezuber",
       "f3s": "inklusive",
       "f5t": "Spielecke",
@@ -2396,11 +2408,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "ab.p1b": "Das Haus wurde 1857 erbaut, und wir haben es mit eigenen Händen behutsam renoviert. Kalkputz, Lehmwände und Holzbalken machen es zu einem Erlebnis. Jedes Detail hat seine Geschichte und seine Zeit.",
       "ch.9": "Kostenloser Parkplatz",
       "rm.h3": "Zimmeraufteilung",
-      "rm.1t": "Einzelzimmer",
-      "rm.1s": "Bett 90 × 200 und Kinderbett 70 × 140",
-      "rm.2t": "Doppelzimmer + Kinderbett",
-      "rm.2s": "1 Doppelbett",
-      "rm.3t": "Vierbettzimmer",
+      "rm.1t": "Schlafzimmer im Erdgeschoss",
+      "rm.1s": "Doppelbett + Babybett",
+      "rm.2t": "Kinderzimmer",
+      "rm.2s": "2 Montessori-Kinderbetten mit Rausfallschutz, 200 × 90 und 140 × 70",
+      "rm.3t": "Schlafzimmer im Dachgeschoss",
       "rm.3s": "Doppelbett + 2 Einzelbetten",
       "rm.4t": "1 Badezimmer + separates WC",
       "rm.4s": "Badewanne, Waschmaschine und Trockner, Handtücher inklusive",
@@ -2526,7 +2538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q1": "Für wen eignet sich der Hájsky dvor?",
       "faq.a1": "Für Familien mit Kindern, Paare, Wanderer und Freundesgruppen. Sie mieten das ganze Haus – es ist immer nur eine Gästegruppe da – und wir haben das ganze Jahr geöffnet.",
       "faq.q2": "Wie viele Personen können übernachten und wie sind die Schlafzimmer?",
-      "faq.a2": "Das Haus hat 11 Betten in vier Schlafzimmern: ein Einzelzimmer mit einem Bett 90 × 200 und einem Kinderbett 70 × 140 (für einen Erwachsenen mit Kind), ein Doppelzimmer mit Doppelbett und Babybett sowie zwei Vierbettzimmer mit Doppelbett und Einzelbetten.",
+      "faq.a2": "Das Haus hat 10 Betten, 2 Montessori-Kinderbetten mit Rausfallschutz (200 × 90 und 140 × 70) und 2 Babybetten. Im Erdgeschoss liegen ein Schlafzimmer mit Doppelbett und direkt daneben das Kinderzimmer, als Durchgangszimmer. Im Dachgeschoss gibt es zwei separate Schlafzimmer, jeweils mit Doppelbett und zwei Einzelbetten.",
       "faq.q3": "Wann sind An- und Abreise?",
       "faq.a3": "Anreise von 15:00 bis 23:59 Uhr, Abreise von 7:00 bis 10:00 Uhr. Der Check-in erfolgt selbstständig, Sie kommen in diesem Zeitraum also an, wann es Ihnen passt. Eine frühere Anreise oder spätere Abreise ist gegen eine Gebühr von 60 € möglich. Während Ihres Aufenthalts wohnen wir nicht im Haus – es gehört ganz Ihnen.",
       "faq.q4": "Ist der Badezuber im Preis inbegriffen?",
@@ -2536,7 +2548,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q6": "Wie ist das Bad und gibt es WLAN?",
       "faq.a6": "Das Bad hat Badewanne, Waschbecken, Waschmaschine und Trockner, Handtücher liegen bereit. Die Toilette ist separat. WLAN gibt es im ganzen Haus.",
       "faq.q7": "Was gibt es für Kinder?",
-      "faq.a7": "Eine Spielecke mit Büchern und Spielzeug, einen Spielplatz mit Spielhaus, Sandkasten, Klettergerüst und Schaukel, im Sommer auch ein Planschbecken. Für die Kleinsten stehen Babybett, Hochstuhl, Wickeltisch und Töpfchen bereit.",
+      "faq.a7": "Eine Spielecke mit Büchern und Spielzeug, einen Spielplatz mit Spielhaus, Sandkasten, Klettergerüst und Schaukel, im Sommer auch ein Planschbecken. Für die Kleinsten stehen 2 Babybetten und 2 Betten mit Rausfallschutz, Hochstuhl, Wickeltisch und Töpfchen bereit.",
       "kids.eyebrow": "Für Kinder",
       "kids.h2": "Kleinen Abenteurern wird hier nie langweilig",
       "kids.lead": "Hof, Garten und Natur direkt hinter dem Zaun. Kinder haben hier von morgens bis abends etwas zu entdecken.",
@@ -2629,11 +2641,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "am.play.t": "Spielplatz und Sandkasten",
       "am.play.s": "Rutsche, Schaukeln, Spielhaus",
       "wl.fire.h": "Feuerstelle mit Kessel",
-      "wl.fire.p": "Abends Gulasch aus dem Kessel oder Grillen am Feuer. Brennholz liegt bereit."
+      "wl.fire.p": "Abends Gulasch aus dem Kessel oder Grillen am Feuer. Brennholz liegt bereit.",
+      "rm.layout": "Schlafzimmer und Kinderzimmer im Erdgeschoss liegen nebeneinander und sind Durchgangszimmer, die beiden Schlafzimmer im Dachgeschoss sind separat. Insgesamt 10 Betten, 2 Kinderbetten und 2 Babybetten."
     },
     pl: {
       "meta.title": "Hájsky dvor — chata z 1857 roku przy Wodospadach w Háju",
-      "meta.desc": "Dom z 1857 roku we wsi Háj w Krasie Słowackim, cały dla 11 gości. Balia w cenie, kącik dla dzieci, jadalny ogród i kominek. Blisko Wodospadów w Háju, ok. 45 min od Koszyc.",
+      "meta.desc": "Dom z 1857 roku we wsi Háj w Krasie Słowackim, cały dla 10 gości i dzieci. Balia w cenie, kącik dla dzieci, jadalny ogród i kominek. Blisko Wodospadów w Háju, ok. 45 min od Koszyc.",
       "nav.1": "Noclegi",
       "nav.2": "Balia i ogród",
       "nav.3": "Galeria",
@@ -2643,13 +2656,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "nav.cta": "Zarezerwuj",
       "hero.eyebrow": "Háj · Kras Słowacki · ok. 45 min od Koszyc",
       "hero.h1": "<span class=\"ln\">Cała chata</span> <span class=\"ln\">dla Waszej rodziny,</span> <em class=\"ln\">tuż przy wodospadach</em>",
-      "hero.lead": "Dom z 1857 roku, któremu własnymi rękami przywróciliśmy życie. Cały dla 11 gości, z kącikiem dla dzieci, jadalnym ogrodem i ogrodzonym podwórkiem. <strong>Balia jest w cenie pobytu.</strong>",
+      "hero.lead": "Dom z 1857 roku, któremu własnymi rękami przywróciliśmy życie. Cały dla 10 gości i Waszych dzieci, z kącikiem dla dzieci, jadalnym ogrodem i ogrodzonym podwórkiem. <strong>Balia jest w cenie pobytu.</strong>",
       "hero.cta1": "Sprawdź wolny termin",
       "hero.cta2": "Zobacz chatę",
       "rt.booking": "22 opinie",
       "rt.mega": "5 opinii",
-      "f1t": "11 miejsc do spania",
-      "f1s": "cała chata tylko dla Was",
+      "f1t": "10 łóżek",
+      "f1s": "+ 2 łóżka dziecięce i 2 łóżeczka",
       "f3t": "Balia",
       "f3s": "w cenie pobytu",
       "f5t": "Kącik dla dzieci",
@@ -2669,12 +2682,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "ab.p1b": "Dom zbudowano w 1857 roku, a my z wyczuciem odnowiliśmy go własnymi rękami. Wapienne tynki, gliniane ściany i drewniane belki sprawiają, że już sam pobyt jest przeżyciem. Każdy detal ma swoją historię i swój czas.",
       "ch.9": "Bezpłatny parking",
       "rm.h3": "Układ pokoi",
-      "rm.1t": "Pokój jednoosobowy",
-      "rm.1s": "łóżko 90 × 200 i łóżko dziecięce 70 × 140",
-      "rm.2t": "Pokój dwuosobowy + łóżeczko dziecięce",
-      "rm.2s": "1 łóżko małżeńskie",
-      "rm.3t": "Pokój czteroosobowy",
-      "rm.3s": "łóżko małżeńskie + 2 pojedyncze",
+      "rm.1t": "Sypialnia na parterze",
+      "rm.1s": "łóżko małżeńskie + łóżeczko",
+      "rm.2t": "Pokój dziecięcy",
+      "rm.2s": "2 łóżka dziecięce w stylu Montessori z barierką, 200 × 90 i 140 × 70",
+      "rm.3t": "Sypialnia na poddaszu",
+      "rm.3s": "łóżko małżeńskie + 2 pojedyncze łóżka",
       "rm.4t": "1 łazienka + osobna toaleta",
       "rm.4s": "wanna, pralka i suszarka, ręczniki w cenie",
       "rm.note": "Min. 2 noce. Nie przyjmujemy zwierząt. Bezpłatny parking przy domu. Ceny znajdziecie na portalach.",
@@ -2799,7 +2812,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q1": "Dla kogo jest Hájsky dvor?",
       "faq.a1": "Dla rodzin z dziećmi, par, turystów i grup przyjaciół. Wynajmujecie całą chatę – zawsze jest w niej tylko jedna grupa gości – a otwarte mamy przez cały rok.",
       "faq.q2": "Ile osób może nocować i jakie są sypialnie?",
-      "faq.a2": "Chata ma 11 miejsc noclegowych w czterech sypialniach: pokój jednoosobowy z łóżkiem 90 × 200 i łóżkiem dziecięcym 70 × 140 (dla dorosłego z dzieckiem), pokój dwuosobowy z łóżkiem małżeńskim i łóżeczkiem dziecięcym oraz dwa pokoje czteroosobowe z łóżkiem małżeńskim i pojedynczymi łóżkami.",
+      "faq.a2": "Chata ma 10 łóżek, 2 łóżka dziecięce w stylu Montessori z barierką (200 × 90 i 140 × 70) oraz 2 łóżeczka. Na parterze jest sypialnia z łóżkiem małżeńskim, a tuż obok pokój dziecięcy, oba pokoje są przechodnie. Na poddaszu są dwie osobne sypialnie, każda z łóżkiem małżeńskim i dwoma pojedynczymi łóżkami.",
       "faq.q3": "W jakich godzinach jest zameldowanie i wymeldowanie?",
       "faq.a3": "Zameldowanie od 15:00 do 23:59, wymeldowanie od 7:00 do 10:00. Zameldowanie jest samoobsługowe, więc w tym czasie przyjeżdżacie, kiedy Wam pasuje. Wcześniejszy przyjazd lub późniejszy wyjazd jest możliwy za opłatą 60 €. W czasie pobytu nie mieszkamy w chacie, jest cała dla Was.",
       "faq.q4": "Czy balia jest w cenie?",
@@ -2809,7 +2822,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q6": "Jaka jest łazienka i czy jest Wi-Fi?",
       "faq.a6": "Łazienka ma wannę, umywalkę, pralkę i suszarkę, ręczniki są przygotowane. Toaleta jest osobno. Wi-Fi działa w całym domu.",
       "faq.q7": "Co czeka na dzieci?",
-      "faq.a7": "Kącik dziecięcy z książeczkami i zabawkami, plac zabaw z domkiem, piaskownica, drabinki i huśtawka, a latem także basenik. Dla najmłodszych jest łóżeczko, krzesełko do karmienia, przewijak i nocnik.",
+      "faq.a7": "Kącik dziecięcy z książeczkami i zabawkami, plac zabaw z domkiem, piaskownica, drabinki i huśtawka, a latem także basenik. Dla najmłodszych są 2 łóżeczka i 2 łóżka z barierką, krzesełko do karmienia, przewijak i nocnik.",
       "kids.eyebrow": "Dla dzieci",
       "kids.h2": "Mali odkrywcy nie nudzą się tu ani chwili",
       "kids.lead": "Podwórko, ogród i przyroda tuż za płotem. Dzieci mają tu co odkrywać od rana do wieczora.",
@@ -2902,11 +2915,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "am.play.t": "Plac zabaw i piaskownica",
       "am.play.s": "zjeżdżalnia, huśtawki, domek",
       "wl.fire.h": "Palenisko z kociołkiem",
-      "wl.fire.p": "Wieczorem gulasz z kociołka albo pieczenie kiełbasek przy ognisku. Drewno czeka przygotowane."
+      "wl.fire.p": "Wieczorem gulasz z kociołka albo pieczenie kiełbasek przy ognisku. Drewno czeka przygotowane.",
+      "rm.layout": "Sypialnia i pokój dziecięcy na parterze sąsiadują ze sobą i są przechodnie, obie sypialnie na poddaszu są osobne. Razem 10 łóżek, 2 łóżka dziecięce i 2 łóżeczka."
     },
     uk: {
       "meta.title": "Hájsky dvor — хата 1857 року біля Гайських водоспадів",
-      "meta.desc": "Будинок 1857 року в селі Гай у Словацькому карсті, повністю для 11 гостей. Купель включена у вартість, дитячий куточок, їстівний сад і камін. Поруч Гайські водоспади, близько 45 хв від Кошице.",
+      "meta.desc": "Будинок 1857 року в селі Гай у Словацькому карсті, повністю для 10 гостей і дітей. Купель включена у вартість, дитячий куточок, їстівний сад і камін. Поруч Гайські водоспади, близько 45 хв від Кошице.",
       "nav.1": "Проживання",
       "nav.2": "Купель і сад",
       "nav.3": "Галерея",
@@ -2916,13 +2930,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "nav.cta": "Забронювати",
       "hero.eyebrow": "Гай · Словацький карст · близько 45 хв від Кошице",
       "hero.h1": "<span class=\"ln\">Уся хата</span> <span class=\"ln\">для вашої родини,</span> <em class=\"ln\">поруч із водоспадами</em>",
-      "hero.lead": "Будинок 1857 року, який ми власноруч повернули до життя. Повністю для 11 гостей, з дитячим куточком, їстівним садом і огородженим подвір’ям. <strong>Купель включена у вартість проживання.</strong>",
+      "hero.lead": "Будинок 1857 року, який ми власноруч повернули до життя. Повністю для 10 гостей і ваших дітей, з дитячим куточком, їстівним садом і огородженим подвір’ям. <strong>Купель включена у вартість проживання.</strong>",
       "hero.cta1": "Перевірити вільні дати",
       "hero.cta2": "Переглянути хату",
       "rt.booking": "22 відгуки",
       "rt.mega": "5 відгуків",
-      "f1t": "11 спальних місць",
-      "f1s": "уся хата лише для вас",
+      "f1t": "10 ліжок",
+      "f1s": "+ 2 дитячі ліжка і 2 ліжечка",
       "f3t": "Купель",
       "f3s": "включено у вартість",
       "f5t": "Дитячий куточок",
@@ -2942,12 +2956,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "ab.p1b": "Будинок збудували 1857 року, а ми дбайливо відреставрували його власними руками. Вапняна штукатурка, глиняні стіни й дерев’яні балки роблять його особливим. Кожна деталь має свою історію і свій час.",
       "ch.9": "Безкоштовна парковка",
       "rm.h3": "Планування кімнат",
-      "rm.1t": "Одномісна кімната",
-      "rm.1s": "ліжко 90 × 200 і дитяче ліжко 70 × 140",
-      "rm.2t": "Двомісна кімната + дитяче ліжечко",
-      "rm.2s": "1 двоспальне ліжко",
-      "rm.3t": "Чотиримісна кімната",
-      "rm.3s": "двоспальне ліжко + 2 односпальні",
+      "rm.1t": "Спальня на першому поверсі",
+      "rm.1s": "двоспальне ліжко + дитяче ліжечко",
+      "rm.2t": "Дитяча кімната",
+      "rm.2s": "2 дитячі ліжка в стилі Монтессорі з бортиками, 200 × 90 і 140 × 70",
+      "rm.3t": "Спальня в мансарді",
+      "rm.3s": "двоспальне ліжко + 2 односпальні ліжка",
       "rm.4t": "1 ванна кімната + окремий туалет",
       "rm.4s": "ванна, пральна і сушильна машини, рушники включено",
       "rm.note": "Мін. 2 ночі. Без домашніх тварин. Безкоштовна парковка біля будинку. Ціни дивіться на порталах.",
@@ -3072,7 +3086,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q1": "Для кого підходить Hájsky dvor?",
       "faq.a1": "Для сімей з дітьми, пар, туристів і компаній друзів. Ви орендуєте всю хату – тут завжди лише одна група гостей – і ми працюємо цілий рік.",
       "faq.q2": "Скільки людей можна поселити і які спальні?",
-      "faq.a2": "Хата має 11 спальних місць у чотирьох спальнях: одномісна спальня з ліжком 90 × 200 і дитячим ліжком 70 × 140 (для дорослого з дитиною), двомісна з двоспальним ліжком і дитячим ліжечком та дві чотиримісні з двоспальним ліжком і окремими ліжками.",
+      "faq.a2": "У хаті 10 ліжок, 2 дитячі ліжка в стилі Монтессорі з бортиками (200 × 90 і 140 × 70) та 2 дитячі ліжечка. На першому поверсі спальня з двоспальним ліжком, а поруч дитяча кімната, обидві прохідні. У мансарді дві окремі спальні, у кожній двоспальне ліжко і два односпальні.",
       "faq.q3": "Коли заїзд і виїзд?",
       "faq.a3": "Заїзд з 15:00 до 23:59, виїзд з 7:00 до 10:00. Заселення самостійне, тож у цей час приїжджайте, коли вам зручно. Ранній заїзд або пізній виїзд можливі за доплату 60 €. Під час вашого перебування ми в хаті не живемо – вона повністю ваша.",
       "faq.q4": "Чи входить купель у вартість?",
@@ -3082,7 +3096,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "faq.q6": "Яка ванна кімната і чи є Wi-Fi?",
       "faq.a6": "У ванній кімнаті є ванна, умивальник, пральна і сушильна машини, рушники надаємо. Туалет окремо. Wi-Fi працює по всьому будинку.",
       "faq.q7": "Що є для дітей?",
-      "faq.a7": "Дитячий куточок з книжками та іграшками, дитячий майданчик з будиночком, пісочниця, драбинка і гойдалка, а влітку й дитячий басейн. Для найменших є дитяче ліжечко, стільчик для годування, сповивальний столик і горщик.",
+      "faq.a7": "Дитячий куточок з книжками та іграшками, дитячий майданчик з будиночком, пісочниця, драбинка і гойдалка, а влітку й дитячий басейн. Для найменших є 2 дитячі ліжечка і 2 ліжка з бортиками, стільчик для годування, сповивальний столик і горщик.",
       "kids.eyebrow": "Для дітей",
       "kids.h2": "Маленьким мандрівникам тут не буває нудно",
       "kids.lead": "Подвір’я, сад і природа просто за парканом. Дітям тут є що досліджувати з ранку до вечора.",
@@ -3175,7 +3189,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "am.play.t": "Майданчик і пісочниця",
       "am.play.s": "гірка, гойдалки, будиночок",
       "wl.fire.h": "Вогнище з казанком",
-      "wl.fire.p": "Увечері гуляш із казанка або смаження ковбасок біля вогнища. Дрова вже підготовлені."
+      "wl.fire.p": "Увечері гуляш із казанка або смаження ковбасок біля вогнища. Дрова вже підготовлені.",
+      "rm.layout": "Спальня і дитяча кімната на першому поверсі розташовані поруч і є прохідними, обидві спальні в мансарді окремі. Разом 10 ліжок, 2 дитячі ліжка і 2 дитячі ліжечка."
     }
   }/*__END__*/;
   const SK_JS = {
