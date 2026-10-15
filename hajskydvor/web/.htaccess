@@ -1,0 +1,22 @@
+# hajskydvor.sk – nahrať do koreňa domény AŽ keď https://hajskydvor.sk funguje (certifikát Let's Encrypt vo WebAdmine)
+RewriteEngine On
+
+# všetko z http:// aj z www. presmerovať natrvalo na https://hajskydvor.sk
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://hajskydvor.sk%{REQUEST_URI} [L,R=301]
+
+# fotky, videá a logo sa menia zriedka – prehliadač si ich zapamätá na mesiac (rýchlejšie opakované návštevy)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# kompresia textových súborov
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/xml text/xml
+</IfModule>
