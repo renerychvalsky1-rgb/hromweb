@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Súhlas s cookies (Google Consent Mode v2), rovnako ako na hlavnej stránke -->
+<!-- Súhlas s cookies (Google Consent Mode v2), rovnako ako na hlavnej stránke: bez súhlasu GA4 neukladá cookies -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500});
+gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'});
+(function () { try { var c = JSON.parse(localStorage.getItem('hd-consent') || 'null');
+  if (c && c.v === 1 && Date.now() - c.t < 365 * 864e5 && c.a) gtag('consent', 'update', {analytics_storage: 'granted'}); } catch (e) {} })();
 </script>
-<!-- Cookie lišta (Secure Privacy) -->
-<script src="https://app.secureprivacy.ai/script/6ad09499484d49db00a966bc.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -87,8 +87,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <p>Pri návšteve webu hajskydvor.sk sa môžu spracúvať technické údaje, ako je IP adresa, typ prehliadača a zariadenia alebo navštívené časti stránky.</p>
       <ul>
         <li><strong>Nevyhnutné nastavenia.</strong> V prehliadači si pamätáme zvolený jazyk a svetlý alebo tmavý režim. Tieto údaje neobsahujú osobné údaje a na ich uloženie nepotrebujeme súhlas.</li>
-        <li><strong>Analytické cookies.</strong> Návštevnosť meriame nástrojom Google Analytics 4, ktorý spúšťame cez Google Tag Manager. Analytické cookies sa uložia až po vašom súhlase v cookie lište. Právnym základom je váš súhlas, ktorý môžete kedykoľvek zmeniť alebo odvolať v nastaveniach cookies.</li>
-        <li><strong>Správa súhlasu.</strong> Vašu voľbu v cookie lište si pamätá nástroj Secure Privacy, aby sme sa vás nemuseli pýtať pri každej návšteve.</li>
+        <li><strong>Analytické cookies.</strong> Návštevnosť meriame nástrojom Google Analytics 4, ktorý spúšťame cez Google Tag Manager. Analytické cookies sa uložia až po vašom súhlase v cookie lište. Právnym základom je váš súhlas, ktorý môžete kedykoľvek zmeniť alebo odvolať v <a href="./#cookies">nastaveniach cookies</a>.</li>
+        <li><strong>Vaša voľba cookies.</strong> Rozhodnutie z cookie lišty si uložíme len vo vašom prehliadači na 12 mesiacov, aby sme sa vás nemuseli pýtať pri každej návšteve. Neodosiela sa nikam.</li>
         <li><strong>Mapa a písma.</strong> Na stránke je vložená mapa Google Maps a písma Google Fonts. Pri ich načítaní sa vaša IP adresa odovzdá spoločnosti Google.</li>
         <li><strong>Odkazy na iné stránky.</strong> Po kliknutí na Instagram, Facebook alebo rezervačné portály prejdete na ich stránky, kde platia ich vlastné podmienky.</li>
       </ul>
@@ -98,7 +98,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <ul>
         <li>Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Írsko (Google Analytics, Google Tag Manager, Google Maps, Google Fonts),</li>
         <li>Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Írsko (Facebook a Instagram, ak nás kontaktujete cez tieto siete),</li>
-        <li>Secure Privacy (správa súhlasu s cookies),</li>
         <li>WebSupport, s.r.o., Karadžičova 7608/12, 821 08 Bratislava (webhosting, na ktorom je web uložený),</li>
         <li>rezervačné portály Booking.com, Megaubytovanie.sk a Airbnb ako samostatní prevádzkovatelia.</li>
       </ul>
@@ -120,7 +119,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <h3>Právo na prenosnosť údajov</h3>
       <p>Na požiadanie vám spracúvané osobné údaje poskytneme v štruktúrovanom, bežne používanom a strojovo čitateľnom formáte, prípadne ich na vašu žiadosť odovzdáme inému prevádzkovateľovi.</p>
       <h3>Právo kedykoľvek odvolať súhlas</h3>
-      <p>Súhlas s analytickými cookies môžete kedykoľvek zmeniť alebo odvolať v nastaveniach cookies na tomto webe. Odvolanie súhlasu nemá vplyv na zákonnosť spracúvania pred jeho odvolaním.</p>
+      <p>Súhlas s analytickými cookies môžete kedykoľvek zmeniť alebo odvolať v <a href="./#cookies">nastaveniach cookies</a> na tomto webe. Odvolanie súhlasu nemá vplyv na zákonnosť spracúvania pred jeho odvolaním.</p>
       <h3>Právo podať sťažnosť</h3>
       <p>Ak sa domnievate, že neplníme svoje povinnosti pri spracúvaní osobných údajov, obráťte sa najprv na nás na <a href="mailto:info@voltom.sk">info@voltom.sk</a>. Máte tiež právo podať sťažnosť na Úrad na ochranu osobných údajov Slovenskej republiky, Hraničná 4826/12, 820 07 Bratislava, e-mail <a href="mailto:ochrana@pdp.gov.sk">ochrana@pdp.gov.sk</a>.</p>
 

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Súhlas s cookies (Google Consent Mode v2): kým návštevník v lište nesúhlasí, GA4 v GTM neukladá cookies.
-     Toto nie je gtag.js, len predvolený stav súhlasu, ktorý GTM číta. -->
+<!-- Súhlas s cookies (Google Consent Mode v2): kým návštevník v cookie lište nesúhlasí, GA4 v GTM neukladá cookies.
+     Toto nie je gtag.js, len stav súhlasu, ktorý GTM číta. Uloženú voľbu (12 mesiacov) použijeme hneď, ešte pred GTM. -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
-gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500});
+gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', functionality_storage: 'granted', security_storage: 'granted'});
+(function () { try { var c = JSON.parse(localStorage.getItem('hd-consent') || 'null');
+  if (c && c.v === 1 && Date.now() - c.t < 365 * 864e5 && c.a) gtag('consent', 'update', {analytics_storage: 'granted'}); } catch (e) {} })();
 </script>
-<!-- Cookie lišta (Secure Privacy) -->
-<script src="https://app.secureprivacy.ai/script/6ad09499484d49db00a966bc.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -660,6 +660,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* päta: prevádzkovateľ a ochrana údajov */
   .foot-legal { max-width: 70ch; line-height: 1.6; }
   .foot-legal a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+  /* cookie lišta */
+  .ck { position: fixed; z-index: 300; left: 1rem; right: 1rem; bottom: 1rem; max-width: 560px; margin-left: auto; background: var(--card); color: var(--ink); border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 14px 44px rgba(40, 30, 20, .22); padding: 1.25rem 1.35rem; }
+  .ck[hidden], .ck-panel[hidden] { display: none !important; }
+  .ck h2 { font-family: var(--title); font-size: 1.2rem; color: var(--head); margin: 0 0 .4rem; }
+  .ck p { font-size: .9rem; line-height: 1.55; color: var(--ink-2); margin: 0; }
+  .ck p a { color: var(--accent); }
+  .ck-btns { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; margin-top: 1rem; }
+  .ck-btns .btn { flex: 1 1 140px; padding: .7rem 1rem; font-size: .95rem; }
+  .ck-link { background: none; border: 0; padding: .5rem .3rem; font: 700 .92rem var(--serif); color: var(--accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+  .ck-panel { margin-top: .9rem; display: grid; gap: .75rem; border-top: 1px solid var(--line); padding-top: .9rem; }
+  .ck-panel .ck-btns { margin-top: 0; }
+  .ck-row { display: flex; gap: .9rem; align-items: flex-start; justify-content: space-between; cursor: pointer; }
+  .ck-row strong { display: block; color: var(--head); font-size: .95rem; }
+  .ck-row small { display: block; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+  .ck-row input { width: 20px; height: 20px; accent-color: var(--accent); flex: none; margin-top: .15rem; }
+  @media (max-width: 600px) { .ck { left: .5rem; right: .5rem; bottom: .5rem; padding: 1rem 1.05rem; } .ck-btns .btn { flex-basis: 120px; } }
   /* ===== Vlajky jazykov ===== */
   .flag { display: inline-block; flex: none; width: 20px; height: 14px; border-radius: 3px; background: center / cover no-repeat; box-shadow: 0 0 0 1px rgba(0, 0, 0, .14); vertical-align: -2px; }
   .fl-sk { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2030%2020%27%3E%3Crect%20width%3D%2730%27%20height%3D%2720%27%20fill%3D%27%23fff%27%2F%3E%3Crect%20y%3D%276.67%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%230B4EA2%27%2F%3E%3Crect%20y%3D%2713.33%27%20width%3D%2730%27%20height%3D%276.67%27%20fill%3D%27%23EE1C25%27%2F%3E%3Cpath%20d%3D%27M7.4%203.6h7.4v6.6c0%203.3-2.3%205.2-3.7%206c-1.4-.8-3.7-2.7-3.7-6z%27%20fill%3D%27%23EE1C25%27%20stroke%3D%27%23fff%27%20stroke-width%3D%27.8%27%2F%3E%3Cpath%20d%3D%27M10.7%205h.8v7.4h-.8zM9.2%206.5h3.8v.8H9.2zM8.7%208.4h4.8v.8H8.7z%27%20fill%3D%27%23fff%27%2F%3E%3Cpath%20d%3D%27M8.1%2012.2c.9-1%201.9-1%202.5%200c.6-1%201.6-1%202.5%200c-.4%201.6-1.5%202.6-2.5%203.2c-1-.6-2.1-1.6-2.5-3.2z%27%20fill%3D%27%230B4EA2%27%2F%3E%3C%2Fsvg%3E"); }
@@ -1766,7 +1783,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </ul>
       </div>
     </div>
-    <div class="foot-bottom"><span class="foot-legal">© 2026 Hájsky dvor · <span data-i18n="ft.operator">Prevádzkovateľ</span>: VOLTOM s.r.o., Čižatice 78, 044 47 Čižatice, IČO 50580426 · <a href="ochrana-osobnych-udajov.html" data-i18n="ft.privacy">Ochrana osobných údajov</a></span><span class="foot-langs"><a href="?lang=sk" data-lang="sk" lang="sk" title="Slovenčina"><i class="flag fl-sk" aria-hidden="true"></i>SK</a><a href="?lang=hu" data-lang="hu" lang="hu" title="Magyar"><i class="flag fl-hu" aria-hidden="true"></i>HU</a><a href="?lang=en" data-lang="en" lang="en" title="English"><i class="flag fl-en" aria-hidden="true"></i>EN</a><a href="?lang=de" data-lang="de" lang="de" title="Deutsch"><i class="flag fl-de" aria-hidden="true"></i>DE</a><a href="?lang=pl" data-lang="pl" lang="pl" title="Polski"><i class="flag fl-pl" aria-hidden="true"></i>PL</a><a href="?lang=uk" data-lang="uk" lang="uk" title="Українська"><i class="flag fl-uk" aria-hidden="true"></i>UA</a></span></div>
+    <div class="foot-bottom"><span class="foot-legal">© 2026 Hájsky dvor · <span data-i18n="ft.operator">Prevádzkovateľ</span>: VOLTOM s.r.o., Čižatice 78, 044 47 Čižatice, IČO 50580426 · <a href="ochrana-osobnych-udajov.html" data-i18n="ft.privacy">Ochrana osobných údajov</a> · <a href="#cookies" data-ck-open data-i18n="ft.cookies">Nastavenia cookies</a></span><span class="foot-langs"><a href="?lang=sk" data-lang="sk" lang="sk" title="Slovenčina"><i class="flag fl-sk" aria-hidden="true"></i>SK</a><a href="?lang=hu" data-lang="hu" lang="hu" title="Magyar"><i class="flag fl-hu" aria-hidden="true"></i>HU</a><a href="?lang=en" data-lang="en" lang="en" title="English"><i class="flag fl-en" aria-hidden="true"></i>EN</a><a href="?lang=de" data-lang="de" lang="de" title="Deutsch"><i class="flag fl-de" aria-hidden="true"></i>DE</a><a href="?lang=pl" data-lang="pl" lang="pl" title="Polski"><i class="flag fl-pl" aria-hidden="true"></i>PL</a><a href="?lang=uk" data-lang="uk" lang="uk" title="Українська"><i class="flag fl-uk" aria-hidden="true"></i>UA</a></span></div>
   </div>
 </footer>
 
@@ -1785,6 +1802,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button type="button" class="lb-next" id="lbNext" aria-label="Ďalšia fotka">›</button>
 </div>
 
+
+<!-- Cookie lišta (vlastná, bez externej služby) -->
+<div class="ck" id="ckBar" role="dialog" aria-labelledby="ckTitle" hidden>
+  <h2 id="ckTitle" data-i18n="ck.title">Súbory cookies</h2>
+  <p><span data-i18n="ck.text">Nevyhnutné cookies potrebujeme, aby web fungoval. S vaším súhlasom použijeme aj analytické cookies (Google Analytics), aby sme vedeli, čo návštevníkov na webe zaujíma. Voľbu môžete kedykoľvek zmeniť v päte stránky.</span> <a href="ochrana-osobnych-udajov.html" data-i18n="ft.privacy">Ochrana osobných údajov</a></p>
+  <div class="ck-panel" id="ckPanel" hidden>
+    <label class="ck-row"><span><strong data-i18n="ck.nec">Nevyhnutné</strong><small data-i18n="ck.nec.d">Zapamätanie jazyka, režimu zobrazenia a vašej voľby cookies. Vždy zapnuté.</small></span><input type="checkbox" checked disabled></label>
+    <label class="ck-row"><span><strong data-i18n="ck.an">Analytické</strong><small data-i18n="ck.an.d">Google Analytics 4 nám ukáže, ktoré časti webu si pozeráte. Bez vášho súhlasu sa neukladajú.</small></span><input type="checkbox" id="ckAn"></label>
+    <div class="ck-btns"><button type="button" class="btn btn-line" data-ck="save" data-i18n="ck.save">Uložiť výber</button></div>
+  </div>
+  <div class="ck-btns">
+    <button type="button" class="btn btn-accent" data-ck="accept" data-i18n="ck.accept">Prijať všetky</button>
+    <button type="button" class="btn btn-accent" data-ck="reject" data-i18n="ck.reject">Odmietnuť</button>
+    <button type="button" class="ck-link" data-ck="settings" aria-controls="ckPanel" data-i18n="ck.settings">Nastavenia</button>
+  </div>
+</div>
 <script>
   /* =========================================================
      REZERVAČNÉ PORTÁLY
@@ -2107,7 +2140,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "wl.fire.p": "Este bográcsgulyás vagy szalonnasütés a tűz mellett. A tűzifa elő van készítve.",
       "rm.layout": "A földszinti hálószoba és a gyerekszoba egymás mellett van, átjárós szobák; a két tetőtéri hálószoba külön nyílik. Összesen 10 ágy, 2 gyerekágy és 2 kiságy.",
       "ft.operator": "Üzemeltető",
-      "ft.privacy": "Adatvédelem"
+      "ft.privacy": "Adatvédelem",
+      "ck.title": "Sütik",
+      "ck.text": "A szükséges sütikre a weboldal működéséhez van szükség. Hozzájárulásával analitikai sütiket (Google Analytics) is használunk, hogy tudjuk, mi érdekli a látogatókat. Választását bármikor módosíthatja az oldal alján.",
+      "ck.accept": "Elfogadom",
+      "ck.reject": "Elutasítom",
+      "ck.settings": "Beállítások",
+      "ck.save": "Kiválasztottak mentése",
+      "ck.nec": "Szükséges",
+      "ck.nec.d": "A nyelv, a megjelenítési mód és a sütiválasztás megjegyzése. Mindig bekapcsolva.",
+      "ck.an": "Analitikai",
+      "ck.an.d": "A Google Analytics 4 megmutatja, mely részeit nézik az oldalnak. Hozzájárulás nélkül nem tároljuk őket.",
+      "ft.cookies": "Sütibeállítások"
     },
     en: {
       "meta.title": "Hájsky dvor — 1857 cottage near the Háj Waterfalls",
@@ -2383,7 +2427,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "wl.fire.p": "Goulash from the cauldron or a cookout by the fire in the evening. Firewood is ready for you.",
       "rm.layout": "The ground-floor bedroom and the children’s room are side by side and connected (walk-through); both attic bedrooms are separate. In total 10 beds, 2 children’s beds and 2 baby cots.",
       "ft.operator": "Operator",
-      "ft.privacy": "Privacy policy"
+      "ft.privacy": "Privacy policy",
+      "ck.title": "Cookies",
+      "ck.text": "We need essential cookies for the website to work. With your consent we also use analytics cookies (Google Analytics) to understand what visitors are interested in. You can change your choice at any time in the page footer.",
+      "ck.accept": "Accept all",
+      "ck.reject": "Reject",
+      "ck.settings": "Settings",
+      "ck.save": "Save my choice",
+      "ck.nec": "Essential",
+      "ck.nec.d": "Remembering your language, display mode and cookie choice. Always on.",
+      "ck.an": "Analytics",
+      "ck.an.d": "Google Analytics 4 shows us which parts of the website you view. Not stored without your consent.",
+      "ft.cookies": "Cookie settings"
     },
     de: {
       "meta.title": "Hájsky dvor — Ferienhaus von 1857 bei den Wasserfällen von Háj",
@@ -2659,7 +2714,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "wl.fire.p": "Abends Gulasch aus dem Kessel oder Grillen am Feuer. Brennholz liegt bereit.",
       "rm.layout": "Schlafzimmer und Kinderzimmer im Erdgeschoss liegen nebeneinander und sind Durchgangszimmer, die beiden Schlafzimmer im Dachgeschoss sind separat. Insgesamt 10 Betten, 2 Kinderbetten und 2 Babybetten.",
       "ft.operator": "Betreiber",
-      "ft.privacy": "Datenschutz"
+      "ft.privacy": "Datenschutz",
+      "ck.title": "Cookies",
+      "ck.text": "Notwendige Cookies brauchen wir, damit die Website funktioniert. Mit Ihrer Einwilligung verwenden wir auch Analyse-Cookies (Google Analytics), um zu verstehen, was Besucher interessiert. Ihre Auswahl können Sie jederzeit in der Fußzeile ändern.",
+      "ck.accept": "Alle akzeptieren",
+      "ck.reject": "Ablehnen",
+      "ck.settings": "Einstellungen",
+      "ck.save": "Auswahl speichern",
+      "ck.nec": "Notwendig",
+      "ck.nec.d": "Speichern Sprache, Anzeigemodus und Ihre Cookie-Auswahl. Immer aktiv.",
+      "ck.an": "Analyse",
+      "ck.an.d": "Google Analytics 4 zeigt uns, welche Bereiche der Website Sie ansehen. Ohne Ihre Einwilligung wird nichts gespeichert.",
+      "ft.cookies": "Cookie-Einstellungen"
     },
     pl: {
       "meta.title": "Hájsky dvor — chata z 1857 roku przy Wodospadach w Háju",
@@ -2935,7 +3001,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "wl.fire.p": "Wieczorem gulasz z kociołka albo pieczenie kiełbasek przy ognisku. Drewno czeka przygotowane.",
       "rm.layout": "Sypialnia i pokój dziecięcy na parterze sąsiadują ze sobą i są przechodnie, obie sypialnie na poddaszu są osobne. Razem 10 łóżek, 2 łóżka dziecięce i 2 łóżeczka.",
       "ft.operator": "Operator",
-      "ft.privacy": "Polityka prywatności"
+      "ft.privacy": "Polityka prywatności",
+      "ck.title": "Pliki cookie",
+      "ck.text": "Niezbędne pliki cookie są potrzebne do działania strony. Za Twoją zgodą używamy też analitycznych plików cookie (Google Analytics), aby wiedzieć, co interesuje odwiedzających. Wybór możesz w każdej chwili zmienić w stopce strony.",
+      "ck.accept": "Akceptuj wszystkie",
+      "ck.reject": "Odrzuć",
+      "ck.settings": "Ustawienia",
+      "ck.save": "Zapisz wybór",
+      "ck.nec": "Niezbędne",
+      "ck.nec.d": "Zapamiętanie języka, trybu wyświetlania i wyboru cookie. Zawsze włączone.",
+      "ck.an": "Analityczne",
+      "ck.an.d": "Google Analytics 4 pokazuje nam, które części strony oglądasz. Bez Twojej zgody nie są zapisywane.",
+      "ft.cookies": "Ustawienia cookie"
     },
     uk: {
       "meta.title": "Hájsky dvor — хата 1857 року біля Гайських водоспадів",
@@ -3211,7 +3288,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       "wl.fire.p": "Увечері гуляш із казанка або смаження ковбасок біля вогнища. Дрова вже підготовлені.",
       "rm.layout": "Спальня і дитяча кімната на першому поверсі розташовані поруч і є прохідними, обидві спальні в мансарді окремі. Разом 10 ліжок, 2 дитячі ліжка і 2 дитячі ліжечка.",
       "ft.operator": "Оператор",
-      "ft.privacy": "Захист персональних даних"
+      "ft.privacy": "Захист персональних даних",
+      "ck.title": "Файли cookie",
+      "ck.text": "Необхідні файли cookie потрібні для роботи сайту. З вашої згоди ми також використовуємо аналітичні cookie (Google Analytics), щоб розуміти, що цікавить відвідувачів. Свій вибір можна будь-коли змінити внизу сторінки.",
+      "ck.accept": "Прийняти всі",
+      "ck.reject": "Відхилити",
+      "ck.settings": "Налаштування",
+      "ck.save": "Зберегти вибір",
+      "ck.nec": "Необхідні",
+      "ck.nec.d": "Запам’ятовують мову, режим відображення і ваш вибір cookie. Завжди увімкнені.",
+      "ck.an": "Аналітичні",
+      "ck.an.d": "Google Analytics 4 показує нам, які частини сайту ви переглядаєте. Без вашої згоди не зберігаються.",
+      "ft.cookies": "Налаштування cookie"
     }
   }/*__END__*/;
   const SK_JS = {
@@ -3417,6 +3505,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if (paused || document.hidden) return;
       slides[at].classList.remove('is-on'); at = (at + 1) % slides.length; slides[at].classList.add('is-on');
     }, 5000);
+  })();
+
+  /* Cookie lišta: voľba sa pamätá 12 mesiacov, GA4 (cez GTM) ukladá cookies len po súhlase (Google Consent Mode v2) */
+  (function cookieBar() {
+    const KEY = 'hd-consent', bar = document.getElementById('ckBar'); if (!bar) return;
+    const panel = document.getElementById('ckPanel'), an = document.getElementById('ckAn');
+    const stored = () => { try { const c = JSON.parse(localStorage.getItem(KEY) || 'null'); return c && c.v === 1 && Date.now() - c.t < 365 * 864e5 ? c : null; } catch (e) { return null; } };
+    const dropGa = () => document.cookie.split(';').map(c => c.split('=')[0].trim()).filter(n => /^_ga/.test(n)).forEach(n =>
+      ['', '; domain=' + location.hostname, '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }));
+    const choose = analytics => {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: 1, t: Date.now(), a: analytics })); } catch (e) {}
+      gtag('consent', 'update', { analytics_storage: analytics ? 'granted' : 'denied' });
+      if (!analytics) dropGa();
+      bar.hidden = true;
+    };
+    const open = settings => {
+      an.checked = !!(stored() || {}).a;
+      panel.hidden = !settings; bar.hidden = false;
+      (settings ? an : bar.querySelector('[data-ck="accept"]')).focus({ preventScroll: true });
+    };
+    bar.addEventListener('click', e => {
+      const b = e.target.closest('[data-ck]'); if (!b) return;
+      const k = b.dataset.ck;
+      if (k === 'accept') choose(true);
+      else if (k === 'reject') choose(false);
+      else if (k === 'save') choose(an.checked);
+      else if (k === 'settings') { panel.hidden = !panel.hidden; if (!panel.hidden) an.focus({ preventScroll: true }); }
+    });
+    document.querySelectorAll('[data-ck-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(true); }));
+    if (location.hash === '#cookies') open(true);
+    else if (!stored()) { panel.hidden = true; bar.hidden = false; }
   })();
 
   /* Svetlý / tmavý režim */
