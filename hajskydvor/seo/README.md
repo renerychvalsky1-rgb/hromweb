@@ -14,9 +14,9 @@ Priamo v stránke sú pripravené:
 - hreflang odkazy na jazykové verzie, kanonický odkaz (dopĺňa ho skript podľa jazyka), Open Graph, `geo.region` a `geo.placename`.
 
 Pred spustením:
-1. Odstrániť `<meta name="robots" content="noindex, nofollow">` zo stránky.
+1. ~~Odstrániť `noindex`~~ – hotovo (15. 10.).
 2. Doplniť presné súradnice (pravý klik na špendlík v Google Mapách): `geo.position`, `ICBM` a `geo` v JSON-LD.
-3. Fotky a videá dať ako samostatné súbory (napr. `/img/`, `/video/`) namiesto vložených v HTML – stránka bude rýchlejšia.
+3. ~~Fotky a videá ako samostatné súbory~~ – hotovo: `hajskydvor/web/index.html` načítava `galeria/`, `vylety/`, `videa/`, `ostatne/` z koreňa domény.
 4. Odporúčanie pre AI vyhľadávače: jazykové verzie vygenerovať ako samostatné statické stránky (`/hu/`, `/en/`…). AI roboti väčšinou nespúšťajú JavaScript, takže na `?lang=hu` by videli slovenský text. Potom upraviť adresy v `sitemap.xml` a hreflang.
 5. Overiť profil Instagramu `@hajsky_dvor` (je aj v JSON-LD a `llms.txt`).
 6. Po spustení: Google Search Console a Bing Webmaster Tools – pridať doménu a odoslať sitemapu.
