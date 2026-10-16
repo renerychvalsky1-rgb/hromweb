@@ -1,0 +1,333 @@
+<script>
+  /* =========================================================
+     REZERVAČNÉ PORTÁLY
+     Airbnb vypnete zmenou enabled: true -> false.
+     Booking sa otvorí v jazyku, ktorý má návštevník zvolený na webe.
+     ========================================================= */
+  const BOOKING_LANG = { sk: 'sk', hu: 'hu', en: 'en-gb', de: 'de', pl: 'pl', uk: 'uk' };
+  const AIRBNB_ID = '1272449521521250272';
+  const PORTALS = [
+    { id: 'booking', name: 'Booking.com',    color: '#003580', enabled: true,
+      url: (l) => `https://www.booking.com/hotel/sk/hajsky-dvor.${BOOKING_LANG[l] || 'sk'}.html` },
+    { id: 'mega',    name: 'Megaubytovanie', color: '#1BB5A8', enabled: true,
+      url: () => 'https://www.megaubytovanie.sk/hajsky-dvor' },
+    { id: 'airbnb',  name: 'Airbnb',         color: '#FF5A5F', enabled: true,
+      url: (l) => (l === 'sk' ? 'https://sk.airbnb.com' : 'https://www.airbnb.com') + '/rooms/' + AIRBNB_ID },
+  ];
+
+  /* =========================================================
+     VIDEÁ Z INSTAGRAMU
+     Na webe sú len krátke ukážky, celé video sa otvorí na Instagrame.
+     url:     odkaz na reel (instagram.com/reel/…)
+     preview: krátka ukážka – 3 až 5 s slučka bez zvuku (.mp4 / .webm, do ~500 kB),
+              prípadne .gif / .webp; prázdne = zatiaľ miesto na ukážku
+     poster:  statický obrázok, kým sa ukážka načíta (nepovinné)
+     webm:    tá istá ukážka vo formáte WebM (nepovinné, pre prehliadače bez MP4)
+     ========================================================= */
+  const IG = 'https://www.instagram.com/hajsky_dvor/';
+  const REELS = [
+    { url: 'https://www.instagram.com/p/DQM-V0vjSrM/', preview: '__REEL_raj__', poster: '__REELPOSTER_raj__', title: 'vid.1', tone: 'olive' },
+    { url: 'https://www.instagram.com/p/DZnhNmwNUEz/', preview: '__REEL_materska__', poster: '__REELPOSTER_materska__', title: 'vid.2', tone: 'dusk' },
+    { url: 'https://www.instagram.com/p/DXEPgAWDRcc/', preview: '__REEL_unik__', poster: '__REELPOSTER_unik__', title: 'vid.3', tone: 'water' },
+    { url: 'https://www.instagram.com/p/DTnFD1kDXYF/', preview: '__REEL_zima__', poster: '__REELPOSTER_zima__', title: 'vid.4', tone: 'wood' },
+  ];
+
+  /* =========================================================
+     FOTKY
+     Galéria a prehliadač fotiek. Poradie v zozname = poradie v prehliadači.
+     Fotky na stránke sa sem odkazujú cez data-photo="kľúč".
+     Na finálnom webe (WordPress) budú fotky ako samostatné súbory.
+     ========================================================= */
+  const PHOTOS = /*__PHOTOS__*/[]/*__END_PHOTOS__*/;
+
+  /* =========================================================
+     PREKLADY
+     Slovenčina je priamo v HTML (data-i18n), ostatné jazyky tu.
+     Poznámky v [hranatých zátvorkách] sú interné a neprekladajú sa.
+     ========================================================= */
+  const I18N = /*__I18N__*/{}/*__END__*/;
+  const SK_JS = {
+    'js.check': 'Overiť termín',
+    'js.note.booking': 'Hodnotenie 9,7 · 22 hodnotení',
+    'js.note.mega': 'Hodnotenie 9,9 · 5 hodnotení',
+    'js.note.airbnb': 'Rezervácia cez Airbnb',
+    'ui.theme': 'Prepnúť svetlý / tmavý režim',
+    'ui.portal': 'Vyberte portál',
+    'vid.cta': 'Pozrieť na Instagrame',
+    'vid.1': 'Malý raj v Slovenskom krase', 'vid.2': 'Materská trochu inak', 'vid.3': 'Únik z mesta pre celú rodinu', 'vid.4': 'Zima, na ktorú sa nezabúda',
+    'gl.eyebrow': 'Galéria', 'lb.close': 'Zavrieť', 'lb.prev': 'Predchádzajúca fotka', 'lb.next': 'Ďalšia fotka',
+    'gc.house': 'Dom a dvor', 'gc.living': 'Obývačka s kachľovou pecou', 'gc.kitchen': 'Kuchyňa a jedáleň', 'gc.rooms': 'Spálne',
+    'gc.attic': 'Podkrovné izby', 'gc.bath': 'Kúpeľňa', 'gc.kids': 'Pre deti', 'gc.terrace': 'Krytá terasa',
+    'gc.garden': 'Dvor a záhrada', 'gc.tub': 'Kaďa', 'gc.history': 'Dom kedysi',
+  };
+  const LANGS = ['sk', ...Object.keys(I18N)];
+  const LANG_LABEL = { uk: 'UA' };
+  const DOT_DECIMAL = ['en'];
+
+  const i18nEls = [...document.querySelectorAll('[data-i18n]')];
+  const skHTML = new Map(i18nEls.map(el => [el, el.innerHTML]));
+  const numEls = [...document.querySelectorAll('[data-num], .km:not([data-i18n]), .distances b')];
+  const skNum = new Map(numEls.map(el => [el, el.textContent]));
+  const skMeta = { title: document.title, desc: document.querySelector('meta[name=description]').content };
+  let lang = 'sk';
+  const t = (key) => (lang !== 'sk' && I18N[lang][key]) || SK_JS[key] || key;
+
+  /* Meranie: udalosti idú do Google Tag Managera (dataLayer), v GTM sa posielajú do GA4.
+     booking_click {portal} · reel_click {reel} · gallery_open {photo} · contact_click {method} · map_click */
+  // vždy všetkých 5 kľúčov: nepotrebné sú undefined, aby GTM neprenášal hodnoty z predchádzajúcej udalosti
+  const track = (event, params) => { (window.dataLayer = window.dataLayer || []).push({ event, portal: undefined, method: undefined, reel: undefined, photo: undefined, ...params, lang }); };
+
+  function renderPortals() {
+    const active = PORTALS.filter(p => p.enabled);
+    document.getElementById('bookCards').innerHTML = active.map(p => `
+      <a class="book-card" href="${p.url(lang)}" target="_blank" rel="noopener" data-portal="${p.id}">
+        <span class="logo-txt" style="--pc:${p.color}">${p.name}</span>
+        <small>${t('js.note.' + p.id)}</small>
+        <span class="btn btn-accent">${t('js.check')}</span>
+      </a>`).join('');
+    document.getElementById('sheetPortals').innerHTML = active.map(p => `
+      <a class="portal-btn" href="${p.url(lang)}" target="_blank" rel="noopener" data-portal="${p.id}">
+        <span class="dot" style="background:${p.color}"></span>
+        <span>${p.name}<small>${t('js.note.' + p.id)}</small></span>
+        <span class="arrow">→</span>
+      </a>`).join('');
+    document.getElementById('stripPortals').innerHTML = active.map(p => `
+      <a href="${p.url(lang)}" target="_blank" rel="noopener" data-portal="${p.id}">${p.name}</a>`).join('');
+    document.querySelectorAll('[data-portal]').forEach(a => a.addEventListener('click', () => track('booking_click', { portal: a.dataset.portal })));
+  }
+
+  /* Ukážky videí: prehrávajú sa len keď sú na obrazovke (šetrí dáta na mobile) */
+  const reelObserver = 'IntersectionObserver' in window ? new IntersectionObserver(entries => entries.forEach(e => {
+    const v = e.target; if (e.isIntersecting) { v.preload = 'auto'; v.play().catch(() => {}); } else v.pause();
+  }), { threshold: .4 }) : null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function renderReels() {
+    const box = document.getElementById('reels'); if (!box) return;
+    box.innerHTML = REELS.map(r => {
+      const media = /\.(mp4|webm)$|^data:video\//i.test(r.preview)
+        ? `<video${r.poster ? ` poster="${r.poster}"` : ''} muted loop playsinline preload="none" aria-hidden="true">${r.webm ? `<source src="${r.webm}" type="video/webm">` : ''}<source src="${r.preview}" type="video/mp4"></video>`
+        : r.preview ? `<img src="${reduceMotion && r.poster ? r.poster : r.preview}" alt="" loading="lazy">`
+        : `<span class="ph ${r.tone}"><svg><use href="#i-camera"/></svg><em>ukážka videa</em></span>`;
+      return `<a class="reel" href="${r.url}" target="_blank" rel="noopener" data-reel="${r.title}">
+        <span class="reel-media">${media}<span class="reel-play" aria-hidden="true"><svg><use href="#i-play"/></svg></span></span>
+        <span class="reel-cap">${t(r.title)}</span>
+        <span class="reel-link"><svg><use href="#i-ig"/></svg>${t('vid.cta')}</span>
+      </a>`;
+    }).join('');
+    box.querySelectorAll('video').forEach(v => { if (reelObserver && !reduceMotion) reelObserver.observe(v); });
+    box.querySelectorAll('[data-reel]').forEach(a => a.addEventListener('click', () => track('reel_click', { reel: a.dataset.reel })));
+  }
+
+  /* Fotky: obrázky na stránke dostanú dáta zo zoznamu PHOTOS */
+  const photoIdx = Object.fromEntries(PHOTOS.map((p, i) => [p.k, i]));
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+  let lbAt = 0, lbFrom = null;
+  function showLb(i) {
+    lbAt = (i + PHOTOS.length) % PHOTOS.length;
+    const p = PHOTOS[lbAt];
+    lbImg.src = p.src; lbImg.alt = p.alt;
+    document.getElementById('lbCap').textContent = t(p.cat);
+    document.getElementById('lbCount').textContent = `${lbAt + 1} / ${PHOTOS.length}`;
+  }
+  function openLb(i) {
+    lbFrom = document.activeElement;
+    showLb(i); lb.hidden = false; lb.classList.add('open'); document.body.classList.add('lb-lock');
+    document.getElementById('lbClose').focus();
+    track('gallery_open', { photo: PHOTOS[lbAt].k });
+  }
+  function closeLb() {
+    lb.classList.remove('open'); lb.hidden = true; document.body.classList.remove('lb-lock');
+    if (lbFrom) lbFrom.focus();
+  }
+  document.querySelectorAll('img[data-photo]').forEach(img => {
+    const i = photoIdx[img.dataset.photo]; if (i === undefined) return;
+    img.decoding = img.closest('.hero-slides') ? 'sync' : 'async'; img.src = PHOTOS[i].src;
+    if (img.closest('button')) return;
+    // fotky mimo galérie (kaďa, záhrada, izby) tiež otvoria prehliadač
+    img.tabIndex = 0; img.setAttribute('role', 'button');
+    img.addEventListener('click', () => openLb(i));
+    img.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLb(i); } });
+  });
+  document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click', () => openLb(photoIdx[b.dataset.open] ?? 0)));
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', () => showLb(lbAt - 1));
+  document.getElementById('lbNext').addEventListener('click', () => showLb(lbAt + 1));
+  lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLb();
+    else if (e.key === 'ArrowLeft') showLb(lbAt - 1);
+    else if (e.key === 'ArrowRight') showLb(lbAt + 1);
+    else if (e.key === 'Tab') { // fokus ostáva v prehliadači
+      const f = [...lb.querySelectorAll('button')], at = f.indexOf(document.activeElement);
+      e.preventDefault(); f[(at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+  let lbX = null;
+  lb.addEventListener('touchstart', e => { lbX = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', e => {
+    if (lbX === null) return;
+    const dx = e.changedTouches[0].clientX - lbX; lbX = null;
+    if (Math.abs(dx) > 40) showLb(lbAt + (dx < 0 ? 1 : -1));
+  });
+
+  /* Nadpis v úvode: vždy tri riadky. Ak je riadok v danom jazyku alebo na úzkom displeji dlhší, písmo sa zmenší. */
+  const heroH1 = document.querySelector('.hero h1');
+  function fitH1() {
+    if (!heroH1) return;
+    heroH1.style.fontSize = '';
+    const lines = [...heroH1.querySelectorAll('.ln')]; if (!lines.length) return;
+    const avail = heroH1.clientWidth, widest = Math.max(...lines.map(l => l.scrollWidth));
+    if (widest > avail) heroH1.style.fontSize = Math.max(22, Math.floor(parseFloat(getComputedStyle(heroH1).fontSize) * avail / widest * 0.98)) + 'px';
+  }
+  let fitRaf = 0;
+  window.addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitH1); });
+  if (document.fonts) document.fonts.ready.then(fitH1);
+
+  function setLang(next, remember) {
+    lang = LANGS.includes(next) ? next : 'sk';
+    const dict = I18N[lang] || {};
+    i18nEls.forEach(el => {
+      const key = el.dataset.i18n;
+      if (lang !== 'sk' && dict[key] === undefined) console.warn('Chýba preklad', lang, key);
+      el.innerHTML = lang === 'sk' ? skHTML.get(el) : (dict[key] ?? skHTML.get(el));
+    });
+    numEls.forEach(el => {
+      const v = skNum.get(el);
+      el.textContent = DOT_DECIMAL.includes(lang) ? v.replace(/(\d),(\d)/g, '$1.$2') : v;
+    });
+    document.documentElement.lang = lang;
+    document.title = lang === 'sk' ? skMeta.title : dict['meta.title'];
+    document.querySelector('meta[name=description]').content = lang === 'sk' ? skMeta.desc : dict['meta.desc'];
+    document.getElementById('langCode').textContent = LANG_LABEL[lang] || lang.toUpperCase();
+    document.querySelectorAll('.lang-menu [data-lang], .foot-langs [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
+    document.getElementById('langFlag').className = 'flag fl-' + lang;
+    let canon = document.querySelector('link[rel=canonical]');
+    if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
+    canon.href = 'https://hajskydvor.sk/' + (lang === 'sk' ? '' : '?lang=' + lang);
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.title = t('ui.theme'); themeBtn.setAttribute('aria-label', t('ui.theme'));
+    document.getElementById('sheet').setAttribute('aria-label', t('ui.portal'));
+    renderPortals();
+    renderReels();
+    fitH1();
+    lb.setAttribute('aria-label', t('gl.eyebrow'));
+    [['lbClose', 'lb.close'], ['lbPrev', 'lb.prev'], ['lbNext', 'lb.next']].forEach(([id, k]) => document.getElementById(id).setAttribute('aria-label', t(k)));
+    if (lb.classList.contains('open')) showLb(lbAt);
+    if (remember) {
+      try { localStorage.setItem('hd-lang', lang); } catch (e) {}
+      const url = new URL(location.href);
+      lang === 'sk' ? url.searchParams.delete('lang') : url.searchParams.set('lang', lang);
+      history.replaceState(null, '', url);
+    }
+  }
+
+  /* Úvodný jazyk: ?lang=hu (odkaz na zdieľanie) → uložená voľba → jazyk prehliadača → SK */
+  (function initLang() {
+    let saved = null;
+    try { saved = localStorage.getItem('hd-lang'); } catch (e) {}
+    const fromUrl = new URLSearchParams(location.search).get('lang');
+    const fromBrowser = (navigator.languages || [navigator.language || '']).map(l => l.slice(0, 2).toLowerCase()).find(l => LANGS.includes(l));
+    setLang(fromUrl || saved || fromBrowser || 'sk', false);
+  })();
+
+  /* Navigácia na Google Mapách */
+  document.querySelectorAll('a[href^="https://maps.app.goo.gl/"]').forEach(a => a.addEventListener('click', () => track('map_click', {})));
+
+  /* Kontakt: kliknutie na telefón alebo e-mail */
+  document.querySelectorAll('a[href^="tel:"], a[href^="mailto:"]').forEach(a => a.addEventListener('click', () => track('contact_click', { method: a.protocol === 'tel:' ? 'phone' : 'email' })));
+
+  /* Úvodné fotky: pomalé prelínanie každých 5 sekúnd, stojí pri myši nad fotkou alebo pri obmedzenom pohybe */
+  (function heroSlides() {
+    const box = document.querySelector('.hero-slides'); if (!box) return;
+    const slides = [...box.querySelectorAll('.hs')];
+    if (slides.length < 2 || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let at = 0, paused = false;
+    box.addEventListener('mouseenter', () => { paused = true; }); box.addEventListener('mouseleave', () => { paused = false; });
+    setInterval(() => {
+      if (paused || document.hidden) return;
+      slides[at].classList.remove('is-on'); at = (at + 1) % slides.length; slides[at].classList.add('is-on');
+    }, 5000);
+  })();
+
+  /* Cookie lišta: voľba sa pamätá 12 mesiacov, GA4 (cez GTM) ukladá cookies len po súhlase (Google Consent Mode v2) */
+  (function cookieBar() {
+    const KEY = 'hd-consent', bar = document.getElementById('ckBar'); if (!bar) return;
+    const panel = document.getElementById('ckPanel'), an = document.getElementById('ckAn');
+    const stored = () => { try { const c = JSON.parse(localStorage.getItem(KEY) || 'null'); return c && c.v === 1 && Date.now() - c.t < 365 * 864e5 ? c : null; } catch (e) { return null; } };
+    const dropGa = () => document.cookie.split(';').map(c => c.split('=')[0].trim()).filter(n => /^_ga/.test(n)).forEach(n =>
+      ['', '; domain=' + location.hostname, '; domain=.' + location.hostname.replace(/^www\./, '')].forEach(d => { document.cookie = n + '=; Max-Age=0; path=/' + d; }));
+    const choose = analytics => {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: 1, t: Date.now(), a: analytics })); } catch (e) {}
+      gtag('consent', 'update', { analytics_storage: analytics ? 'granted' : 'denied' });
+      if (!analytics) dropGa();
+      bar.hidden = true;
+    };
+    const open = settings => {
+      an.checked = !!(stored() || {}).a;
+      panel.hidden = !settings; bar.hidden = false;
+      (settings ? an : bar.querySelector('[data-ck="accept"]')).focus({ preventScroll: true });
+    };
+    bar.addEventListener('click', e => {
+      const b = e.target.closest('[data-ck]'); if (!b) return;
+      const k = b.dataset.ck;
+      if (k === 'accept') choose(true);
+      else if (k === 'reject') choose(false);
+      else if (k === 'save') choose(an.checked);
+      else if (k === 'settings') { panel.hidden = !panel.hidden; if (!panel.hidden) an.focus({ preventScroll: true }); }
+    });
+    document.querySelectorAll('[data-ck-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(true); }));
+    if (location.hash === '#cookies') open(true);
+    else if (!stored()) { panel.hidden = true; bar.hidden = false; }
+  })();
+
+  /* Svetlý / tmavý režim */
+  const darkMq = window.matchMedia('(prefers-color-scheme: dark)');
+  const currentTheme = () => document.documentElement.dataset.theme || (darkMq.matches ? 'dark' : 'light');
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    const next = currentTheme() === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    try { localStorage.setItem('hd-theme', next); } catch (e) {}
+  });
+
+  /* Mobilný výber portálu */
+  const sheet = document.getElementById('sheet'), sheetBg = document.getElementById('sheetBg');
+  const toggleSheet = (open) => { sheet.classList.toggle('open', open); sheetBg.classList.toggle('open', open); };
+  document.getElementById('openSheet').addEventListener('click', () => toggleSheet(true));
+  sheetBg.addEventListener('click', () => toggleSheet(false));
+
+  /* Menu */
+  const nav = document.getElementById('nav');
+  document.getElementById('menuToggle').addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  /* Jazyky */
+  const langBox = document.getElementById('lang');
+  langBox.querySelector('.lang-btn').addEventListener('click', (e) => {
+    e.stopPropagation();
+    const open = langBox.classList.toggle('open');
+    e.currentTarget.setAttribute('aria-expanded', open);
+  });
+  langBox.querySelectorAll('.lang-menu a').forEach(a => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (a.dataset.lang) setLang(a.dataset.lang, true);
+  }));
+  document.addEventListener('click', () => langBox.classList.remove('open'));
+  document.querySelectorAll('.foot-langs a').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); setLang(a.dataset.lang, true); }));
+
+  /* Sezónne tipy */
+  document.querySelectorAll('.season-tabs button').forEach(btn => btn.addEventListener('click', () => {
+    document.querySelectorAll('.season-tabs button').forEach(b => b.classList.toggle('active', b === btn));
+    const s = btn.dataset.season;
+    document.querySelectorAll('.tip').forEach(tip => { tip.hidden = s !== 'all' && !tip.dataset.seasons.split(' ').includes(s); });
+  }));
+
+  /* Hlavička: priehľadná nad úvodom, plná po odscrollovaní */
+  const topbar = document.getElementById('topbar');
+  const onScroll = () => topbar.classList.toggle('scrolled', window.scrollY > 10);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  document.getElementById('menuToggle').addEventListener('click', onScroll);
+  onScroll();
+
+</script>

@@ -1,0 +1,16 @@
+
+<!-- Cookie lišta (vlastná, bez externej služby) -->
+<div class="ck" id="ckBar" role="dialog" aria-labelledby="ckTitle" hidden>
+  <h2 id="ckTitle" data-i18n="ck.title">Súbory cookies</h2>
+  <p><span data-i18n="ck.text">Nevyhnutné cookies potrebujeme, aby web fungoval. S vaším súhlasom použijeme aj analytické cookies (Google Analytics), aby sme vedeli, čo návštevníkov na webe zaujíma. Voľbu môžete kedykoľvek zmeniť v päte stránky.</span> <a href="ochrana-osobnych-udajov.html" data-i18n="ft.privacy">Ochrana osobných údajov</a></p>
+  <div class="ck-panel" id="ckPanel" hidden>
+    <label class="ck-row"><span><strong data-i18n="ck.nec">Nevyhnutné</strong><small data-i18n="ck.nec.d">Zapamätanie jazyka, režimu zobrazenia a vašej voľby cookies. Vždy zapnuté.</small></span><input type="checkbox" checked disabled></label>
+    <label class="ck-row"><span><strong data-i18n="ck.an">Analytické</strong><small data-i18n="ck.an.d">Google Analytics 4 nám ukáže, ktoré časti webu si pozeráte. Bez vášho súhlasu sa neukladajú.</small></span><input type="checkbox" id="ckAn"></label>
+    <div class="ck-btns"><button type="button" class="btn btn-line" data-ck="save" data-i18n="ck.save">Uložiť výber</button></div>
+  </div>
+  <div class="ck-btns">
+    <button type="button" class="btn btn-accent" data-ck="accept" data-i18n="ck.accept">Prijať všetky</button>
+    <button type="button" class="btn btn-accent" data-ck="reject" data-i18n="ck.reject">Odmietnuť</button>
+    <button type="button" class="ck-link" data-ck="settings" aria-controls="ckPanel" data-i18n="ck.settings">Nastavenia</button>
+  </div>
+</div>
