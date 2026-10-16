@@ -1,0 +1,313 @@
+# LamaPage – zadanie pre Lamaon
+
+16. 10. 2026 · René Rychvalský
+
+LamaPage je appka na platforme Lamaon, ktorá z vyplneného dotazníka postaví stránku pre akúkoľvek kampaň: ubytovanie, event, produkt, službu, nábor. Stránka má jeden cieľ: dostať návštevníka k predaju alebo k vyplneniu formulára. Nejde o prezentáciu, ale o predaj: vlastná landing page pre Sterio kartu (Sterio Kino) zlacnila reklamu o 7 % a cenu získania zákazníka znížila o 40 %. Tento dokument opisuje postup, ako vznikol web hajskydvor.sk (https://hajskydvor.sk, ručne za 9 hodín), čo z neho urobí appka sama a kam odíde lead. Otázky pre klienta sú v časti VSTUPNÝ DOTAZNÍK na konci tohto súboru.
+
+
+## Postup v appke
+
+Diagram (postup LamaPage, 8 krokov, 1 rozhodnutie):
+
+  1. Podklady (vstupný dotazník)
+  2. Návrhy dizajnu (varianty štýlu z dát)
+  3. Výber dizajnu (rozhoduje klient)
+  4. Obsah a preklady (AI texty a preklady)
+  5. Náhľad pre klienta (skrytý pred Googlom)
+  6. Schválené?
+       nie, pripomienky -> späť na krok 4 Obsah a preklady
+       áno -> krok 7
+  7. Spustenie (ZIP, hosting, SSL)
+  8. Odovzdanie (PDF, e-mail, faktúra)
+
+Každá kampaň prejde rovnakými krokmi. Klient vstupuje hlavne na troch miestach: vyplní dotazník, vyberie dizajn a schvaľuje náhľad. Ostatné robí appka. Pripomienky sa nevpisujú do hotového HTML: menia dáta projektu a stránka sa z nich zostaví znova.
+
+### Ako sa to robilo a čo urobí appka
+
+| Úloha | Ako sa to robilo pri Hájskom dvore | Čo urobí appka |
+|---|---|---|
+| Podklady | Fotky, texty a fakty chodili postupne e-mailom a cez WhatsApp. Viaceré sa neskôr opravovali (sauna, počet lôžok, adresa). | Vstupný dotazník na začiatku (vyplní klient sám alebo sa prejde v hovore), predvyplnenie z odkazov, potvrdenie kľúčových faktov |
+| Návrhy dizajnu | Päť verzií postupne, vybraný akvarelový štýl (verzia 5) | Z jedných dát niekoľko štýlov naraz |
+| Výber dizajnu | Klientka vybrala štýl, neskôr chcela fotky bez kreslených rámikov | Štýl a jeho voľby sa uložia ako nastavenie, nie ako zásah do kódu |
+| Obsah a preklady | Texty v slovenčine, preklad do HU, EN, DE, PL a UK, FAQ, mapka areálu podľa náčrtu, mapka výletov | AI texty a preklady, FAQ z faktov, mapky podľa náčrtu |
+| SEO | JSON-LD, hreflang, canonical, Open Graph s og-image, robots.txt, sitemap.xml, llms.txt, každé zvlášť | Vygeneruje sa samo z dát |
+| Meranie a cookies | GTM a GA4, udalosti v dataLayer s piatimi kľúčmi. Secure Privacy sa nepodarilo nastaviť, cookie lišta sa naprogramovala vlastná s Consent Mode v2. | Hotové v každej stránke, k tomu GTM kontajner na import |
+| Právne | Prevádzkovateľ v pätičke, stránka ochrany osobných údajov z GDPR textu klienta | Z dotazníka automaticky |
+| Náhľad a pripomienky | Náhľad s noindex, pripomienky cez WhatsApp, niekoľko kôl (mapka, sauna, lôžka, rámiky) | Pripomienky cez Žiarovku v Lamaone (text a šípky priamo na stránke), zmena v dátach, nový build, história verzií |
+| Kontrola | Skripty na rozloženie pri 360 a 390 px vo všetkých jazykoch, načítanie obrázkov, test merania a cookies | Automatické kontroly pred spustením |
+| Spustenie | ZIP na WebSupport klienta. Jeden HTML mal 5,5 MB, produkčná verzia 556 KB s fotkami ako súbormi. SSL bolo, chýbalo presmerovanie, doplnil sa .htaccess. | Export alebo nasadenie, potom kontrola https, presmerovaní a náhľadu pri zdieľaní |
+| Odovzdanie | PDF s pokynmi v dizajne webu, e-mail, fakturácia 9 h × 50 € bez DPH | PDF a e-mail vygeneruje appka, klient dostane prístup do adminu |
+
+Zdroje sú v repozitári renerychvalsky1-rgb/hromweb (https://github.com/renerychvalsky1-rgb/hromweb/tree/claude/nifty-faraday-psjmem/hajskydvor), vetva claude/nifty-faraday-psjmem: hotový web v hajskydvor/web/, skripty s popisom krokov v hajskydvor/build/, test merania a cookies v hajskydvor/tests/. Stano potrebuje od Reného prístup.
+
+
+## Vstupný dotazník
+
+Prvý a najdôležitejší krok appky. Klient vloží odkazy na svoje profily, appka z nich predvyplní, čo sa dá, a klient potom doplní kampaň, kam má ísť lead, ponuku, fotky a podklady. Celé znenie otázok je v časti VSTUPNÝ DOTAZNÍK na konci tohto súboru.
+
+
+## Kam odíde lead
+
+Stránka kampane má jednu hlavnú akciu. Pri Hájskom dvore viedli tlačidlá na rezervačné portály (Booking, Megaubytovanie, Airbnb), na telefón a na e-mail, formulár tam nebol. LamaPage musí pri každej kampani vedieť tri cesty a v dotazníku sa vyberie, ktorá je hlavná.
+
+Diagram (cesta leadu, 3 cesty od návštevníka k predaju):
+
+  Návštevník z kampane
+    (reklama, e-mail, QR kód, sociálne siete; v odkaze UTM, gclid alebo fbclid)
+        |
+  Stránka kampane
+    (zapamätá si zdroj návštevy; jedna hlavná akcia podľa cieľa)
+        |
+        +-- 1. Prelink na predaj (odkaz na predaj s UTM; meria sa sale_click)
+        |       -> Predaj u partnera (portál, e-shop, vstupenky; predaj vidí iba partner)
+        |
+        +-- 2. Formulár (lead so zdrojom kampane; meria sa generate_lead)
+        |       -> Lead v Lamaone (e-mail klientovi, CRM; odpoveď a poďakovanie)
+        |
+        +-- 3. Priamy kontakt (telefón, WhatsApp, e-mail; meria sa contact_click)
+                -> Rozhovor s klientom (hovor alebo správa; zmeria sa iba klik)
+
+| Cesta | Kedy ju použiť | Čo urobí stránka | Meranie |
+|---|---|---|---|
+| Prelink na predaj | Predaj beží inde: rezervačný portál, e-shop, predaj vstupeniek, rezervačný kalendár | Tlačidlo na cieľovú adresu, pridá k nej UTM parametre kampane, otvorí v novom okne | sale_click s cieľom |
+| Formulár | Dopyt, registrácia, rezervácia bez systému, nábor, súťaž | Formulár na stránke. Lead sa uloží, klient dostane e-mail, návštevník automatickú odpoveď a poďakovanie. | generate_lead ako konverzia |
+| Priamy kontakt | Predáva človek po telefóne alebo v správe | Odkazy tel:, WhatsApp, mailto: | contact_click s metódou |
+
+### Formulár
+
+- Polia podľa cieľa kampane z dotazníka. Základ je meno, e-mail alebo telefón a správa. Ďalšie polia (termín, počet osôb, produkt) iba ak ich klient naozaj potrebuje, každé pole navyše znižuje počet leadov.
+- Skryté polia, ktoré idú s leadom: utm_source, utm_medium, utm_campaign, utm_content, utm_term, gclid, fbclid, adresa stránky, jazyk, čas odoslania, verzia stránky. Zdroj sa zapamätá pri príchode, aby sa nestratil, keď návštevník prejde stránku a formulár odošle až neskôr.
+- Pod formulárom informácia o spracovaní údajov s odkazom na ochranu osobných údajov. Súhlas s marketingom je samostatné nezaškrtnuté políčko.
+- Ochrana pred spamom: skryté pole (honeypot), limit odoslaní a kontrola na serveri. Captcha iba ak to nestačí.
+- Po odoslaní poďakovanie priamo na stránke a automatický e-mail návštevníkovi v jazyku stránky.
+
+### Kam lead pôjde
+
+- Vždy sa uloží v Lamaone: zoznam leadov kampane s filtrom podľa zdroja a export do CSV.
+- Hneď ide e-mail klientovi, na jednu alebo viac adries z dotazníka.
+- Voliteľne ďalej, podľa dotazníka: Google Sheet, CRM alebo webhook (napríklad do Make).
+- Stav leadu (nový, kontaktovaný, predaný, stratený), aby sa dalo spočítať, koľko leadov z ktorého zdroja skončilo predajom.
+
+### Meranie
+
+- Ako pri Hájskom dvore: GA4 iba cez GTM, vlastná cookie lišta s Consent Mode v2, každý push v dataLayer má vždy rovnakú sadu kľúčov a nepoužité sú undefined.
+- Návrh udalostí pre LamaPage: sale_click, generate_lead, contact_click, gallery_open, video_click. Návrh kľúčov: destination, method, form, item, lang.
+- Do dataLayer, GA4 ani do reklamných systémov nejde meno, e-mail ani telefón. Tie ostávajú iba v Lamaone.
+- Konverzie pre Google Ads a Meta sa nastavia v GTM z týchto udalostí a odpalia sa iba so súhlasom z cookie lišty.
+
+### Na domyslenie
+
+| Otázka | Možnosti |
+|---|---|
+| Kto leady vybavuje a do kedy? | Klient sám, René alebo obchodník. Od toho závisí text automatickej odpovede („ozveme sa do 24 hodín“). |
+| Kam posielať leady, keď klient nemá CRM? | E-mail a zoznam v Lamaone, alebo Google Sheet |
+| Posielať leady aj do reklamných systémov (Meta Conversions API, rozšírené konverzie Google Ads)? | Presnejšie meranie kampaní, ale osobné údaje sa musia hashovať a treba súhlas |
+| Ako zistiť predaj pri prelinku? | Portály predaj nehlásia. E-shop áno, ak má meranie v tom istom GA4. |
+| Čo so stránkou po skončení kampane? | Presmerovať, alebo nechať s textom „kampaň skončila“ a formulárom na záujem o ďalšiu |
+| Kde stránka beží? | Subdoména klienta, vlastná doména kampane, alebo adresa na Lamaone |
+| Testovať varianty nadpisu a tlačidla (A/B)? | V neskoršej verzii, variant sa uloží s leadom |
+
+
+## Po spustení: admin a pridaná hodnota
+
+Návrh Maroša Sollára z rozhovoru s Reném. Odovzdaním sa to nekončí: klient dostane k stránke jednoduchý admin v Lamaone. Pre neho je to už aplikácia, nielen web, a dajú sa do nej neskôr pridávať ďalšie funkcie Lamaonu. Stránka je tak brána k ďalším appkam.
+
+### Mini admin
+
+- Prihlásenie na vlastnú stránku (e-mail a heslo alebo odkaz z e-mailu).
+- Úprava textov, fotiek, cien a farieb. Žiadny veľký editor: texty a fotky sú polia z dotazníka, farby sú pár premenných témy. Každá zmena sa uloží do dát a stránka sa zostaví znova, rovnako ako pri pripomienkach.
+- Leady z formulára: zoznam, stav, export.
+- Väčšie zmeny (nová sekcia, nová kampaň, napojenie na kalendár) robíme my ako platenú úpravu.
+
+### Týždenný report
+
+- Raz týždenne e-mail klientovi a v admine to isté ako prehľad. Stav stránky so zelenými fajkami: https a SSL, rýchlosť, SEO a GEO kontroly (JSON-LD, sitemap, llms.txt, indexácia), funkčný formulár a meranie.
+- K tomu čísla za týždeň z GA4 a z Lamaonu: návštevy, kliky na predaj, leady podľa zdroja.
+- Keď je niečo žlté alebo červené, upozornenie príde aj nám.
+- Prečo: ľudia chcú vidieť, že sa o ich web niekto stará. Pre klienta je to hodnota, pre nás kontrola, ktorú netreba robiť ručne. Maroš má podobnú stavovú stránku so SEO a GEO kontrolami pre Tuláky.
+
+### Rozširovanie
+
+- Do adminu sa postupne pridávajú funkcie Lamaonu, napríklad newsletter poskladaný z obsahu stránky s určitým počtom e-mailov mesačne zadarmo (Maroš spomínal 100).
+- Ponúkať to klientom, ktorí môžu byť zákazníkmi ďalších appiek Lamaonu, nie každému.
+
+### Onboarding a predaj
+
+- Dotazník vyplní klient sám, alebo sa prejde spolu na stretnutí či v hovore. Rozhovor sa nahrá a AI z prepisu vyplní odpovede, klient ich iba doplní a potvrdí.
+- Cieľ je, aby stránka vyšla na prvýkrát a nebolo čo upravovať. Preto má byť onboarding dôkladný, aj keď je dlhý.
+- Doladenie cez Žiarovku v Lamaone: klient píše pripomienky a kreslí šípky priamo na stránke.
+- Váhavým klientom sa dá ponúknuť: vyskúšaj, a ak sa ti nebude páčiť, neplatíš.
+
+### Ceny z praxe
+
+| Projekt | Cena | Poznámka |
+|---|---|---|
+| Hájsky dvor (René) | 450 € bez DPH | 9 hodín ručne, 6 jazykov, prelink na rezervačné portály |
+| Podhájska (Maroš) | 300 € spolu | jeden hovor a jeden e-mail, rezervácia do Booking a Google kalendára, hodnotenie z Bookingu |
+| Prezentačný web (René) | okolo 400 € | bez napojenia na kalendáre |
+| Úprava po spustení (Maroš) | napríklad 100 € | menšia zmena na želanie klienta |
+
+### Na domyslenie k adminu
+
+| Otázka | Návrh |
+|---|---|
+| Čo smie klient meniť sám? | Texty, fotky, ceny a farby áno. Štruktúru a sekcie nie, to je platená úprava. |
+| Čo s prekladmi, keď klient zmení text? | AI preloží zmenu do ostatných jazykov hneď a klient to vidí v admine |
+| Odkiaľ report berie čísla? | GA4 cez API, leady z Lamaonu, technické kontroly spúšťa Lamaon sám |
+
+
+==========================================================================
+
+# VSTUPNÝ DOTAZNÍK
+
+Prvý krok LamaPage. Zadávateľ kampane tu na začiatku nahrá všetko, z čoho sa stránka postaví. Čím úplnejší dotazník, tým lepší prvý návrh a menej kôl pripomienok. Kroky 1 až 3 a 5 až 9 platia pre každú kampaň, v kroku 4 sa zobrazí iba modul pre daný typ kampane.
+
+## Ako má dotazník fungovať
+
+- Najprv odkazy, potom otázky. Zadávateľ vloží odkazy na súčasný web, profily, portály alebo e-shop. Appka z nich predvyplní, čo sa dá (názov, adresa, popis, ponuka, hodnotenia, fotky), a zadávateľ už iba opravuje.
+- IČO doplní firmu. Po zadaní IČO sa obchodné meno, sídlo a DIČ doplnia z verejného registra.
+- Krok po kroku. Ukazovateľ postupu, priebežné ukladanie, návrat cez odkaz z e-mailu. Funguje na mobile, fotky sa dajú nahrať rovno z telefónu.
+- Príklad pri každej otázke a voľba „doplním neskôr“. Nevyplnené veci appka zhrnie na konci.
+- Zoznamy s tromi stavmi: máme v cene, za poplatok, nemáme. Výslovné „nemáme“ zabráni tomu, aby si AI niečo domyslela (ako saunu pri Hájskom dvore).
+- Fotky naraz. Hromadné nahratie alebo odkaz na Google Drive či Dropbox. AI navrhne kategóriu a popis, zadávateľ potvrdí.
+- Na konci súhrn kľúčových faktov na potvrdenie.
+- Dotazník sa dá poslať klientovi, alebo ho prejsť spolu na stretnutí či v hovore. Rozhovor sa nahrá a AI z prepisu vyplní odpovede, klient ich potom iba doplní a potvrdí.
+- Heslá k hostingu sa do dotazníka nepíšu. Appka si ich vypýta cez zabezpečené pole alebo sa odovzdajú osobne.
+
+Typy polí: text, dlhý text, výber, zaškrtávanie, číslo, dátum, čas, odkaz, súbor, mapa (bod na mape), skupina (opakuje sa, napr. pre každý produkt).
+
+## Krok 1: Kampaň
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Názov kampane (interný) | text | áno | zoznam kampaní, UTM |
+| Typ kampane: ubytovanie, event, produkt, služba, nábor, iné | výber | áno | modul otázok v kroku 4, typ pre schema.org |
+| Čo má návštevník urobiť: kúpiť, rezervovať, zaregistrovať sa, poslať dopyt, zavolať | výber | áno | hlavná akcia stránky |
+| Termín kampane od – do | dátum | nie | odpočet, čo sa stane po skončení |
+| Pre koho je kampaň: kto, odkiaľ, aký problém mu riešite | dlhý text | áno | tón a poradie textov |
+| Hlavná ponuka jednou vetou | text | áno | nadpis stránky |
+| Tri dôvody, prečo práve vy | text × 3 | áno | výhody na stránke |
+| Akcia alebo obmedzenie (zľava, termín, počet miest), ak je | text | nie | výzva na stránke |
+| Kanály kampane: Meta, Google, e-mail, tlač a QR kód, influenceri | zaškrtávanie | áno | odkaz s UTM pre každý kanál |
+| Odkazy na súčasný web, profily, portály alebo e-shop | odkaz, skupina | nie | predvyplnenie |
+
+## Krok 2: Kam pôjde lead
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Hlavná cesta: prelink na predaj, formulár alebo priamy kontakt (dajú sa kombinovať, jedna je hlavná) | výber | áno | hlavné tlačidlo |
+| Prelink: adresa predaja (portál, e-shop, vstupenky, rezervačný kalendár) a text tlačidla | odkaz, text | pri prelinku | tlačidlo, UTM, meranie |
+| Formulár: polia (meno, e-mail, telefón, správa, termín, počet osôb, produkt, vlastné) | zaškrtávanie | pri formulári | formulár |
+| Kto dostane leady (e-mailové adresy) | text, skupina | pri formulári | upozornenie na nový lead |
+| Kam ešte poslať leady: Google Sheet, CRM, webhook | výber, odkaz | nie | napojenie |
+| Kto leady vybavuje a do kedy sa ozve | text | pri formulári | automatická odpoveď |
+| Text poďakovania a automatickej odpovede (appka navrhne) | dlhý text | nie | po odoslaní |
+| Pýtať aj súhlas s marketingom? | áno alebo nie | nie | samostatné políčko |
+| Kontakt: telefón, WhatsApp, e-mail | text | pri kontakte | tlačidlá |
+
+## Krok 3: Zadávateľ a ochrana údajov
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| IČO | text | áno | doplní obchodné meno, sídlo a DIČ z registra |
+| Obchodné meno, sídlo, DIČ, IČ DPH alebo „nie sme platiteľ DPH“ | text | áno | pätička, ochrana údajov |
+| Značka, pod ktorou kampaň beží, ak je iná ako firma | text | nie | hlavička |
+| Adresa a bod na mape, ak sa k vám chodí | text, mapa | nie | kontakt, mapa, JSON-LD |
+| Zodpovedná osoba pre osobné údaje a jej e-mail | text | nie | ochrana údajov |
+| Váš text o ochrane osobných údajov (GDPR) | súbor alebo text | nie | ak chýba, použije sa šablóna doplnená o formulár a meranie |
+
+## Krok 4: Ponuka podľa typu kampane
+
+### Ubytovanie
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Čo prenajímate (celý dom, apartmán, izby) | výber | áno | texty, JSON-LD |
+| Izby: názov, poschodie, lôžka (typ, rozmer, počet), prechodná alebo samostatná, fotka | skupina | áno | sekcia izieb, kapacita sa spočíta sama |
+| Vybavenie s tromi stavmi (v cene, za poplatok s cenou, nemáme) | zoznam | áno | sekcie, FAQ, JSON-LD |
+| Príchod a odchod, samoobslužný check-in, skorší príchod a neskorší odchod, minimálny pobyt, zvieratá | čas, výber | áno | FAQ |
+| Náčrt areálu (stačí fotka kresby) a tipy v okolí, aj či sa dá ísť pešo alebo na bicykli od vás | súbor, skupina | nie | mapky, tipy |
+
+### Event
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Dátum, čas a miesto (adresa a bod na mape) | dátum, čas, mapa | áno | hlavička, JSON-LD Event |
+| Program a účinkujúci | skupina | nie | program |
+| Vstupenky: druhy, ceny, kapacita, kde sa predávajú | skupina, odkaz | áno | prelink alebo registrácia |
+| Pre koho je event, vek, parkovanie | text | nie | FAQ |
+
+### Produkt
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Produkt: názov, varianty, cena, dostupnosť | skupina | áno | ponuka, JSON-LD Product |
+| Hlavné parametre a čím sa líši od konkurencie | dlhý text | áno | výhody |
+| Doprava, platba, záruka, vrátenie | text | nie | FAQ |
+
+### Služba
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Služby: názov, popis, cena alebo cena od | skupina | áno | cenník |
+| Oblasť, kde pôsobíte | text | áno | texty, JSON-LD |
+| Ako prebieha spolupráca, krok po kroku | skupina | nie | sekcia postup |
+
+### Nábor
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Pozícia, miesto, úväzok, mzda alebo rozpätie | text | áno | hlavička, JSON-LD JobPosting |
+| Čo ponúkate a koho hľadáte | dlhý text | áno | texty |
+| Ako prebieha výber | skupina | nie | sekcia postup |
+
+## Krok 5: Dôvera
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Hodnotenia: odkazy na portály, Google, Facebook (appka načíta skóre, zadávateľ potvrdí) | odkaz | nie | sekcia recenzií |
+| 3 až 5 obľúbených recenzií alebo referencií (text, meno, odkiaľ) | skupina | nie | citáty |
+| Logá klientov alebo partnerov, ocenenia, certifikáty | súbor | nie | pás dôvery |
+| Čísla, ktoré viete doložiť (roky na trhu, počet zákazníkov) | text | nie | iba overené čísla |
+| Otázky, ktoré vám zákazníci kladú najčastejšie | skupina | áno | FAQ |
+
+## Krok 6: Fotky, videá, logo
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Všetky fotky naraz (aj z mobilu, alebo odkaz na Drive či Dropbox) | súbor | áno | galéria a sekcie |
+| Hlavná fotka na úvod a na zdieľanie | výber z nahraných | áno | úvod, og-image |
+| Ku každej fotke: kategória (appka navrhne), autor a práva (moja, od fotografa, z internetu), či na nej sú ľudia a súhlasia s tým | výber | áno | galéria, právne |
+| Videá: odkazy na reels alebo nahraté mp4 | odkaz, súbor | nie | sekcia videí |
+| Logo a brand manuál, ak je | súbor | nie | hlavička, farby, písma |
+
+Pri Hájskom dvore bolo v galérii 35 fotiek. Radšej viac fotiek, appka vyberie.
+
+## Krok 7: Vzhľad a jazyky
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| 1 až 3 stránky, ktoré sa vám páčia | odkaz | nie | návrhy dizajnu |
+| Farby, ktoré k vám patria, alebo „nechám na vás“ | výber | nie | téma |
+| Čo na stránke nechcete (napr. ozdobné rámiky, veľa textu) | dlhý text | nie | téma |
+| Jazyky stránky (pri Hájskom dvore SK, HU, EN, DE, PL, UK) | zaškrtávanie | áno | preklady |
+
+## Krok 8: Doména, hosting a meranie
+
+| Otázka | Typ | Povinné | Na čo slúži |
+|---|---|---|---|
+| Kde má stránka bežať: subdoména klienta, vlastná doména kampane, adresa na Lamaone | výber | áno | spustenie |
+| Doména: máte ju, kde je registrovaná | výber, text | pri vlastnej doméne | spustenie |
+| Hosting: súbory nahráte sami, alebo dáte prístup | výber | pri vlastnej doméne | spustenie |
+| E-mail, na ktorý pridáme prístup do Google Analytics | text | áno | odovzdanie |
+| Máte už GTM, GA4, Meta Pixel alebo konverziu v Google Ads? Ak áno, ich ID | výber, text | nie | meranie |
+| Kto spravuje reklamy kampane | text | nie | komu poslať odkazy s UTM |
+| Kto bude stránku upravovať v admine (e-mail na prihlásenie) | text | áno | prístup do adminu |
+| Kto má dostávať týždenný report | text, skupina | nie | týždenný report |
+
+## Krok 9: Kontrola a odoslanie
+
+- Súhrn na potvrdenie: cieľ kampane a hlavná cesta leadu, kam idú leady, ponuka a ceny, čo je v cene a čo nie, zadávateľ.
+- Zoznam vecí označených „doplním neskôr“.
+- Súhlas so spracovaním údajov na tvorbu stránky.
+- Po odoslaní appka spustí návrhy dizajnu a pripraví odkazy s UTM pre každý kanál.
