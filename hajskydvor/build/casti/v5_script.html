@@ -201,7 +201,7 @@
     document.title = lang === 'sk' ? skMeta.title : dict['meta.title'];
     document.querySelector('meta[name=description]').content = lang === 'sk' ? skMeta.desc : dict['meta.desc'];
     document.getElementById('langCode').textContent = LANG_LABEL[lang] || lang.toUpperCase();
-    document.querySelectorAll('.lang-menu [data-lang], .foot-langs [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
+    document.querySelectorAll('.lang-menu [data-lang], .foot-langs [data-lang], .nav-langs [data-lang]').forEach(a => a.classList.toggle('active', a.dataset.lang === lang));
     document.getElementById('langFlag').className = 'flag fl-' + lang;
     let canon = document.querySelector('link[rel=canonical]');
     if (!canon) { canon = document.createElement('link'); canon.rel = 'canonical'; document.head.appendChild(canon); }
@@ -314,7 +314,7 @@
     if (a.dataset.lang) setLang(a.dataset.lang, true);
   }));
   document.addEventListener('click', () => langBox.classList.remove('open'));
-  document.querySelectorAll('.foot-langs a').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); setLang(a.dataset.lang, true); }));
+  document.querySelectorAll('.foot-langs a, .nav-langs a').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); setLang(a.dataset.lang, true); }));
 
   /* Sezónne tipy */
   document.querySelectorAll('.season-tabs button').forEach(btn => btn.addEventListener('click', () => {

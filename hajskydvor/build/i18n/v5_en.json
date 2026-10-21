@@ -54,7 +54,7 @@
  "faq.q5": "What is in the kitchen?",
  "faq.a5": "The fully equipped kitchen has an electric oven, a ceramic hob, a fridge with freezer, a kettle and a coffee maker, plus a dining table for everyone.",
  "faq.q6": "What is the bathroom like, and is there Wi-Fi?",
- "faq.a6": "The bathroom has a bathtub, washbasin, washing machine and dryer, and towels are provided. The toilet is separate. Wi-Fi works throughout the house.",
+ "faq.a6": "The bathroom has a bathtub, washbasin, washing machine and dryer, and towels are provided. The toilet is separate, and there is a second toilet with a washbasin in the attic. Wi-Fi works throughout the house.",
  "faq.q7": "What is there for children?",
  "faq.a7": "A kids’ corner with books and toys, a playground with a playhouse, a sandpit, a climbing frame and a swing, and a paddling pool in summer. For the little ones there are 2 baby cots and 2 beds with rails, a high chair, a changing table and a potty.",
  "faq.q8": "What is outside in the yard?",
@@ -72,7 +72,7 @@
  "faq.q14": "How do I book?",
  "faq.a14": "Through Booking.com, Megaubytovanie or Airbnb, whichever you use. Feel free to message us directly with any questions.",
  "rm.1s": "double bed + baby cot",
- "rm.4s": "bathtub, washing machine and dryer, towels included",
+ "rm.4s": "bathtub, washing machine and dryer, towels included, toilet with washbasin in the attic",
  "more.6": "Hrhov fishponds",
  "more.7": "Perín fishponds",
  "more.8": "Hussite church in Lúčka",
@@ -91,7 +91,7 @@
  "more.10": "Skiing at Štós – Šikmá stráň",
  "walk.h": "Straight from the door, no car needed",
  "walk.p": "Your car can stay parked at the house. You can reach these places on foot or by bike, right from the gate.",
- "walk.1": "the gorge with footbridges and ladders starts right in the village",
+ "walk.1": "the gorge with its waterfalls starts right in the village",
  "walk.angel": "Angel statue",
  "walk.road": "Angel Road",
  "walk.2h": "Angel Road and the angel statue",
@@ -142,5 +142,9 @@
  "ck.nec.d": "Remembering your language, display mode and cookie choice. Always on.",
  "ck.an": "Analytics",
  "ck.an.d": "Google Analytics 4 shows us which parts of the website you view. Not stored without your consent.",
- "ft.cookies": "Cookie settings"
+ "ft.cookies": "Cookie settings",
+ "wk.1s": "Walk the gorge at your own pace, without the crowds.",
+ "tip.1p": "A gorge full of waterfalls that starts right in the village. Most beautiful in spring, when there's the most water.",
+ "tip.1k": "👶 set off straight from the gate, no car needed",
+ "rm.4t": "1 bathroom + 2 toilets"
 }

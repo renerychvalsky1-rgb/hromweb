@@ -54,7 +54,7 @@
  "faq.q5": "Co jest w kuchni?",
  "faq.a5": "W pełni wyposażona kuchnia ma piekarnik elektryczny, płytę ceramiczną, lodówkę z zamrażarką, czajnik elektryczny i ekspres do kawy, a także stół jadalny dla wszystkich.",
  "faq.q6": "Jaka jest łazienka i czy jest Wi-Fi?",
- "faq.a6": "Łazienka ma wannę, umywalkę, pralkę i suszarkę, ręczniki są przygotowane. Toaleta jest osobno. Wi-Fi działa w całym domu.",
+ "faq.a6": "Łazienka ma wannę, umywalkę, pralkę i suszarkę, ręczniki są przygotowane. Toaleta jest osobno, a na poddaszu jest druga toaleta z umywalką. Wi-Fi działa w całym domu.",
  "faq.q7": "Co czeka na dzieci?",
  "faq.a7": "Kącik dziecięcy z książeczkami i zabawkami, plac zabaw z domkiem, piaskownica, drabinki i huśtawka, a latem także basenik. Dla najmłodszych są 2 łóżeczka i 2 łóżka z barierką, krzesełko do karmienia, przewijak i nocnik.",
  "faq.q8": "Co jest na podwórzu?",
@@ -72,7 +72,7 @@
  "faq.q14": "Jak zarezerwować pobyt?",
  "faq.a14": "Przez Booking.com, Megaubytovanie lub Airbnb – jak Wam wygodniej. Z pytaniami śmiało piszcie do nas bezpośrednio.",
  "rm.1s": "łóżko małżeńskie + łóżeczko",
- "rm.4s": "wanna, pralka i suszarka, ręczniki w cenie",
+ "rm.4s": "wanna, pralka i suszarka, ręczniki w cenie, na poddaszu toaleta z umywalką",
  "more.6": "Stawy w Hrhovie",
  "more.7": "Stawy w Perínie",
  "more.8": "Husycki kościółek w Lúčce",
@@ -91,7 +91,7 @@
  "more.10": "Narty: Štós – Šikmá stráň",
  "walk.h": "Prosto z domu na wycieczkę, bez samochodu",
  "walk.p": "Samochód może zostać pod domem. Do tych miejsc dotrzecie pieszo albo rowerem prosto spod bramy.",
- "walk.1": "wąwóz z kładkami i drabinami zaczyna się we wsi",
+ "walk.1": "wąwóz z wodospadami zaczyna się we wsi",
  "walk.angel": "Figura anioła",
  "walk.road": "Anielska Droga",
  "walk.2h": "Anielska Droga i figura anioła",
@@ -142,5 +142,9 @@
  "ck.nec.d": "Zapamiętanie języka, trybu wyświetlania i wyboru cookie. Zawsze włączone.",
  "ck.an": "Analityczne",
  "ck.an.d": "Google Analytics 4 pokazuje nam, które części strony oglądasz. Bez Twojej zgody nie są zapisywane.",
- "ft.cookies": "Ustawienia cookie"
+ "ft.cookies": "Ustawienia cookie",
+ "wk.1s": "Wąwóz przejdziecie we własnym tempie, bez tłumów turystów.",
+ "tip.1p": "Wąwóz z wodospadami, który zaczyna się tuż we wsi. Najpiękniejszy wiosną, kiedy wody jest najwięcej.",
+ "tip.1k": "👶 ruszacie prosto spod bramy, bez samochodu",
+ "rm.4t": "1 łazienka + 2 toalety"
 }

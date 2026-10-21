@@ -44,6 +44,10 @@ for old, new in [('<h3 data-i18n="tip.10h">Granárium a Jablonovský viadukt</h3
                   'Esterházyho sýpka Granárium. Krátka zastávka, ktorá sa dá spojiť s výletom na hrad.'),
                  ('Záhrada, hry s deťmi, sauna a večer kaďa, v chladné dni aj krb.', 'Záhrada, hry s deťmi, večer kaďa a v chladné dni krb.')]:
     assert old in s, old; s = s.replace(old, new)
+# Hájske vodopády nemajú lávky ani rebríky (to je Slovenský raj), Denisa 20. 10.
+for old, new in [('Roklina s lávkami a rebríkmi, ktorá začína priamo v dedine.', 'Roklina s vodopádmi, ktorá začína priamo v dedine.'),
+                 ('👶 rebríky sú skôr pre väčšie deti', '👶 vyrazíte rovno od brány, bez auta')]:
+    assert s.count(old) == 1, old; s = s.replace(old, new)
 s = s.replace('<!--SCRIPT-->', open(S + '/v5/v5_script.html').read())
 # fotky do zoznamu PHOTOS (raz, galéria aj sekcie sa na ne odkazujú)
 sys.path.insert(0, S + '/v5'); from photo_list import PHOTOS

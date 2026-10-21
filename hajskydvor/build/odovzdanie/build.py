@@ -9,24 +9,24 @@ def table(head, rows, cls=''):
     return f'<table class="{cls}"><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
 
 sections = table(['Časť', 'Čo v nej hostia nájdu'], [
-    ['Úvod', '3 striedajúce sa fotky domu, „Celá chalupa pre vašu rodinu, kúsok od vodopádov“, tlačidlá na rezerváciu'],
-    ['Izby', 'spálňa na prízemí, vedľa nej detská izba (prechodné), 2 samostatné spálne v podkroví, kúpeľňa; spolu 10 lôžok, 2 detské postele Montessori a 2 postieľky'],
+    ['Úvod', '5 striedajúcich sa fotiek (dom, dieťa pri lavičke, maliny zo záhrady, obývačka), „Celá chalupa pre vašu rodinu, kúsok od vodopádov“, tlačidlá na rezerváciu'],
+    ['Izby', 'spálňa na prízemí, vedľa nej detská izba (prechodné), 2 samostatné spálne v podkroví, kúpeľňa, samostatné WC a WC s umývadlom v podkroví; spolu 10 lôžok, 2 detské postele Montessori a 2 postieľky'],
     ['Kaďa a záhrada', 'vonkajšia kaďa v cene, ohnisko s kotlíkom, jedlá záhrada'],
     ['Pre deti', 'detský kútik, ihrisko, pieskovisko, hračky'],
-    ['Galéria', '35 fotiek, otvárajú sa na celú obrazovku'],
+    ['Galéria', '38 fotiek, otvárajú sa na celú obrazovku'],
     ['Videá', '4 ukážky z Instagramu s odkazmi na celé videá'],
     ['Mapka areálu', 'nakreslená podľa vášho náčrtu, 15 očíslovaných miest'],
     ['Okolie', 'výlety rovno z domu bez auta a 12 tipov podľa ročných období'],
     ['Hodnotenia', 'Booking.com 9,7 (22 hodnotení), Megaubytovanie 9,9 (5 hodnotení), 4 citáty hostí'],
     ['Časté otázky', '14 otázok: príchod, kaďa, lôžka, čo si priniesť, pravidlá'],
-    ['Rezervácia a kontakt', 'odkazy na portály, telefón, e-mail, adresa Háj 83, mapa, Instagram, Facebook'],
+    ['Rezervácia a kontakt', 'odkazy na portály, telefón, e-mail, adresa Háj 92, mapa, Instagram, Facebook'],
 ], 'two')
 tasks = [
     'Prejdite si web na mobile aj na počítači a pošlite Renému pripomienky.',
     'Prečítajte si stránku <b>Ochrana osobných údajov</b> (hajskydvor.sk/ochrana-osobnych-udajov.html). Je to právny text firmy VOLTOM s.r.o. s kontaktom na poverenca info@voltom.sk.',
     'Plaťte včas faktúry z WebSupportu za doménu a hosting. Pri nezaplatenej faktúre web prestane fungovať.',
     'Pridajte odkaz <b>https://hajskydvor.sk</b> do profilu na Instagrame a na Facebooku.',
-    'Ak ešte nemáte Firemný profil Google, založte si ho s adresou Háj 83 a odkazom na web. Hostia vás tak nájdu v Mapách Google.',
+    'Ak ešte nemáte Firemný profil Google, založte si ho s adresou Háj 92 a odkazom na web. Hostia vás tak nájdu v Mapách Google.',
     'Prihláste sa do Google Analytics (analytics.google.com) účtom <b>hajskydvor@gmail.com</b>. Uvidíte tam, koľko ľudí na web chodí.',
 ]
 task_html = '<ul class="tasks">' + ''.join(f'<li><i></i><span>{t}</span></li>' for t in tasks) + '</ul>'

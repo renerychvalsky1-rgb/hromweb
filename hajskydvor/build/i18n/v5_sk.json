@@ -39,7 +39,7 @@
  "faq.q5": "Čo je vybavené v kuchyni?",
  "faq.a5": "Plne vybavená kuchyňa má elektrickú rúru, keramickú varnú dosku, chladničku s mrazničkou, rýchlovarnú kanvicu a kávovar. Nechýba jedálenské posedenie pre celú partiu.",
  "faq.q6": "Aká je kúpeľňa a je tu Wi-Fi?",
- "faq.a6": "Kúpeľňa má vaňu, umývadlo, práčku a sušičku, uteráky sú pripravené. Toaleta je samostatne. Wi-Fi funguje v celom dome.",
+ "faq.a6": "Kúpeľňa má vaňu, umývadlo, práčku a sušičku, uteráky sú pripravené. Toaleta je samostatne a ďalšie WC s umývadlom je v podkroví. Wi-Fi funguje v celom dome.",
  "faq.q7": "Čo tu nájdu deti?",
  "faq.a7": "Detský kútik s knižkami a hračkami, detské ihrisko s domčekom, pieskovisko, preliezku a hojdačku, v lete aj detský bazén. Pre najmenších sú pripravené 2 detské postieľky a 2 postele so zábranou, vysoká stolička, prebaľovací pult aj nočník.",
  "faq.q8": "Čo je vonku na dvore?",
@@ -57,7 +57,7 @@
  "faq.q14": "Ako si pobyt rezervujem?",
  "faq.a14": "Cez Booking.com, Megaubytovanie alebo Airbnb, podľa toho, ktorý portál používate. S otázkami nám pokojne napíšte priamo.",
  "rm.1s": "manželská posteľ + detská postieľka",
- "rm.4s": "vaňa, práčka a sušička, uteráky v cene",
+ "rm.4s": "vaňa, práčka a sušička, uteráky v cene, v podkroví WC s umývadlom",
  "more.6": "Hrhovské rybníky",
  "more.7": "Perínske rybníky",
  "more.8": "Husitský kostolík v Lúčke",
@@ -77,7 +77,7 @@
  "more.10": "Lyžovanie Štós – Šikmá stráň",
  "walk.h": "Z domu rovno na výlet, bez auta",
  "walk.p": "Auto môže zostať stáť pri dome. K týmto miestam sa dostanete pešo alebo na bicykli priamo od brány.",
- "walk.1": "roklina s lávkami a rebríkmi začína priamo v dedine",
+ "walk.1": "roklina s vodopádmi začína priamo v dedine",
  "walk.angel": "Socha anjela",
  "walk.road": "Anjelská cesta",
  "walk.2h": "Anjelská cesta a socha anjela",
@@ -128,5 +128,9 @@
  "ck.nec.d": "Zapamätanie jazyka, režimu zobrazenia a vašej voľby cookies. Vždy zapnuté.",
  "ck.an": "Analytické",
  "ck.an.d": "Google Analytics 4 nám ukáže, ktoré časti webu si pozeráte. Bez vášho súhlasu sa neukladajú.",
- "ft.cookies": "Nastavenia cookies"
+ "ft.cookies": "Nastavenia cookies",
+ "wk.1s": "Roklinu prejdete svojím tempom, bez davov turistov.",
+ "tip.1p": "Roklina s vodopádmi, ktorá začína priamo v dedine. Najkrajšia na jar, keď je vody najviac.",
+ "tip.1k": "👶 vyrazíte rovno od brány, bez auta",
+ "rm.4t": "1 kúpeľňa + 2 toalety"
 }

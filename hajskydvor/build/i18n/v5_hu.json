@@ -54,7 +54,7 @@
  "faq.q5": "Mi van a konyhában?",
  "faq.a5": "A teljesen felszerelt konyhában elektromos sütő, kerámia főzőlap, hűtő fagyasztóval, vízforraló és kávéfőző van, valamint étkezőasztal az egész társaságnak.",
  "faq.q6": "Milyen a fürdőszoba, és van wifi?",
- "faq.a6": "A fürdőszobában kád, mosdó, mosógép és szárítógép van, törölközőt biztosítunk. A WC külön helyiségben van. A wifi az egész házban működik.",
+ "faq.a6": "A fürdőszobában kád, mosdó, mosógép és szárítógép van, törölközőt biztosítunk. A WC külön helyiségben van, a tetőtérben pedig van egy második WC mosdóval. A wifi az egész házban működik.",
  "faq.q7": "Mit találnak itt a gyerekek?",
  "faq.a7": "Gyereksarkot könyvekkel és játékokkal, játszóteret házikóval, homokozót, mászókát és hintát, nyáron gyerekmedencét is. A legkisebbeknek 2 kiságy és 2 leesésgátlós ágy, etetőszék, pelenkázó és bili is van.",
  "faq.q8": "Mi van kint az udvaron?",
@@ -72,7 +72,7 @@
  "faq.q14": "Hogyan foglalhatok?",
  "faq.a14": "A Booking.com-on, a Megaubytovanie-n vagy az Airbnb-n keresztül, amelyiket használja. Kérdéseikkel nyugodtan írjanak nekünk közvetlenül.",
  "rm.1s": "franciaágy + kiságy",
- "rm.4s": "kád, mosógép és szárítógép, törölköző az árban",
+ "rm.4s": "kád, mosógép és szárítógép, törölköző az árban, a tetőtérben WC mosdóval",
  "more.6": "Hrhovi halastavak",
  "more.7": "Períni halastavak",
  "more.8": "Huszita templom, Lucska",
@@ -92,7 +92,7 @@
  "tip.4h": "Hrhovi vízesés",
  "walk.h": "A háztól egyenesen kirándulni, autó nélkül",
  "walk.p": "Az autó nyugodtan maradhat a háznál. Ezekre a helyekre gyalog vagy kerékpárral, egyenesen a kaputól eljutnak.",
- "walk.1": "a pallókkal és létrákkal járható szurdok a faluban kezdődik",
+ "walk.1": "a vízesésekkel teli szurdok a faluban kezdődik",
  "walk.angel": "Angyalszobor",
  "walk.road": "Angyal-út",
  "walk.2h": "Angyal-út és angyalszobor",
@@ -143,5 +143,9 @@
  "ck.nec.d": "A nyelv, a megjelenítési mód és a sütiválasztás megjegyzése. Mindig bekapcsolva.",
  "ck.an": "Analitikai",
  "ck.an.d": "A Google Analytics 4 megmutatja, mely részeit nézik az oldalnak. Hozzájárulás nélkül nem tároljuk őket.",
- "ft.cookies": "Sütibeállítások"
+ "ft.cookies": "Sütibeállítások",
+ "wk.1s": "A szurdokot a saját tempótokban járhatjátok be, turistatömeg nélkül.",
+ "tip.1p": "Vízesésekkel teli szurdok, amely közvetlenül a faluból indul. Tavasszal a legszebb, amikor a legtöbb a víz.",
+ "tip.1k": "👶 egyenesen a kapuból indulhattok, autó nélkül",
+ "rm.4t": "1 fürdőszoba + 2 WC"
 }

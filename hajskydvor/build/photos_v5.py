@@ -126,7 +126,7 @@ def tip_uri(k): return 'data:image/webp;base64,' + base64.b64encode(open(f'{S}/v
 own_src = re.search(r'<img class="paint own" src="(data:image/webp;base64,[^"]+)" alt="[^"]*">', s).group(1)
 # úvod: 3 fotky, ktoré sa pomaly prelínajú (akvarel ide k častým otázkam)
 sub(r'<!-- Obrázok od majiteľky[^>]*-->\s*<img class="paint own" src="data:image/webp;base64,[^"]+" alt="[^"]*">',
-    lambda m: '<div class="hero-slides">\n        ' + '\n        '.join(ph(k, ' hs' + (' is-on' if i == 0 else '')) for i, k in enumerate(['ext_front', 'ext_street', 'living_cozy'])) + '\n      </div>')
+    lambda m: '<div class="hero-slides">\n        ' + '\n        '.join(ph(k, ' hs' + (' is-on' if i == 0 else '')) for i, k in enumerate(['ext_front', 'kid_bench', 'raspberries', 'ext_street', 'living_cozy'])) + '\n      </div>')
 # Vitajte: stará fotka domu
 sub(r'(<div class="about-media">\s*)<div class="ill"><img src="data:image/webp;base64,[^"]+" alt=""></div>', lambda m: m.group(1) + ph('old_photo'))
 # časté otázky: akvarel od majiteľky pod nadpisom
@@ -271,5 +271,13 @@ CONSENT_HEAD = open(S + '/v5/consent_head.html').read()
 sub(r'(<!-- Google Tag Manager -->)', lambda m: CONSENT_HEAD + m.group(1))
 sub(r'<span>© 2026 Hájsky dvor</span>', lambda m: '<span class="foot-legal">© 2026 Hájsky dvor · <span data-i18n="ft.operator">Prevádzkovateľ</span>: VOLTOM s.r.o., Čižatice 78, 044 47 Čižatice, IČO 50580426 · <a href="ochrana-osobnych-udajov.html" data-i18n="ft.privacy">Ochrana osobných údajov</a> · <a href="#cookies" data-ck-open data-i18n="ft.cookies">Nastavenia cookies</a></span>')
 sub(r'(<!--SCRIPT-->)', lambda m: open(S + '/v5/cookie_bar.html').read() + m.group(1))
+# pripomienky Denisy (20. 10.)
+for _a, _b in [('Roklinu prejdete svojím tempom, bez tlačenice na lávkach a rebríkoch.', 'Roklinu prejdete svojím tempom, bez davov turistov.'),
+               ('1 kúpeľňa + samostatná toaleta', '1 kúpeľňa + 2 toalety')]:
+    assert s.count(_a) == 1, _a; s = s.replace(_a, _b)
+assert s.count('Háj 83') == 4, s.count('Háj 83')
+s = s.replace('Háj 83', 'Háj 92')
+NAV_LANGS = '\n      <div class="nav-langs" role="group" aria-label="Jazyk / Language">' + ''.join(f'\n        <a href="?lang={l}" data-lang="{l}"><i class="flag fl-{l}" aria-hidden="true"></i>{c}</a>' for l, c in [('sk', 'SK'), ('hu', 'HU'), ('en', 'EN'), ('de', 'DE'), ('pl', 'PL'), ('uk', 'UA')]) + '\n      </div>'
+sub(r'(<a href="#kontakt" data-i18n="nav.6">Kontakt</a>)(\n    </nav>)', lambda m: m.group(1) + NAV_LANGS + m.group(2))
 open(S + '/v5_src.html', 'w').write(s)
 print('ok', len(s) // 1024, 'KB')
