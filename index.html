@@ -124,8 +124,11 @@
 
   /* AKO SPOLUPRACUJEME */
   .press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; list-style: none; }
-  .press a { display: flex; flex-direction: column; height: 100%; padding: 1.75rem; border: 1px solid var(--line); border-radius: .75rem; background: var(--bg2); color: var(--text); text-decoration: none; transition: border-color .2s; }
+  .press a { display: flex; flex-direction: column; height: 100%; padding: 0 1.75rem 1.75rem; overflow: hidden; border: 1px solid var(--line); border-radius: .75rem; background: var(--bg2); color: var(--text); text-decoration: none; transition: border-color .2s; }
   .press a:hover, .press a:focus-visible { border-color: var(--accent); }
+  .press img { display: block; flex: none; width: calc(100% + 3.5rem); height: auto; max-width: none; margin: 0 -1.75rem 1.5rem; aspect-ratio: 4/3; object-fit: cover; background: #151515; transition: transform .3s; }
+  .press a:hover img { transform: scale(1.03); }
+  @media (prefers-reduced-motion: reduce) { .press img { transition: none; } .press a:hover img { transform: none; } }
   .press .src { color: var(--accent); font-weight: 700; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: .75rem; }
   .press h3 { font-size: 1.1rem; line-height: 1.35; margin-bottom: .75rem; }
   .press p { color: var(--muted); font-size: .95rem; margin-bottom: 1.25rem; }
@@ -466,18 +469,21 @@
       <p class="lead">Články a rozhovory, v ktorých médiá spomínajú Reného Rychvalského a jeho prácu.</p>
       <ul class="press">
         <li><a href="https://besteron.com/sk/blog/rene-rychvalsky-sterio-kino-tip-pre-rebranding-musite-byt-ini-ako-inaksi" target="_blank" rel="noopener">
+          <img src="media/besteron.jpg" alt="René Rychvalský na podujatí v kinosále STERIO" width="800" height="600" loading="lazy">
           <span class="src">Besteron · rozhovor</span>
           <h3>René Rychvalský: Tip pre rebranding? Musíte byť iní, ako inakší</h3>
           <p>René bol pri celom rebrandingu Ster Century na STERIO Kino. Ako dlho trvalo vybrať názov, ako zmena ovplyvnila návštevnosť a čo sa dialo v zákulisí.</p>
           <span class="more-link">Čítať rozhovor →</span>
         </a></li>
         <li><a href="https://www.interez.sk/znamu-siet-kin-uz-na-slovensku-pod-tymto-nazvom-nenajdete-presla-vyraznou-zmenou-planuje-sa-rozsirovat-aj-do-dalsich-miest/" target="_blank" rel="noopener">
+          <img src="media/interez-1.jpg" alt="René Rychvalský s mikrofónom" width="800" height="600" loading="lazy">
           <span class="src">Interez</span>
           <h3>Známu sieť kín už na Slovensku pod týmto názvom nenájdete, prešla výraznou zmenou</h3>
           <p>René vysvetľuje, prečo sa sieť kín po rokoch premenovala: pôvodný brand, názov a logo verejnosť dostatočne nepoznala.</p>
           <span class="more-link">Čítať článok →</span>
         </a></li>
         <li><a href="https://www.interez.sk/na-vychode-otvorila-novu-pobocku-zmenila-nazov-a-nevylucuje-expanziu-do-dalsich-miest-znama-siet-kin-zazila-uspesny-rok/" target="_blank" rel="noopener">
+          <img src="media/interez-2.jpg" alt="René Rychvalský prednáša na podujatí" width="800" height="600" loading="lazy">
           <span class="src">Interez</span>
           <h3>Na východe otvorila novú pobočku, zmenila názov a nevylučuje expanziu do ďalších miest</h3>
           <p>O úspešnom roku STERIO Kina, novej pobočke v Prešove a plánoch rásť v ďalších slovenských mestách.</p>
