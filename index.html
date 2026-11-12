@@ -124,18 +124,24 @@
 
   /* AKO SPOLUPRACUJEME */
   @media (prefers-reduced-motion: reduce) { .press img { transition: none; } .press a:hover img { transform: none; } }
-  .press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem 1.5rem; list-style: none; }
+  .press-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .press-nav { display: flex; gap: .5rem; margin-bottom: 2.5rem; }
+  .press-nav button { width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--bg2); color: var(--text); font-size: 1.2rem; cursor: pointer; }
+  .press-nav button:hover, .press-nav button:focus-visible { border-color: var(--accent); color: var(--accent); }
+  .press-view { --per: 4; --gap: 1.25rem; overflow: hidden; }
+  .press { display: flex; gap: var(--gap); list-style: none; will-change: transform; }
+  .press > li { flex: 0 0 calc((100% - (var(--per) - 1) * var(--gap)) / var(--per)); }
   .press a { display: flex; flex-direction: column; height: 100%; overflow: hidden; border: 1px solid var(--line); border-radius: .75rem; background: var(--bg2); color: var(--text); text-decoration: none; transition: border-color .2s; }
   .press a:hover, .press a:focus-visible { border-color: var(--accent); }
-  .press .img { overflow: hidden; aspect-ratio: 16/9; background: #151515; }
+  .press .img { overflow: hidden; aspect-ratio: 4/3; background: #151515; }
   .press img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
   .press a:hover img { transform: scale(1.03); }
   @media (prefers-reduced-motion: reduce) { .press img { transition: none; } .press a:hover img { transform: none; } }
-  .press .txt { display: flex; flex-direction: column; flex: 1; padding: 1.5rem 1.5rem 1.6rem; }
+  .press .txt { display: flex; flex-direction: column; flex: 1; padding: 1.25rem 1.25rem 1.4rem; }
   .press .src { color: var(--accent); font-weight: 700; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: .7rem; }
   .press .src.li { color: #4C9BE8; }
-  .press h3 { font-size: 1.05rem; line-height: 1.4; margin-bottom: .7rem; }
-  .press p { color: var(--muted); font-size: .93rem; margin-bottom: 1.25rem; }
+  .press h3 { font-size: 1rem; line-height: 1.4; margin-bottom: .6rem; }
+  .press p { color: var(--muted); font-size: .9rem; line-height: 1.55; margin-bottom: 1.1rem; }
   .press .more-link { margin-top: auto; color: var(--accent); font-weight: 700; font-size: .93rem; }
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; list-style: none; counter-reset: krok; }
   .steps li { counter-increment: krok; border-top: 2px solid var(--accent); padding-top: 1.25rem; }
@@ -201,7 +207,7 @@
     .team-title { margin-top: 3rem; }
     .case { grid-template-columns: 1fr; gap: 1.25rem; padding: 2rem 0; }
     .quotes { grid-template-columns: 1fr; }
-    .press { grid-template-columns: 1fr 1fr; }
+    .press-view { --per: 2; }
     .about { grid-template-columns: 1fr; gap: 2rem; }
     .photos { max-width: 320px; }
     .contact { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -210,7 +216,7 @@
   }
   @media (max-width: 520px) {
     .steps { grid-template-columns: 1fr; }
-    .press { grid-template-columns: 1fr; }
+    .press-view { --per: 1; }
     .team { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
@@ -470,11 +476,20 @@
   <section>
     <span class="anchor" id="media"></span>
     <div class="wrap">
-      <h2>Písalo sa o nás</h2>
-      <p class="lead">Články, rozhovory a príspevky, v ktorých sa spomína René Rychvalský a jeho práca.</p>
-      <ul class="press">
+      <div class="press-head">
+        <div>
+          <h2>Písalo sa o nás</h2>
+          <p class="lead">Články, rozhovory a príspevky, v ktorých sa spomína René Rychvalský a jeho práca.</p>
+        </div>
+        <div class="press-nav">
+          <button type="button" id="press-prev" aria-label="Predchádzajúci">←</button>
+          <button type="button" id="press-next" aria-label="Ďalší">→</button>
+        </div>
+      </div>
+      <div class="press-view" aria-roledescription="karusel" aria-label="Písalo sa o nás">
+        <ul class="press" id="press">
         <li><a href="https://besteron.com/sk/blog/rene-rychvalsky-sterio-kino-tip-pre-rebranding-musite-byt-ini-ako-inaksi" target="_blank" rel="noopener">
-          <div class="img"><img src="media/besteron.jpg" alt="Besteron – rozhovor s René Rychvalským, Sterio Kino" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/besteron.jpg" alt="Besteron – rozhovor s René Rychvalským, Sterio Kino" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src">Besteron · rozhovor</span>
             <h3>René Rychvalský: Tip pre rebranding? Musíte byť iní, ako inakší</h3>
@@ -482,48 +497,44 @@
             <span class="more-link">Čítať rozhovor →</span>
           </div>
         </a></li>
-        <!-- LinkedIn príspevok 2: doplniť obrázok, nadpis a úryvok -->
         <li><a href="https://www.linkedin.com/feed/update/urn:li:share:7473638486525489152/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/linkedin.jpg" alt="LinkedIn" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/linkedin-2.jpg" alt="Správa o rozpočte 18 000 € na Meta reklamu" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src li">LinkedIn · príspevok</span>
-            <h3>Príspevok Reného na LinkedIne</h3>
-            <p>Úryvok z príspevku doplníme.</p>
+            <h3>Keď Meta nechce zvýšiť limit na reklamu</h3>
+            <p>18 000 € na Mete do konca júna, alebo ide rozpočet do Google Ads. Jedna správa a limit bol vyriešený.</p>
             <span class="more-link">Čítať na LinkedIne →</span>
           </div>
         </a></li>
-        <!-- LinkedIn príspevok 3: doplniť obrázok, nadpis a úryvok -->
         <li><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7316676382434975745/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/linkedin.jpg" alt="LinkedIn" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/linkedin-3.jpg" alt="SUVKO raňajky – Budovanie značky zvonku, René Rychvalský" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src li">LinkedIn · príspevok</span>
-            <h3>Príspevok Reného na LinkedIne</h3>
-            <p>Úryvok z príspevku doplníme.</p>
+            <h3>SUVKO raňajky: Budovanie značky zvonku</h3>
+            <p>René bol hosťom SUVKO raňajok a hovoril o tom, ako budovať značku smerom von.</p>
             <span class="more-link">Čítať na LinkedIne →</span>
           </div>
         </a></li>
-        <!-- LinkedIn príspevok 4: doplniť obrázok, nadpis a úryvok -->
         <li><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7432714512820162561/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/linkedin.jpg" alt="LinkedIn" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/linkedin-4.jpg" alt="Maskot My sme KFA pred futbalovou arénou" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src li">LinkedIn · príspevok</span>
-            <h3>Príspevok Reného na LinkedIne</h3>
-            <p>Úryvok z príspevku doplníme.</p>
+            <h3>My sme KFA: maskot pred futbalovou arénou</h3>
+            <p>Futbalová lopta s čiapkou ožila. Pozrite sa, ako vznikal obsah s novým maskotom.</p>
             <span class="more-link">Čítať na LinkedIne →</span>
           </div>
         </a></li>
-        <!-- LinkedIn príspevok 5: doplniť obrázok, nadpis a úryvok -->
         <li><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7310711791188082693/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/linkedin.jpg" alt="LinkedIn" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/linkedin-5.jpg" alt="René Rychvalský prednáša v univerzitnej posluchárni" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src li">LinkedIn · príspevok</span>
-            <h3>Príspevok Reného na LinkedIne</h3>
-            <p>Úryvok z príspevku doplníme.</p>
+            <h3>Prednáška o marketingu pre študentov</h3>
+            <p>René prednášal študentom v univerzitnej posluchárni o marketingu v praxi.</p>
             <span class="more-link">Čítať na LinkedIne →</span>
           </div>
         </a></li>
         <li><a href="https://www.interez.sk/znamu-siet-kin-uz-na-slovensku-pod-tymto-nazvom-nenajdete-presla-vyraznou-zmenou-planuje-sa-rozsirovat-aj-do-dalsich-miest/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/interez-1.jpg" alt="Diváci v kinosále" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/interez-1.jpg" alt="Diváci v kinosále" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src">Interez · článok</span>
             <h3>Známu sieť kín už na Slovensku pod týmto názvom nenájdete, prešla výraznou zmenou</h3>
@@ -532,7 +543,7 @@
           </div>
         </a></li>
         <li><a href="https://www.interez.sk/na-vychode-otvorila-novu-pobocku-zmenila-nazov-a-nevylucuje-expanziu-do-dalsich-miest-znama-siet-kin-zazila-uspesny-rok/" target="_blank" rel="noopener">
-          <div class="img"><img src="media/interez-2.jpg" alt="Prázdna kinosála s modrými sedadlami" width="960" height="540" loading="lazy"></div>
+          <div class="img"><img src="media/interez-2.jpg" alt="Prázdna kinosála s modrými sedadlami" width="800" height="600" loading="lazy"></div>
           <div class="txt">
             <span class="src">Interez · článok</span>
             <h3>Na východe otvorila novú pobočku, zmenila názov a nevylučuje expanziu do ďalších miest</h3>
@@ -540,8 +551,51 @@
             <span class="more-link">Čítať článok →</span>
           </div>
         </a></li>
-      </ul>
+        </ul>
+      </div>
     </div>
+    <script>
+      (function () {
+        var list = document.getElementById('press'); if (!list) return;
+        var view = list.parentElement, busy = false, paused = false;
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function step() { var li = list.children[0]; return li.getBoundingClientRect().width + parseFloat(getComputedStyle(list).columnGap || 0); }
+        function next() {
+          if (busy) return; busy = true;
+          list.style.transition = reduce ? 'none' : 'transform .6s ease';
+          list.style.transform = 'translateX(' + (-step()) + 'px)';
+          var done = function () {
+            list.style.transition = 'none'; list.appendChild(list.children[0]);
+            list.style.transform = 'none'; busy = false;
+          };
+          if (reduce) done(); else list.addEventListener('transitionend', done, { once: true });
+        }
+        function prev() {
+          if (busy) return; busy = true;
+          list.style.transition = 'none'; list.insertBefore(list.lastElementChild, list.children[0]);
+          list.style.transform = 'translateX(' + (-step()) + 'px)';
+          list.getBoundingClientRect();
+          if (reduce) { list.style.transform = 'none'; busy = false; return; }
+          list.style.transition = 'transform .6s ease'; list.style.transform = 'none';
+          list.addEventListener('transitionend', function () { busy = false; }, { once: true });
+        }
+        var timer;
+        function restart() { clearInterval(timer); if (!reduce) timer = setInterval(function () { if (!paused && !document.hidden) next(); }, 8000); }
+        document.getElementById('press-next').addEventListener('click', function () { next(); restart(); });
+        document.getElementById('press-prev').addEventListener('click', function () { prev(); restart(); });
+        view.addEventListener('mouseenter', function () { paused = true; });
+        view.addEventListener('mouseleave', function () { paused = false; });
+        view.addEventListener('focusin', function () { paused = true; });
+        view.addEventListener('focusout', function () { paused = false; });
+        var x0 = null;
+        view.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+        view.addEventListener('touchend', function (e) {
+          if (x0 === null) return; var dx = e.changedTouches[0].clientX - x0; x0 = null;
+          if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); restart(); }
+        });
+        restart();
+      })();
+    </script>
   </section>
 
   <section>
